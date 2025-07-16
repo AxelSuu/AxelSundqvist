@@ -17,7 +17,7 @@ const About = () => {
       degree: 'MSE in Applied Physics and Electrical Engineering',
       institution: 'Linköping University (Liu)',
       period: '2026 - 2028',
-      specialization: 'Communications Systems',
+      specialization: 'Going to study Communications Systems',
     },
     {
       degree: 'B.Sc. in Applied Physics and Electrical Engineering',
@@ -28,9 +28,9 @@ const About = () => {
   ]
 
   const achievements = [
-    'Linear Algebra Honours elective',
+    'Linear Algebra honours course elective',
     'Participated in research projects at Infrasonik',
-    'Released my 2D Platformer game in Github',
+    'Released my 2D Platformer game'
   ]
 
   return (
@@ -53,8 +53,8 @@ const About = () => {
               </h3>
               <p className="text-lg text-muted-foreground leading-relaxed">
                 I'm a dedicated student of Applied Physics and Electrical Engineering at Linköping University (Liu), 
-                where I'm pursuing my Master's of Science in Engineering degree
-                with a focus on Communications and Signal Processing.
+                where I'm pursuing my Master's of Science in Engineering degree in AP&EE.
+                Going to do my masters in Communications Systems in 2026.
               </p>
               <p className="text-lg text-muted-foreground leading-relaxed mt-4">
                 My passion lies in exploring how mathematical principles can be applied to solve real-world problems, 

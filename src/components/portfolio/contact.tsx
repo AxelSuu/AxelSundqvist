@@ -43,7 +43,7 @@ const Contact = () => {
     {
       icon: Twitter,
       name: 'Twitter',
-      href: 'https://twitter.com/axelsuu',
+      href: 'https://x.com',
       color: 'hover:bg-blue-400',
     },
   ]
@@ -54,7 +54,7 @@ const Contact = () => {
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-4 gradient-text">Get In Touch</h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Let's discuss signal processing, machine learning, or potential collaborations
+            Let's discuss wireless communications, machine learning, or potential collaborations
           </p>
         </div>
 
@@ -110,72 +110,70 @@ const Contact = () => {
           {/* Contact Form */}
           <Card className="hover:shadow-lg transition-shadow duration-300">
             <CardHeader>
-              <CardTitle className="text-2xl">Send a Message</CardTitle>
+              <CardTitle className="text-2xl">Get In Touch</CardTitle>
             </CardHeader>
             <CardContent>
-              <form className="space-y-6">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <div>
-                    <label htmlFor="name" className="block text-sm font-medium mb-2">
-                      Name
-                    </label>
-                    <input
-                      type="text"
-                      id="name"
-                      name="name"
-                      className="w-full px-4 py-2 border border-input rounded-md bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
-                      placeholder="Your name"
-                      required
-                    />
-                  </div>
-                  <div>
-                    <label htmlFor="email" className="block text-sm font-medium mb-2">
-                      Email
-                    </label>
-                    <input
-                      type="email"
-                      id="email"
-                      name="email"
-                      className="w-full px-4 py-2 border border-input rounded-md bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
-                      placeholder="your.email@example.com"
-                      required
-                    />
-                  </div>
+              <div className="space-y-6">
+                <p className="text-muted-foreground">
+                  Ready to discuss your project or collaboration? I'd love to hear from you! 
+                  Choose your preferred way to get in touch:
+                </p>
+                
+                <div className="space-y-4">
+                  <Button 
+                    size="lg" 
+                    className="w-full"
+                    asChild
+                  >
+                    <a href="mailto:axesu672@liu.student.se?subject=Portfolio Contact&body=Hi Axel,%0D%0A%0D%0AI'm interested in discussing...">
+                      <Mail className="mr-2 h-5 w-5" />
+                      Send Email
+                    </a>
+                  </Button>
+                  
+                  <Button 
+                    variant="outline" 
+                    size="lg" 
+                    className="w-full"
+                    asChild
+                  >
+                    <a 
+                      href="https://www.linkedin.com/in/axel-sundqvist/" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                    >
+                      <Linkedin className="mr-2 h-5 w-5" />
+                      Message on LinkedIn
+                    </a>
+                  </Button>
+                  
+                  <Button 
+                    variant="outline" 
+                    size="lg" 
+                    className="w-full"
+                    asChild
+                  >
+                    <a 
+                      href="https://github.com/AxelSuu" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                    >
+                      <Github className="mr-2 h-5 w-5" />
+                      Connect on GitHub
+                    </a>
+                  </Button>
                 </div>
                 
-                <div>
-                  <label htmlFor="subject" className="block text-sm font-medium mb-2">
-                    Subject
-                  </label>
-                  <input
-                    type="text"
-                    id="subject"
-                    name="subject"
-                    className="w-full px-4 py-2 border border-input rounded-md bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
-                    placeholder="What's this about?"
-                    required
-                  />
+                <div className="mt-6 p-4 bg-muted rounded-lg">
+                  <h4 className="font-semibold mb-2">What to include in your message:</h4>
+                  <ul className="text-sm text-muted-foreground space-y-1">
+                    <li>• Your project or collaboration idea</li>
+                    <li>• Timeline and scope</li>
+                    <li>• Relevant technical details</li>
+                    <li>• How we can work together</li>
+                  </ul>
                 </div>
-                
-                <div>
-                  <label htmlFor="message" className="block text-sm font-medium mb-2">
-                    Message
-                  </label>
-                  <textarea
-                    id="message"
-                    name="message"
-                    rows={6}
-                    className="w-full px-4 py-2 border border-input rounded-md bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent resize-none"
-                    placeholder="Tell me about your project or question..."
-                    required
-                  />
-                </div>
-                
-                <Button type="submit" size="lg" className="w-full">
-                  <Mail className="mr-2 h-5 w-5" />
-                  Send Message
-                </Button>
-              </form>
+              </div>
             </CardContent>
           </Card>
         </div>

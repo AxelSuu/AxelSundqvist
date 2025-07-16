@@ -39,7 +39,7 @@ const Footer = () => {
               <span className="gradient-text">Axel Sundqvist</span>
             </div>
             <p className="text-muted-foreground mb-4 max-w-md">
-              Applied Physics & Electrical Engineering student passionate about signal processing, 
+              Applied Physics & Electrical Engineering student passionate about mathemtatics, 
               machine learning, and communications systems.
             </p>
             <div className="flex space-x-4">
@@ -92,8 +92,7 @@ const Footer = () => {
             © {currentYear} Axel Sundqvist. All rights reserved.
           </div>
           <div className="flex items-center text-muted-foreground text-sm">
-            <span>Made with magic- </span>
-            <span> and lots of coffee</span>
+            <span>Made with just lots of coffee</span>
           </div>
         </div>
       </div>
