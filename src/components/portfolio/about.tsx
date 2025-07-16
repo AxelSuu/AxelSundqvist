@@ -1,15 +1,14 @@
 import { Card, CardContent } from '@/components/ui/card'
-import { Badge } from '@/components/ui/badge'
-import { BookOpen, Cpu, Radio, Brain, Calculator, Award } from 'lucide-react'
+import { BookOpen, Cpu, Brain, Calculator, Award, Gamepad2, Zap} from 'lucide-react'
 
 const About = () => {
   const skills = [
-    { name: 'Signal Processing', icon: Radio, color: 'bg-blue-500' },
-    { name: 'Machine Learning', icon: Brain, color: 'bg-purple-500' },
-    { name: 'Mathematics', icon: Calculator, color: 'bg-green-500' },
-    { name: 'Communications', icon: Cpu, color: 'bg-orange-500' },
-    { name: 'Python', icon: BookOpen, color: 'bg-yellow-500' },
-    { name: 'MATLAB', icon: BookOpen, color: 'bg-red-500' },
+    { name: 'Mathematics', icon: BookOpen, color: 'bg-blue-500', level: 90 },
+    { name: 'Machine Learning', icon: Brain, color: 'bg-purple-500', level: 85 },
+    { name: 'Python', icon: Calculator, color: 'bg-green-500', level: 88 },
+    { name: 'Communications', icon: Zap, color: 'bg-orange-500', level: 82 },
+    { name: 'Embedded Systems', icon: Cpu, color: 'bg-yellow-500', level: 75 },
+    { name: 'Game Development', icon: Gamepad2, color: 'bg-red-500', level: 80 },
   ]
 
   const education = [
@@ -28,9 +27,24 @@ const About = () => {
   ]
 
   const achievements = [
-    'Linear Algebra honours course elective',
-    'Participated in research projects at Infrasonik',
-    'Released my 2D Platformer game'
+    {
+      title: 'Linear Algebra Honours Course',
+      description: 'Took an elective honours course in linear algebra',
+      icon: Calculator,
+      color: 'bg-blue-500'
+    },
+    {
+      title: 'Research at Infrasonik',
+      description: 'Participated in cutting-edge research projects',
+      icon: Award,
+      color: 'bg-purple-500'
+    },
+    {
+      title: '2D Platformer Game Release',
+      description: 'Successfully developed and released a complete game',
+      icon: Gamepad2,
+      color: 'bg-green-500'
+    }
   ]
 
   return (
@@ -80,14 +94,16 @@ const About = () => {
           {/* Skills Grid */}
           <div>
             <h3 className="text-2xl font-semibold mb-6">Technical Skills</h3>
-            <div className="grid grid-cols-2 gap-4">
+            <div className="space-y-4">
               {skills.map((skill, index) => (
                 <Card key={index} className="hover:shadow-lg transition-shadow duration-300">
-                  <CardContent className="p-4 flex items-center space-x-3">
-                    <div className={`p-2 rounded-full ${skill.color}`}>
-                      <skill.icon className="h-5 w-5 text-white" />
+                  <CardContent className="p-4">
+                    <div className="flex items-center space-x-3">
+                      <div className={`p-2 rounded-full ${skill.color}`}>
+                        <skill.icon className="h-5 w-5 text-white" />
+                      </div>
+                      <span className="font-medium">{skill.name}</span>
                     </div>
-                    <span className="font-medium">{skill.name}</span>
                   </CardContent>
                 </Card>
               ))}
@@ -115,13 +131,17 @@ const About = () => {
         {/* Achievements */}
         <div>
           <h3 className="text-2xl font-semibold mb-8 text-center">Achievements</h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {achievements.map((achievement, index) => (
-              <div key={index} className="flex items-center space-x-3">
-                <Badge variant="secondary" className="text-sm">
-                  {achievement}
-                </Badge>
-              </div>
+              <Card key={index} className="hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+                <CardContent className="p-6 text-center">
+                  <div className={`w-16 h-16 mx-auto mb-4 rounded-full ${achievement.color} flex items-center justify-center`}>
+                    <achievement.icon className="h-8 w-8 text-white" />
+                  </div>
+                  <h4 className="font-semibold text-lg mb-2">{achievement.title}</h4>
+                  <p className="text-sm text-muted-foreground">{achievement.description}</p>
+                </CardContent>
+              </Card>
             ))}
           </div>
         </div>

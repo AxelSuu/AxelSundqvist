@@ -5,12 +5,28 @@ import { useTheme } from '@/components/theme-provider'
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
+  const [activeSection, setActiveSection] = useState('home')
   const { theme, setTheme } = useTheme()
 
   useEffect(() => {
     const handleScroll = () => {
       const isScrolled = window.scrollY > 50
       setScrolled(isScrolled)
+
+      // Check which section is currently in view
+      const sections = ['home', 'about', 'projects', 'blog', 'contact']
+      const currentSection = sections.find(section => {
+        const element = document.getElementById(section)
+        if (element) {
+          const rect = element.getBoundingClientRect()
+          return rect.top <= 100 && rect.bottom >= 100
+        }
+        return false
+      })
+      
+      if (currentSection) {
+        setActiveSection(currentSection)
+      }
     }
 
     window.addEventListener('scroll', handleScroll)
@@ -29,30 +45,44 @@ const Navigation = () => {
     setTheme(theme === 'dark' ? 'light' : 'dark')
   }
 
+  const scrollToSection = (href: string) => {
+    const element = document.querySelector(href)
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' })
+    }
+    setIsOpen(false)
+  }
+
   return (
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
       scrolled 
-        ? 'bg-background/80 backdrop-blur-md border-b border-border' 
+        ? 'bg-background/80 backdrop-blur-md border-b border-border shadow-lg' 
         : 'bg-transparent'
     }`}>
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <div className="text-2xl font-bold">
+          <div className="text-2xl font-bold cursor-pointer" onClick={() => scrollToSection('#home')}>
             <span className="gradient-text">AS</span>
           </div>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
             {navItems.map((item) => (
-              <a
+              <button
                 key={item.name}
-                href={item.href}
-                className="text-foreground hover:text-primary transition-colors duration-200 relative group"
+                onClick={() => scrollToSection(item.href)}
+                className={`text-foreground transition-all duration-200 relative group ${
+                  activeSection === item.href.slice(1) 
+                    ? 'text-primary font-semibold' 
+                    : 'hover:text-primary'
+                }`}
               >
                 {item.name}
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-200 group-hover:w-full"></span>
-              </a>
+                <span className={`absolute -bottom-1 left-0 h-0.5 bg-primary transition-all duration-200 ${
+                  activeSection === item.href.slice(1) ? 'w-full' : 'w-0 group-hover:w-full'
+                }`}></span>
+              </button>
             ))}
           </div>
 
@@ -81,14 +111,17 @@ const Navigation = () => {
           <div className="md:hidden bg-background/95 backdrop-blur-md border-t border-border">
             <div className="px-2 pt-2 pb-3 space-y-1">
               {navItems.map((item) => (
-                <a
+                <button
                   key={item.name}
-                  href={item.href}
-                  className="block px-3 py-2 text-foreground hover:text-primary hover:bg-accent rounded-md transition-colors duration-200"
-                  onClick={() => setIsOpen(false)}
+                  onClick={() => scrollToSection(item.href)}
+                  className={`block w-full text-left px-3 py-2 text-foreground transition-colors duration-200 rounded-md ${
+                    activeSection === item.href.slice(1) 
+                      ? 'text-primary bg-accent font-semibold' 
+                      : 'hover:text-primary hover:bg-accent'
+                  }`}
                 >
                   {item.name}
-                </a>
+                </button>
               ))}
             </div>
           </div>

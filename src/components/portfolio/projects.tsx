@@ -1,7 +1,7 @@
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
-import { Github, ExternalLink, Radio, Brain, BarChart3, Zap } from 'lucide-react'
+import { Github, ExternalLink, Radio, Brain, Gamepad2, BookOpen, Zap } from 'lucide-react'
 
 const Projects = () => {
   const projects = [
@@ -9,7 +9,7 @@ const Projects = () => {
       title: 'Stock Price Predictor Suite',
       description: 'Developed a PyTorch-based stock price forecasting system with advanced neural network architectures and real-time data integration.',
       technologies: ['Python', 'PyTorch', 'Numpy', 'Pandas'],
-      icon: Radio,
+      icon: Brain,
       color: 'bg-blue-500',
       github: 'https://github.com/AxelSuu/Pytorch-Quant-Model',
       demo: 'https://github.com/AxelSuu/Pytorch-Quant-Model',
@@ -19,7 +19,7 @@ const Projects = () => {
       title: 'Communication Systems Simulations',
       description: 'Simulations of Channel Effects, Equalizers, MIMO Systems, and Practical Systems',
       technologies: ['Python', 'NumPy', 'Scikit-learn', 'Wireless Communications'],
-      icon: Brain,
+      icon: Radio,
       color: 'bg-purple-500',
       github: 'https://github.com/AxelSuu/communications',
       demo: 'https://github.com/AxelSuu/communications',
@@ -29,7 +29,7 @@ const Projects = () => {
       title: '2D Platformer Game',
       description: 'A 2D platformer game built with Python and Pygame, featuring custom physics and level design tools.',
       technologies: ['Python', 'Pygame', 'Game Development'],
-      icon: BarChart3,
+      icon: Gamepad2,
       color: 'bg-green-500',
       github: 'https://github.com/AxelSuu/Skybound-2.0',
       demo: null,
@@ -39,7 +39,7 @@ const Projects = () => {
       title: 'Notepad App',
       description: 'Interactive text editor with integrated file management',
       technologies: ['Python', 'Pygame', 'GUI Development'],
-      icon: Zap,
+      icon: BookOpen,
       color: 'bg-orange-500',
       github: 'https://github.com/AxelSuu/Notepad-app',
       demo: null,
