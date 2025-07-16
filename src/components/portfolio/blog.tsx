@@ -18,220 +18,208 @@ const Blog = () => {
 
   const blogPosts = [
     {
-      title: 'Advanced Signal Processing Techniques',
-      excerpt: 'Exploring modern signal processing methods and their applications in communication systems.',
+      title: 'What I\'m learning in my AP&EE program',
+      excerpt: 'My thoughts on my courses in C++, Fourier analysis, Analytical mechanics, and Signals and Systems.',
       date: '2025-07-16',
-      readTime: '8 min read',
-      tags: ['Signal Processing', 'Mathematics', 'DSP'],
+      readTime: '2 min read',
+      tags: ['AP&EE', 'Mathematics', 'Signal Processing'],
       featured: true,
       href: '/blog/blog1',
       fullContent: `
         <div class="prose prose-lg dark:prose-invert max-w-none">
-          <h2>Introduction to Advanced Signal Processing</h2>
-          <p>Signal processing forms the backbone of modern communication systems, from the smartphones in our pockets to the satellites orbiting Earth. In this comprehensive guide, we'll explore cutting-edge techniques that are revolutionizing how we process and analyze signals.</p>
-          
+          <h2>My thoughts on my current coursework</h2>
+          <p>I'm currently diving deep into C++, Fourier analysis, Analytical mechanics, statistics, and Signals and Systems. Each of these subjects offers unique challenges and insights that are shaping my understanding of applied physics and electrical engineering.</p>
+
           <h3>Key Concepts</h3>
           <ul>
-            <li><strong>Adaptive Filtering:</strong> Algorithms that adjust their parameters in real-time based on incoming data</li>
-            <li><strong>Spectral Analysis:</strong> Frequency domain analysis for better signal understanding</li>
-            <li><strong>Digital Filter Design:</strong> Creating optimal filters for specific applications</li>
+            <li><strong>Fourier Transforms:</strong> Mathematical tools for analyzing frequency components</li>
+            <li><strong>Statistical Mechanics:</strong> The base of thermodynamics, quantum mechanics, and Black Scholes theory</li>
+            <li><strong>C++ Programming:</strong> Essential for implementing real-time algorithms and simulations</li>
           </ul>
           
           <h3>Applications in Modern Systems</h3>
           <p>These techniques are crucial in:</p>
           <ul>
-            <li>Wireless communication systems</li>
+            <li>Financial modeling and analysis</li>
             <li>Audio processing and noise cancellation</li>
-            <li>Radar and sonar systems</li>
-            <li>Medical signal processing</li>
+            <li>Real-time systems</li>
+            <li>Machine learning</li>
           </ul>
           
           <h3>Mathematical Foundation</h3>
-          <p>The mathematical foundation involves complex concepts including:</p>
+          <p>The mathematical foundation involves:</p>
           <ul>
             <li>Fourier transforms and their applications</li>
             <li>Z-transforms for discrete-time systems</li>
-            <li>Probability theory for stochastic processes</li>
-            <li>Linear algebra for multi-dimensional signal processing</li>
+            <li>Statistical theory</li>
+            <li>Distribution theory</li>
           </ul>
           
-          <h3>Practical Implementation</h3>
-          <p>In my recent projects, I've implemented these concepts using MATLAB and Python, focusing on real-time processing capabilities. The results show significant improvements in signal quality and processing efficiency.</p>
+          <h3>Personal thoughts</h3>
+          <p>As I delve deeper into these subjects, I find the interplay between theory and practical application particularly fascinating. The ability to model complex systems and predict their behavior using mathematical tools is both challenging and rewarding.</p>
           
           <p>This field continues to evolve rapidly with new algorithms and hardware capabilities enabling more sophisticated signal processing applications.</p>
         </div>
       `,
       links: [
-        { type: 'github', url: 'https://github.com/AxelSuu/signal-processing-demo', label: 'View Code' },
-        { type: 'external', url: 'https://ieeexplore.ieee.org/document/example', label: 'Research Paper' }
+        { type: 'github', url: 'https://github.com/AxelSuu', label: 'View Code' }
       ]
     },
     {
-      title: 'Machine Learning in Communications',
-      excerpt: 'How AI and ML are transforming wireless communication systems and network optimization.',
+      title: 'How to implement Machine Learning with PyTorch',
+      excerpt: 'Easy, fun with tons of applications.',
       date: '2025-07-16',
       readTime: '12 min read',
-      tags: ['Machine Learning', 'Communications', 'AI'],
+      tags: ['Machine Learning', 'Python', 'AI'],
       featured: true,
       href: '/blog/blog2',
       fullContent: `
         <div class="prose prose-lg dark:prose-invert max-w-none">
-          <h2>The AI Revolution in Communications</h2>
-          <p>Machine learning is fundamentally changing how we approach wireless communication systems. From channel estimation to resource allocation, AI algorithms are enabling unprecedented levels of optimization and automation.</p>
-          
+          <h2>Join the AI Revolution with PyTorch</h2>
+          <p>Machine learning is transforming industries and creating new opportunities for innovation.
+          In this blog post, we'll explore how to implement machine learning solutions using PyTorch.</p>
+          <h3>Neural network setup</h3>
+          <p>PyTorch provides a flexible framework for building and training neural networks. Here's a simple example:</p>
+          <pre><code>import torch
+import torch.nn as nn
+
+class SimpleNN(nn.Module):
+  def __init__(self):
+    super(SimpleNN, self).__init__()
+    self.fc1 = nn.Linear(784, 128)
+    self.fc2 = nn.Linear(128, 10)
+
+  def forward(self, x):
+    x = torch.relu(self.fc1(x))
+    x = self.fc2(x)
+    return x
+
+model = SimpleNN()
+
+# Training loop
+for epoch in range(10):
+  optimizer.zero_grad()
+  outputs = model(inputs)
+  loss = criterion(outputs, labels)
+  loss.backward()
+  optimizer.step()
+          </code></pre>
+          <h3>More resources in my Stock prediction project, link in the blog</h3>
           <h3>Key Applications</h3>
-          <p>Machine learning techniques are being applied across various aspects of communication systems:</p>
-          
-          <h4>Channel Estimation</h4>
-          <p>Traditional channel estimation methods rely on pilot signals and statistical models. ML approaches can:</p>
+          <p>Machine learning is being applied in various domains, including:</p>
           <ul>
-            <li>Learn complex channel patterns from data</li>
-            <li>Adapt to changing environments in real-time</li>
-            <li>Reduce overhead compared to traditional methods</li>
+            <li>Stock market prediction</li>
+            <li>Video game character behavior modeling</li>
+            <li>Image recognition and classification</li>
+            <li>Automations</li>
           </ul>
-          
-          <h4>Resource Allocation</h4>
-          <p>ML algorithms can optimize:</p>
-          <ul>
-            <li>Power allocation across multiple users</li>
-            <li>Spectrum management and interference mitigation</li>
-            <li>Network slicing and dynamic resource assignment</li>
-          </ul>
-          
-          <h3>Deep Learning Architectures</h3>
-          <p>Several neural network architectures show promise in communications:</p>
-          <ul>
-            <li><strong>Convolutional Neural Networks (CNNs):</strong> For signal classification and interference detection</li>
-            <li><strong>Recurrent Neural Networks (RNNs):</strong> For time-series prediction and channel modeling</li>
-            <li><strong>Reinforcement Learning:</strong> For dynamic network optimization</li>
-          </ul>
-          
-          <h3>Challenges and Solutions</h3>
-          <p>While ML offers tremendous potential, several challenges must be addressed:</p>
-          <ul>
-            <li>Real-time processing requirements</li>
-            <li>Training data availability and quality</li>
-            <li>Computational complexity constraints</li>
-            <li>Interpretability and reliability</li>
-          </ul>
-          
-          <h3>Future Directions</h3>
-          <p>The integration of ML in communications is just beginning. Future developments include:</p>
-          <ul>
-            <li>Federated learning for distributed networks</li>
-            <li>Edge AI for low-latency applications</li>
-            <li>Quantum machine learning for enhanced security</li>
-          </ul>
-          
-          <p>As we move towards 6G and beyond, machine learning will become even more integral to communication system design and optimization.</p>
         </div>
       `,
       links: [
-        { type: 'github', url: 'https://github.com/AxelSuu/ml-communications', label: 'Implementation' },
-        { type: 'external', url: 'https://example.com/ml-comms-paper', label: 'Related Research' }
+        { type: 'github', url: 'https://github.com/AxelSuu/Pytorch-Quant-Model', label: 'Implementation' },
+        { type: 'external', url: 'https://www.youtube.com/results?search_query=pytorch', label: 'Youtube' }
       ]
     },
     {
-      title: 'Adaptive Filters and Their Applications',
-      excerpt: 'Exploring adaptive filtering algorithms and their practical implementations in signal processing.',
+      title: '2D Game development with Pygame',
+      excerpt: 'Creating engaging 2D games using the Pygame library.',
       date: '2025-07-16',
       readTime: '10 min read',
-      tags: ['Adaptive Filters', 'Signal Processing', 'Algorithms'],
+      tags: ['Game Development', 'Pygame', 'Python'],
       featured: false,
       href: '/blog/blog3',
       fullContent: `
         <div class="prose prose-lg dark:prose-invert max-w-none">
-          <h2>Understanding Adaptive Filters</h2>
-          <p>Adaptive filters are essential components in modern signal processing systems. Unlike fixed filters, they can adjust their parameters automatically based on the characteristics of the input signal.</p>
-          
-          <h3>Types of Adaptive Filters</h3>
+          <h2>Tips and resources on creating fun and interactive games with Pygame</h2>
+          <p>Pygame is a powerful library for creating 2D games in Python. It provides functionalities for graphics, sound, and user input, making it easier to develop engaging games.</p>
+
+          <h3>Getting Started with Pygame</h3>
+          <p>To begin your game development journey with Pygame, follow these steps:</p>
+          <ol>
+            <li>Install Pygame: Use pip to install the library.</li>
+            <li>Set up your game window: Create a basic window to display your game.</li>
+            <li>Handle user input: Capture keyboard and mouse events to control your game.</li>
+          </ol>
+
+          <h3>Key Features of Pygame</h3>
+          <p>Pygame offers a range of features to facilitate game development:</p>
           <ul>
-            <li><strong>Least Mean Squares (LMS):</strong> Simple and robust algorithm</li>
-            <li><strong>Recursive Least Squares (RLS):</strong> Faster convergence but higher complexity</li>
-            <li><strong>Normalized LMS:</strong> Improved stability and performance</li>
+            <li><strong>Graphics:</strong> 2D graphics rendering with support for images and animations</li>
+            <li><strong>Sound:</strong> Easy integration of sound effects and music</li>
+            <li><strong>Input:</strong> Simple handling of keyboard and mouse input</li>
           </ul>
           
           <h3>Applications</h3>
-          <p>Adaptive filters are used in:</p>
+          <p>Pygame is used in:</p>
           <ul>
-            <li>Noise cancellation systems</li>
-            <li>Echo cancellation in telecommunications</li>
-            <li>Equalization in communication channels</li>
-            <li>System identification and modeling</li>
+            <li>2D game development</li>
+            <li>Prototyping game ideas</li>
+            <li>Educational purposes for teaching programming concepts</li>
+            <li>Creating interactive simulations</li>
           </ul>
           
           <h3>Implementation Considerations</h3>
-          <p>When implementing adaptive filters, consider:</p>
+          <p>When implementing games with Pygame, consider:</p>
           <ul>
-            <li>Convergence speed vs. stability trade-offs</li>
-            <li>Computational complexity constraints</li>
-            <li>Step size selection for optimal performance</li>
+            <li>Frame rate management for smooth animations</li>
+            <li>Resource loading and management (images, sounds)</li>
+            <li>Game state management (menu, playing, paused)</li>
           </ul>
           
-          <p>Through practical projects, I've explored these trade-offs and developed efficient implementations suitable for real-time applications.</p>
+          <p>By leveraging Pygame's features and following best practices, you can create engaging and interactive 2D games.</p>
+          <p>Check out my 2D platformer game project on GitHub for a complete example of a Pygame application:</p>
         </div>
       `,
       links: [
-        { type: 'github', url: 'https://github.com/AxelSuu/adaptive-filters', label: 'Source Code' }
+        { type: 'github', url: 'https://github.com/AxelSuu/Skybound-2.0', label: 'My Game Project' }
       ]
     },
     {
-      title: 'MIMO Systems and Wireless Communications',
-      excerpt: 'An in-depth look at Multiple-Input Multiple-Output systems and their role in modern wireless.',
+      title: 'Future Embedded Microcontroller Projects Ideas',
+      excerpt: 'Exploring fun project ideas for controlling hardware with microcontrollers.',
       date: '2025-07-16',
       readTime: '6 min read',
-      tags: ['MIMO', 'Communications', 'Wireless'],
+      tags: ['Embedded Systems', 'Microcontrollers', 'IoT'],
       featured: false,
       href: '/blog/blog4',
       fullContent: `
         <div class="prose prose-lg dark:prose-invert max-w-none">
-          <h2>MIMO Systems: The Future of Wireless</h2>
-          <p>Multiple-Input Multiple-Output (MIMO) technology is a cornerstone of modern wireless communication systems, enabling significant improvements in data rates and reliability.</p>
-          
-          <h3>MIMO Fundamentals</h3>
-          <p>MIMO systems use multiple antennas at both transmitter and receiver to:</p>
+          <h2>What to do after buying a microcontroller</h2>
+          <p>In this post, we will explore the key concepts of microcontroller programming and interfacing.</p>
+          <h3>Applications</h3>
+          <p>Microcontrollers have various applications in different fields:</p>
           <ul>
-            <li>Increase data throughput through spatial multiplexing</li>
-            <li>Improve reliability through diversity techniques</li>
-            <li>Enhance coverage through beamforming</li>
+            <li>Home automation</li>
+            <li>Wearable devices</li>
+            <li>Robotics</li>
           </ul>
-          
-          <h3>Key Techniques</h3>
+          <h3>Project Ideas</h3>
+          <p>Here are some fun project ideas for controlling hardware with microcontrollers:</p>
           <ul>
-            <li><strong>Spatial Multiplexing:</strong> Transmitting multiple data streams simultaneously</li>
-            <li><strong>Diversity:</strong> Combating fading through redundancy</li>
-            <li><strong>Beamforming:</strong> Focusing signal energy in specific directions</li>
+            <li>Build a smart home system to control lights and appliances with IoT</li>
+            <li>Create a Pong game using a microcontroller and a display</li>
+            <li>Turn your bike into an electric bike with a microcontroller-based motor controller</li>
           </ul>
-          
-          <h3>Challenges</h3>
-          <p>MIMO implementation faces several challenges:</p>
-          <ul>
-            <li>Channel estimation complexity</li>
-            <li>Antenna correlation effects</li>
-            <li>Hardware impairments</li>
-            <li>Interference management</li>
-          </ul>
-          
-          <p>My research focuses on developing efficient algorithms to address these challenges while maintaining system performance.</p>
         </div>
       `,
       links: [
-        { type: 'github', url: 'https://github.com/AxelSuu/mimo-systems', label: 'MIMO Simulations' }
+        { type: 'external', url: 'https://www.youtube.com/results?search_query=building+an+electric+bike+from+scratch', label: 'A cool project' }
       ]
     },
     {
-      title: 'NumPy and SciPy for Signal Processing',
-      excerpt: 'Comprehensive guide to using Python libraries for digital signal processing applications.',
+      title: 'NumPy and Scikit-learn for Signal Processing',
+      excerpt: 'Orientation of signal processing in Python with NumPy and Scikit-learn, planning on doing future projects in this area.',
       date: '2025-07-16',
       readTime: '15 min read',
-      tags: ['Python', 'DSP', 'Programming'],
+      tags: ['Python', 'NumPy', 'Scikit-learn', 'Signal Processing'],
       featured: false,
       href: '/blog/numpy-scipy',
       fullContent: `
         <div class="prose prose-lg dark:prose-invert max-w-none">
           <h2>Python for Signal Processing</h2>
+          <p>This is the content for the Python for Signal Processing blog post.</p>
           <p>NumPy and SciPy form the foundation of scientific computing in Python, providing powerful tools for signal processing applications.</p>
-          
+          <p>I find this super interesting and am planning on doing future projects in signal processing.</p>
           <h3>Essential NumPy Functions</h3>
           <p>Key NumPy functions for signal processing include:</p>
           <ul>
@@ -299,8 +287,8 @@ plt.ylabel('Power Spectral Density')</code></pre>
         </div>
       `,
       links: [
-        { type: 'github', url: 'https://github.com/AxelSuu/python-dsp-examples', label: 'Code Examples' },
-        { type: 'external', url: 'https://scipy.org/docs/', label: 'SciPy Documentation' }
+        { type: 'github', url: 'https://github.com/AxelSuu', label: 'Future Examples here' },
+        { type: 'external', url: 'https://scikit-learn.org/stable/', label: 'Scikit-learn Documentation' }
       ]
     },
   ]

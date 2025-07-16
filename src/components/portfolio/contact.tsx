@@ -54,7 +54,8 @@ const Contact = () => {
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-4 gradient-text">Get In Touch</h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Let's discuss wireless communications, machine learning, or potential collaborations
+            Let's discuss wireless communications, machine learning, or potential collaborations.
+            Currently seeking internship opportunities.
           </p>
         </div>
 
