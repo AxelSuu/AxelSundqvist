@@ -1,5 +1,4 @@
-import { Button } from '@/components/ui/button'
-import { Github, Linkedin, Mail, Download } from 'lucide-react'
+import { Github, Linkedin, Mail } from 'lucide-react'
 
 const Hero = () => {
   return (
@@ -38,24 +37,12 @@ const Hero = () => {
           
           {/* Description */}
           <p className="text-lg md:text-xl text-muted-foreground mb-12 max-w-2xl mx-auto fade-in-up">
-            Passionate about the intersection of mathematics and technology, exploring how signal processing 
-            and machine learning can solve real-world problems in communications and beyond.
+            Passionate about how math, machine learning, and signal processing can solve real-world
+            problems in communications and beyond. Check out my projects and blog to see my work in action!
           </p>
           
-          {/* CTA buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12 fade-in-up">
-            <Button size="lg" className="text-lg px-8 py-3">
-              <Mail className="mr-2 h-5 w-5" />
-              Get In Touch
-            </Button>
-            <Button variant="outline" size="lg" className="text-lg px-8 py-3">
-              <Download className="mr-2 h-5 w-5" />
-              Download CV
-            </Button>
-          </div>
-          
           {/* Social links */}
-          <div className="flex justify-center space-x-6 fade-in-up">
+          <div className="flex justify-center space-x-6 fade-in-up mb-16">
             <a
               href="https://github.com/AxelSuu"
               target="_blank"
