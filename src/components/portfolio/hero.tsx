@@ -68,8 +68,8 @@ const Hero = () => {
           
           {/* Description */}
           <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-2xl mx-auto fade-in-up">
-            Passionate about how math, machine learning, and signal processing can solve real-world
-            problems in communications and beyond. Check out my projects and blog to see my work in action!
+            Passionate about cool things like machine learning, wireless communications and math.
+            Check out my projects and blog to see what im working on!
             Available for Summer 2026 internships.
           </p>
           

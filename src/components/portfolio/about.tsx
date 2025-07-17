@@ -16,20 +16,20 @@ const About = () => {
       degree: 'MSE in Applied Physics and Electrical Engineering',
       institution: 'Linköping University (Liu)',
       period: '2026 - 2028',
-      specialization: 'Going to study Communications Systems',
+      specialization: 'Starting my masters next year',
     },
     {
       degree: 'B.Sc. in Applied Physics and Electrical Engineering',
       institution: 'Linköping University (Liu)',
       period: '2023 - 2026',
-      specialization: 'Foundation in Physics and Electrical Engineering',
+      specialization: 'Foundation in Physics, math and Electrical Engineering',
     },
   ]
 
   const achievements = [
     {
-      title: 'Linear Algebra Honours Course',
-      description: 'Took an elective honours course in linear algebra',
+      title: 'Beer Pong Top 16 Finisher',
+      description: 'Finished in the top 16 at LIUs Beer Pong Tournament',
       icon: Calculator,
       color: 'bg-blue-500'
     },
@@ -53,7 +53,7 @@ const About = () => {
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-4 gradient-text">About Me</h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Enthusiastic about the intersection of mathematics, physics, and technology
+            Get to know me more
           </p>
         </div>
 
@@ -65,30 +65,30 @@ const About = () => {
                 <BookOpen className="mr-2 h-6 w-6 text-primary" />
                 My Journey
               </h3>
-              <p className="text-lg text-muted-foreground leading-relaxed">
-                I'm a dedicated student of Applied Physics and Electrical Engineering at Linköping University (Liu), 
-                where I'm pursuing my Master's of Science in Engineering degree in AP&EE.
-                Going to do my masters in Communications Systems in 2026.
-              </p>
               <p className="text-lg text-muted-foreground leading-relaxed mt-4">
-                My passion lies in exploring how mathematical principles can be applied to solve real-world problems, 
-                particularly in the areas of signal processing, machine learning, and communications systems.
+                I'm a AP&EE student who loves good vibes, great music, and meeting new people.
+                I'm all about EDM and pop beats, weekend parties, and trying out new recipes in the kitchen.
+                Whether it's a chill dinner with friends or a night out dancing,
+                you can always count on me being up for it.
               </p>
             </div>
 
             <div>
               <h3 className="text-2xl font-semibold mb-4 flex items-center">
                 <Award className="mr-2 h-6 w-6 text-primary" />
-                Research Interests
+                What Drives Me
               </h3>
-              <ul className="space-y-2 text-lg text-muted-foreground">
-                <li>• Wireless Communication Systems</li>
-                <li>• Probability Theory and Linear Algebra</li>
-                <li>• Machine Learning</li>
-                <li>• Embedded Systems and Hardware</li>
-                <li>• Statistical Signal Processing</li>
-              </ul>
+              <p className="text-lg text-muted-foreground leading-relaxed">
+                I'm fascinated by the elegant beauty of mathematics and how it can describe everything from 
+                quantum mechanics to financial markets. When I'm not buried in coursework, 
+                you'll find me working on game development or trying new technologies.
+                Currently looking into purchasing a microcontroller and some hardware to get some
+                experience in embedded systems.
+              </p>
             </div>
+
+      
+
           </div>
 
           {/* Skills Grid */}
