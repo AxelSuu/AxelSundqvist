@@ -18,8 +18,8 @@ function App() {
           <Navigation />
           <main>
             <Hero />
-            <About />
             <Projects />
+            <About />
             <Blog />
             <Contact />
           </main>
