@@ -16,7 +16,7 @@ const Footer = () => {
     },
     {
       icon: Mail,
-      href: 'mailto:axesu672@liu.student.se',
+      href: 'mailto:axesu672@student.liu.se',
       label: 'Email',
     },
   ]
@@ -80,7 +80,7 @@ const Footer = () => {
             <h3 className="font-semibold mb-4">Contact</h3>
             <div className="space-y-2 text-muted-foreground">
               <p>Linköping, Sweden</p>
-              <p>axesu672@liu.student.se</p>
+              <p>axesu672@student.liu.se</p>
               <p>+46 123 456 789</p>
             </div>
           </div>

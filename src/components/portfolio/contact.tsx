@@ -7,8 +7,8 @@ const Contact = () => {
     {
       icon: Mail,
       title: 'Email',
-      content: 'axesu672@liu.student.se',
-      href: 'mailto:axesu672@liu.student.se',
+      content: 'axesu672@student.liu.se',
+      href: 'mailto:axesu672@student.liu.se',
       color: 'bg-blue-500',
     },
     {
@@ -126,7 +126,7 @@ const Contact = () => {
                     className="w-full"
                     asChild
                   >
-                    <a href="mailto:axesu672@liu.student.se?subject=Portfolio Contact&body=Hi Axel,%0D%0A%0D%0AI'm interested in discussing...">
+                    <a href="mailto:axesu672@student.liu.se?subject=Portfolio Contact&body=Hi Axel,%0D%0A%0D%0AI'm interested in discussing...">
                       <Mail className="mr-2 h-5 w-5" />
                       Send Email
                     </a>

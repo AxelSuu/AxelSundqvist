@@ -303,7 +303,7 @@ Contributions, issues, and feature requests are welcome!
 ## 📧 Contact
 
 **Axel Sundqvist**
-- Email: axesu672@liu.student.se
+- Email: axesu672@student.liu.se
 - LinkedIn: [linkedin.com/in/axel-sundqvist](https://www.linkedin.com/in/axel-sundqvist/)
 - GitHub: [github.com/AxelSuu](https://github.com/AxelSuu)
 
