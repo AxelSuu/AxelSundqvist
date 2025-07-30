@@ -175,8 +175,8 @@ for epoch in range(10):
       ]
     },
     {
-      title: 'Future Embedded Microcontroller Projects Ideas',
-      excerpt: 'Exploring fun project ideas for controlling hardware with microcontrollers.',
+      title: 'Microcontroller Projects Ideas',
+      excerpt: 'Some fun project ideas for controlling hardware with microcontrollers.',
       date: '2025-07-16',
       readTime: '6 min read',
       tags: ['Embedded Systems', 'Microcontrollers', 'IoT'],
