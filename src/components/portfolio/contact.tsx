@@ -1,6 +1,7 @@
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
-import { Mail, Phone, MapPin, Github, Linkedin, Twitter } from 'lucide-react'
+import { Mail, Phone, MapPin, Github, Linkedin, Twitter, Download } from 'lucide-react'
+import { downloadResume } from '@/lib/resume-utils'
 
 const Contact = () => {
   const contactInfo = [
@@ -162,6 +163,16 @@ const Contact = () => {
                       <Github className="mr-2 h-5 w-5" />
                       Connect on GitHub
                     </a>
+                  </Button>
+                  
+                  <Button 
+                    variant="secondary" 
+                    size="lg" 
+                    className="w-full"
+                    onClick={downloadResume}
+                  >
+                    <Download className="mr-2 h-5 w-5" />
+                    Download Resume
                   </Button>
                 </div>
                 
