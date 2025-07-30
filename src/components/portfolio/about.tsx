@@ -1,6 +1,7 @@
 import { Card, CardContent } from '@/components/ui/card'
 import { BookOpen, Cpu, Brain, Calculator, Award, Gamepad2, Zap} from 'lucide-react'
 import { AlgorithmVisualizations } from '@/components/ui/algorithm-visualizations'
+import { SignalProcessingDemo } from '@/components/ui/signal-processing-demo'
 
 const About = () => {
   const skills = [
@@ -148,6 +149,11 @@ const About = () => {
 
         {/* Interactive Features */}
         <div className="space-y-12 mt-16">
+          {/* Signal Processing Demo */}
+          <div>
+            <SignalProcessingDemo />
+          </div>
+
           {/* Algorithm Visualizations */}
           <div>
             <AlgorithmVisualizations />

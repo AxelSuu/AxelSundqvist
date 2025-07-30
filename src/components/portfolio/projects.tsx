@@ -1,6 +1,7 @@
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
+import { BackgroundCodeMatrix } from '@/components/ui/background-code-matrix'
 import { Github, ExternalLink, Radio, Brain, Gamepad2, BookOpen } from 'lucide-react'
 
 const Projects = () => {
@@ -51,18 +52,28 @@ const Projects = () => {
   const otherProjects = projects.filter(project => !project.featured)
 
   return (
-    <section id="projects" className="py-20">
-      <div className="container mx-auto px-4">
+    <section id="projects" className="py-20 relative overflow-hidden min-h-screen bg-slate-900/50">
+      {/* Animated Background */}
+      <BackgroundCodeMatrix 
+        mode="code-rain" 
+        opacity={0.6} 
+        speed={75}
+        className="absolute inset-0"
+      />
+      
+      <div className="container mx-auto px-4 relative z-20">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-4 gradient-text">Projects</h2>
         </div>
 
         {/* Featured Projects */}
         <div className="mb-16">
-          <h3 className="text-2xl font-semibold mb-8 text-center">Featured Projects</h3>
+          <div className="text-center mb-8">
+            <h3 className="text-2xl font-semibold bg-background/80 backdrop-blur-sm rounded-lg py-2 px-4 inline-block">Featured Projects</h3>
+          </div>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             {featuredProjects.map((project, index) => (
-              <Card key={index} className="hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+              <Card key={index} className="hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 bg-background/90 backdrop-blur-sm border-border/50">
                 <CardHeader>
                   <div className="flex items-center justify-between">
                     <div className="flex items-center space-x-3">
@@ -110,10 +121,12 @@ const Projects = () => {
 
         {/* Other Projects */}
         <div>
-          <h3 className="text-2xl font-semibold mb-8 text-center">Other Projects</h3>
+          <div className="text-center mb-8">
+            <h3 className="text-2xl font-semibold bg-background/80 backdrop-blur-sm rounded-lg py-2 px-4 inline-block">Other Projects</h3>
+          </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {otherProjects.map((project, index) => (
-              <Card key={index} className="hover:shadow-lg transition-all duration-300">
+              <Card key={index} className="hover:shadow-lg transition-all duration-300 bg-background/90 backdrop-blur-sm border-border/50">
                 <CardHeader>
                   <div className="flex items-center space-x-3">
                     <div className={`p-2 rounded-full ${project.color}`}>
