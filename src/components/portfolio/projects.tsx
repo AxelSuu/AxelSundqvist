@@ -2,7 +2,6 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { Github, ExternalLink, Radio, Brain, Gamepad2, BookOpen } from 'lucide-react'
-import { LiveProjectPreviews } from '@/components/ui/live-project-previews'
 
 const Projects = () => {
   const projects = [
@@ -156,11 +155,6 @@ const Projects = () => {
               </Card>
             ))}
           </div>
-        </div>
-
-        {/* Live Project Previews */}
-        <div className="mt-16">
-          <LiveProjectPreviews />
         </div>
       </div>
     </section>
