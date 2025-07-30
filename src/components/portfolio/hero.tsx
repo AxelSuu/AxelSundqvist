@@ -1,11 +1,55 @@
-import { Github, Linkedin, Mail } from 'lucide-react'
+import { Github, Linkedin, Mail, Download } from 'lucide-react'
+import { useState, useEffect } from 'react'
+import { Button } from '@/components/ui/button'
+import { AnimatedBackground } from '@/components/ui/animated-background'
+import { downloadResume } from '@/lib/resume-utils'
 
 const Hero = () => {
+  const [scrollProgress, setScrollProgress] = useState(0)
+  const [displayedText, setDisplayedText] = useState('')
+  const fullName = 'Axel Sundqvist'
+
+  // Scroll progress indicator
+  useEffect(() => {
+    const handleScroll = () => {
+      const totalHeight = document.documentElement.scrollHeight - window.innerHeight
+      const progress = (window.scrollY / totalHeight) * 100
+      setScrollProgress(Math.min(progress, 100))
+    }
+
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
+
+  // Typing animation
+  useEffect(() => {
+    let currentIndex = 0
+    const typeWriter = () => {
+      if (currentIndex < fullName.length) {
+        setDisplayedText(fullName.slice(0, currentIndex + 1))
+        currentIndex++
+        setTimeout(typeWriter, 150)
+      }
+    }
+    setTimeout(typeWriter, 1000) // Start after 1 second
+  }, [])
 
   return (
-    <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden">
+    <>
+      {/* Scroll Progress Indicator */}
+      <div className="fixed top-0 left-0 w-full h-1 bg-muted z-50">
+        <div 
+          className="h-full bg-gradient-to-r from-blue-500 to-purple-500 transition-all duration-300 ease-out"
+          style={{ width: `${scrollProgress}%` }}
+        />
+      </div>
+
+      <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden">
+      {/* Animated Background */}
+      <AnimatedBackground />
+
       {/* Background gradient */}
-      <div className="absolute inset-0 bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 dark:from-gray-900 dark:via-blue-900 dark:to-purple-900 opacity-50" />
+      <div className="absolute inset-0 bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 dark:from-gray-900 dark:via-blue-900 dark:to-purple-900 opacity-30" />
       
       {/* Content */}
       <div className="container mx-auto px-4 text-center relative z-10">
@@ -18,22 +62,36 @@ const Hero = () => {
               className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
             />
           </div>
-          
-          {/* Name and title */}
+
+          {/* Name with typing animation */}
           <h1 className="text-5xl md:text-7xl font-bold mb-6 fade-in-up">
-            <span className="gradient-text">Axel Sundqvist</span>
+            <span className="gradient-text">
+              {displayedText}
+              <span className="animate-pulse">|</span>
+            </span>
           </h1>
           
           <h2 className="text-xl md:text-2xl text-muted-foreground mb-8 fade-in-up">
             Applied Physics & Electrical Engineering Student
           </h2>
-          
+
           {/* Description */}
           <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-2xl mx-auto fade-in-up">
-            Passionate about cool things like machine learning, wireless communications and math.
-            Check out my projects and blog to see what im working on!
-            Available for Summer 2026 internships.
+            Passionate about how math, machine learning, and signal processing can solve real-world
+            problems in communications and beyond. Check out my projects and blog to see my work in action!
           </p>
+
+          {/* Download Resume Button */}
+          <div className="mb-8 fade-in-up">
+            <Button 
+              size="lg" 
+              className="px-8 py-3 text-lg"
+              onClick={downloadResume}
+            >
+              <Download className="mr-2 h-5 w-5" />
+              Download Resume
+            </Button>
+          </div>
           
           {/* Social links */}
           <div className="flex justify-center space-x-6 fade-in-up mb-8">
@@ -66,6 +124,7 @@ const Hero = () => {
         </div>
       </div>
     </section>
+    </>
   )
 }
 
