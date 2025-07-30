@@ -41,7 +41,8 @@ const Hero = () => {
               href="https://github.com/AxelSuu"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-muted-foreground hover:text-foreground transition-colors"
+              className="p-3 rounded-full bg-muted text-muted-foreground hover:bg-gray-800 hover:text-white transition-all duration-200 transform hover:scale-110"
+              aria-label="GitHub"
             >
               <Github className="h-6 w-6" />
             </a>
@@ -49,13 +50,15 @@ const Hero = () => {
               href="https://www.linkedin.com/in/axel-sundqvist/"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-muted-foreground hover:text-foreground transition-colors"
+              className="p-3 rounded-full bg-muted text-muted-foreground hover:bg-blue-600 hover:text-white transition-all duration-200 transform hover:scale-110"
+              aria-label="LinkedIn"
             >
               <Linkedin className="h-6 w-6" />
             </a>
             <a
               href="mailto:axesu672@student.liu.se"
-              className="text-muted-foreground hover:text-foreground transition-colors"
+              className="p-3 rounded-full bg-muted text-muted-foreground hover:bg-gray-600 hover:text-white transition-all duration-200 transform hover:scale-110"
+              aria-label="Email"
             >
               <Mail className="h-6 w-6" />
             </a>
