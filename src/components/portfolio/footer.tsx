@@ -8,16 +8,19 @@ const Footer = () => {
       icon: Github,
       href: 'https://github.com/AxelSuu',
       label: 'GitHub',
+      color: 'hover:bg-gray-800',
     },
     {
       icon: Linkedin,
       href: 'https://www.linkedin.com/in/axel-sundqvist/',
       label: 'LinkedIn',
+      color: 'hover:bg-blue-600',
     },
     {
       icon: Mail,
       href: 'mailto:axesu672@student.liu.se',
       label: 'Email',
+      color: 'hover:bg-gray-600',
     },
   ]
 
@@ -49,7 +52,7 @@ const Footer = () => {
                   href={link.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-muted-foreground hover:text-primary transition-colors duration-200"
+                  className={`p-3 rounded-full bg-muted text-muted-foreground ${link.color} hover:text-white transition-all duration-200 transform hover:scale-110`}
                   aria-label={link.label}
                 >
                   <link.icon className="h-5 w-5" />
