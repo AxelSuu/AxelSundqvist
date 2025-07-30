@@ -3,12 +3,11 @@ import { BookOpen, Cpu, Brain, Calculator, Award, Gamepad2, Zap} from 'lucide-re
 
 const About = () => {
   const skills = [
-    { name: 'Mathematics', icon: BookOpen, color: 'bg-blue-500', level: 90 },
-    { name: 'Machine Learning', icon: Brain, color: 'bg-purple-500', level: 85 },
-    { name: 'Python', icon: Calculator, color: 'bg-green-500', level: 88 },
-    { name: 'Communications', icon: Zap, color: 'bg-orange-500', level: 82 },
-    { name: 'Embedded Systems', icon: Cpu, color: 'bg-yellow-500', level: 75 },
-    { name: 'Game Development', icon: Gamepad2, color: 'bg-red-500', level: 80 },
+    { name: 'PyTorch', icon: BookOpen, color: 'bg-blue-500', level: 90 },
+    { name: 'NumPy', icon: Brain, color: 'bg-purple-500', level: 85 },
+    { name: 'Scikit-Learn', icon: Calculator, color: 'bg-green-500', level: 88 },
+    { name: 'SciPy', icon: Zap, color: 'bg-orange-500', level: 82 },
+    { name: 'Microcontrollers', icon: Cpu, color: 'bg-yellow-500', level: 75 },
   ]
 
   const education = [
@@ -79,11 +78,11 @@ const About = () => {
                 What Drives Me
               </h3>
               <p className="text-lg text-muted-foreground leading-relaxed">
-                I'm fascinated by the elegant beauty of mathematics and how it can describe everything from 
-                quantum mechanics to financial markets. When I'm not buried in coursework, 
-                you'll find me working on game development or trying new technologies.
-                Currently looking into purchasing a microcontroller and some hardware to get some
-                experience in embedded systems.
+                I'm interested in the applications of linear algebra, probability, and analysis
+                in tech like signal processing, machine learning and wireless communications.
+                When I'm not buried in coursework,
+                you'll find me working on PyTorch, microcontroller projects, or trying some new technologies.
+                Currently looking into purchasing a ESP32 for some IOT projects.
               </p>
             </div>
 
@@ -93,7 +92,7 @@ const About = () => {
 
           {/* Skills Grid */}
           <div>
-            <h3 className="text-2xl font-semibold mb-6">Technical Skills</h3>
+            <h3 className="text-2xl font-semibold mb-6">Tech</h3>
             <div className="space-y-4">
               {skills.map((skill, index) => (
                 <Card key={index} className="hover:shadow-lg transition-shadow duration-300">
