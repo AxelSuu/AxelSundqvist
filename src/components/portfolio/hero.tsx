@@ -77,8 +77,9 @@ const Hero = () => {
 
           {/* Description */}
           <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-2xl mx-auto fade-in-up">
-            Passionate about how math, machine learning, and signal processing can solve real-world
-            problems in communications and beyond. Check out my projects and blog to see my work in action!
+            Ambition Obsession Together. Check out my projects and blog to see AP and
+            EE in action - wireless systems, AI, and embedded tech!
+            Available for Summer 2026 Internships.
           </p>
 
           {/* Download Resume Button */}
