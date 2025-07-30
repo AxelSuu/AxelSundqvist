@@ -35,13 +35,13 @@ const About = () => {
     },
     {
       title: 'Research at Infrasonik',
-      description: 'Participated in cutting-edge research projects',
+      description: 'Participated in infrasound research projects',
       icon: Award,
       color: 'bg-purple-500'
     },
     {
-      title: '2D Platformer Game Release',
-      description: 'Successfully developed and released a complete game',
+      title: '2D Platformer Game',
+      description: 'Created a passion project game in Pygame',
       icon: Gamepad2,
       color: 'bg-green-500'
     }
@@ -63,7 +63,7 @@ const About = () => {
             <div>
               <h3 className="text-2xl font-semibold mb-4 flex items-center">
                 <BookOpen className="mr-2 h-6 w-6 text-primary" />
-                My Journey
+                Who am I
               </h3>
               <p className="text-lg text-muted-foreground leading-relaxed mt-4">
                 I'm a AP&EE student who loves good vibes, great music, and meeting new people.

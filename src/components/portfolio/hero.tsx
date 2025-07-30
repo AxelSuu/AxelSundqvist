@@ -1,16 +1,6 @@
 import { Github, Linkedin, Mail } from 'lucide-react'
-import { useState, useEffect } from 'react'
 
 const Hero = () => {
-  const [currentSpecialization, setCurrentSpecialization] = useState(0)
-  const specializations = ['Mathematics', 'Communications', 'Machine Learning', 'Game Development']
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentSpecialization((prev) => (prev + 1) % specializations.length)
-    }, 3000)
-    return () => clearInterval(interval)
-  }, [specializations.length])
 
   return (
     <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden">
@@ -37,34 +27,6 @@ const Hero = () => {
           <h2 className="text-xl md:text-2xl text-muted-foreground mb-8 fade-in-up">
             Applied Physics & Electrical Engineering Student
           </h2>
-          
-          {/* Animated Specialization */}
-          <div className="mb-8 fade-in-up">
-            <p className="text-lg md:text-xl text-muted-foreground mb-4">
-              Specializing in
-            </p>
-            <div className="h-12 flex items-center justify-center">
-              <span className="text-2xl md:text-3xl font-bold text-primary animate-pulse">
-                {specializations[currentSpecialization]}
-              </span>
-            </div>
-          </div>
-          
-          {/* All Specializations */}
-          <div className="flex flex-wrap justify-center gap-4 mb-8 fade-in-up">
-            {specializations.map((skill, index) => (
-              <span
-                key={skill}
-                className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
-                  index === currentSpecialization
-                    ? 'bg-primary text-primary-foreground shadow-lg scale-105'
-                    : 'bg-primary/10 dark:bg-primary/20 hover:bg-primary/20 dark:hover:bg-primary/30'
-                }`}
-              >
-                {skill}
-              </span>
-            ))}
-          </div>
           
           {/* Description */}
           <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-2xl mx-auto fade-in-up">
