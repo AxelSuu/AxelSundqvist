@@ -1,6 +1,6 @@
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
-import { Mail, Phone, MapPin, Github, Linkedin, Twitter, Download } from 'lucide-react'
+import { Mail, MapPin, Github, Linkedin, Twitter, Download } from 'lucide-react'
 import { downloadResume } from '@/lib/resume-utils'
 
 const Contact = () => {
@@ -11,13 +11,6 @@ const Contact = () => {
       content: 'axesu672@student.liu.se',
       href: 'mailto:axesu672@student.liu.se',
       color: 'bg-blue-500',
-    },
-    {
-      icon: Phone,
-      title: 'Phone',
-      content: '+46 123 456 789',
-      href: 'tel:+46123456789',
-      color: 'bg-green-500',
     },
     {
       icon: MapPin,
@@ -55,7 +48,7 @@ const Contact = () => {
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-4 gradient-text">Get In Touch</h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Let's discuss wireless communications, machine learning, or potential collaborations.
+            Let's discuss wireless, machine learning, or collaborations.
             Currently seeking internship opportunities.
           </p>
         </div>
