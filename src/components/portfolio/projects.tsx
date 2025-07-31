@@ -2,6 +2,9 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { BackgroundCodeMatrix } from '@/components/ui/background-code-matrix'
+import { AlgorithmVisualizations } from '@/components/ui/algorithm-visualizations'
+import { SignalProcessingDemo } from '@/components/ui/signal-processing-demo'
+import { WirelessCommunicationSimulator } from '@/components/ui/wireless-communication-simulator'
 import { Github, ExternalLink, Radio, Brain, Gamepad2, BookOpen } from 'lucide-react'
 
 const Projects = () => {
@@ -167,6 +170,24 @@ const Projects = () => {
                 </CardContent>
               </Card>
             ))}
+          </div>
+        </div>
+
+        {/* Interactive Features */}
+        <div className="space-y-12 mt-16">
+          {/* Wireless Communication Simulator */}
+          <div>
+            <WirelessCommunicationSimulator />
+          </div>
+
+          {/* Signal Processing Demo */}
+          <div>
+            <SignalProcessingDemo />
+          </div>
+
+          {/* Algorithm Visualizations */}
+          <div>
+            <AlgorithmVisualizations />
           </div>
         </div>
       </div>
