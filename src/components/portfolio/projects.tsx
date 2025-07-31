@@ -87,7 +87,7 @@ const Projects = () => {
         </div>
 
         {/* Featured Projects */}
-        <div className="mb-16">
+        <div className="mb-16 mt-24">
           <div className="text-center mb-8">
             <h3 className="text-2xl font-semibold bg-background/80 backdrop-blur-sm rounded-lg py-2 px-4 inline-block">Featured Projects</h3>
           </div>
@@ -140,13 +140,13 @@ const Projects = () => {
         </div>
 
         {/* Other Projects */}
-        <div>
+        <div className="mt-16">
           <div className="text-center mb-8">
             <h3 className="text-2xl font-semibold bg-background/80 backdrop-blur-sm rounded-lg py-2 px-4 inline-block">Other Projects</h3>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {otherProjects.map((project, index) => (
-              <Card key={index} className="hover:shadow-lg transition-all duration-300 bg-background/90 backdrop-blur-sm border-border/50">
+              <Card key={index} className="hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 bg-background/90 backdrop-blur-sm border-border/50">
                 <CardHeader>
                   <div className="flex items-center space-x-3">
                     <div className={`p-2 rounded-full ${project.color}`}>

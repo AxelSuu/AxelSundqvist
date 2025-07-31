@@ -2,7 +2,6 @@ import { Github, Linkedin, Mail, Download } from 'lucide-react'
 import { useState, useEffect } from 'react'
 import { Button } from '@/components/ui/button'
 import { AnimatedBackground } from '@/components/ui/animated-background'
-import { downloadResume } from '@/lib/resume-utils'
 
 const Hero = () => {
   const [scrollProgress, setScrollProgress] = useState(0)
@@ -81,18 +80,6 @@ const Hero = () => {
             what I'm working on.
             Available for Summer 2026 Internships.
           </p>
-
-          {/* Download Resume Button */}
-          <div className="mb-8 fade-in-up">
-            <Button 
-              size="lg" 
-              className="px-8 py-3 text-lg"
-              onClick={downloadResume}
-            >
-              <Download className="mr-2 h-5 w-5" />
-              Download Resume
-            </Button>
-          </div>
           
           {/* Social links */}
           <div className="flex justify-center space-x-6 fade-in-up mb-8">
