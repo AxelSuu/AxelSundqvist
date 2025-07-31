@@ -578,16 +578,16 @@ export const WirelessCommunicationSimulator = () => {
             <h4 className="font-semibold mb-2">Current Scenario: {scenario.replace('-', ' ').toUpperCase()}</h4>
             <div className="text-sm text-muted-foreground">
               {scenario === 'line-of-sight' && (
-                <p>📡 Clear line-of-sight communication with minimal interference. Ideal conditions for wireless transmission.</p>
+                <p> Clear line-of-sight communication with minimal interference. Ideal conditions for wireless transmission.</p>
               )}
               {scenario === 'multipath' && (
-                <p>🔄 Multiple signal paths due to reflections and scattering. Shows intersymbol interference and delayed signals.</p>
+                <p> Multiple signal paths due to reflections and scattering. Shows intersymbol interference and delayed signals.</p>
               )}
               {scenario === 'fading' && (
-                <p>📉 Rayleigh fading environment with signal amplitude variations. Common in mobile communications.</p>
+                <p> Rayleigh fading environment with signal amplitude variations. Common in mobile communications.</p>
               )}
               {scenario === 'mimo' && (
-                <p>📶 Multiple-Input Multiple-Output system using {antennas} antennas for improved capacity and reliability.</p>
+                <p> Multiple-Input Multiple-Output system using {antennas} antennas for improved capacity and reliability.</p>
               )}
             </div>
           </div>
