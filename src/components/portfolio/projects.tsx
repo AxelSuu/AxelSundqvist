@@ -68,6 +68,23 @@ const Projects = () => {
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-4 gradient-text">Projects</h2>
         </div>
+                {/* Interactive Features */}
+        <div className="space-y-12 mt-16">
+          {/* Wireless Communication Simulator */}
+          <div>
+            <WirelessCommunicationSimulator />
+          </div>
+
+          {/* Signal Processing Demo */}
+          <div>
+            <SignalProcessingDemo />
+          </div>
+
+          {/* Algorithm Visualizations */}
+          <div>
+            <AlgorithmVisualizations />
+          </div>
+        </div>
 
         {/* Featured Projects */}
         <div className="mb-16">
@@ -170,24 +187,6 @@ const Projects = () => {
                 </CardContent>
               </Card>
             ))}
-          </div>
-        </div>
-
-        {/* Interactive Features */}
-        <div className="space-y-12 mt-16">
-          {/* Wireless Communication Simulator */}
-          <div>
-            <WirelessCommunicationSimulator />
-          </div>
-
-          {/* Signal Processing Demo */}
-          <div>
-            <SignalProcessingDemo />
-          </div>
-
-          {/* Algorithm Visualizations */}
-          <div>
-            <AlgorithmVisualizations />
           </div>
         </div>
       </div>

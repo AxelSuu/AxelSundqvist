@@ -18,7 +18,7 @@ const Blog = () => {
 
   const blogPosts = [
     {
-      title: 'What I\'m learning in my AP&EE program',
+      title: 'What I\'m wrestling with in C++, Fourier analysis, and signals',
       excerpt: 'My thoughts on my courses in C++, Fourier analysis, Analytical mechanics, and Signals and Systems.',
       date: '2025-07-16',
       readTime: '2 min read',
@@ -27,39 +27,31 @@ const Blog = () => {
       href: '/blog/blog1',
       fullContent: `
         <div class="prose prose-lg dark:prose-invert max-w-none">
-          <h2>My thoughts on my current coursework</h2>
-          <p>I'm currently diving deep into C++, Fourier analysis, Analytical mechanics, statistics, and Signals and Systems. Each of these subjects offers unique challenges and insights that are shaping my understanding of applied physics and electrical engineering.</p>
+  <h2>Courses That Are Making My Brain Hurt</h2>
+  <p>Right now, I’m neck-deep in C++, Fourier analysis, statistical mechanics, statistics, and signals and systems. It’s a wild mix, but honestly, I love how all these subjects keep intersecting and making each other make more sense.</p>
 
-          <h3>Key Concepts</h3>
-          <ul>
-            <li><strong>Fourier Transforms:</strong> Mathematical tools for analyzing frequency components</li>
-            <li><strong>Statistical Mechanics:</strong> The base of thermodynamics, quantum mechanics, and Black Scholes theory</li>
-            <li><strong>C++ Programming:</strong> Essential for implementing real-time algorithms and simulations</li>
-          </ul>
-          
-          <h3>Applications in Modern Systems</h3>
-          <p>These techniques are crucial in:</p>
-          <ul>
-            <li>Financial modeling and analysis</li>
-            <li>Audio processing and noise cancellation</li>
-            <li>Real-time systems</li>
-            <li>Machine learning</li>
-          </ul>
-          
-          <h3>Mathematical Foundation</h3>
-          <p>The mathematical foundation involves:</p>
-          <ul>
-            <li>Fourier transforms and their applications</li>
-            <li>Z-transforms for discrete-time systems</li>
-            <li>Statistical theory</li>
-            <li>Distribution theory</li>
-          </ul>
-          
-          <h3>Personal thoughts</h3>
-          <p>As I delve deeper into these subjects, I find the interplay between theory and practical application particularly fascinating. The ability to model complex systems and predict their behavior using mathematical tools is both challenging and rewarding.</p>
-          
-          <p>This field continues to evolve rapidly with new algorithms and hardware capabilities enabling more sophisticated signal processing applications.</p>
-        </div>
+  <h3>What I'm Actually Learning</h3>
+  <ul>
+    <li><strong>Fourier Transforms:</strong> Basically magic for figuring out what frequencies are hiding inside a signal.</li>
+    <li><strong>Statistical Mechanics:</strong> It’s like the behind-the-scenes of thermodynamics, quantum theory, and even finance models (hello, Black-Scholes).</li>
+    <li><strong>C++:</strong> Not the easiest language, but super powerful when you're building real-time simulations or low-level systems.</li>
+  </ul>
+
+  <h3>Where This Stuff Actually Shows Up</h3>
+  <p>What’s cool is how this theory turns into real things:</p>
+  <ul>
+    <li>Predicting markets with math (who doesn’t want that?)</li>
+    <li>Making headphones that cancel noise mid-flight</li>
+    <li>Controlling hardware in real-time</li>
+    <li>Training ML models to see patterns in chaos</li>
+  </ul>
+
+  <p>Everything ties back to the math foundations - like Fourier transforms, and distributions. It's a weird mix of thinking more abstractly while still building stuff that runs on real machines.</p>
+
+  <h3>Final Thoughts</h3>
+  <p>The more I learn, the more I see how much theory and application lean on each other. You can’t build something efficient without the math, but you can’t *just* theorize either. This combo is what makes tech feel exciting and alive.</p>
+</div>
+
       `,
       links: [
         { type: 'github', url: 'https://github.com/AxelSuu', label: 'View Code' }
@@ -69,51 +61,145 @@ const Blog = () => {
       title: 'How to implement Machine Learning with PyTorch',
       excerpt: 'Easy, fun with tons of applications.',
       date: '2025-07-16',
-      readTime: '12 min read',
+      readTime: '6 min read',
       tags: ['Machine Learning', 'Python', 'AI'],
       featured: true,
       href: '/blog/blog2',
       fullContent: `
-        <div class="prose prose-lg dark:prose-invert max-w-none">
-          <h2>Join the AI Revolution with PyTorch</h2>
-          <p>Machine learning is transforming industries and creating new opportunities for innovation.
-          In this blog post, we'll explore how to implement machine learning solutions using PyTorch.</p>
-          <h3>Neural network setup</h3>
-          <p>PyTorch provides a flexible framework for building and training neural networks. Here's a simple example:</p>
-          <pre><code>import torch
+<div class="prose prose-lg dark:prose-invert max-w-none">
+  <h2>Building Smart Stuff with PyTorch (ML Made Simple)</h2>
+
+  <p>Machine learning might seem like something reserved for giant tech companies or AI researchers, but with tools like PyTorch, it’s way more accessible than you’d think. Whether you want to teach a model to recognize numbers, predict stock prices, or control game characters, PyTorch gives you the flexibility to experiment and learn hands-on.</p>
+
+  <p>In this post, we’ll break down what PyTorch is, how to build a simple neural network from scratch, and walk through the entire workflow: model → training → evaluation → prediction. Let’s dive in!</p>
+
+  <h3>Why PyTorch?</h3>
+  <ul>
+    <li><strong>Dynamic computation graph:</strong> You can change architecture on the fly (very Pythonic).</li>
+    <li><strong>Beginner-friendly:</strong> It’s readable, flexible, and integrates well with the rest of the Python ecosystem.</li>
+    <li><strong>GPU support:</strong> You can train your models on CUDA-enabled GPUs without much code change.</li>
+  </ul>
+
+  <h3>Our Project: Classify Handwritten Digits (MNIST)</h3>
+  <p>We’ll use the MNIST dataset (images of digits from 0 to 9) and build a model that can classify them using a feedforward neural network.</p>
+
+  <h3>1. Setup & Dataset</h3>
+
+  <pre><code>import torch
 import torch.nn as nn
+import torch.optim as optim
+from torchvision import datasets, transforms
+from torch.utils.data import DataLoader
 
-class SimpleNN(nn.Module):
-  def __init__(self):
-    super(SimpleNN, self).__init__()
-    self.fc1 = nn.Linear(784, 128)
-    self.fc2 = nn.Linear(128, 10)
+# Transform images to tensors and normalize
+transform = transforms.Compose([
+    transforms.ToTensor(),
+    transforms.Normalize((0.1307,), (0.3081,))
+])
 
-  def forward(self, x):
-    x = torch.relu(self.fc1(x))
-    x = self.fc2(x)
-    return x
+# Load training and test data
+train_data = datasets.MNIST(root='./data', train=True, transform=transform, download=True)
+test_data = datasets.MNIST(root='./data', train=False, transform=transform)
 
-model = SimpleNN()
+train_loader = DataLoader(train_data, batch_size=64, shuffle=True)
+test_loader = DataLoader(test_data, batch_size=1000)
+</code></pre>
 
-# Training loop
-for epoch in range(10):
-  optimizer.zero_grad()
-  outputs = model(inputs)
-  loss = criterion(outputs, labels)
-  loss.backward()
-  optimizer.step()
-          </code></pre>
-          <h3>More resources in my Stock prediction project, link in the blog</h3>
-          <h3>Key Applications</h3>
-          <p>Machine learning is being applied in various domains, including:</p>
-          <ul>
-            <li>Stock market prediction</li>
-            <li>Video game character behavior modeling</li>
-            <li>Image recognition and classification</li>
-            <li>Automations</li>
-          </ul>
-        </div>
+  <h3>2. Building a Neural Network</h3>
+
+  <p>This model has two hidden layers using ReLU activations and outputs logits for 10 classes (0–9).</p>
+
+  <pre><code>class DigitClassifier(nn.Module):
+    def __init__(self):
+        super(DigitClassifier, self).__init__()
+        self.fc1 = nn.Linear(28 * 28, 128)
+        self.fc2 = nn.Linear(128, 64)
+        self.fc3 = nn.Linear(64, 10)
+
+    def forward(self, x):
+        x = x.view(-1, 28 * 28)  # Flatten the input
+        x = torch.relu(self.fc1(x))
+        x = torch.relu(self.fc2(x))
+        x = self.fc3(x)
+        return x
+
+model = DigitClassifier()
+</code></pre>
+
+  <h3>3. Training the Model</h3>
+
+  <p>We'll use cross-entropy loss and the Adam optimizer. Here's a basic training loop:</p>
+
+  <pre><code>criterion = nn.CrossEntropyLoss()
+optimizer = optim.Adam(model.parameters(), lr=0.001)
+
+epochs = 5
+for epoch in range(epochs):
+    model.train()
+    running_loss = 0.0
+    for images, labels in train_loader:
+        optimizer.zero_grad()
+        outputs = model(images)
+        loss = criterion(outputs, labels)
+        loss.backward()
+        optimizer.step()
+        running_loss += loss.item()
+    
+    print(f"Epoch {epoch+1}/{epochs}, Loss: {running_loss/len(train_loader):.4f}")
+</code></pre>
+
+  <h3>4. Evaluating the Model</h3>
+
+  <p>After training, we evaluate how well the model does on the test set:</p>
+
+  <pre><code>correct = 0
+total = 0
+model.eval()
+with torch.no_grad():
+    for images, labels in test_loader:
+        outputs = model(images)
+        _, predicted = torch.max(outputs.data, 1)
+        total += labels.size(0)
+        correct += (predicted == labels).sum().item()
+
+print(f"Accuracy on test set: {100 * correct / total:.2f}%")
+</code></pre>
+
+  <h3>5. Making Predictions</h3>
+
+  <p>Once trained, your model can predict digits from new images like this:</p>
+
+  <pre><code>import matplotlib.pyplot as plt
+
+# Grab one image from the test set
+example = next(iter(test_loader))
+image, label = example[0][0], example[1][0]
+
+# Predict
+model.eval()
+with torch.no_grad():
+    output = model(image.unsqueeze(0))
+    prediction = torch.argmax(output)
+
+print(f"Actual Label: {label}, Predicted: {prediction.item()}")
+
+# Plot image
+plt.imshow(image.squeeze(), cmap='gray')
+plt.title(f'Predicted: {prediction.item()}')
+plt.axis('off')
+plt.show()
+</code></pre>
+
+  <h3>Final Thoughts</h3>
+
+  <p>That’s a full ML pipeline—from loading data, building and training a model, to evaluating and using it to make predictions. What’s amazing is how PyTorch makes this all feel like regular Python. You don’t need to know everything about deep learning to get started. Just build, experiment, and learn as you go.</p>
+
+  <p>Next up: I’m planning to take this further by adding CNNs (Convolutional Neural Nets) for better image performance, and eventually using this base for real-world projects like digit recognition from scanned documents or CAPTCHA breaking.</p>
+
+  <p>If you’re curious or want to try your own experiments, check out my GitHub repo for code examples, including more complex models like LSTMs and CNNs.</p>
+</div>
+
+
       `,
       links: [
         { type: 'github', url: 'https://github.com/AxelSuu/Pytorch-Quant-Model', label: 'Implementation' },
@@ -124,51 +210,85 @@ for epoch in range(10):
       title: '2D Game development with Pygame',
       excerpt: 'Creating engaging 2D games using the Pygame library.',
       date: '2025-07-16',
-      readTime: '10 min read',
+      readTime: '5 min read',
       tags: ['Game Development', 'Pygame', 'Python'],
       featured: false,
       href: '/blog/blog3',
       fullContent: `
-        <div class="prose prose-lg dark:prose-invert max-w-none">
-          <h2>Tips and resources on creating fun and interactive games with Pygame</h2>
-          <p>Pygame is a powerful library for creating 2D games in Python. It provides functionalities for graphics, sound, and user input, making it easier to develop engaging games.</p>
+<div class="prose prose-lg dark:prose-invert max-w-none">
+  <h2>Building 2D Games That Don’t Suck (With Python + Pygame)</h2>
+  <p>If you're into games and also enjoy Python, Pygame is a solid way to bring your game ideas to life. It’s not just for hobby projects—learning how to build a proper 2D game teaches you a lot about logic, structure, and creative problem-solving.</p>
 
-          <h3>Getting Started with Pygame</h3>
-          <p>To begin your game development journey with Pygame, follow these steps:</p>
-          <ol>
-            <li>Install Pygame: Use pip to install the library.</li>
-            <li>Set up your game window: Create a basic window to display your game.</li>
-            <li>Handle user input: Capture keyboard and mouse events to control your game.</li>
-          </ol>
+  <h3>Game Loops: The Beating Heart</h3>
+  <p>Every game runs on a loop that handles input, updates the game state, and draws everything to the screen. It's basically your real-time engine. Even if nothing is happening, your loop is ticking away at 30–60 frames per second (or more).</p>
+  <pre><code># The classic Pygame loop
+while running:
+    handle_input()
+    update_game_state()
+    render_everything()
+    clock.tick(FPS)
+  </code></pre>
+  <p>Keeping your game loop clean and modular makes debugging and adding features way easier. Think of it like your game's brainstem—it controls everything automatically.</p>
 
-          <h3>Key Features of Pygame</h3>
-          <p>Pygame offers a range of features to facilitate game development:</p>
-          <ul>
-            <li><strong>Graphics:</strong> 2D graphics rendering with support for images and animations</li>
-            <li><strong>Sound:</strong> Easy integration of sound effects and music</li>
-            <li><strong>Input:</strong> Simple handling of keyboard and mouse input</li>
-          </ul>
-          
-          <h3>Applications</h3>
-          <p>Pygame is used in:</p>
-          <ul>
-            <li>2D game development</li>
-            <li>Prototyping game ideas</li>
-            <li>Educational purposes for teaching programming concepts</li>
-            <li>Creating interactive simulations</li>
-          </ul>
-          
-          <h3>Implementation Considerations</h3>
-          <p>When implementing games with Pygame, consider:</p>
-          <ul>
-            <li>Frame rate management for smooth animations</li>
-            <li>Resource loading and management (images, sounds)</li>
-            <li>Game state management (menu, playing, paused)</li>
-          </ul>
-          
-          <p>By leveraging Pygame's features and following best practices, you can create engaging and interactive 2D games.</p>
-          <p>Check out my 2D platformer game project on GitHub for a complete example of a Pygame application:</p>
-        </div>
+  <h3>Sprites, Objects, and OOP</h3>
+  <p>Most game elements—like players, enemies, bullets—can be treated as objects. In Pygame, you can use the built-in <code>Sprite</code> class to manage these. This lets you group related entities, handle collisions efficiently, and draw everything in one go.</p>
+  <ul>
+    <li><strong>Sprite groups:</strong> Keep things organized, like all enemies or all bullets in one list.</li>
+    <li><strong>Custom classes:</strong> Create a <code>Player</code> or <code>Enemy</code> class with properties like position, speed, and behavior.</li>
+  </ul>
+
+  <h3>Collision Detection: When Things Get Physical</h3>
+  <p>Games get fun when stuff collides—think jumping on platforms or dodging fireballs. Pygame has functions like <code>spritecollide()</code> or <code>rect.colliderect()</code> that help you detect when two objects interact. You can use this to:</p>
+  <ul>
+    <li>Track player vs. enemy contact</li>
+    <li>Trigger item pickups or powerups</li>
+    <li>Handle bullets hitting targets</li>
+  </ul>
+
+  <h3>Animation and Movement</h3>
+  <p>Basic movement is just changing coordinates every frame, but once you add gravity, jumping, and momentum—it starts to feel real. For animation, you can swap between sprite images based on time or actions (like walking vs. idle).</p>
+  <ul>
+    <li>Use a timer or frame counter to control how often your sprite changes</li>
+    <li>Organize animations with dictionaries or state variables (like <code>'idle'</code>, <code>'run'</code>, <code>'jump'</code>)</li>
+  </ul>
+
+  <h3>Level Design & Tile Maps</h3>
+  <p>You can create levels manually (painful) or build a tile map system. Think of the screen as a grid of tiles—each tile representing ground, spikes, walls, etc. Load maps from CSV or JSON files and render them using a tile engine. This makes building big levels a lot faster.</p>
+  <p>Bonus: Export levels from tools like <a href="https://www.mapeditor.org/">Tiled</a> and load them directly into your game!</p>
+
+  <h3>Game Architecture: Keeping It Sane</h3>
+  <p>Don’t just pile everything into one file. Break up your game into modules:</p>
+  <ul>
+    <li><code>player.py</code> for your player class</li>
+    <li><code>enemy.py</code> for bad guys</li>
+    <li><code>levels.py</code> for maps and tiles</li>
+    <li><code>main.py</code> as the entry point</li>
+  </ul>
+  <p>This makes scaling your game way easier. Also, if you want to add things like a pause menu or save system later, you won’t be drowning in spaghetti code.</p>
+
+  <h3>Sound Design & Feedback</h3>
+  <p>Adding sounds makes a game come alive. Use Pygame’s <code>mixer</code> module to add:</p>
+  <ul>
+    <li>Jump effects</li>
+    <li>Background music</li>
+    <li>Collision sounds (like damage or pickups)</li>
+  </ul>
+  <p>Don't underestimate how much better a game feels with solid sound feedback.</p>
+
+  <h3>Debugging Tips</h3>
+  <p>Here’s what’s saved me the most headache:</p>
+  <ul>
+    <li>Draw bounding boxes and hitboxes during development</li>
+    <li>Use print statements or overlays to show FPS or object states</li>
+    <li>Modularize early—trust me</li>
+  </ul>
+
+  <h3>Why Build Games Anyway?</h3>
+  <p>Game dev might seem like a side quest, but it teaches real-world coding skills like object-oriented design, input handling, and managing complex systems. You also build something visual and interactive—way more satisfying than writing a calculator.</p>
+
+  <p>If you're curious how it all comes together, check out my own Pygame project on GitHub. It’s a 2D platformer with physics, animation, and some fun mechanics. Feel free to fork and mess around with it!</p>
+</div>
+
       `,
       links: [
         { type: 'github', url: 'https://github.com/AxelSuu/Skybound-2.0', label: 'My Game Project' }
@@ -176,31 +296,34 @@ for epoch in range(10):
     },
     {
       title: 'Microcontroller Projects Ideas',
-      excerpt: 'Some fun project ideas for controlling hardware with microcontrollers.',
+      excerpt: 'Bought a microcontroller? Here\'s what to do with it.',
       date: '2025-07-16',
-      readTime: '6 min read',
+      readTime: '3 min read',
       tags: ['Embedded Systems', 'Microcontrollers', 'IoT'],
       featured: false,
       href: '/blog/blog4',
       fullContent: `
-        <div class="prose prose-lg dark:prose-invert max-w-none">
-          <h2>What to do after buying a microcontroller</h2>
-          <p>In this post, we will explore the key concepts of microcontroller programming and interfacing.</p>
-          <h3>Applications</h3>
-          <p>Microcontrollers have various applications in different fields:</p>
-          <ul>
-            <li>Home automation</li>
-            <li>Wearable devices</li>
-            <li>Robotics</li>
-          </ul>
-          <h3>Project Ideas</h3>
-          <p>Here are some fun project ideas for controlling hardware with microcontrollers:</p>
-          <ul>
-            <li>Build a smart home system to control lights and appliances with IoT</li>
-            <li>Create a Pong game using a microcontroller and a display</li>
-            <li>Turn your bike into an electric bike with a microcontroller-based motor controller</li>
-          </ul>
-        </div>
+<div class="prose prose-lg dark:prose-invert max-w-none">
+  <h2>So... You Bought a Microcontroller</h2>
+  <p>If you just picked up an Arduino, ESP32, or Raspberry Pi Pico, and you’re staring at it like “now what?”, this is for you.</p>
+
+  <h3>Cool Things You Can Build</h3>
+  <ul>
+    <li><strong>Home Automation:</strong> Lights that turn on when you clap? Yes please.</li>
+    <li><strong>Wearables:</strong> DIY step counters, smartwatches, or health trackers.</li>
+    <li><strong>Robotics:</strong> Build your own mini rover or robotic arm.</li>
+  </ul>
+
+  <h3>Project Ideas to Try</h3>
+  <ul>
+    <li>Smart light system (IoT-controlled via app or voice)</li>
+    <li>Classic Pong game using a small LCD screen and joystick</li>
+    <li>Motorized e-bike controller—very fun, very nerdy</li>
+  </ul>
+
+  <p>Check the link below for a cool DIY e-bike video that got me inspired!</p>
+</div>
+
       `,
       links: [
         { type: 'external', url: 'https://www.youtube.com/results?search_query=building+an+electric+bike+from+scratch', label: 'A cool project' }
@@ -210,7 +333,7 @@ for epoch in range(10):
       title: 'NumPy and Scikit-learn for Signal Processing',
       excerpt: 'Orientation of signal processing in Python with NumPy and Scikit-learn, planning on doing future projects in this area.',
       date: '2025-07-16',
-      readTime: '15 min read',
+      readTime: '7 min read',
       tags: ['Python', 'NumPy', 'Scikit-learn', 'Signal Processing'],
       featured: false,
       href: '/blog/numpy-scipy',
