@@ -1,5 +1,5 @@
 import { Card, CardContent } from '@/components/ui/card'
-import { BookOpen, Cpu, Brain, Calculator, Award, Gamepad2, Zap} from 'lucide-react'
+import { BookOpen, Cpu, Brain, Calculator, Award, Gamepad2, Zap, Beer, Activity } from 'lucide-react'
 
 const About = () => {
   const skills = [
@@ -29,13 +29,13 @@ const About = () => {
     {
       title: 'Beer Pong Top 16 Finisher',
       description: 'Finished in the top 16 at LIUs Beer Pong Tournament',
-      icon: Calculator,
+      icon: Beer,
       color: 'bg-blue-500'
     },
     {
       title: 'Research at Infrasonik',
       description: 'Participated in infrasound research projects',
-      icon: Award,
+      icon: Activity,
       color: 'bg-purple-500'
     },
     {
