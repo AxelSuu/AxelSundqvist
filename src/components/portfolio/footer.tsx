@@ -42,7 +42,7 @@ const Footer = () => {
               <span className="gradient-text">Axel Sundqvist</span>
             </div>
             <p className="text-muted-foreground mb-4 max-w-md">
-              Applied Physics & Electrical Engineering student passionate about mathemtatics, 
+              Applied Physics & Electrical Engineering student interested in mathematics, 
               machine learning, and communications systems.
             </p>
             <div className="flex space-x-4">
@@ -84,7 +84,6 @@ const Footer = () => {
             <div className="space-y-2 text-muted-foreground">
               <p>Linköping, Sweden</p>
               <p>axesu672@student.liu.se</p>
-              <p>+46 123 456 789</p>
             </div>
           </div>
         </div>
