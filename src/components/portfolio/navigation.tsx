@@ -37,7 +37,7 @@ const Navigation = () => {
     { name: 'Home', href: '#home' },
     { name: 'About', href: '#about' },
     { name: 'Projects', href: '#projects' },
-    { name: 'Blog', href: '#blog' },
+    // { name: 'Blog', href: '#blog' }, // Temporarily inactivated
     { name: 'Contact', href: '#contact' },
   ]
 
@@ -56,9 +56,9 @@ const Navigation = () => {
   return (
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
       scrolled 
-        ? 'bg-background/80 backdrop-blur-md border-b border-border shadow-lg' 
+        ? 'bg-background/70 supports-[backdrop-filter]:backdrop-blur-xl border-b border-border/60 shadow-[0_4px_24px_-6px_rgba(0,0,0,0.25)]' 
         : 'bg-transparent'
-    }`}>
+    }`}> 
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}

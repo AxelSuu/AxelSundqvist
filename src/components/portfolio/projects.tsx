@@ -2,12 +2,36 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { BackgroundCodeMatrix } from '@/components/ui/background-code-matrix'
-import { AlgorithmVisualizations } from '@/components/ui/algorithm-visualizations'
-import { SignalProcessingDemo } from '@/components/ui/signal-processing-demo'
-import { WirelessCommunicationSimulator } from '@/components/ui/wireless-communication-simulator'
+// import { Suspense, lazy, useEffect, useRef, useState } from 'react' // Temporarily inactivated with demos
+// Lazy loaded heavy interactive simulations (code-split) - Temporarily inactivated
+// const WirelessCommunicationSimulator = lazy(() => import('@/components/ui/wireless-communication-simulator').then(m => ({ default: m.WirelessCommunicationSimulator })))
+// const SignalProcessingDemo = lazy(() => import('@/components/ui/signal-processing-demo').then(m => ({ default: m.SignalProcessingDemo })))
+// const AlgorithmVisualizations = lazy(() => import('@/components/ui/algorithm-visualizations').then(m => ({ default: m.AlgorithmVisualizations })))
 import { Github, ExternalLink, Radio, Brain, Gamepad2, BookOpen } from 'lucide-react'
 
 const Projects = () => {
+  // Viewport-aware wrapper to delay mounting heavy components - Temporarily inactivated with demos
+  /*
+  const LazyViewport: React.FC<{ children: React.ReactNode; rootMargin?: string; minHeight?: number }> = ({ children, rootMargin = '200px', minHeight = 520 }) => {
+    const ref = useRef<HTMLDivElement | null>(null)
+    const [visible, setVisible] = useState(false)
+    useEffect(() => {
+      const el = ref.current
+      if (!el) return
+      const obs = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            setVisible(true)
+            obs.disconnect()
+          }
+        })
+      }, { root: null, rootMargin, threshold: 0.01 })
+      obs.observe(el)
+      return () => obs.disconnect()
+    }, [])
+    return <div ref={ref} style={{ minHeight }} className="relative">{visible ? children : <div className="absolute inset-0 rounded-xl border border-border/40 bg-background/30 backdrop-blur-sm flex items-center justify-center text-xs text-muted-foreground">Preparing module…</div>}</div>
+  }
+  */
   const projects = [
     {
       title: 'Stock Price Predictor Suite',
@@ -55,7 +79,7 @@ const Projects = () => {
   const otherProjects = projects.filter(project => !project.featured)
 
   return (
-    <section id="projects" className="py-20 relative overflow-hidden min-h-screen bg-slate-900/50">
+  <section id="projects" aria-labelledby="projects-heading" className="py-24 relative overflow-hidden bg-slate-900/50">
       {/* Animated Background */}
       <BackgroundCodeMatrix 
         mode="code-rain" 
@@ -65,35 +89,49 @@ const Projects = () => {
       />
       
       <div className="container mx-auto px-4 relative z-20">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 gradient-text">Projects</h2>
+        <header className="text-center mb-14">
+          <h2 id="projects-heading" className="text-4xl md:text-5xl font-bold mb-5 gradient-accent-text heading-wave">Projects</h2>
+          <p className="section-sub max-w-2xl mx-auto">A selection of interactive simulators and build logs. Simulations mount only when scrolled into view to preserve performance.</p>
+        </header>
+        {/* Interactive Features - Temporarily inactivated */}
+        {/*
+        <div className="space-y-16 mt-16">
+          <div>
+            <LazyViewport>
+              <Suspense fallback={<div className="h-[520px] rounded-xl border border-border/40 bg-background/40 backdrop-blur-sm flex items-center justify-center animate-pulse text-sm text-muted-foreground" aria-busy="true">Loading Wireless Communication Simulator…</div>}>
+                <WirelessCommunicationSimulator />
+              </Suspense>
+            </LazyViewport>
+            <p className="mt-4 text-sm text-muted-foreground text-center max-w-2xl mx-auto">Interactive wireless channel + modulation exploration: visualize fading, multipath, MIMO concepts and constellation dynamics.</p>
+          </div>
+
+          <div>
+            <LazyViewport>
+              <Suspense fallback={<div className="h-[520px] rounded-xl border border-border/40 bg-background/40 backdrop-blur-sm flex items-center justify-center animate-pulse text-sm text-muted-foreground" aria-busy="true">Loading Signal Processing Demo…</div>}>
+                <SignalProcessingDemo />
+              </Suspense>
+            </LazyViewport>
+            <p className="mt-4 text-sm text-muted-foreground text-center max-w-2xl mx-auto">Time vs frequency domain visualization with adjustable synthesis (AM/FM), filtering and real‑time FFT.</p>
+          </div>
+
+            <div>
+              <LazyViewport>
+                <Suspense fallback={<div className="h-[520px] rounded-xl border border-border/40 bg-background/40 backdrop-blur-sm flex items-center justify-center animate-pulse text-sm text-muted-foreground" aria-busy="true">Loading Algorithm Visualizations…</div>}>
+                  <AlgorithmVisualizations />
+                </Suspense>
+              </LazyViewport>
+              <p className="mt-4 text-sm text-muted-foreground text-center max-w-2xl mx-auto">Animated data structure & algorithm insights highlighting complexity and process flow.</p>
+            </div>
         </div>
-                {/* Interactive Features */}
-        <div className="space-y-12 mt-16">
-          {/* Wireless Communication Simulator */}
-          <div>
-            <WirelessCommunicationSimulator />
+        */}        {/* Featured Projects */}
+        <div className="mb-20 mt-24">
+          <div className="flex flex-col items-center mb-10">
+            <h3 className="text-xl tracking-wide font-semibold text-primary/90">Featured Projects</h3>
+            <div className="divider-line w-40 mt-4" />
           </div>
-
-          {/* Signal Processing Demo */}
-          <div>
-            <SignalProcessingDemo />
-          </div>
-
-          {/* Algorithm Visualizations */}
-          <div>
-            <AlgorithmVisualizations />
-          </div>
-        </div>
-
-        {/* Featured Projects */}
-        <div className="mb-16 mt-24">
-          <div className="text-center mb-8">
-            <h3 className="text-2xl font-semibold bg-background/80 backdrop-blur-sm rounded-lg py-2 px-4 inline-block">Featured Projects</h3>
-          </div>
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+      <div className="asym-grid">
             {featuredProjects.map((project, index) => (
-              <Card key={index} className="hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 bg-background/90 backdrop-blur-sm border-border/50">
+        <Card key={index} className="featured-accent surface-b hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
                 <CardHeader>
                   <div className="flex items-center justify-between">
                     <div className="flex items-center space-x-3">
@@ -140,13 +178,14 @@ const Projects = () => {
         </div>
 
         {/* Other Projects */}
-        <div className="mt-16">
-          <div className="text-center mb-8">
-            <h3 className="text-2xl font-semibold bg-background/80 backdrop-blur-sm rounded-lg py-2 px-4 inline-block">Other Projects</h3>
+        <div className="mt-20">
+          <div className="flex flex-col items-center mb-10">
+            <h3 className="text-xl tracking-wide font-semibold text-primary/90">Other Projects</h3>
+            <div className="divider-line w-32 mt-4" />
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {otherProjects.map((project, index) => (
-              <Card key={index} className="hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 bg-background/90 backdrop-blur-sm border-border/50">
+        <Card key={index} className={`${index % 3 === 0 ? 'surface-c' : 'surface-a'} hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1`}>
                 <CardHeader>
                   <div className="flex items-center space-x-3">
                     <div className={`p-2 rounded-full ${project.color}`}>

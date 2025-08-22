@@ -1,6 +1,6 @@
 # Axel Sundqvist - Personal Portfolio
 
-A modern, responsive personal website for Axel Sundqvist, showcasing his work in Applied Physics and Electrical Engineering with specializations in Communications, Signal Processing, and Machine Learning.
+A modern, responsive personal website for Axel Sundqvist, showcasing work in Applied Physics & Electrical Engineering with specializations in Communications, Signal Processing, Machine Learning, and Applied Mathematics. Includes rich, interactive technical demos (wireless communications, signal processing, algorithm visualizations) and a growing technical blog.
 
 ![Portfolio Preview](https://via.placeholder.com/800x400/1e293b/f8fafc?text=Axel+Sundqvist+Portfolio)
 
@@ -8,12 +8,14 @@ A modern, responsive personal website for Axel Sundqvist, showcasing his work in
 
 - **Modern Design**: Clean, professional layout with dark/light theme support
 - **Responsive**: Fully responsive design that works on all devices
-- **Interactive**: Smooth animations and hover effects
-- **Portfolio Showcase**: Dedicated sections for projects and achievements
-- **Blog Integration**: Ready for technical blog posts and articles
-- **Contact Form**: Professional contact form with multiple contact methods
-- **Theme Toggle**: Seamless dark/light mode switching
-- **Academic Focus**: Tailored for academic and engineering professionals
+- **Interactive Technical Demos**: Real‑time canvas simulations (Wireless Communication Simulator, Signal Processing Demo, Algorithm Visualizations)
+- **Animated Backgrounds**: Code rain matrix + subtle animated particle layers
+- **Scroll & Typing Effects**: Scroll progress bar and delayed typewriter intro
+- **Portfolio Showcase**: Featured & other project grids with tech badges
+- **Blog System**: In‑page modal reader, search/filter, tag badges
+- **Theme Toggle**: Seamless dark/light mode switching with persistence
+- **Accessibility Considerations**: Keyboard focus styles & ARIA where needed
+- **Academic Focus**: Tailored for engineering / research audience
 
 ## 🛠️ Tech Stack
 
@@ -35,13 +37,14 @@ axel-sundqvist-portfolio/
 ├── src/
 │   ├── components/
 │   │   ├── portfolio/           # Portfolio-specific components
-│   │   │   ├── hero.tsx        # Hero section with intro
-│   │   │   ├── about.tsx       # About section with skills
-│   │   │   ├── projects.tsx    # Projects showcase
-│   │   │   ├── blog.tsx        # Blog section
+│   │   │   ├── hero.tsx        # Hero (typing + scroll progress)
+│   │   │   ├── about.tsx       # About (education, skills, achievements)
+│   │   │   ├── projects.tsx    # Projects + interactive simulations
+│   │   │   ├── blog.tsx        # Blog (search + modal reader)
 │   │   │   ├── contact.tsx     # Contact form
 │   │   │   ├── footer.tsx      # Footer
 │   │   │   └── navigation.tsx  # Navigation bar
+│   │   ├── ui/visualizations/  # (If extracted later) visualization building blocks
 │   │   ├── ui/                 # Reusable UI components
 │   │   │   ├── button.tsx
 │   │   │   ├── card.tsx
@@ -76,38 +79,41 @@ axel-sundqvist-portfolio/
 ## 🎨 Website Sections
 
 ### 🏠 Hero Section
-- Personal introduction with animated gradient text
-- Key specializations (Communications, Mathematics, Signal Processing, Machine Learning)
-- Call-to-action buttons (Contact, Download CV)
-- Social media links (GitHub, LinkedIn, Email)
-- Animated scroll indicator
+- Typewriter effect for name reveal
+- Scroll progress indicator bar (top)
+- Social links (GitHub / LinkedIn / Email)
+- Thematic animated background (particles / gradient overlay)
 
 ### 👨‍🎓 About Section
-- Educational background at Linköping University (Liu)
-- Technical skills with visual icons and color coding
-- Research interests and academic focus
-- Achievements and awards showcase
+- Education timeline (B.Sc. → upcoming MSE)
+- Skill cards with icon + color code
+- Personal + motivation narrative
+- Achievements grid (hover elevation)
 
 ### 💼 Projects Section
-- **Featured Projects**: Detailed showcase of major academic projects
-  - Adaptive Signal Processing System
-  - Machine Learning for Channel Estimation
-- **Other Projects**: Grid layout for additional work
-  - Spectral Analysis Toolkit
-  - Real-time Digital Filter Design
-- Technology badges and GitHub/demo links
+- **Interactive Simulations (top)**:
+  - Wireless Communication Simulator (channel effects, modulation, fading, rudimentary MIMO visualization)
+  - Signal Processing Demo (time vs frequency domain, FFT, AM/FM etc.)
+  - Algorithm Visualizations (data‑structures / algorithms showcase)
+- **Featured Projects**:
+  - Stock Price Predictor Suite (PyTorch forecasting stack)
+  - Communication Systems Simulations (channels, equalizers, MIMO, practical systems)
+- **Other Projects**:
+  - 2D Platformer Game (Pygame custom physics engine)
+  - Notepad App (lightweight text editing + file management)
+- Animated code rain background + glassy card surfaces
+- Tech badges, GitHub + Demo buttons
 
 ### 📝 Blog Section
-- **Featured Articles**: Highlighted technical blog posts
-- **Recent Articles**: Additional posts with preview
-- Reading time estimates and topic tags
-- Academic and technical content focus
+- Featured + regular posts arrays (flag by `featured` boolean)
+- Search filtering (client-side, term vs title/excerpt/tags)
+- Modal dialog reader (rich HTML content injection)
+- Tag badges + read time + date metadata
+- Extensible structure for future MD/MDX or CMS integration
 
 ### 📧 Contact Section
-- Contact information with icons (Email, Phone, Location)
-- Social media links with hover effects
-- Professional contact form with validation
-- Academic networking integration
+- Direct email and social links
+- (Form placeholder / extend as needed)
 
 ### 🔗 Footer
 - Brand information and social links
@@ -154,9 +160,9 @@ npm run preview
 ### Available Scripts
 
 - `npm run dev` - Start development server with hot reload
-- `npm run build` - Build for production (TypeScript compilation + Vite build)
-- `npm run preview` - Preview production build locally
-- `npm run lint` - Run ESLint with TypeScript support
+- `npm run build` - Production bundle + type check
+- `npm run preview` - Serve built assets locally
+- `npm run lint` - ESLint (TypeScript + React rules)
 
 ### Development Workflow
 
@@ -174,39 +180,11 @@ Update content in portfolio components:
 - `src/components/portfolio/about.tsx` - Education, skills, achievements
 - `src/components/portfolio/contact.tsx` - Contact information
 
-#### 2. Projects
-Modify project data in `src/components/portfolio/projects.tsx`:
-```typescript
-const projects = [
-  {
-    title: 'Your Project Title',
-    description: 'Project description...',
-    technologies: ['React', 'TypeScript', 'Python'],
-    icon: YourIcon,
-    color: 'bg-blue-500',
-    github: 'https://github.com/username/repo',
-    demo: 'https://your-demo.com',
-    featured: true,
-  },
-  // ... more projects
-]
-```
+#### 2. Projects & Simulations
+Modify project data in `src/components/portfolio/projects.tsx` (the `projects` array). Interactive simulations sit above the grids as standalone components—extend or swap them by importing your new component and adding it to the "Interactive Features" stack.
 
 #### 3. Blog Posts
-Update blog content in `src/components/portfolio/blog.tsx`:
-```typescript
-const blogPosts = [
-  {
-    title: 'Your Blog Post Title',
-    excerpt: 'Post excerpt...',
-    date: '2024-01-15',
-    readTime: '8 min read',
-    tags: ['Signal Processing', 'Mathematics'],
-    featured: true,
-  },
-  // ... more posts
-]
-```
+Posts are defined inline (`blogPosts` array). Each entry supports: `title`, `excerpt`, `date`, `readTime`, `tags`, `featured`, `href`, `fullContent` (HTML string), and optional `links` (GitHub/external). For scaling, consider extracting to JSON/MDX.
 
 #### 4. Styling and Theming
 Customize colors and themes in `tailwind.config.ts`:
@@ -269,7 +247,7 @@ The website includes integration for:
 - **PWA Ready**: Service worker and manifest file support
 - **Analytics Ready**: Google Analytics integration support
 
-## � Deployment
+## 🚢 Deployment
 
 ### Vercel (Recommended)
 1. Push code to GitHub
@@ -286,7 +264,7 @@ The website includes integration for:
 2. Add deploy script to package.json
 3. Run `npm run deploy`
 
-## �📄 License
+## 📄 License
 
 This project is open source and available under the MIT License.
 
@@ -311,4 +289,4 @@ Contributions, issues, and feature requests are welcome!
 
 ---
 
-*Built with ❤️ and lots of coffee by Axel Sundqvist*
+*Built with ❤️, curiosity, and lots of coffee by Axel Sundqvist*

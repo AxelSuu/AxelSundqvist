@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
-import { Play, Pause, RotateCcw, Radio, Antenna, Wifi, Signal } from 'lucide-react'
+import { Play, Pause, RotateCcw, Radio, Antenna, Wifi, Signal, Info } from 'lucide-react'
 
 interface WirelessSignal {
   x: number
@@ -22,6 +22,7 @@ export const WirelessCommunicationSimulator = () => {
   const [snr, setSNR] = useState(20)
   const [doppler, setDoppler] = useState(0)
   const [antennas, setAntennas] = useState(2)
+  const containerRef = useRef<HTMLDivElement>(null)
   
   const animationRef = useRef<number>()
   const timeRef = useRef(0)
@@ -454,9 +455,11 @@ export const WirelessCommunicationSimulator = () => {
     initializeSignals()
   }
 
+  // (Removed fullscreen feature)
+
   return (
-    <div className="space-y-6">
-      <Card>
+    <div className="space-y-6" ref={containerRef}>
+  <Card>
         <CardHeader>
           <CardTitle className="flex items-center space-x-2">
             <Antenna className="w-5 h-5" />
@@ -555,21 +558,24 @@ export const WirelessCommunicationSimulator = () => {
           </div>
 
           {/* Visualization */}
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
-            <div className="lg:col-span-2">
-              <h4 className="font-semibold mb-2">Channel Propagation</h4>
-              <canvas
-                ref={canvasRef}
-                className="w-full h-64 border border-border rounded-lg bg-black"
-              />
+          <div className={`grid grid-cols-1 lg:grid-cols-3 gap-4 relative`}>            
+            <div className={`lg:col-span-2 relative group`}>              
+              <h4 className="font-semibold mb-2 flex items-center gap-2">Channel Propagation <Info className="w-3 h-3 text-primary/60" /></h4>
+              <div className="relative rounded-lg overflow-hidden border border-border">
+                <canvas
+                  ref={canvasRef}
+                  className={`w-full h-64 bg-black`}
+                />
+              </div>
             </div>
-            
-            <div>
-              <h4 className="font-semibold mb-2">Constellation Diagram</h4>
-              <canvas
-                ref={constellationRef}
-                className="w-full h-64 border border-border rounded-lg bg-black"
-              />
+            <div className="relative">
+              <h4 className="font-semibold mb-2 flex items-center gap-2">Constellation Diagram <Info className="w-3 h-3 text-primary/60" /></h4>
+              <div className="relative rounded-lg overflow-hidden border border-border">
+                <canvas
+                  ref={constellationRef}
+                  className={`w-full h-64 bg-black`}
+                />
+              </div>
             </div>
           </div>
 
@@ -592,7 +598,7 @@ export const WirelessCommunicationSimulator = () => {
             </div>
           </div>
         </CardContent>
-      </Card>
+  </Card>
     </div>
   )
 }
