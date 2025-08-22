@@ -62,8 +62,8 @@ const Hero = () => {
           </div>
 
           {/* Name with typing animation */}
-          <h1 className="text-5xl md:text-7xl font-bold mb-6 fade-in-up">
-            <span className="gradient-text">
+          <h1 className="text-5xl md:text-7xl font-bold mb-4 fade-in-up leading-tight heading-wave">
+            <span className="gradient-accent-text">
               {displayedText}
               <span className="animate-pulse">|</span>
             </span>
@@ -114,5 +114,6 @@ const Hero = () => {
     </>
   )
 }
+
 
 export default Hero

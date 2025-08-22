@@ -46,7 +46,8 @@ const Contact = () => {
     <section id="contact" className="py-20">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 gradient-text">Get In Touch</h2>
+          <h2 className="text-4xl md:text-5xl font-bold mb-4 gradient-accent-text heading-wave">Get In Touch</h2>
+          <div className="mx-auto w-28 h-px bg-gradient-to-r from-transparent via-primary/50 to-transparent" />
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
             Let's discuss wireless, machine learning, or collaborations.
             Currently seeking internship opportunities.

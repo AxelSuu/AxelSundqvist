@@ -24,6 +24,11 @@
     --input: 240 5.9% 90%;
     --ring: 240 5.9% 10%;
     --radius: 0.5rem;
+  /* Custom additions */
+  --signal: 190 90% 55%; /* cyan accent for signal motifs */
+  --wave-accent: 285 75% 60%; /* magenta/purple accent */
+  --surface-elev: 240 18% 15%;
+  --noise-opacity: 0.07;
   }
 
   .dark {
@@ -46,6 +51,10 @@
     --border: 240 3.7% 15.9%;
     --input: 240 3.7% 15.9%;
     --ring: 240 4.9% 83.9%;
+  --signal: 190 90% 55%;
+  --wave-accent: 285 75% 65%;
+  --surface-elev: 240 18% 20%;
+  --noise-opacity: 0.09;
   }
 }
 
@@ -55,5 +64,48 @@
   }
   body {
     @apply bg-background text-foreground;
+    font-feature-settings: "ss01" on, "tnum" on, "cv02" on;
+  }
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    background-image: radial-gradient(circle at 15% 20%, rgba(255,255,255,0.05), transparent 60%),
+      radial-gradient(circle at 80% 70%, rgba(255,255,255,0.04), transparent 55%),
+      url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mOsrKz6HwAF0gJ/3j0W8QAAAABJRU5ErkJggg==');
+    mix-blend-mode: overlay;
+    opacity: var(--noise-opacity);
+    z-index: 0;
   }
 }
+
+@layer utilities {
+  .surface-a { @apply bg-background/80 border border-border/60 backdrop-blur-md; }
+  .surface-b { background: linear-gradient(145deg,hsl(var(--background)) 0%,hsl(var(--background)/0.85) 60%,hsl(var(--accent)/0.25) 100%); @apply border border-border/50 backdrop-blur-md; }
+  .surface-c { background: radial-gradient(circle at 30% 30%, hsl(var(--accent)/0.25), transparent 70%), linear-gradient(hsl(var(--background)) , hsl(var(--background)/0.9)); @apply border border-border/40 backdrop-blur-sm; }
+  .heading-label { @apply block text-[10px] tracking-[0.25em] font-semibold text-primary/60 uppercase mb-3; }
+  .gradient-accent-text { background: linear-gradient(110deg,hsl(var(--signal)) 0%,hsl(var(--wave-accent)) 50%,hsl(var(--primary)) 100%); -webkit-background-clip:text; color:transparent; }
+  .focus-ring-custom:focus-visible { outline: 2px solid hsl(var(--signal)); outline-offset: 2px; }
+  .pill-overlay { @apply rounded-full bg-black/60 text-[11px] font-medium text-white px-3 py-1 flex items-center gap-2 backdrop-blur-md border border-white/10 shadow; }
+  .featured-accent { @apply relative overflow-hidden; }
+  .featured-accent::before { content:""; position:absolute; left:0; top:0; bottom:0; width:6px; background:linear-gradient(180deg,hsl(var(--signal)) 0%,hsl(var(--wave-accent)) 100%); box-shadow:0 0 0 1px hsl(var(--background)); }
+  .asym-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(270px,1fr)); gap:1.75rem; }
+  @media (min-width:1024px){ .asym-grid > *:nth-child(1){ grid-column:span 2; } }
+  .card-animated { position:relative; transition:transform 0.5s cubic-bezier(.22,1.28,.32,1), box-shadow 0.5s ease; }
+  .card-animated::after { content:""; position:absolute; inset:0; border-radius:inherit; padding:1px; background:linear-gradient(120deg,hsl(var(--signal)/0.0),hsl(var(--signal)/0.4),hsl(var(--wave-accent)/0.0)); -webkit-mask:linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite:xor; mask-composite:exclude; opacity:0; transform:scale(.96); transition:opacity .5s ease, transform .6s cubic-bezier(.22,1.28,.32,1); pointer-events:none; }
+  .card-animated:hover { transform:translateY(-6px) scale(1.015); }
+  .card-animated:hover::after { opacity:1; transform:scale(1); }
+  .metric { font-family: 'JetBrains Mono', 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace; letter-spacing: -0.5px; }
+  .heading-wave { position:relative; }
+  .heading-wave::after { content:""; position:absolute; left:0; bottom:-8px; width:120px; height:10px; background:radial-gradient(circle at 15% 50%, hsl(var(--signal)/0.35), transparent 70%), linear-gradient(90deg,hsl(var(--signal)/0.0),hsl(var(--signal)/0.6),hsl(var(--wave-accent)/0.0)); filter:blur(6px); opacity:.6; pointer-events:none; }
+  .section-sub { @apply text-sm md:text-base text-muted-foreground/80 font-normal; }
+  .divider-line { position:relative; height:1px; background:linear-gradient(90deg,transparent,hsl(var(--border)/0.8),transparent); }
+  @media (prefers-reduced-motion: reduce){
+    .card-animated, .card-animated::after { transition:none !important; }
+    .card-animated:hover { transform:none !important; }
+  }
+}
+
+/* Font import (placed after layers so Tailwind doesn't purge) */
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap');

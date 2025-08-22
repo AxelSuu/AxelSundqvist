@@ -585,7 +585,8 @@ plt.ylabel('Power Spectral Density')</code></pre>
     <section id="blog" className="py-20 bg-muted/50">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 gradient-text">Blog</h2>
+          <h2 className="text-4xl md:text-5xl font-bold mb-4 gradient-accent-text heading-wave">Blog</h2>
+          <div className="mx-auto w-24 h-px bg-gradient-to-r from-transparent via-primary/50 to-transparent" />
         </div>
 
         {/* Featured Posts */}
