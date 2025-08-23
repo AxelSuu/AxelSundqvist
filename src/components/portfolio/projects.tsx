@@ -91,28 +91,10 @@ const Projects = () => {
       <div className="container mx-auto px-4 relative z-20">
         <header className="text-center mb-14">
           <h2 id="projects-heading" className="text-4xl md:text-5xl font-bold mb-5 gradient-accent-text heading-wave">Projects</h2>
-          <p className="section-sub max-w-2xl mx-auto">A selection of interactive simulators and build logs. Simulations mount only when scrolled into view to preserve performance.</p>
         </header>
         {/* Interactive Features - Temporarily inactivated */}
         {/*
         <div className="space-y-16 mt-16">
-          <div>
-            <LazyViewport>
-              <Suspense fallback={<div className="h-[520px] rounded-xl border border-border/40 bg-background/40 backdrop-blur-sm flex items-center justify-center animate-pulse text-sm text-muted-foreground" aria-busy="true">Loading Wireless Communication Simulator…</div>}>
-                <WirelessCommunicationSimulator />
-              </Suspense>
-            </LazyViewport>
-            <p className="mt-4 text-sm text-muted-foreground text-center max-w-2xl mx-auto">Interactive wireless channel + modulation exploration: visualize fading, multipath, MIMO concepts and constellation dynamics.</p>
-          </div>
-
-          <div>
-            <LazyViewport>
-              <Suspense fallback={<div className="h-[520px] rounded-xl border border-border/40 bg-background/40 backdrop-blur-sm flex items-center justify-center animate-pulse text-sm text-muted-foreground" aria-busy="true">Loading Signal Processing Demo…</div>}>
-                <SignalProcessingDemo />
-              </Suspense>
-            </LazyViewport>
-            <p className="mt-4 text-sm text-muted-foreground text-center max-w-2xl mx-auto">Time vs frequency domain visualization with adjustable synthesis (AM/FM), filtering and real‑time FFT.</p>
-          </div>
 
             <div>
               <LazyViewport>
@@ -126,8 +108,6 @@ const Projects = () => {
         */}        {/* Featured Projects */}
         <div className="mb-20 mt-24">
           <div className="flex flex-col items-center mb-10">
-            <h3 className="text-xl tracking-wide font-semibold text-primary/90">Featured Projects</h3>
-            <div className="divider-line w-40 mt-4" />
           </div>
       <div className="asym-grid">
             {featuredProjects.map((project, index) => (
@@ -180,8 +160,6 @@ const Projects = () => {
         {/* Other Projects */}
         <div className="mt-20">
           <div className="flex flex-col items-center mb-10">
-            <h3 className="text-xl tracking-wide font-semibold text-primary/90">Other Projects</h3>
-            <div className="divider-line w-32 mt-4" />
           </div>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {otherProjects.map((project, index) => (

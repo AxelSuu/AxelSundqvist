@@ -75,7 +75,7 @@ const Hero = () => {
 
           {/* Description */}
           <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-2xl mx-auto fade-in-up">
-            Ambition Obsession Together. Check out my projects and blog to see  
+            Check out my projects to see  
             what I'm working on.
             Available for Summer 2026 Internships.
           </p>
