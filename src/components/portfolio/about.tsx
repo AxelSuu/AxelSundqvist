@@ -3,11 +3,11 @@ import { BookOpen, Cpu, Brain, Calculator, Award, Gamepad2, Zap, Beer, Activity 
 
 const About = () => {
   const skills = [
-    { name: 'PyTorch', icon: BookOpen, color: 'bg-blue-500', level: 90 },
-    { name: 'NumPy', icon: Brain, color: 'bg-purple-500', level: 85 },
+    { name: 'PyTorch', icon: Brain, color: 'bg-blue-500', level: 90 },
+    { name: 'NumPy', icon: BookOpen, color: 'bg-purple-500', level: 85 },
     { name: 'Scikit-Learn', icon: Calculator, color: 'bg-green-500', level: 88 },
-    { name: 'SciPy', icon: Zap, color: 'bg-orange-500', level: 82 },
-    { name: 'Microcontrollers', icon: Cpu, color: 'bg-yellow-500', level: 75 },
+    { name: 'C++', icon: BookOpen, color: 'bg-orange-500', level: 82 },
+    { name: 'Embedded', icon: Cpu, color: 'bg-yellow-500', level: 75 },
   ]
 
   const education = [
@@ -21,14 +21,14 @@ const About = () => {
       degree: 'B.Sc. in Applied Physics and Electrical Engineering',
       institution: 'Linköping University (Liu)',
       period: '2023 - 2026',
-      specialization: 'Foundation in Physics, math and Electrical Engineering',
+      specialization: 'Bachelor in Physics and Electrical Engineering',
     },
   ]
 
   const achievements = [
     {
-      title: 'Beer Pong Top 16 Finisher',
-      description: 'Finished in the top 16 at LIUs Beer Pong Tournament',
+      title: 'Beer Pong Top 8 Finisher',
+      description: 'Finished in the top 8 at LIUs Beer Pong Tournament',
       icon: Beer,
       color: 'bg-blue-500'
     },
@@ -39,8 +39,8 @@ const About = () => {
       color: 'bg-purple-500'
     },
     {
-      title: '2D Platformer Game',
-      description: 'Created a passion project game in Pygame',
+      title: 'ESP32 wifi handheld',
+      description: 'Created a wireless embedded product',
       icon: Gamepad2,
       color: 'bg-green-500'
     }
@@ -62,13 +62,11 @@ const About = () => {
             <div>
               <h3 className="text-2xl font-semibold mb-4 flex items-center">
                 <BookOpen className="mr-2 h-6 w-6 text-primary" />
-                Who am I
+                Me
               </h3>
               <p className="text-lg text-muted-foreground leading-relaxed mt-4">
-                I'm a AP&EE student who loves good vibes, great music, and meeting new people.
-                I'm all about EDM and pop beats, weekend parties, and trying out new recipes in the kitchen.
-                Whether it's a chill dinner with friends or a night out dancing,
-                you can always count on me being up for it.
+                I'm a third year student in AP&EE who enjoys math, tech, embedded and running.
+                Im bartending at the student pub VilleValla and trying new beers.
               </p>
             </div>
 
@@ -78,11 +76,9 @@ const About = () => {
                 What Drives Me
               </h3>
               <p className="text-lg text-muted-foreground leading-relaxed">
-                I'm interested in the applications of linear algebra, probability, and analysis
+                I'm interested in the applications of linear algebra, stochastic modelling, and analysis
                 in tech like signal processing, machine learning and wireless communications.
-                When I'm not buried in coursework,
-                you'll find me working on PyTorch, microcontroller projects, or trying some new technologies.
-                Currently looking into purchasing a ESP32 for some IOT projects.
+                Currently building an embedded wireless ESP32 gaming console with wifi.
               </p>
             </div>
 
@@ -129,7 +125,7 @@ const About = () => {
 
         {/* Achievements */}
         <div>
-          <h3 className="text-2xl font-semibold mb-8 text-center">Achievements</h3>
+          <h3 className="text-2xl font-semibold mb-8 text-center">Stuff I have done</h3>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {achievements.map((achievement, index) => (
               <Card key={index} className="hover:shadow-lg transition-all duration-300 hover:-translate-y-1">

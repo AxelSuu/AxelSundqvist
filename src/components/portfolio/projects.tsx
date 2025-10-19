@@ -1,7 +1,7 @@
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
-import { BackgroundCodeMatrix } from '@/components/ui/background-code-matrix'
+// import { BackgroundCodeMatrix } from '@/components/ui/background-code-matrix' // Removed background animation
 // import { Suspense, lazy, useEffect, useRef, useState } from 'react' // Temporarily inactivated with demos
 // Lazy loaded heavy interactive simulations (code-split) - Temporarily inactivated
 // const WirelessCommunicationSimulator = lazy(() => import('@/components/ui/wireless-communication-simulator').then(m => ({ default: m.WirelessCommunicationSimulator })))
@@ -35,27 +35,27 @@ const Projects = () => {
   const projects = [
     {
       title: 'Stock Price Predictor Suite',
-      description: 'Developed a PyTorch-based stock price forecasting system with advanced neural network architectures and real-time data integration.',
+      description: 'Developed a real-time PyTorch-based stock price forecasting neural network.',
       technologies: ['Python', 'PyTorch', 'Numpy', 'Pandas'],
       icon: Brain,
       color: 'bg-blue-500',
       github: 'https://github.com/AxelSuu/Pytorch-Quant-Model',
-      demo: 'https://github.com/AxelSuu/Pytorch-Quant-Model',
+      demo: null,
       featured: true,
     },
     {
       title: 'Communication Systems Simulations',
-      description: 'Simulations of Channel Effects, Equalizers, MIMO Systems, and Practical Systems',
+      description: 'Simulations of modulation and communication systems',
       technologies: ['Python', 'NumPy', 'Scikit-learn', 'Wireless Communications'],
       icon: Radio,
       color: 'bg-purple-500',
       github: 'https://github.com/AxelSuu/communications',
-      demo: 'https://github.com/AxelSuu/communications',
+      demo: null,
       featured: true,
     },
     {
       title: '2D Platformer Game',
-      description: 'A 2D platformer game built with Python and Pygame, featuring custom physics and level design tools.',
+      description: 'A 2D platformer game built with Python and Pygame.',
       technologies: ['Python', 'Pygame', 'Game Development'],
       icon: Gamepad2,
       color: 'bg-green-500',
@@ -79,19 +79,11 @@ const Projects = () => {
   const otherProjects = projects.filter(project => !project.featured)
 
   return (
-  <section id="projects" aria-labelledby="projects-heading" className="py-24 relative overflow-hidden bg-slate-900/50">
-      {/* Animated Background */}
-      <BackgroundCodeMatrix 
-        mode="code-rain" 
-        opacity={0.6} 
-        speed={75}
-        className="absolute inset-0"
-      />
-      
-      <div className="container mx-auto px-4 relative z-20">
-        <header className="text-center mb-14">
-          <h2 id="projects-heading" className="text-4xl md:text-5xl font-bold mb-5 gradient-accent-text heading-wave">Projects</h2>
-        </header>
+  <section id="projects" aria-labelledby="projects-heading" className="py-20 bg-muted/50">
+      <div className="container mx-auto px-4">
+        <div className="text-center mb-16">
+          <h2 id="projects-heading" className="text-4xl md:text-5xl font-bold mb-6 gradient-accent-text heading-wave">Projects</h2>
+        </div>
         {/* Interactive Features - Temporarily inactivated */}
         {/*
         <div className="space-y-16 mt-16">
@@ -106,12 +98,12 @@ const Projects = () => {
             </div>
         </div>
         */}        {/* Featured Projects */}
-        <div className="mb-20 mt-24">
-          <div className="flex flex-col items-center mb-10">
+        <div className="mb-16">
+          <div className="flex flex-col items-center mb-8">
           </div>
       <div className="asym-grid">
             {featuredProjects.map((project, index) => (
-        <Card key={index} className="featured-accent surface-b hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+        <Card key={index} className="hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
                 <CardHeader>
                   <div className="flex items-center justify-between">
                     <div className="flex items-center space-x-3">
@@ -158,12 +150,12 @@ const Projects = () => {
         </div>
 
         {/* Other Projects */}
-        <div className="mt-20">
-          <div className="flex flex-col items-center mb-10">
+        <div>
+          <div className="flex flex-col items-center mb-8">
           </div>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {otherProjects.map((project, index) => (
-        <Card key={index} className={`${index % 3 === 0 ? 'surface-c' : 'surface-a'} hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1`}>
+        <Card key={index} className="hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
                 <CardHeader>
                   <div className="flex items-center space-x-3">
                     <div className={`p-2 rounded-full ${project.color}`}>
