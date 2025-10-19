@@ -1,5 +1,5 @@
 import { Card, CardContent } from '@/components/ui/card'
-import { BookOpen, Cpu, Brain, Calculator, Award, Gamepad2, Zap, Beer, Activity } from 'lucide-react'
+import { BookOpen, Cpu, Brain, Calculator, Award, Gamepad2, Beer, Activity } from 'lucide-react'
 
 const About = () => {
   const skills = [
