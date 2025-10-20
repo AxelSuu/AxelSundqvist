@@ -55,7 +55,7 @@ const Hero = () => {
           {/* Profile image */}
           <div className="w-40 h-40 mx-auto mb-8 mt-16 rounded-full overflow-hidden border-4 border-white dark:border-gray-800 shadow-2xl hover:shadow-3xl transition-shadow duration-300">
             <img 
-              src="/images/me.jpeg" 
+              src="/images/me3.jpeg" 
               alt="Axel Sundqvist" 
               className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
             />
