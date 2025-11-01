@@ -34,9 +34,9 @@ const Projects = () => {
   */
   const projects = [
     {
-      title: 'Stock Price Predictor Suite',
+      title: 'PyTorch project with Yahoo Finance api data',
       description: 'Developed a real-time PyTorch-based stock price forecasting neural network.',
-      technologies: ['Python', 'PyTorch', 'Numpy', 'Pandas'],
+      technologies: ['Python', 'PyTorch', 'Numpy', 'Yahoo Finance'],
       icon: Brain,
       color: 'bg-blue-500',
       github: 'https://github.com/AxelSuu/Pytorch-Quant-Model',
@@ -44,12 +44,12 @@ const Projects = () => {
       featured: true,
     },
     {
-      title: 'Communication Systems Simulations',
-      description: 'Simulations of modulation and communication systems',
-      technologies: ['Python', 'NumPy', 'Scikit-learn', 'Wireless Communications'],
+      title: 'Esp32-S3 Wireless Embedded System',
+      description: 'Embedded wireless pong game with SPI, Wi-Fi communication, and OLED peripheral in C++',
+      technologies: ['C++', 'Embedded', 'Esp32-S3', 'Wireless Communications'],
       icon: Radio,
       color: 'bg-purple-500',
-      github: 'https://github.com/AxelSuu/communications',
+      github: 'https://github.com/AxelSuu/ESP32-Wi-Fi-Pong',
       demo: null,
       featured: true,
     },
@@ -101,9 +101,9 @@ const Projects = () => {
         <div className="mb-16">
           <div className="flex flex-col items-center mb-8">
           </div>
-      <div className="asym-grid">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {featuredProjects.map((project, index) => (
-        <Card key={index} className="hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+              <Card key={index} className="hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
                 <CardHeader>
                   <div className="flex items-center justify-between">
                     <div className="flex items-center space-x-3">
