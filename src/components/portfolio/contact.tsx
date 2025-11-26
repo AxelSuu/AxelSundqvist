@@ -114,28 +114,6 @@ const Contact = () => {
             </div>
           </GlowCard>
 
-          {/* Download Resume - Wide */}
-          <GlowCard 
-            className="col-span-2 md:col-span-2 lg:col-span-3 p-5 group cursor-pointer hover:scale-[1.02] transition-transform"
-            glowColor="rgba(168, 85, 247, 0.3)"
-          >
-            <button 
-              onClick={downloadResume}
-              className="flex items-center justify-between w-full"
-            >
-              <div className="flex items-center gap-3">
-                <div className="p-2 rounded-xl bg-purple-500/10 group-hover:bg-purple-500 transition-colors">
-                  <Download className="h-5 w-5 text-purple-500 group-hover:text-white transition-colors" />
-                </div>
-                <div className="text-left">
-                  <h4 className="font-semibold">Download Resume</h4>
-                  <p className="text-xs text-muted-foreground">Get my full CV in PDF</p>
-                </div>
-              </div>
-              <ArrowUpRight className="h-5 w-5 text-muted-foreground group-hover:text-purple-500 group-hover:translate-x-1 group-hover:-translate-y-1 transition-all" />
-            </button>
-          </GlowCard>
-
           
 
           {/* Quick Message Ideas */}
