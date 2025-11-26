@@ -1,7 +1,7 @@
 import { CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
-import { Github, Radio, Brain, Gamepad2, BookOpen, Sparkles } from 'lucide-react'
+import { Github, Radio, Brain, Gamepad2, BookOpen } from 'lucide-react'
 import { GlowCard } from '@/components/ui/glow-card'
 import { TextReveal } from '@/components/ui/text-reveal'
 
