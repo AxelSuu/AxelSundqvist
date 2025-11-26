@@ -1,6 +1,5 @@
 
-import { Mail, MapPin, Github, Linkedin, Download, MessageCircle, ArrowUpRight } from 'lucide-react'
-import { downloadResume } from '@/lib/resume-utils'
+import { Mail, MapPin, Github, Linkedin, MessageCircle, ArrowUpRight } from 'lucide-react'
 import { GlowCard } from '@/components/ui/glow-card'
 import { TextReveal } from '@/components/ui/text-reveal'
 
