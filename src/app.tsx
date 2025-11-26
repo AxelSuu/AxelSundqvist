@@ -13,7 +13,7 @@ import './app.css'
 
 function App() {
   return (
-    <ThemeProvider defaultTheme="light" storageKey="vite-ui-theme">
+    <ThemeProvider defaultTheme="dark" storageKey="portfolio-theme-v2">
       <Router>
         <div className="min-h-screen bg-background text-foreground">
           {/* Skip to content for accessibility */}
