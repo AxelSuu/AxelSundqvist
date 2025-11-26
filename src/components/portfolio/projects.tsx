@@ -20,7 +20,7 @@ const Projects = () => {
     },
     {
       title: 'PyTorch Stock Forecasting',
-      description: 'Developed a real-time PyTorch-based stock price forecasting neural network using Yahoo Finance API data. Implements LSTM architecture for time-series prediction.',
+      description: 'Developed a PyTorch-based stock price forecaster with Yahoo Finance as a learning project.',
       technologies: ['Python', 'PyTorch', 'Numpy', 'Yahoo Finance'],
       icon: Brain,
       color: 'bg-blue-500',
@@ -73,12 +73,7 @@ const Projects = () => {
             className="md:col-span-2 md:row-span-2 group relative overflow-hidden"
             glowColor="rgba(59, 130, 246, 0.4)"
           >
-            <div className="absolute top-4 right-4 z-10">
-              <Badge className="bg-blue-500/90 text-white border-0">
-                <Sparkles className="w-3 h-3 mr-1" />
-                Featured
-              </Badge>
-            </div>
+            
             <CardHeader className="pb-2">
               <div className="flex items-center space-x-3">
                 <div className="p-3 rounded-xl bg-blue-500 shadow-lg shadow-blue-500/30 group-hover:scale-110 transition-transform duration-300">
@@ -112,12 +107,6 @@ const Projects = () => {
             className="md:row-span-2 group relative overflow-hidden"
             glowColor="rgba(168, 85, 247, 0.4)"
           >
-            <div className="absolute top-4 right-4 z-10">
-              <Badge className="bg-purple-500/90 text-white border-0">
-                <Sparkles className="w-3 h-3 mr-1" />
-                Featured
-              </Badge>
-            </div>
             <CardHeader className="pb-2">
               <div className="flex items-center space-x-3">
                 <div className="p-3 rounded-xl bg-purple-500 shadow-lg shadow-purple-500/30 group-hover:scale-110 transition-transform duration-300">
