@@ -1,6 +1,8 @@
 import { Github, Linkedin, Mail } from 'lucide-react'
 import { useState, useEffect } from 'react'
 import { AnimatedBackground } from '@/components/ui/animated-background'
+import { FloatingOrbs } from '@/components/ui/floating-orbs'
+import { MagneticButton } from '@/components/ui/magnetic-button'
 
 const Hero = () => {
   const [scrollProgress, setScrollProgress] = useState(0)
@@ -43,6 +45,9 @@ const Hero = () => {
       </div>
 
       <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden">
+      {/* Floating Orbs Background */}
+      <FloatingOrbs />
+      
       {/* Animated Background */}
       <AnimatedBackground />
 
@@ -80,33 +85,33 @@ const Hero = () => {
             Available for Summer 2026 Internships.
           </p>
           
-          {/* Social links */}
+          {/* Social links with magnetic effect */}
           <div className="flex justify-center space-x-6 fade-in-up mb-8">
-            <a
+            <MagneticButton
+              as="a"
               href="https://github.com/AxelSuu"
               target="_blank"
               rel="noopener noreferrer"
-              className="p-3 rounded-full bg-muted text-muted-foreground hover:bg-gray-800 hover:text-white transition-all duration-200 transform hover:scale-110"
-              aria-label="GitHub"
+              className="p-3 rounded-full bg-muted text-muted-foreground hover:bg-gray-800 hover:text-white transition-all duration-200"
             >
               <Github className="h-6 w-6" />
-            </a>
-            <a
+            </MagneticButton>
+            <MagneticButton
+              as="a"
               href="https://www.linkedin.com/in/axel-sundqvist/"
               target="_blank"
               rel="noopener noreferrer"
-              className="p-3 rounded-full bg-muted text-muted-foreground hover:bg-blue-600 hover:text-white transition-all duration-200 transform hover:scale-110"
-              aria-label="LinkedIn"
+              className="p-3 rounded-full bg-muted text-muted-foreground hover:bg-blue-600 hover:text-white transition-all duration-200"
             >
               <Linkedin className="h-6 w-6" />
-            </a>
-            <a
+            </MagneticButton>
+            <MagneticButton
+              as="a"
               href="mailto:axesu672@student.liu.se"
-              className="p-3 rounded-full bg-muted text-muted-foreground hover:bg-gray-600 hover:text-white transition-all duration-200 transform hover:scale-110"
-              aria-label="Email"
+              className="p-3 rounded-full bg-muted text-muted-foreground hover:bg-gray-600 hover:text-white transition-all duration-200"
             >
               <Mail className="h-6 w-6" />
-            </a>
+            </MagneticButton>
           </div>
         </div>
       </div>
