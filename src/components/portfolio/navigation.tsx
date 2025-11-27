@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { Menu, X, Sun, Moon } from 'lucide-react'
+import { Menu, X, Sun, Moon, Sparkles } from 'lucide-react'
 import { useTheme } from '@/components/theme-provider'
 
 const Navigation = () => {
@@ -54,51 +54,60 @@ const Navigation = () => {
   }
 
   return (
-    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
       scrolled 
-        ? 'bg-background/70 supports-[backdrop-filter]:backdrop-blur-xl border-b border-border/60 shadow-[0_4px_24px_-6px_rgba(0,0,0,0.25)]' 
+        ? 'bg-background/60 supports-[backdrop-filter]:backdrop-blur-2xl border-b border-border/40 shadow-[0_4px_30px_-6px_rgba(0,0,0,0.3)]' 
         : 'bg-transparent'
     }`}> 
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
-          {/* Logo */}
-          <div className="text-2xl font-bold cursor-pointer" onClick={() => scrollToSection('#home')}>
-            <span className="gradient-text">AS</span>
+          {/* Logo with animated gradient */}
+          <div 
+            className="text-2xl font-bold cursor-pointer group relative"
+            onClick={() => scrollToSection('#home')}
+          >
+            <span className="animated-gradient-text group-hover:scale-110 inline-block transition-transform">AS</span>
+            <Sparkles className="absolute -top-1 -right-3 w-3 h-3 text-yellow-500 opacity-0 group-hover:opacity-100 transition-opacity" />
           </div>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
+          <div className="hidden md:flex items-center space-x-1 bg-muted/30 rounded-full px-2 py-1 backdrop-blur-sm border border-border/30">
             {navItems.map((item) => (
               <button
                 key={item.name}
                 onClick={() => scrollToSection(item.href)}
-                className={`text-foreground transition-all duration-200 relative group ${
+                className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 relative group ${
                   activeSection === item.href.slice(1) 
-                    ? 'text-primary font-semibold' 
-                    : 'hover:text-primary'
+                    ? 'text-primary-foreground bg-primary shadow-lg shadow-primary/25' 
+                    : 'text-muted-foreground hover:text-foreground hover:bg-muted/50'
                 }`}
               >
                 {item.name}
-                <span className={`absolute -bottom-1 left-0 h-0.5 bg-primary transition-all duration-200 ${
-                  activeSection === item.href.slice(1) ? 'w-full' : 'w-0 group-hover:w-full'
-                }`}></span>
+                {/* Hover glow effect */}
+                <span className={`absolute inset-0 rounded-full bg-primary/20 scale-0 group-hover:scale-100 transition-transform duration-300 -z-10 ${
+                  activeSection === item.href.slice(1) ? 'hidden' : ''
+                }`} />
               </button>
             ))}
           </div>
 
           {/* Theme Toggle & Mobile Menu Button */}
-          <div className="flex items-center space-x-4">
+          <div className="flex items-center space-x-2">
             <button
               onClick={toggleTheme}
-              className="p-2 rounded-full hover:bg-accent transition-colors duration-200"
+              className="p-2.5 rounded-full bg-muted/50 backdrop-blur-sm hover:bg-muted transition-all duration-300 hover:scale-110 hover:rotate-12 border border-border/30"
               aria-label="Toggle theme"
             >
-              {theme === 'dark' ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
+              {theme === 'dark' ? (
+                <Sun className="h-5 w-5 text-yellow-500" />
+              ) : (
+                <Moon className="h-5 w-5 text-blue-500" />
+              )}
             </button>
             
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="md:hidden p-2 rounded-full hover:bg-accent transition-colors duration-200"
+              className="md:hidden p-2.5 rounded-full bg-muted/50 backdrop-blur-sm hover:bg-muted transition-all duration-300 border border-border/30"
               aria-label="Toggle menu"
             >
               {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
@@ -106,26 +115,32 @@ const Navigation = () => {
           </div>
         </div>
 
-        {/* Mobile Navigation */}
-        {isOpen && (
-          <div className="md:hidden bg-background/95 backdrop-blur-md border-t border-border">
+        {/* Mobile Navigation with slide animation */}
+        <div className={`md:hidden overflow-hidden transition-all duration-300 ease-out ${
+          isOpen ? 'max-h-64 opacity-100' : 'max-h-0 opacity-0'
+        }`}>
+          <div className="bg-background/95 backdrop-blur-xl border-t border-border/40 rounded-b-2xl shadow-xl">
             <div className="px-2 pt-2 pb-3 space-y-1">
-              {navItems.map((item) => (
+              {navItems.map((item, index) => (
                 <button
                   key={item.name}
                   onClick={() => scrollToSection(item.href)}
-                  className={`block w-full text-left px-3 py-2 text-foreground transition-colors duration-200 rounded-md ${
+                  className={`block w-full text-left px-4 py-3 text-foreground transition-all duration-300 rounded-xl ${
                     activeSection === item.href.slice(1) 
-                      ? 'text-primary bg-accent font-semibold' 
-                      : 'hover:text-primary hover:bg-accent'
+                      ? 'text-primary bg-primary/10 font-semibold' 
+                      : 'hover:text-primary hover:bg-muted/50'
                   }`}
+                  style={{ 
+                    animationDelay: `${index * 50}ms`,
+                    animation: isOpen ? 'fadeInUp 0.3s ease forwards' : 'none'
+                  }}
                 >
                   {item.name}
                 </button>
               ))}
             </div>
           </div>
-        )}
+        </div>
       </div>
     </nav>
   )

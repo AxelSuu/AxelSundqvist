@@ -9,6 +9,7 @@ import Projects from '@/components/portfolio/projects'
 // import Blog from '@/components/portfolio/blog' // Temporarily inactivated
 import Contact from '@/components/portfolio/contact'
 import Footer from '@/components/portfolio/footer'
+import { SpotlightCursor } from '@/components/ui/spotlight-cursor'
 import './app.css'
 
 function App() {
@@ -16,6 +17,9 @@ function App() {
     <ThemeProvider defaultTheme="dark" storageKey="portfolio-theme-v2">
       <Router>
         <div className="min-h-screen bg-background text-foreground">
+          {/* Custom spotlight cursor effect */}
+          <SpotlightCursor />
+          
           {/* Skip to content for accessibility */}
           <a href="#main-content" className="skip-link">Skip to main content</a>
           <Navigation />
