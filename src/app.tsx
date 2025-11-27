@@ -10,6 +10,7 @@ import Projects from '@/components/portfolio/projects'
 import Contact from '@/components/portfolio/contact'
 import Footer from '@/components/portfolio/footer'
 import { SpotlightCursor } from '@/components/ui/spotlight-cursor'
+import { Analytics } from '@vercel/analytics/react'
 import './app.css'
 
 function App() {
@@ -33,6 +34,7 @@ function App() {
           <ScrollToTopButton />
           <Footer />
           <Toaster />
+          <Analytics />
         </div>
       </Router>
     </ThemeProvider>
