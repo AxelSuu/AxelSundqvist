@@ -1,4 +1,3 @@
-import { CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { Github, Radio, Brain, Gamepad2, BookOpen } from 'lucide-react'
@@ -58,27 +57,27 @@ const Projects = () => {
 
       <div className="container mx-auto px-3 md:px-4 relative z-10 flex items-center justify-center">
         {/* Bento Grid Layout - Clean 4-column layout */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-2 md:gap-3 grid-rows-[100px_100px_80px] md:grid-rows-[140px_140px] max-w-4xl mx-auto w-full">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-2 md:gap-3 grid-rows-[85px_85px_70px] md:grid-rows-[120px_120px] max-w-4xl mx-auto w-full">
           
           {/* Featured Project - Large card spanning 2x2 */}
           <TiltCard className="col-span-2 row-span-2" tiltMaxAngle={8}>
             <GlowCard 
-              className="h-full group relative overflow-hidden p-2 md:p-4"
+              className="h-full group relative overflow-hidden p-2 md:p-4 flex flex-col justify-between"
               glowColor="rgba(59, 130, 246, 0.4)"
             >
-              <CardHeader className="p-0 pb-1 md:pb-3">
-                <div className="flex items-center space-x-2 md:space-x-3">
+              <div>
+                <div className="flex items-center space-x-2 md:space-x-3 mb-2 md:mb-3">
                   <div className="p-1.5 md:p-2.5 rounded-lg md:rounded-xl bg-gradient-to-br from-blue-500 to-purple-600 shadow-lg shadow-blue-500/30 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">
                     <Radio className="h-4 w-4 md:h-5 md:w-5 text-white" />
                   </div>
-                  <CardTitle className="text-sm md:text-lg">{projects[0].title}</CardTitle>
+                  <h3 className="text-sm md:text-lg font-semibold">{projects[0].title}</h3>
                 </div>
-              </CardHeader>
-              <CardContent className="flex flex-col p-0 h-[calc(100%-40px)] md:h-[calc(100%-60px)]">
-                <p className="text-muted-foreground mb-2 md:mb-4 leading-relaxed text-xs md:text-sm flex-grow line-clamp-2 md:line-clamp-none">
+                <p className="text-muted-foreground leading-relaxed text-xs md:text-sm line-clamp-2 md:line-clamp-3">
                   {projects[0].description}
                 </p>
-                <div className="flex flex-wrap gap-1 md:gap-1.5 mb-2 md:mb-4">
+              </div>
+              <div>
+                <div className="flex flex-wrap gap-1 md:gap-1.5 mb-2 md:mb-3">
                   {projects[0].technologies.slice(0, 3).map((tech, i) => (
                     <Badge 
                       key={i} 
@@ -95,29 +94,29 @@ const Projects = () => {
                     View Code
                   </a>
                 </Button>
-              </CardContent>
+              </div>
             </GlowCard>
           </TiltCard>
 
           {/* PyTorch Project - Tall card */}
           <TiltCard className="col-span-1 row-span-2" tiltMaxAngle={10}>
             <GlowCard 
-              className="h-full group relative overflow-hidden card-shine p-2 md:p-3"
+              className="h-full group relative overflow-hidden card-shine p-2 md:p-3 flex flex-col justify-between"
               glowColor="rgba(168, 85, 247, 0.4)"
             >
-              <CardHeader className="p-0 pb-1 md:pb-2">
-                <div className="flex items-center space-x-1.5 md:space-x-2">
+              <div>
+                <div className="flex items-center space-x-1.5 md:space-x-2 mb-1 md:mb-2">
                   <div className="p-1.5 md:p-2 rounded-lg bg-gradient-to-br from-purple-500 to-pink-500 shadow-lg shadow-purple-500/30 group-hover:scale-110 transition-all duration-300">
                     <Brain className="h-3 w-3 md:h-4 md:w-4 text-white" />
                   </div>
-                  <CardTitle className="text-xs md:text-sm leading-tight">{projects[1].title}</CardTitle>
+                  <h3 className="text-xs md:text-sm font-semibold leading-tight">{projects[1].title}</h3>
                 </div>
-              </CardHeader>
-              <CardContent className="flex flex-col p-0 h-[calc(100%-35px)] md:h-[calc(100%-50px)]">
-                <p className="text-muted-foreground mb-1.5 md:mb-3 leading-relaxed text-[10px] md:text-xs flex-grow line-clamp-2 md:line-clamp-none">
+                <p className="text-muted-foreground leading-relaxed text-[10px] md:text-xs line-clamp-2 md:line-clamp-3">
                   {projects[1].description}
                 </p>
-                <div className="flex flex-wrap gap-1 mb-1.5 md:mb-3">
+              </div>
+              <div>
+                <div className="flex flex-wrap gap-1 mb-1.5 md:mb-2">
                   {projects[1].technologies.slice(0, 2).map((tech, i) => (
                     <Badge key={i} variant="outline" className="text-[8px] md:text-[10px] px-1.5 md:px-2 py-0 hover:bg-purple-500/10">
                       {tech}
@@ -130,7 +129,7 @@ const Projects = () => {
                     Code
                   </a>
                 </Button>
-              </CardContent>
+              </div>
             </GlowCard>
           </TiltCard>
 
@@ -185,7 +184,7 @@ const Projects = () => {
                   </div>
                   <h3 className="font-semibold text-[10px] md:text-sm">{projects[2].title}</h3>
                 </div>
-                <p className="text-[9px] md:text-xs text-muted-foreground mb-1 md:mb-2 flex-grow line-clamp-1 md:line-clamp-2">{projects[2].description}</p>
+                <p className="text-[9px] md:text-xs text-muted-foreground mb-1 md:mb-2 line-clamp-1 md:line-clamp-2">{projects[2].description}</p>
                 <div className="flex items-center justify-between">
                   <div className="flex gap-1">
                     {projects[2].technologies.slice(0, 2).map((tech, i) => (
@@ -215,7 +214,7 @@ const Projects = () => {
                   </div>
                   <h3 className="font-semibold text-[10px] md:text-sm">{projects[3].title}</h3>
                 </div>
-                <p className="text-[9px] md:text-xs text-muted-foreground mb-1 md:mb-2 flex-grow line-clamp-1 md:line-clamp-2">{projects[3].description}</p>
+                <p className="text-[9px] md:text-xs text-muted-foreground mb-1 md:mb-2 line-clamp-1 md:line-clamp-2">{projects[3].description}</p>
                 <div className="flex items-center justify-between">
                   <div className="flex gap-1">
                     {projects[3].technologies.slice(0, 2).map((tech, i) => (

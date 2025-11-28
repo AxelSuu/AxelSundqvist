@@ -92,7 +92,7 @@ export const TiltCard = ({
       />
 
       {/* Content with 3D offset */}
-      <div style={{ transform: 'translateZ(50px)', transformStyle: 'preserve-3d' }}>
+      <div className="h-full" style={{ transform: 'translateZ(50px)', transformStyle: 'preserve-3d' }}>
         {children}
       </div>
     </div>
