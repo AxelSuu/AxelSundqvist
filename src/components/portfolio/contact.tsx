@@ -13,14 +13,14 @@ const Contact = () => {
         <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-1.5 md:gap-2 auto-rows-[minmax(38px,1fr)] md:auto-rows-[minmax(42px,1fr)] max-w-5xl mx-auto max-h-[80vh] md:max-h-[75vh] overflow-y-auto md:overflow-hidden scrollbar-hide">
           
           {/* Main CTA - Large */}
-          <TiltCard className="col-span-2 md:col-span-2 lg:col-span-3 row-span-2 h-full" tiltMaxAngle={5}>
+          <TiltCard className="col-span-2 md:col-span-2 lg:col-span-3 row-span-1 h-full" tiltMaxAngle={5}>
               <GlowCard 
-                className="h-full p-3 flex flex-col justify-between group cursor-pointer"
+                className="h-full p-3 flex flex-col justify-center group cursor-pointer"
                 glowColor="rgba(59, 130, 246, 0.4)"
               >
                   <a 
                     href="mailto:axesu672@student.liu.se?subject=Portfolio Contact&body=Hi Axel,%0D%0A%0D%0AI'm interested in discussing..."
-                    className="flex flex-col h-full justify-between"
+                    className="flex flex-col"
                   >
                     <div className="flex items-center justify-between mb-2">
                       <div className="p-2 rounded-lg bg-gradient-to-br from-blue-500 to-cyan-500 shadow-lg shadow-blue-500/30 group-hover:scale-110 transition-all">
@@ -28,26 +28,24 @@ const Contact = () => {
                       </div>
                       <ArrowUpRight className="h-4 w-4 text-muted-foreground group-hover:text-primary group-hover:translate-x-1 group-hover:-translate-y-1 transition-all" />
                     </div>
-                    <div>
-                      <h3 className="text-lg font-bold mb-1">Send me an email</h3>
-                      <p className="text-xs text-muted-foreground mb-2">Best way to reach me for opportunities.</p>
-                    </div>
+                    <h3 className="text-lg font-bold mb-1">Send me an email</h3>
+                    <p className="text-xs text-muted-foreground mb-2">Best way to reach me for opportunities.</p>
                     <div className="text-xs text-primary font-medium hover:underline">axesu672@student.liu.se</div>
                   </a>
                 </GlowCard>
           </TiltCard>
 
           {/* LinkedIn - Medium */}
-          <TiltCard className="col-span-1 md:col-span-2 lg:col-span-2 row-span-2" tiltMaxAngle={10}>
+          <TiltCard className="col-span-1 md:col-span-2 lg:col-span-2 row-span-1" tiltMaxAngle={10}>
             <GlowCard 
-              className="h-full p-3 group cursor-pointer card-shine flex flex-col"
+              className="h-full p-3 group cursor-pointer card-shine flex flex-col justify-center"
               glowColor="rgba(59, 130, 246, 0.3)"
             >
               <a 
                 href="https://www.linkedin.com/in/axel-sundqvist/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex flex-col h-full justify-between"
+                className="flex flex-col"
               >
                 <div className="flex items-center justify-between mb-2">
                   <div className="p-1.5 rounded-lg bg-[#0A66C2] group-hover:scale-110 transition-all shadow-lg shadow-[#0A66C2]/30">
