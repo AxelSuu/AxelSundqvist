@@ -1,4 +1,4 @@
-import { Github, Linkedin, Mail, ChevronDown } from 'lucide-react'
+import { Github, Linkedin, Mail } from 'lucide-react'
 import { useState, useEffect } from 'react'
 import { MagneticButton } from '@/components/ui/magnetic-button'
 import { MorphingText } from '@/components/ui/morphing-text'
@@ -165,19 +165,6 @@ const Hero = () => {
               >
                 Get In Touch
               </LiquidButton>
-            </div>
-
-            {/* Scroll indicator */}
-            <div 
-              className={`absolute bottom-4 md:bottom-8 left-1/2 -translate-x-1/2 cursor-pointer transition-all duration-700 delay-700 ${
-                isLoaded ? 'opacity-100' : 'opacity-0'
-              }`}
-              onClick={scrollToProjects}
-            >
-              <div className="flex flex-col items-center text-muted-foreground hover:text-primary transition-colors">
-                <span className="text-[10px] md:text-xs mb-1 md:mb-2 tracking-widest uppercase">Scroll</span>
-                <ChevronDown className="h-5 w-5 md:h-6 md:w-6 animate-bounce" />
-              </div>
             </div>
           </div>
         </div>

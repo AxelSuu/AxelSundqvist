@@ -56,10 +56,7 @@ const About = () => {
                       <h3 className="text-lg font-semibold">Who I Am</h3>
                     </div>
                     <p className="text-xs text-muted-foreground leading-relaxed mb-2">
-                      I'm a third year student in Applied Physics & Electrical Engineering who enjoys math, tech, embedded systems and running.
-                    </p>
-                    <p className="text-xs text-muted-foreground leading-relaxed">
-                      I'm bartending at the student pub VilleValla and always trying new beers.
+                      I'm a third year student in Applied Physics & Electrical Engineering who enjoys math, tech, embedded systems and running. I'm bartending at the student pub VilleValla and always trying new beers.
                     </p>
                   </div>
                   <div className="flex items-center gap-2 mt-2 text-xs text-muted-foreground">
