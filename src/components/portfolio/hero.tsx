@@ -45,7 +45,7 @@ const Hero = () => {
   }
 
   return (
-      <section id="home" className="h-screen w-full flex items-center justify-center relative bg-background overflow-hidden">
+      <section id="home" className="h-[100dvh] md:h-screen w-full flex items-center justify-center relative bg-background overflow-hidden">
         {/* Subtle gradient background */}
         <div className="absolute inset-0 bg-gradient-to-b from-background via-background to-muted/20" />
         

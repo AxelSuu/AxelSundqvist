@@ -111,7 +111,7 @@ export function PerspectiveScroll({ children, className }: PerspectiveScrollProp
   return (
     <div 
       ref={containerRef}
-      className={cn("h-screen w-screen overflow-hidden perspective-[1000px]", className)}
+      className={cn("h-[100dvh] md:h-screen w-screen overflow-hidden perspective-[1000px]", className)}
       style={{ perspective: '1000px' }}
     >
       <div className="relative h-full w-full" style={{ transformStyle: 'preserve-3d' }}>

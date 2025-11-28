@@ -6,7 +6,7 @@ import { TiltCard } from '@/components/ui/tilt-card'
 
 const Contact = () => {
   return (
-    <section id="contact" className="h-screen w-full py-2 bg-background relative flex items-center overflow-hidden">
+    <section id="contact" className="h-[100dvh] md:h-screen w-full py-2 bg-background relative flex items-center overflow-hidden">
 
       <div className="container mx-auto px-3 md:px-4 relative z-10 max-h-full">
         {/* Bento Grid Layout - Simplified for mobile */}

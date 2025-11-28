@@ -35,9 +35,9 @@ const Navigation = () => {
 
   const navItems = [
     { name: 'Home', href: '#home', index: 0 },
-    { name: 'About', href: '#about', index: 1 },
-    { name: 'Projects', href: '#projects', index: 2 },
-    // { name: 'Blog', href: '#blog' }, // Temporarily inactivated
+    { name: 'About', href: '#about', index: 2 },
+    { name: 'Projects', href: '#projects', index: 1 },
+    // { name: 'Blog', href: '#blog' }, // inactivated
     { name: 'Contact', href: '#contact', index: 3 },
   ]
 

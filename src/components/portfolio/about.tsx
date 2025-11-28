@@ -1,5 +1,5 @@
 
-import { BookOpen, Cpu, Brain, Calculator, Award, Gamepad2, Beer, Activity, GraduationCap, MapPin, Code2 } from 'lucide-react'
+import { BookOpen, Cpu, Brain, Calculator, Award, Beer, Activity, GraduationCap, MapPin, Code2 } from 'lucide-react'
 import { AnimatedSkillBar } from '@/components/ui/animated-skill-bar'
 import { AnimatedCounter } from '@/components/ui/animated-counter'
 import { GlowCard } from '@/components/ui/glow-card'
@@ -26,17 +26,11 @@ const About = () => {
       description: 'Student pub',
       icon: Activity,
       color: 'bg-purple-500'
-    },
-    {
-      title: 'ESP32 pong',
-      description: 'Perihperals + wifi',
-      icon: Gamepad2,
-      color: 'bg-green-500'
     }
   ]
 
   return (
-    <section id="about" className="h-screen w-full py-2 bg-background relative flex items-center overflow-hidden">
+    <section id="about" className="h-[100dvh] md:h-screen w-full py-2 bg-background relative flex items-center overflow-hidden">
 
       <div className="container mx-auto px-3 md:px-4 relative z-10 max-h-full">
         {/* Bento Grid Layout - Simplified for mobile */}
