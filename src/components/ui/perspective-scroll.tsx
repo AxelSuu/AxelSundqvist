@@ -97,16 +97,21 @@ export function PerspectiveScroll({ children, className }: PerspectiveScrollProp
     }
   }, [currentSection, totalSections, isAnimating])
 
-  // Expose navigation function globally for nav links
+  // Expose navigation function and current section globally for nav links
   useEffect(() => {
-    (window as Window & { navigateToSection?: (index: number) => void }).navigateToSection = (index: number) => {
+    (window as Window & { navigateToSection?: (index: number) => void; currentSection?: number }).navigateToSection = (index: number) => {
       if (index >= 0 && index < totalSections && !isAnimating) {
         setIsAnimating(true)
         setCurrentSection(index)
         setTimeout(() => setIsAnimating(false), 800)
       }
     }
-  }, [totalSections, isAnimating])
+    // Expose current section for navigation indicator
+    ;(window as Window & { currentSection?: number }).currentSection = currentSection
+    
+    // Dispatch custom event when section changes
+    window.dispatchEvent(new CustomEvent('sectionChange', { detail: currentSection }))
+  }, [totalSections, isAnimating, currentSection])
 
   return (
     <div 

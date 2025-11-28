@@ -8,36 +8,42 @@ const Navigation = () => {
   const [activeSection, setActiveSection] = useState('home')
   const { theme, setTheme } = useTheme()
 
-  useEffect(() => {
-    const handleScroll = () => {
-      const isScrolled = window.scrollY > 50
-      setScrolled(isScrolled)
+  const sectionNames = ['home', 'projects', 'about', 'contact']
 
-      // Check which section is currently in view
-      const sections = ['home', 'about', 'projects', 'blog', 'contact']
-      const currentSection = sections.find(section => {
-        const element = document.getElementById(section)
-        if (element) {
-          const rect = element.getBoundingClientRect()
-          return rect.top <= 100 && rect.bottom >= 100
-        }
-        return false
-      })
-      
-      if (currentSection) {
-        setActiveSection(currentSection)
+  useEffect(() => {
+    // Listen for section changes from PerspectiveScroll
+    const handleSectionChange = (e: CustomEvent) => {
+      const sectionIndex = e.detail as number
+      if (sectionIndex >= 0 && sectionIndex < sectionNames.length) {
+        setActiveSection(sectionNames[sectionIndex])
       }
     }
 
+    // Also check initial section on mount
+    const currentSection = (window as Window & { currentSection?: number }).currentSection
+    if (currentSection !== undefined && currentSection >= 0 && currentSection < sectionNames.length) {
+      setActiveSection(sectionNames[currentSection])
+    }
+
+    window.addEventListener('sectionChange', handleSectionChange as EventListener)
+    
+    // Handle scroll for navbar background effect only
+    const handleScroll = () => {
+      const isScrolled = window.scrollY > 50
+      setScrolled(isScrolled)
+    }
     window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
+
+    return () => {
+      window.removeEventListener('sectionChange', handleSectionChange as EventListener)
+      window.removeEventListener('scroll', handleScroll)
+    }
   }, [])
 
   const navItems = [
     { name: 'Home', href: '#home', index: 0 },
-    { name: 'About', href: '#about', index: 2 },
     { name: 'Projects', href: '#projects', index: 1 },
-    // { name: 'Blog', href: '#blog' }, // inactivated
+    { name: 'About', href: '#about', index: 2 },
     { name: 'Contact', href: '#contact', index: 3 },
   ]
 

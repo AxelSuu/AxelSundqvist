@@ -103,7 +103,7 @@ const Hero = () => {
               }`}
             >
               <StaggerText 
-                text="Check out my projects to see what I'm working on."
+                text="Check out my projects to see what I am working on"
                 staggerDelay={30}
                 delay={800}
               />

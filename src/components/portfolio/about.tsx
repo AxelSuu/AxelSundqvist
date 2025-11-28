@@ -1,5 +1,5 @@
 
-import { BookOpen, Cpu, Brain, Calculator, Award, Beer, Activity, GraduationCap, MapPin, Code2 } from 'lucide-react'
+import { BookOpen, Cpu, Brain, Calculator, Award, Beer, Wine, GraduationCap, MapPin, Code2 } from 'lucide-react'
 import { AnimatedSkillBar } from '@/components/ui/animated-skill-bar'
 import { AnimatedCounter } from '@/components/ui/animated-counter'
 import { GlowCard } from '@/components/ui/glow-card'
@@ -7,11 +7,10 @@ import { TiltCard } from '@/components/ui/tilt-card'
 
 const About = () => {
   const skills = [
-    { name: 'PyTorch', icon: Brain, color: 'bg-blue-500' },
-    { name: 'NumPy', icon: BookOpen, color: 'bg-purple-500' },
-    { name: 'Scikit-Learn', icon: Calculator, color: 'bg-green-500' },
+    { name: 'Python', icon: Brain, color: 'bg-blue-500' },
     { name: 'C++', icon: Code2, color: 'bg-orange-500' },
-    { name: 'Embedded', icon: Cpu, color: 'bg-yellow-500' },
+    { name: 'Esp32', icon: Cpu, color: 'bg-yellow-500' },
+    { name: 'Matlab', icon: Calculator, color: 'bg-green-500' },
   ]
 
   const achievements = [
@@ -24,7 +23,7 @@ const About = () => {
     {
       title: 'VilleValla Bartender',
       description: 'Student pub',
-      icon: Activity,
+      icon: Wine,
       color: 'bg-purple-500'
     }
   ]
@@ -90,7 +89,7 @@ const About = () => {
                 <h3 className="font-semibold text-sm">What Drives Me</h3>
               </div>
               <p className="text-xs text-muted-foreground leading-relaxed">
-                Linear algebra, signal processing, ML and wireless communications.
+                Signal Processing, ML, Embedded and Wireless Communications.
               </p>
             </GlowCard>
           </TiltCard>
