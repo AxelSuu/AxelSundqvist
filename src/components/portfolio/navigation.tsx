@@ -34,21 +34,27 @@ const Navigation = () => {
   }, [])
 
   const navItems = [
-    { name: 'Home', href: '#home' },
-    { name: 'About', href: '#about' },
-    { name: 'Projects', href: '#projects' },
+    { name: 'Home', href: '#home', index: 0 },
+    { name: 'About', href: '#about', index: 1 },
+    { name: 'Projects', href: '#projects', index: 2 },
     // { name: 'Blog', href: '#blog' }, // Temporarily inactivated
-    { name: 'Contact', href: '#contact' },
+    { name: 'Contact', href: '#contact', index: 3 },
   ]
 
   const toggleTheme = () => {
     setTheme(theme === 'dark' ? 'light' : 'dark')
   }
 
-  const scrollToSection = (href: string) => {
-    const element = document.querySelector(href)
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' })
+  const scrollToSection = (href: string, index?: number) => {
+    // Use perspective scroll navigation if available
+    const navigateToSection = (window as Window & { navigateToSection?: (index: number) => void }).navigateToSection
+    if (navigateToSection && index !== undefined) {
+      navigateToSection(index)
+    } else {
+      const element = document.querySelector(href)
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' })
+      }
     }
     setIsOpen(false)
   }
@@ -64,7 +70,7 @@ const Navigation = () => {
           {/* Logo with animated gradient */}
           <div 
             className="text-2xl font-bold cursor-pointer group relative"
-            onClick={() => scrollToSection('#home')}
+            onClick={() => scrollToSection('#home', 0)}
           >
             <span className="animated-gradient-text group-hover:scale-110 inline-block transition-transform">AS</span>
             <Sparkles className="absolute -top-1 -right-3 w-3 h-3 text-yellow-500 opacity-0 group-hover:opacity-100 transition-opacity" />
@@ -75,7 +81,7 @@ const Navigation = () => {
             {navItems.map((item) => (
               <button
                 key={item.name}
-                onClick={() => scrollToSection(item.href)}
+                onClick={() => scrollToSection(item.href, item.index)}
                 className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 relative group ${
                   activeSection === item.href.slice(1) 
                     ? 'text-primary-foreground bg-primary shadow-lg shadow-primary/25' 
@@ -124,7 +130,7 @@ const Navigation = () => {
               {navItems.map((item, index) => (
                 <button
                   key={item.name}
-                  onClick={() => scrollToSection(item.href)}
+                  onClick={() => scrollToSection(item.href, item.index)}
                   className={`block w-full text-left px-4 py-3 text-foreground transition-all duration-300 rounded-xl ${
                     activeSection === item.href.slice(1) 
                       ? 'text-primary bg-primary/10 font-semibold' 
