@@ -40,7 +40,7 @@ const About = () => {
 
       <div className="container mx-auto px-3 md:px-4 relative z-10 max-h-full">
         {/* Bento Grid Layout - Simplified for mobile */}
-        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-1.5 md:gap-2 auto-rows-[minmax(45px,1fr)] md:auto-rows-[minmax(50px,1fr)] max-h-[80vh] md:max-h-[75vh] overflow-y-auto md:overflow-hidden scrollbar-hide">
+        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-1.5 md:gap-2 auto-rows-[minmax(40px,1fr)] md:auto-rows-[minmax(50px,1fr)] max-h-[85vh] md:max-h-[75vh] overflow-y-auto md:overflow-hidden scrollbar-hide">
           
           {/* Large Bio Card */}
           <TiltCard className="col-span-2 md:col-span-2 lg:col-span-3 row-span-2 h-full" tiltMaxAngle={5}>
@@ -113,8 +113,8 @@ const About = () => {
             </GlowCard>
           </TiltCard>
 
-          {/* Skills Card - Tall */}
-          <TiltCard className="col-span-2 md:col-span-2 lg:col-span-3 row-span-3" tiltMaxAngle={6}>
+          {/* Skills Card - Tall - Hidden on mobile */}
+          <TiltCard className="hidden md:block col-span-2 md:col-span-2 lg:col-span-3 row-span-3" tiltMaxAngle={6}>
             <GlowCard 
               className="h-full p-4"
               glowColor="rgba(34, 197, 94, 0.2)"

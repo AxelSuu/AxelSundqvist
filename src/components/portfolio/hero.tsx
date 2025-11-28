@@ -29,7 +29,7 @@ const Hero = () => {
   const scrollToProjects = () => {
     const navigateToSection = (window as Window & { navigateToSection?: (index: number) => void }).navigateToSection
     if (navigateToSection) {
-      navigateToSection(2) // Projects is index 2
+      navigateToSection(1) // Projects is index 1
     } else {
       document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })
     }
