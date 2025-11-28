@@ -88,15 +88,6 @@ const About = () => {
             </GlowCard>
           </TiltCard>
 
-          <TiltCard className="col-span-1" tiltMaxAngle={15}>
-            <GlowCard 
-              className="h-full flex items-center justify-center bg-gradient-to-br from-orange-500/10 to-transparent card-shine"
-              glowColor="rgba(249, 115, 22, 0.3)"
-            >
-              <AnimatedCounter value={50} suffix="%" label="Coffee" className="scale-90" />
-            </GlowCard>
-          </TiltCard>
-
           {/* What Drives Me - Wide card */}
           <TiltCard className="col-span-2 md:col-span-2 lg:col-span-2" tiltMaxAngle={8}>
             <GlowCard 

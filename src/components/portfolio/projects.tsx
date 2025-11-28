@@ -54,11 +54,11 @@ const Projects = () => {
   ]
 
   return (
-    <section id="projects" aria-labelledby="projects-heading" className="h-screen w-full py-2 bg-background relative flex items-center overflow-hidden">
+    <section id="projects" aria-labelledby="projects-heading" className="h-screen w-full py-4 bg-background relative flex items-center overflow-hidden">
 
-      <div className="container mx-auto px-3 md:px-4 relative z-10 max-h-full">
+      <div className="container mx-auto px-3 md:px-4 relative z-10 flex items-center justify-center">
         {/* Bento Grid Layout - Clean 4-column layout */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-1.5 md:gap-3 auto-rows-[minmax(70px,1fr)] md:auto-rows-[minmax(120px,1fr)] max-w-4xl mx-auto max-h-[85vh] md:max-h-[70vh] overflow-y-auto md:overflow-hidden scrollbar-hide">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-2 md:gap-3 grid-rows-[100px_100px_80px] md:grid-rows-[140px_140px] max-w-4xl mx-auto w-full">
           
           {/* Featured Project - Large card spanning 2x2 */}
           <TiltCard className="col-span-2 row-span-2" tiltMaxAngle={8}>
@@ -183,10 +183,10 @@ const Projects = () => {
                 <div className="flex items-center justify-between">
                   <div className="flex gap-1">
                     {projects[2].technologies.slice(0, 2).map((tech, i) => (
-                      <Badge key={i} variant="outline" className="text-[10px] px-1.5 py-0">{tech}</Badge>
+                      <Badge key={i} variant="outline" className="text-[8px] md:text-[10px] px-1 md:px-1.5 py-0">{tech}</Badge>
                     ))}
                   </div>
-                  <Button variant="ghost" size="sm" className="h-6 w-6 p-0" asChild>
+                  <Button variant="ghost" size="sm" className="h-5 w-5 md:h-6 md:w-6 p-0" asChild>
                     <a href={projects[2].github} target="_blank" rel="noopener noreferrer">
                       <Github className="h-3.5 w-3.5" />
                     </a>
@@ -199,26 +199,26 @@ const Projects = () => {
           {/* PDF to Excel Card */}
           <TiltCard className="col-span-1 row-span-1" tiltMaxAngle={12}>
             <GlowCard 
-              className="h-full group card-shine p-3"
+              className="h-full group card-shine p-2 md:p-3"
               glowColor="rgba(249, 115, 22, 0.3)"
             >
               <div className="flex flex-col h-full">
-                <div className="flex items-center gap-2 mb-2">
-                  <div className="p-1.5 rounded-lg bg-gradient-to-br from-orange-500 to-red-500 group-hover:scale-110 transition-all">
-                    <BookOpen className="h-4 w-4 text-white" />
+                <div className="flex items-center gap-1.5 md:gap-2 mb-1 md:mb-2">
+                  <div className="p-1 md:p-1.5 rounded-lg bg-gradient-to-br from-orange-500 to-red-500 group-hover:scale-110 transition-all">
+                    <BookOpen className="h-3 w-3 md:h-4 md:w-4 text-white" />
                   </div>
-                  <h3 className="font-semibold text-sm">{projects[3].title}</h3>
+                  <h3 className="font-semibold text-[10px] md:text-sm">{projects[3].title}</h3>
                 </div>
-                <p className="text-xs text-muted-foreground mb-2 flex-grow line-clamp-2">{projects[3].description}</p>
+                <p className="text-[9px] md:text-xs text-muted-foreground mb-1 md:mb-2 flex-grow line-clamp-1 md:line-clamp-2">{projects[3].description}</p>
                 <div className="flex items-center justify-between">
                   <div className="flex gap-1">
                     {projects[3].technologies.slice(0, 2).map((tech, i) => (
-                      <Badge key={i} variant="outline" className="text-[10px] px-1.5 py-0">{tech}</Badge>
+                      <Badge key={i} variant="outline" className="text-[8px] md:text-[10px] px-1 md:px-1.5 py-0">{tech}</Badge>
                     ))}
                   </div>
-                  <Button variant="ghost" size="sm" className="h-6 w-6 p-0" asChild>
+                  <Button variant="ghost" size="sm" className="h-5 w-5 md:h-6 md:w-6 p-0" asChild>
                     <a href={projects[3].github} target="_blank" rel="noopener noreferrer">
-                      <Github className="h-3.5 w-3.5" />
+                      <Github className="h-3 w-3 md:h-3.5 md:w-3.5" />
                     </a>
                   </Button>
                 </div>
