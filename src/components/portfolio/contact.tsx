@@ -56,7 +56,7 @@ const Contact = () => {
                   <ArrowUpRight className="h-4 w-4 text-muted-foreground group-hover:text-[#0A66C2] transition-colors" />
                 </div>
                 <h4 className="font-semibold text-sm mb-1">LinkedIn</h4>
-                <p className="text-[10px] text-muted-foreground flex-grow">Professional network</p>
+                <p className="text-[10px] text-muted-foreground flex-grow">Connect with me!</p>
                 <span className="text-[10px] text-primary group-hover:translate-x-1 transition-transform inline-flex items-center gap-1">
                   Connect <ArrowUpRight className="h-2.5 w-2.5" />
                 </span>
@@ -65,19 +65,23 @@ const Contact = () => {
           </TiltCard>
 
           {/* GitHub */}
-          <TiltCard className="col-span-1" tiltMaxAngle={20}>
+          <TiltCard className="col-span-1 row-span-1" tiltMaxAngle={10}>
             <GlowCard 
-              className="h-full p-2 group cursor-pointer card-shine"
-              glowColor="rgba(100, 100, 100, 0.3)"
+              className="h-full bg-gradient-to-br from-primary/5 to-purple-500/5 flex items-center justify-center group cursor-pointer"
+              glowColor="rgba(168, 85, 247, 0.2)"
             >
               <a 
-                href="https://github.com/AxelSuu"
-                target="_blank"
+                href="https://github.com/AxelSuu" 
+                target="_blank" 
                 rel="noopener noreferrer"
-                className="flex flex-col items-center justify-center h-full text-center"
+                className="text-center p-2 md:p-3 w-full h-full flex flex-col items-center justify-center"
               >
-                <Github className="h-6 w-6 mb-1 group-hover:scale-110 transition-all" />
-                <span className="text-[10px] font-medium">GitHub</span>
+                <div className="relative">
+                  <Github className="h-12 w-12 mb-3 text-muted-foreground group-hover:text-primary transition-all duration-300" />
+                  {/* Pulse ring effect */}
+                  <div className="absolute inset-0 rounded-full border-2 border-primary/50 scale-0 group-hover:scale-150 opacity-0 group-hover:opacity-100 transition-all duration-500" />
+                </div>
+                <p className="font-semibold text-lg group-hover:text-primary transition-colors">GitHub</p>
               </a>
             </GlowCard>
           </TiltCard>
@@ -93,7 +97,7 @@ const Contact = () => {
               </div>
               <div>
                 <p className="text-[10px] text-muted-foreground">Location</p>
-                <p className="font-medium text-xs">Linköping, Sweden</p>
+                <p className="font-medium text-xs">Linköping/Stockholm</p>
               </div>
             </GlowCard>
           </TiltCard>

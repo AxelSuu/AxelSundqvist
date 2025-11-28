@@ -159,9 +159,15 @@ const Projects = () => {
                 rel="noopener noreferrer"
                 className="text-center p-2 md:p-3 w-full h-full flex flex-col items-center justify-center"
               >
-                <Github className="h-5 w-5 md:h-8 md:w-8 mb-1 md:mb-2 text-muted-foreground group-hover:text-primary group-hover:scale-110 transition-all duration-300" />
-                <p className="font-semibold text-xs md:text-sm group-hover:text-primary transition-colors">GitHub</p>
-                <p className="text-[8px] md:text-[10px] text-muted-foreground hidden md:block">View all repos →</p>
+                <div className="relative">
+                  <Github className="h-12 w-12 mb-3 text-muted-foreground group-hover:text-primary transition-all duration-300" />
+                  {/* Pulse ring effect */}
+                  <div className="absolute inset-0 rounded-full border-2 border-primary/50 scale-0 group-hover:scale-150 opacity-0 group-hover:opacity-100 transition-all duration-500" />
+                </div>
+                <p className="font-semibold text-lg group-hover:text-primary transition-colors">More on GitHub</p>
+                <p className="text-xs text-muted-foreground mt-1 group-hover:translate-x-1 transition-transform">
+                  View all repositories →
+                </p>
               </a>
             </GlowCard>
           </TiltCard>
