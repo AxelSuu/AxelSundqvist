@@ -62,74 +62,66 @@ const Projects = () => {
           {/* Featured Project - Large card spanning 2x2 */}
           <TiltCard className="col-span-2 row-span-2" tiltMaxAngle={8}>
             <GlowCard 
-              className="h-full group relative overflow-hidden p-2 md:p-4 flex flex-col justify-between"
+              className="h-full group relative overflow-hidden p-2 md:p-4 flex flex-col justify-center"
               glowColor="rgba(59, 130, 246, 0.4)"
             >
-              <div>
-                <div className="flex items-center space-x-2 md:space-x-3 mb-2 md:mb-3">
-                  <div className="p-1.5 md:p-2.5 rounded-lg md:rounded-xl bg-gradient-to-br from-blue-500 to-purple-600 shadow-lg shadow-blue-500/30 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">
-                    <Radio className="h-4 w-4 md:h-5 md:w-5 text-white" />
-                  </div>
-                  <h3 className="text-sm md:text-lg font-semibold">{projects[0].title}</h3>
+              <div className="flex items-center space-x-2 md:space-x-3 mb-2 md:mb-3">
+                <div className="p-1.5 md:p-2.5 rounded-lg md:rounded-xl bg-gradient-to-br from-blue-500 to-purple-600 shadow-lg shadow-blue-500/30 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">
+                  <Radio className="h-4 w-4 md:h-5 md:w-5 text-white" />
                 </div>
-                <p className="text-muted-foreground leading-relaxed text-xs md:text-sm line-clamp-2 md:line-clamp-3">
-                  {projects[0].description}
-                </p>
+                <h3 className="text-sm md:text-lg font-semibold">{projects[0].title}</h3>
               </div>
-              <div>
-                <div className="flex flex-wrap gap-1 md:gap-1.5 mb-2 md:mb-3">
-                  {projects[0].technologies.slice(0, 3).map((tech, i) => (
-                    <Badge 
-                      key={i} 
-                      variant="secondary" 
-                      className="text-[9px] md:text-xs px-1.5 md:px-2.5 py-0 md:py-0.5 hover:scale-105 transition-transform bg-primary/10 border-primary/20"
-                    >
-                      {tech}
-                    </Badge>
-                  ))}
-                </div>
-                <Button variant="outline" size="sm" className="w-fit h-6 md:h-8 text-[10px] md:text-xs group/btn" asChild>
-                  <a href={projects[0].github} target="_blank" rel="noopener noreferrer">
-                    <Github className="mr-1.5 h-3.5 w-3.5 group-hover/btn:rotate-12 transition-transform" />
-                    View Code
-                  </a>
-                </Button>
+              <p className="text-muted-foreground leading-relaxed text-xs md:text-sm line-clamp-2 md:line-clamp-3 mb-2 md:mb-3">
+                {projects[0].description}
+              </p>
+              <div className="flex flex-wrap gap-1 md:gap-1.5 mb-2 md:mb-3">
+                {projects[0].technologies.slice(0, 3).map((tech, i) => (
+                  <Badge 
+                    key={i} 
+                    variant="secondary" 
+                    className="text-[9px] md:text-xs px-1.5 md:px-2.5 py-0 md:py-0.5 hover:scale-105 transition-transform bg-primary/10 border-primary/20"
+                  >
+                    {tech}
+                  </Badge>
+                ))}
               </div>
+              <Button variant="outline" size="sm" className="w-fit h-6 md:h-8 text-[10px] md:text-xs group/btn" asChild>
+                <a href={projects[0].github} target="_blank" rel="noopener noreferrer">
+                  <Github className="mr-1.5 h-3.5 w-3.5 group-hover/btn:rotate-12 transition-transform" />
+                  View Code
+                </a>
+              </Button>
             </GlowCard>
           </TiltCard>
 
           {/* PyTorch Project - Tall card */}
           <TiltCard className="col-span-1 row-span-2" tiltMaxAngle={10}>
             <GlowCard 
-              className="h-full group relative overflow-hidden card-shine p-2 md:p-3 flex flex-col justify-between"
+              className="h-full group relative overflow-hidden card-shine p-2 md:p-3 flex flex-col justify-center"
               glowColor="rgba(168, 85, 247, 0.4)"
             >
-              <div>
-                <div className="flex items-center space-x-1.5 md:space-x-2 mb-1 md:mb-2">
-                  <div className="p-1.5 md:p-2 rounded-lg bg-gradient-to-br from-purple-500 to-pink-500 shadow-lg shadow-purple-500/30 group-hover:scale-110 transition-all duration-300">
-                    <Brain className="h-3 w-3 md:h-4 md:w-4 text-white" />
-                  </div>
-                  <h3 className="text-xs md:text-sm font-semibold leading-tight">{projects[1].title}</h3>
+              <div className="flex items-center space-x-1.5 md:space-x-2 mb-1 md:mb-2">
+                <div className="p-1.5 md:p-2 rounded-lg bg-gradient-to-br from-purple-500 to-pink-500 shadow-lg shadow-purple-500/30 group-hover:scale-110 transition-all duration-300">
+                  <Brain className="h-3 w-3 md:h-4 md:w-4 text-white" />
                 </div>
-                <p className="text-muted-foreground leading-relaxed text-[10px] md:text-xs line-clamp-2 md:line-clamp-3">
-                  {projects[1].description}
-                </p>
+                <h3 className="text-xs md:text-sm font-semibold leading-tight">{projects[1].title}</h3>
               </div>
-              <div>
-                <div className="flex flex-wrap gap-1 mb-1.5 md:mb-2">
-                  {projects[1].technologies.slice(0, 2).map((tech, i) => (
-                    <Badge key={i} variant="outline" className="text-[8px] md:text-[10px] px-1.5 md:px-2 py-0 hover:bg-purple-500/10">
-                      {tech}
-                    </Badge>
-                  ))}
-                </div>
-                <Button variant="outline" size="sm" className="w-fit h-5 md:h-7 text-[9px] md:text-xs group/btn" asChild>
-                  <a href={projects[1].github} target="_blank" rel="noopener noreferrer">
-                    <Github className="mr-1 h-3 w-3 group-hover/btn:rotate-12 transition-transform" />
-                    Code
-                  </a>
-                </Button>
+              <p className="text-muted-foreground leading-relaxed text-[10px] md:text-xs mb-1.5 md:mb-2">
+                {projects[1].description}
+              </p>
+              <div className="flex flex-wrap gap-1 mb-1.5 md:mb-2">
+                {projects[1].technologies.slice(0, 2).map((tech, i) => (
+                  <Badge key={i} variant="outline" className="text-[8px] md:text-[10px] px-1.5 md:px-2 py-0 hover:bg-purple-500/10">
+                    {tech}
+                  </Badge>
+                ))}
               </div>
+              <Button variant="outline" size="sm" className="w-fit h-5 md:h-7 text-[9px] md:text-xs group/btn" asChild>
+                <a href={projects[1].github} target="_blank" rel="noopener noreferrer">
+                  <Github className="mr-1 h-3 w-3 group-hover/btn:rotate-12 transition-transform" />
+                  Code
+                </a>
+              </Button>
             </GlowCard>
           </TiltCard>
 
@@ -174,10 +166,10 @@ const Projects = () => {
           {/* Platformer Game Card */}
           <TiltCard className="col-span-1 row-span-1" tiltMaxAngle={12}>
             <GlowCard 
-              className="h-full group card-shine p-2 md:p-3"
+              className="h-full group card-shine p-2 md:p-3 flex flex-col justify-center"
               glowColor="rgba(34, 197, 94, 0.3)"
             >
-              <div className="flex flex-col h-full">
+              <div className="flex flex-col">
                 <div className="flex items-center gap-1.5 md:gap-2 mb-1 md:mb-2">
                   <div className="p-1 md:p-1.5 rounded-lg bg-gradient-to-br from-green-500 to-emerald-600 group-hover:scale-110 transition-all">
                     <Gamepad2 className="h-3 w-3 md:h-4 md:w-4 text-white" />
@@ -204,10 +196,10 @@ const Projects = () => {
           {/* PDF to Excel Card */}
           <TiltCard className="col-span-1 row-span-1" tiltMaxAngle={12}>
             <GlowCard 
-              className="h-full group card-shine p-2 md:p-3"
+              className="h-full group card-shine p-2 md:p-3 flex flex-col justify-center"
               glowColor="rgba(249, 115, 22, 0.3)"
             >
-              <div className="flex flex-col h-full">
+              <div className="flex flex-col">
                 <div className="flex items-center gap-1.5 md:gap-2 mb-1 md:mb-2">
                   <div className="p-1 md:p-1.5 rounded-lg bg-gradient-to-br from-orange-500 to-red-500 group-hover:scale-110 transition-all">
                     <BookOpen className="h-3 w-3 md:h-4 md:w-4 text-white" />

@@ -33,30 +33,28 @@ const About = () => {
 
       <div className="container mx-auto px-3 md:px-4 relative z-10 max-h-full">
         {/* Bento Grid Layout - Simplified for mobile */}
-        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-1.5 md:gap-2 auto-rows-[minmax(35px,1fr)] md:auto-rows-[minmax(42px,1fr)] max-h-[85vh] md:max-h-[75vh] overflow-y-auto md:overflow-hidden scrollbar-hide">
+        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-1.5 md:gap-2 auto-rows-[minmax(30px,1fr)] md:auto-rows-[minmax(35px,1fr)] max-h-[70vh] md:max-h-[60vh] overflow-y-auto md:overflow-hidden scrollbar-hide">
           
           {/* Large Bio Card */}
           <TiltCard className="col-span-2 md:col-span-2 lg:col-span-3 row-span-2 h-full" tiltMaxAngle={5}>
               <GlowCard 
-                className="h-full p-3 flex flex-col justify-between"
+                className="h-full p-3 flex flex-col justify-center"
                 glowColor="rgba(59, 130, 246, 0.2)"
               >
-                  <div>
-                    <div className="flex items-center gap-2 mb-2">
-                      <div className="p-1.5 rounded-lg bg-gradient-to-br from-blue-500 to-cyan-500">
-                        <BookOpen className="h-4 w-4 text-white" />
-                      </div>
-                      <h3 className="text-lg font-semibold">Who I Am</h3>
-                    </div>
-                    <p className="text-xs text-muted-foreground leading-relaxed mb-2">
-                      I'm a third year student in Applied Physics & Electrical Engineering who enjoys math, tech, embedded systems and running. I'm bartending at the student pub VilleValla and always trying new beers.
-                    </p>
+                <div className="flex items-center gap-2 mb-2">
+                  <div className="p-1.5 rounded-lg bg-gradient-to-br from-blue-500 to-cyan-500">
+                    <BookOpen className="h-4 w-4 text-white" />
                   </div>
-                  <div className="flex items-center gap-2 mt-2 text-xs text-muted-foreground">
-                    <MapPin className="h-3 w-3 text-red-500" />
-                    <span>Linköping, Sweden</span>
-                  </div>
-                </GlowCard>
+                  <h3 className="text-lg font-semibold">Who I Am</h3>
+                </div>
+                <p className="text-xs text-muted-foreground leading-relaxed mb-2">
+                  I'm a third year student in Applied Physics & Electrical Engineering who enjoys math, tech, embedded systems and running. I'm bartending at the student pub VilleValla and always trying new beers.
+                </p>
+                <div className="flex items-center gap-2 text-xs text-muted-foreground">
+                  <MapPin className="h-3 w-3 text-red-500" />
+                  <span>Linköping, Sweden</span>
+                </div>
+              </GlowCard>
           </TiltCard>
 
           {/* Stats Cards - Staggered with tilt */}
