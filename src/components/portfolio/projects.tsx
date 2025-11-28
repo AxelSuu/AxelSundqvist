@@ -54,7 +54,7 @@ const Projects = () => {
   ]
 
   return (
-    <section id="projects" aria-labelledby="projects-heading" className="h-screen w-full py-4 bg-background relative flex items-center overflow-hidden">
+    <section id="projects" aria-labelledby="projects-heading" className="h-[100dvh] md:h-screen w-full py-4 bg-background relative flex items-center overflow-hidden">
 
       <div className="container mx-auto px-3 md:px-4 relative z-10 flex items-center justify-center">
         {/* Bento Grid Layout - Clean 4-column layout */}
