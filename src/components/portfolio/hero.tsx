@@ -1,31 +1,14 @@
 import { Github, Linkedin, Mail, ChevronDown } from 'lucide-react'
 import { useState, useEffect } from 'react'
-import { AnimatedBackground } from '@/components/ui/animated-background'
-import { FloatingOrbs } from '@/components/ui/floating-orbs'
 import { MagneticButton } from '@/components/ui/magnetic-button'
-import { ParticleField } from '@/components/ui/particle-field'
-import { AuroraBackground } from '@/components/ui/aurora-background'
 import { MorphingText } from '@/components/ui/morphing-text'
 import { LiquidButton } from '@/components/ui/liquid-button'
 import { StaggerText } from '@/components/ui/stagger-text'
 
 const Hero = () => {
-  const [scrollProgress, setScrollProgress] = useState(0)
   const [displayedText, setDisplayedText] = useState('')
   const [isLoaded, setIsLoaded] = useState(false)
   const fullName = 'Axel Sundqvist'
-
-  // Scroll progress indicator
-  useEffect(() => {
-    const handleScroll = () => {
-      const totalHeight = document.documentElement.scrollHeight - window.innerHeight
-      const progress = (window.scrollY / totalHeight) * 100
-      setScrollProgress(Math.min(progress, 100))
-    }
-
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
 
   // Typing animation
   useEffect(() => {
@@ -44,71 +27,37 @@ const Hero = () => {
   }, [])
 
   const scrollToProjects = () => {
-    document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })
+    const navigateToSection = (window as Window & { navigateToSection?: (index: number) => void }).navigateToSection
+    if (navigateToSection) {
+      navigateToSection(2) // Projects is index 2
+    } else {
+      document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })
+    }
+  }
+
+  const scrollToContact = () => {
+    const navigateToSection = (window as Window & { navigateToSection?: (index: number) => void }).navigateToSection
+    if (navigateToSection) {
+      navigateToSection(3) // Contact is index 3
+    } else {
+      document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })
+    }
   }
 
   return (
-    <>
-      {/* Scroll Progress Indicator - Enhanced */}
-      <div className="fixed top-0 left-0 w-full h-1 bg-muted/50 z-50 backdrop-blur-sm">
-        <div 
-          className="h-full bg-gradient-to-r from-cyan-500 via-purple-500 to-pink-500 transition-all duration-300 ease-out relative"
-          style={{ width: `${scrollProgress}%` }}
-        >
-          {/* Glow effect on progress bar */}
-          <div className="absolute right-0 top-0 w-20 h-full bg-gradient-to-l from-white/50 to-transparent animate-pulse" />
-        </div>
-      </div>
-
-      <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden">
-        {/* Particle Field Background */}
-        <ParticleField />
-        
-        {/* Aurora Background */}
-        <AuroraBackground />
-        
-        {/* Floating Orbs Background */}
-        <FloatingOrbs />
-        
-        {/* Animated Background */}
-        <AnimatedBackground />
-
-        {/* Morphing gradient blobs */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div 
-            className="absolute w-[600px] h-[600px] -top-[200px] -left-[200px] bg-gradient-to-br from-purple-500/20 to-blue-500/20 morphing-blob blur-3xl"
-            style={{ animationDelay: '0s' }}
-          />
-          <div 
-            className="absolute w-[500px] h-[500px] -bottom-[150px] -right-[150px] bg-gradient-to-br from-cyan-500/20 to-purple-500/20 morphing-blob blur-3xl"
-            style={{ animationDelay: '-4s' }}
-          />
-          <div 
-            className="absolute w-[400px] h-[400px] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-gradient-to-br from-pink-500/10 to-orange-500/10 morphing-blob blur-3xl"
-            style={{ animationDelay: '-2s' }}
-          />
-        </div>
-
-        {/* Background gradient */}
-        <div className="absolute inset-0 bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 dark:from-gray-900 dark:via-blue-900/50 dark:to-purple-900/50 opacity-30" />
-        
-        {/* Scanlines overlay for cyberpunk feel */}
-        <div className="absolute inset-0 scanlines pointer-events-none opacity-30" />
+      <section id="home" className="h-screen w-full flex items-center justify-center relative bg-background overflow-hidden">
+        {/* Subtle gradient background */}
+        <div className="absolute inset-0 bg-gradient-to-b from-background via-background to-muted/20" />
         
         {/* Content */}
-        <div className="container mx-auto px-4 text-center relative z-10">
+        <div className="container mx-auto px-3 md:px-4 text-center relative z-10">
           <div className="max-w-4xl mx-auto perspective-container">
             {/* Profile image with effects */}
             <div 
-              className={`relative w-44 h-44 mx-auto mb-8 mt-16 group transition-all duration-700 ${
+              className={`relative w-24 h-24 md:w-32 md:h-32 mx-auto mb-3 md:mb-4 mt-4 md:mt-8 group transition-all duration-700 ${
                 isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
               }`}
             >
-              {/* Animated ring behind image */}
-              <div className="absolute inset-0 rounded-full bg-gradient-to-r from-cyan-500 via-purple-500 to-pink-500 animate-spin-slow opacity-75 blur-sm" 
-                   style={{ animation: 'spin 8s linear infinite' }} />
-              <div className="absolute inset-[3px] rounded-full bg-background" />
-              
               {/* Image container */}
               <div className="absolute inset-[4px] rounded-full overflow-hidden border-2 border-white/20 shadow-2xl">
                 <img 
@@ -119,16 +68,11 @@ const Hero = () => {
                 {/* Hover overlay */}
                 <div className="absolute inset-0 bg-gradient-to-t from-purple-500/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               </div>
-              
-              {/* Floating badges around image */}
-              <div className="absolute -top-2 -right-2 w-8 h-8 rounded-full bg-green-500 flex items-center justify-center text-white text-xs font-bold shadow-lg animate-bounce" style={{ animationDelay: '0.5s', animationDuration: '2s' }}>
-                ✓
-              </div>
             </div>
 
             {/* Name with glitch and typing effect */}
             <h1 
-              className={`text-5xl md:text-7xl font-bold mb-4 leading-tight transition-all duration-700 delay-200 ${
+              className={`text-3xl md:text-4xl lg:text-5xl font-bold mb-2 leading-tight transition-all duration-700 delay-200 ${
                 isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
               }`}
             >
@@ -140,13 +84,12 @@ const Hero = () => {
             
             {/* Subtitle with morphing text */}
             <h2 
-              className={`text-xl md:text-2xl text-muted-foreground mb-6 transition-all duration-700 delay-300 ${
+              className={`text-base md:text-lg lg:text-xl text-muted-foreground mb-3 md:mb-4 transition-all duration-700 delay-300 ${
                 isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
               }`}
             >
-              <span className="mr-2">Applied Physics &</span>
               <MorphingText 
-                words={['Electrical Engineering', 'Signal Processing']} 
+                words={['Applied Physics', 'Electrical Engineering']} 
                 className="text-primary font-semibold"
                 interval={2500}
               />
@@ -155,7 +98,7 @@ const Hero = () => {
 
             {/* Description with stagger effect */}
             <div 
-              className={`text-lg md:text-xl text-muted-foreground mb-8 max-w-2xl mx-auto transition-all duration-700 delay-400 ${
+              className={`text-base md:text-lg text-muted-foreground mb-6 max-w-2xl mx-auto transition-all duration-700 delay-400 ${
                 isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
               }`}
             >
@@ -176,7 +119,7 @@ const Hero = () => {
             
             {/* Social links with magnetic effect */}
             <div 
-              className={`flex justify-center space-x-6 mb-10 transition-all duration-700 delay-500 ${
+              className={`flex justify-center space-x-3 md:space-x-4 mb-4 md:mb-6 transition-all duration-700 delay-500 ${
                 isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
               }`}
             >
@@ -185,31 +128,31 @@ const Hero = () => {
                 href="https://github.com/AxelSuu"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-4 rounded-full bg-muted/50 backdrop-blur-sm text-muted-foreground hover:bg-gray-800 hover:text-white transition-all duration-300 hover-float card-shine border border-white/10"
+                className="p-2.5 md:p-3 rounded-full bg-muted/50 backdrop-blur-sm text-muted-foreground hover:bg-gray-800 hover:text-white transition-all duration-300 hover-float card-shine border border-white/10 touch-manipulation"
               >
-                <Github className="h-6 w-6" />
+                <Github className="h-4 w-4 md:h-5 md:w-5" />
               </MagneticButton>
               <MagneticButton
                 as="a"
                 href="https://www.linkedin.com/in/axel-sundqvist/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-4 rounded-full bg-muted/50 backdrop-blur-sm text-muted-foreground hover:bg-blue-600 hover:text-white transition-all duration-300 hover-float card-shine border border-white/10"
+                className="p-2.5 md:p-3 rounded-full bg-muted/50 backdrop-blur-sm text-muted-foreground hover:bg-blue-600 hover:text-white transition-all duration-300 hover-float card-shine border border-white/10 touch-manipulation"
               >
-                <Linkedin className="h-6 w-6" />
+                <Linkedin className="h-4 w-4 md:h-5 md:w-5" />
               </MagneticButton>
               <MagneticButton
                 as="a"
                 href="mailto:axesu672@student.liu.se"
-                className="p-4 rounded-full bg-muted/50 backdrop-blur-sm text-muted-foreground hover:bg-purple-600 hover:text-white transition-all duration-300 hover-float card-shine border border-white/10"
+                className="p-2.5 md:p-3 rounded-full bg-muted/50 backdrop-blur-sm text-muted-foreground hover:bg-purple-600 hover:text-white transition-all duration-300 hover-float card-shine border border-white/10 touch-manipulation"
               >
-                <Mail className="h-6 w-6" />
+                <Mail className="h-4 w-4 md:h-5 md:w-5" />
               </MagneticButton>
             </div>
 
             {/* CTA Buttons */}
             <div 
-              className={`flex flex-wrap justify-center gap-4 mb-16 transition-all duration-700 delay-600 ${
+              className={`flex flex-wrap justify-center gap-2 md:gap-3 mb-6 md:mb-8 transition-all duration-700 delay-600 ${
                 isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
               }`}
             >
@@ -217,7 +160,7 @@ const Hero = () => {
                 View My Work
               </LiquidButton>
               <LiquidButton 
-                onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })} 
+                onClick={scrollToContact} 
                 variant="ghost"
               >
                 Get In Touch
@@ -226,20 +169,19 @@ const Hero = () => {
 
             {/* Scroll indicator */}
             <div 
-              className={`absolute bottom-8 left-1/2 -translate-x-1/2 cursor-pointer transition-all duration-700 delay-700 ${
+              className={`absolute bottom-4 md:bottom-8 left-1/2 -translate-x-1/2 cursor-pointer transition-all duration-700 delay-700 ${
                 isLoaded ? 'opacity-100' : 'opacity-0'
               }`}
               onClick={scrollToProjects}
             >
               <div className="flex flex-col items-center text-muted-foreground hover:text-primary transition-colors">
-                <span className="text-xs mb-2 tracking-widest uppercase">Scroll</span>
-                <ChevronDown className="h-6 w-6 animate-bounce" />
+                <span className="text-[10px] md:text-xs mb-1 md:mb-2 tracking-widest uppercase">Scroll</span>
+                <ChevronDown className="h-5 w-5 md:h-6 md:w-6 animate-bounce" />
               </div>
             </div>
           </div>
         </div>
       </section>
-    </>
   )
 }
 
