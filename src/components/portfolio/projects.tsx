@@ -156,9 +156,6 @@ const Projects = () => {
                   <div className="absolute inset-0 rounded-full border-2 border-primary/50 scale-0 group-hover:scale-150 opacity-0 group-hover:opacity-100 transition-all duration-500" />
                 </div>
                 <p className="font-semibold text-lg group-hover:text-primary transition-colors">More on GitHub</p>
-                <p className="text-xs text-muted-foreground mt-1 group-hover:translate-x-1 transition-transform">
-                  View all repositories →
-                </p>
               </a>
             </GlowCard>
           </TiltCard>

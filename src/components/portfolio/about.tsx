@@ -48,7 +48,7 @@ const About = () => {
                   <h3 className="text-lg font-semibold">Who I Am</h3>
                 </div>
                 <p className="text-xs text-muted-foreground leading-relaxed mb-2">
-                  I'm a third year student in Applied Physics & Electrical Engineering who enjoys math, tech, embedded systems and running. I'm bartending at the student pub VilleValla and always trying new beers.
+                  I'm a third year student in Applied Physics & Electrical Engineering who enjoys math, tech and running. I'm bartending at the student pub VilleValla.
                 </p>
                 <div className="flex items-center gap-2 text-xs text-muted-foreground">
                   <MapPin className="h-3 w-3 text-red-500" />
@@ -87,7 +87,7 @@ const About = () => {
                 <h3 className="font-semibold text-sm">What Drives Me</h3>
               </div>
               <p className="text-xs text-muted-foreground leading-relaxed">
-                Signal Processing, ML, Embedded and Wireless Communications.
+                Signal Processing, ML, Embedded and Wireless Coms.
               </p>
             </GlowCard>
           </TiltCard>

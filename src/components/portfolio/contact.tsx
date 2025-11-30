@@ -29,7 +29,6 @@ const Contact = () => {
                       <ArrowUpRight className="h-4 w-4 text-muted-foreground group-hover:text-primary group-hover:translate-x-1 group-hover:-translate-y-1 transition-all" />
                     </div>
                     <h3 className="text-lg font-bold mb-1">Send me an email</h3>
-                    <p className="text-xs text-muted-foreground mb-2">Best way to reach me for opportunities.</p>
                     <div className="text-xs text-primary font-medium hover:underline">axesu672@student.liu.se</div>
                   </a>
                 </GlowCard>
@@ -54,7 +53,6 @@ const Contact = () => {
                   <ArrowUpRight className="h-4 w-4 text-muted-foreground group-hover:text-[#0A66C2] transition-colors" />
                 </div>
                 <h4 className="font-semibold text-sm mb-1">LinkedIn</h4>
-                <p className="text-[10px] text-muted-foreground mb-2">Connect with me!</p>
                 <span className="text-[10px] text-primary group-hover:translate-x-1 transition-transform inline-flex items-center gap-1">
                   Connect <ArrowUpRight className="h-2.5 w-2.5" />
                 </span>
