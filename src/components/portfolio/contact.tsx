@@ -10,7 +10,7 @@ const Contact = () => {
 
       <div className="container mx-auto px-3 md:px-4 relative z-10 max-h-full">
         {/* Bento Grid Layout - Simplified for mobile */}
-        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-1.5 md:gap-2 auto-rows-[minmax(38px,1fr)] md:auto-rows-[minmax(42px,1fr)] max-w-5xl mx-auto max-h-[80vh] md:max-h-[75vh] overflow-y-auto md:overflow-hidden scrollbar-hide">
+        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-2.5 md:gap-3 auto-rows-[minmax(32px,1fr)] md:auto-rows-[minmax(36px,1fr)] max-w-5xl mx-auto max-h-[80vh] md:max-h-[75vh] overflow-y-auto md:overflow-hidden scrollbar-hide">
           
           {/* Main CTA - Large */}
           <TiltCard className="col-span-2 md:col-span-2 lg:col-span-3 row-span-1 h-full" tiltMaxAngle={5}>
