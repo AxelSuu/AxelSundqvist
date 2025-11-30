@@ -33,7 +33,7 @@ const About = () => {
 
       <div className="container mx-auto px-3 md:px-4 relative z-10 max-h-full">
         {/* Bento Grid Layout - Simplified for mobile */}
-        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-1.5 md:gap-2 auto-rows-[minmax(30px,1fr)] md:auto-rows-[minmax(35px,1fr)] max-h-[70vh] md:max-h-[60vh] overflow-y-auto md:overflow-hidden scrollbar-hide">
+        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-2.5 md:gap-3 auto-rows-[minmax(26px,1fr)] md:auto-rows-[minmax(30px,1fr)] max-h-[70vh] md:max-h-[60vh] overflow-y-auto md:overflow-hidden scrollbar-hide">
           
           {/* Large Bio Card */}
           <TiltCard className="col-span-2 md:col-span-2 lg:col-span-3 row-span-2 h-full" tiltMaxAngle={5}>

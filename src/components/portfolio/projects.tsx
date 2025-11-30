@@ -57,7 +57,7 @@ const Projects = () => {
 
       <div className="container mx-auto px-3 md:px-4 relative z-10 flex items-center justify-center">
         {/* Bento Grid Layout - Clean 4-column layout */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-2 md:gap-3 grid-rows-[85px_85px_70px] md:grid-rows-[120px_120px] max-w-4xl mx-auto w-full">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 grid-rows-[75px_75px_60px] md:grid-rows-[100px_100px] max-w-4xl mx-auto w-full">
           
           {/* Featured Project - Large card spanning 2x2 */}
           <TiltCard className="col-span-2 row-span-2" tiltMaxAngle={8}>
