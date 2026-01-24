@@ -4,7 +4,7 @@ const Infrasonik = () => {
   return (
     <section id="infrasonik" className="h-[100dvh] md:h-screen w-full bg-background relative flex items-center overflow-hidden">
       <div className="container mx-auto px-6 md:px-12 max-w-6xl">
-        <div className="grid md:grid-cols-2 gap-8 md:gap-16 items-center">
+        <div className="grid grid-cols-2 gap-8 md:gap-16 items-center">
           {/* Left: Content */}
           <div>
             <div className="flex items-center gap-3 mb-3">
@@ -68,7 +68,7 @@ const Infrasonik = () => {
           </div>
 
           {/* Right: Visual */}
-          <div className="hidden md:block">
+          <div>
             <div className="relative max-w-sm mx-auto">
               <div className="absolute -inset-4 bg-gradient-to-br from-cyan-500/20 via-transparent to-blue-500/20 rounded-2xl" />
               <div className="relative rounded-xl overflow-hidden border border-cyan-500/20 shadow-2xl shadow-cyan-500/10">

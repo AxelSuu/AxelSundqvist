@@ -43,13 +43,14 @@ const Navigation = () => {
   const navItems = [
     { name: 'Home', href: '#home', index: 0 },
     { name: 'Infrasonik', href: '#infrasonik', index: 1 },
+    { name: 'Projects', href: '#projects', index: 2 },
     { name: 'About', href: '#about', index: 5 },
   ]
 
   const isActiveSection = (href: string) => {
     const sectionId = href.slice(1)
     // For Projects, check if any project section is active
-    if (sectionId === 'project-esp32') {
+    if (sectionId === 'projects') {
       return activeSection === 'project-esp32' || activeSection === 'project-pytorch' || activeSection === 'project-platformer'
     }
     return activeSection === sectionId
@@ -91,7 +92,7 @@ const Navigation = () => {
           </div>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-1 bg-muted/30 rounded-full px-2 py-1 backdrop-blur-sm border border-border/30">
+          <div className="flex items-center space-x-1 bg-muted/30 rounded-full px-2 py-1 backdrop-blur-sm border border-border/30">
             {navItems.map((item) => (
               <button
                 key={item.name}
@@ -127,7 +128,7 @@ const Navigation = () => {
             
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="md:hidden p-2.5 rounded-full bg-muted/50 backdrop-blur-sm hover:bg-muted transition-all duration-300 border border-border/30"
+              className="hidden p-2.5 rounded-full bg-muted/50 backdrop-blur-sm hover:bg-muted transition-all duration-300 border border-border/30"
               aria-label="Toggle menu"
             >
               {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
@@ -136,7 +137,7 @@ const Navigation = () => {
         </div>
 
         {/* Mobile Navigation with slide animation */}
-        <div className={`md:hidden overflow-hidden transition-all duration-300 ease-out ${
+        <div className={`hidden overflow-hidden transition-all duration-300 ease-out ${
           isOpen ? 'max-h-64 opacity-100' : 'max-h-0 opacity-0'
         }`}>
           <div className="bg-background/95 backdrop-blur-xl border-t border-border/40 rounded-b-2xl shadow-xl">
