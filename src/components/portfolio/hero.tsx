@@ -1,9 +1,6 @@
 import { Github, Linkedin, Mail } from 'lucide-react'
 import { useState, useEffect } from 'react'
 import { MagneticButton } from '@/components/ui/magnetic-button'
-import { MorphingText } from '@/components/ui/morphing-text'
-import { LiquidButton } from '@/components/ui/liquid-button'
-import { StaggerText } from '@/components/ui/stagger-text'
 
 const Hero = () => {
   const [displayedText, setDisplayedText] = useState('')
@@ -26,24 +23,6 @@ const Hero = () => {
     setTimeout(() => setIsLoaded(true), 200)
   }, [])
 
-  const scrollToProjects = () => {
-    const navigateToSection = (window as Window & { navigateToSection?: (index: number) => void }).navigateToSection
-    if (navigateToSection) {
-      navigateToSection(1) // Projects is index 1
-    } else {
-      document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })
-    }
-  }
-
-  const scrollToContact = () => {
-    const navigateToSection = (window as Window & { navigateToSection?: (index: number) => void }).navigateToSection
-    if (navigateToSection) {
-      navigateToSection(3) // Contact is index 3
-    } else {
-      document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })
-    }
-  }
-
   return (
       <section id="home" className="h-[100dvh] md:h-screen w-full flex items-center justify-center relative bg-background overflow-hidden">
         {/* Subtle gradient background */}
@@ -61,7 +40,7 @@ const Hero = () => {
               {/* Image container */}
               <div className="absolute inset-[4px] rounded-full overflow-hidden border-2 border-white/20 shadow-2xl">
                 <img 
-                  src="/images/me3.jpeg" 
+                  src="/images/me.png" 
                   alt="Axel Sundqvist" 
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                 />
@@ -76,38 +55,29 @@ const Hero = () => {
                 isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
               }`}
             >
-              <span className="animated-gradient-text">
+              <span className="text-foreground">
                 {displayedText}
               </span>
               <span className="animate-pulse text-purple-500">|</span>
             </h1>
             
-            {/* Subtitle with morphing text */}
+            {/* Subtitle */}
             <h2 
               className={`text-base md:text-lg lg:text-xl text-muted-foreground mb-3 md:mb-4 transition-all duration-700 delay-300 ${
                 isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
               }`}
             >
-              <MorphingText 
-                words={['Applied Physics', 'Electrical Engineering']} 
-                className="text-primary font-semibold"
-                interval={2500}
-              />
-              <span className="ml-2">Student</span>
+              <span className="text-primary font-semibold">Applied Physics & Electrical Engineering Student</span>
             </h2>
 
-            {/* Description with stagger effect */}
+            {/* Description */}
             <div 
               className={`text-base md:text-lg text-muted-foreground mb-6 max-w-2xl mx-auto transition-all duration-700 delay-400 ${
                 isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
               }`}
             >
-              <StaggerText 
-                text="Check out my projects to see what I am working on"
-                staggerDelay={30}
-                delay={800}
-              />
-              <br />
+              <span className="text-primary font-semibold">Embedded, DSP & ML developer</span>
+
               
             </div>
             
@@ -142,23 +112,6 @@ const Hero = () => {
               >
                 <Mail className="h-4 w-4 md:h-5 md:w-5" />
               </MagneticButton>
-            </div>
-
-            {/* CTA Buttons */}
-            <div 
-              className={`flex flex-wrap justify-center gap-2 md:gap-3 mb-6 md:mb-8 transition-all duration-700 delay-600 ${
-                isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-              }`}
-            >
-              <LiquidButton onClick={scrollToProjects} variant="primary">
-                View My Work
-              </LiquidButton>
-              <LiquidButton 
-                onClick={scrollToContact} 
-                variant="ghost"
-              >
-                Get In Touch
-              </LiquidButton>
             </div>
           </div>
         </div>

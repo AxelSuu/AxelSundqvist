@@ -4,8 +4,8 @@ import { Toaster } from '@/components/ui/toaster'
 import Navigation from '@/components/portfolio/navigation'
 import Hero from '@/components/portfolio/hero'
 import About from '@/components/portfolio/about'
-import Projects from '@/components/portfolio/projects'
-import Contact from '@/components/portfolio/contact'
+import { ProjectESP32, ProjectPyTorch, ProjectPlatformer } from '@/components/portfolio/projects'
+import Infrasonik from '@/components/portfolio/Infrasonik'
 import { PerspectiveScroll } from '@/components/ui/perspective-scroll'
 import { Analytics } from '@vercel/analytics/react'
 import './app.css'
@@ -21,9 +21,11 @@ function App() {
           <main id="main-content">
             <PerspectiveScroll>
               <Hero />
-              <Projects />
+              <Infrasonik />
+              <ProjectESP32 />
+              <ProjectPyTorch />
+              <ProjectPlatformer />
               <About />
-              <Contact />
             </PerspectiveScroll>
           </main>
           <Toaster />

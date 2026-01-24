@@ -1,227 +1,291 @@
-import { Badge } from '@/components/ui/badge'
-import { Button } from '@/components/ui/button'
-import { Github, Radio, Brain, Gamepad2, BookOpen } from 'lucide-react'
-import { GlowCard } from '@/components/ui/glow-card'
-import { TiltCard } from '@/components/ui/tilt-card'
+import { Github, ExternalLink, Wifi, Cpu, Monitor, TrendingUp, BarChart3, Database, Gamepad2, Joystick, Zap } from 'lucide-react'
 
-const Projects = () => {
-  const projects = [
-    {
-      title: 'ESP32-S3 Wireless Pong',
-      description: 'Embedded wireless pong game with SPI, Wi-Fi communication, and OLED peripheral in C++',
-      technologies: ['C++', 'Embedded', 'Esp32-S3', 'WiFi'],
-      icon: Radio,
-      color: 'bg-purple-500',
-      github: 'https://github.com/AxelSuu/ESP32-Wi-Fi-Pong',
-      demo: null,
-      featured: false,
-      size: 'large', // Takes 2 rows
-    },
-    {
-      title: 'PyTorch Stock Forecasting',
-      description: 'Developed a PyTorch-based stock price forecaster with Yahoo Finance as a learning project.',
-      technologies: ['Python', 'PyTorch', 'Numpy', 'Yahoo Finance'],
-      icon: Brain,
-      color: 'bg-blue-500',
-      github: 'https://github.com/AxelSuu/Pytorch-Quant-Model',
-      demo: null,
-      featured: false,
-      size: 'tall', // Takes 2 columns
-    },
-    {
-      title: '2D Platformer Game',
-      description: 'A 2D platformer game built with Python and Pygame.',
-      technologies: ['Python', 'Pygame'],
-      icon: Gamepad2,
-      color: 'bg-green-500',
-      github: 'https://github.com/AxelSuu/Skybound-2.0',
-      demo: null,
-      featured: false,
-      size: 'normal',
-    },
-    {
-      title: 'PDF to excel',
-      description: 'Excel table pipeline',
-      technologies: ['Python', 'camelot-py', 'xlsxwriter'],
-      icon: BookOpen,
-      color: 'bg-orange-500',
-      github: 'https://github.com/AxelSuu/SBB-pdf-report-to-excel',
-      demo: null,
-      featured: false,
-      size: 'normal',
-    },
-  ]
-
+// ESP32-S3 Wireless Pong Section
+export const ProjectESP32 = () => {
   return (
-    <section id="projects" aria-labelledby="projects-heading" className="h-[100dvh] md:h-screen w-full py-4 bg-background relative flex items-center overflow-hidden">
+    <section id="project-esp32" className="h-[100dvh] md:h-screen w-full bg-background relative flex items-center overflow-hidden">
+      <div className="container mx-auto px-6 md:px-12 max-w-6xl">
+        <div className="grid md:grid-cols-2 gap-8 md:gap-16 items-center">
+          {/* Left: Content */}
+          <div>
+            <div className="flex items-center gap-3 mb-3">
+              <span className="text-sm font-mono text-muted-foreground tracking-wider">02</span>
+              <div className="h-px w-8 bg-purple-500/50" />
+              <span className="text-xs text-purple-400 font-medium uppercase tracking-wider">Embedded Systems</span>
+            </div>
+            
+            <h2 className="text-2xl md:text-4xl font-bold mb-4 leading-tight">
+              ESP32-S3 Wireless Pong
+            </h2>
+            
+            <p className="text-sm md:text-base text-muted-foreground mb-5 leading-relaxed">
+              A fully functional wireless Pong game built from scratch using ESP32-S3 microcontrollers. 
+              Two devices communicate over Wi-Fi in real-time, each driving its own OLED display.
+            </p>
 
-      <div className="container mx-auto px-3 md:px-4 relative z-10 flex items-center justify-center">
-        {/* Bento Grid Layout - Clean 4-column layout */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 grid-rows-[75px_75px_60px] md:grid-rows-[100px_100px] max-w-4xl mx-auto w-full">
-          
-          {/* Featured Project - Large card spanning 2x2 */}
-          <TiltCard className="col-span-2 row-span-2" tiltMaxAngle={8}>
-            <GlowCard 
-              className="h-full group relative overflow-hidden p-2 md:p-4 flex flex-col justify-center"
-              glowColor="rgba(59, 130, 246, 0.4)"
-            >
-              <div className="flex items-center space-x-2 md:space-x-3 mb-2 md:mb-3">
-                <div className="p-1.5 md:p-2.5 rounded-lg md:rounded-xl bg-gradient-to-br from-blue-500 to-purple-600 shadow-lg shadow-blue-500/30 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">
-                  <Radio className="h-4 w-4 md:h-5 md:w-5 text-white" />
+            <div className="space-y-3 mb-5">
+              <div className="flex items-start gap-2.5">
+                <Wifi className="h-4 w-4 text-purple-400 mt-0.5 shrink-0" />
+                <div>
+                  <p className="text-sm font-medium">Real-time Wi-Fi Communication</p>
+                  <p className="text-xs text-muted-foreground">Custom protocol for low-latency game state sync</p>
                 </div>
-                <h3 className="text-sm md:text-lg font-semibold">{projects[0].title}</h3>
               </div>
-              <p className="text-muted-foreground leading-relaxed text-xs md:text-sm line-clamp-2 md:line-clamp-3 mb-2 md:mb-3">
-                {projects[0].description}
-              </p>
-              <div className="flex flex-wrap gap-1 md:gap-1.5 mb-2 md:mb-3">
-                {projects[0].technologies.slice(0, 3).map((tech, i) => (
-                  <Badge 
-                    key={i} 
-                    variant="secondary" 
-                    className="text-[9px] md:text-xs px-1.5 md:px-2.5 py-0 md:py-0.5 hover:scale-105 transition-transform bg-primary/10 border-primary/20"
-                  >
-                    {tech}
-                  </Badge>
-                ))}
+              <div className="flex items-start gap-2.5">
+                <Monitor className="h-4 w-4 text-purple-400 mt-0.5 shrink-0" />
+                <div>
+                  <p className="text-sm font-medium">SPI OLED Display Driver</p>
+                  <p className="text-xs text-muted-foreground">Efficient frame buffer for smooth rendering</p>
+                </div>
               </div>
-              <Button variant="outline" size="sm" className="w-fit h-6 md:h-8 text-[10px] md:text-xs group/btn" asChild>
-                <a href={projects[0].github} target="_blank" rel="noopener noreferrer">
-                  <Github className="mr-1.5 h-3.5 w-3.5 group-hover/btn:rotate-12 transition-transform" />
-                  View Code
-                </a>
-              </Button>
-            </GlowCard>
-          </TiltCard>
+              <div className="flex items-start gap-2.5">
+                <Cpu className="h-4 w-4 text-purple-400 mt-0.5 shrink-0" />
+                <div>
+                  <p className="text-sm font-medium">Bare-metal C++ Implementation</p>
+                  <p className="text-xs text-muted-foreground">Direct hardware control for precise timing</p>
+                </div>
+              </div>
+            </div>
 
-          {/* PyTorch Project - Tall card */}
-          <TiltCard className="col-span-1 row-span-2" tiltMaxAngle={10}>
-            <GlowCard 
-              className="h-full group relative overflow-hidden card-shine p-2 md:p-3 flex flex-col justify-center"
-              glowColor="rgba(168, 85, 247, 0.4)"
-            >
-              <div className="flex items-center space-x-1.5 md:space-x-2 mb-1 md:mb-2">
-                <div className="p-1.5 md:p-2 rounded-lg bg-gradient-to-br from-purple-500 to-pink-500 shadow-lg shadow-purple-500/30 group-hover:scale-110 transition-all duration-300">
-                  <Brain className="h-3 w-3 md:h-4 md:w-4 text-white" />
-                </div>
-                <h3 className="text-xs md:text-sm font-semibold leading-tight">{projects[1].title}</h3>
-              </div>
-              <p className="text-muted-foreground leading-relaxed text-[10px] md:text-xs mb-1.5 md:mb-2">
-                {projects[1].description}
-              </p>
-              <div className="flex flex-wrap gap-1 mb-1.5 md:mb-2">
-                {projects[1].technologies.slice(0, 2).map((tech, i) => (
-                  <Badge key={i} variant="outline" className="text-[8px] md:text-[10px] px-1.5 md:px-2 py-0 hover:bg-purple-500/10">
-                    {tech}
-                  </Badge>
-                ))}
-              </div>
-              <Button variant="outline" size="sm" className="w-fit h-5 md:h-7 text-[9px] md:text-xs group/btn" asChild>
-                <a href={projects[1].github} target="_blank" rel="noopener noreferrer">
-                  <Github className="mr-1 h-3 w-3 group-hover/btn:rotate-12 transition-transform" />
-                  Code
-                </a>
-              </Button>
-            </GlowCard>
-          </TiltCard>
+            <div className="flex flex-wrap gap-1.5 mb-5">
+              {['C++', 'ESP32-S3', 'FreeRTOS', 'SPI', 'Wi-Fi'].map((tech) => (
+                <span 
+                  key={tech} 
+                  className="px-2.5 py-0.5 text-xs bg-purple-500/10 text-purple-300 rounded-full border border-purple-500/20"
+                >
+                  {tech}
+                </span>
+              ))}
+            </div>
 
-          {/* Stats Card */}
-          <TiltCard className="col-span-1 row-span-1" tiltMaxAngle={15}>
-            <GlowCard 
-              className="h-full bg-gradient-to-br from-cyan-500/10 via-transparent to-purple-500/10 flex items-center justify-center"
-              glowColor="rgba(6, 182, 212, 0.3)"
+            <a 
+              href="https://github.com/AxelSuu/ESP32-Wi-Fi-Pong"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 text-sm text-foreground hover:text-purple-400 transition-colors group"
             >
-              <div className="text-center p-2 md:p-3">
-                <div className="text-2xl md:text-4xl font-bold animated-gradient-text mb-0.5 md:mb-1">11</div>
-                <p className="text-[10px] md:text-xs text-muted-foreground">Projects</p>
-              </div>
-            </GlowCard>
-          </TiltCard>
+              <Github className="h-4 w-4" />
+              <span className="font-medium">View on GitHub</span>
+              <ExternalLink className="h-3 w-3 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all" />
+            </a>
+          </div>
 
-          {/* GitHub CTA */}
-          <TiltCard className="col-span-1 row-span-1" tiltMaxAngle={10}>
-            <GlowCard 
-              className="h-full bg-gradient-to-br from-primary/5 to-purple-500/5 flex items-center justify-center group cursor-pointer"
-              glowColor="rgba(168, 85, 247, 0.2)"
-            >
-              <a 
-                href="https://github.com/AxelSuu" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="text-center p-2 md:p-3 w-full h-full flex flex-col items-center justify-center"
-              >
-                <div className="relative">
-                  <Github className="h-12 w-12 mb-3 text-muted-foreground group-hover:text-primary transition-all duration-300" />
-                  {/* Pulse ring effect */}
-                  <div className="absolute inset-0 rounded-full border-2 border-primary/50 scale-0 group-hover:scale-150 opacity-0 group-hover:opacity-100 transition-all duration-500" />
-                </div>
-                <p className="font-semibold text-lg group-hover:text-primary transition-colors">More on GitHub</p>
-              </a>
-            </GlowCard>
-          </TiltCard>
-
-          {/* Platformer Game Card */}
-          <TiltCard className="col-span-1 row-span-1" tiltMaxAngle={12}>
-            <GlowCard 
-              className="h-full group card-shine p-2 md:p-3 flex flex-col justify-center"
-              glowColor="rgba(34, 197, 94, 0.3)"
-            >
-              <div className="flex flex-col">
-                <div className="flex items-center gap-1.5 md:gap-2 mb-1 md:mb-2">
-                  <div className="p-1 md:p-1.5 rounded-lg bg-gradient-to-br from-green-500 to-emerald-600 group-hover:scale-110 transition-all">
-                    <Gamepad2 className="h-3 w-3 md:h-4 md:w-4 text-white" />
-                  </div>
-                  <h3 className="font-semibold text-[10px] md:text-sm">{projects[2].title}</h3>
-                </div>
-                <p className="text-[9px] md:text-xs text-muted-foreground mb-1 md:mb-2 line-clamp-1 md:line-clamp-2">{projects[2].description}</p>
-                <div className="flex items-center justify-between">
-                  <div className="flex gap-1">
-                    {projects[2].technologies.slice(0, 2).map((tech, i) => (
-                      <Badge key={i} variant="outline" className="text-[8px] md:text-[10px] px-1 md:px-1.5 py-0">{tech}</Badge>
-                    ))}
-                  </div>
-                  <Button variant="ghost" size="sm" className="h-5 w-5 md:h-6 md:w-6 p-0" asChild>
-                    <a href={projects[2].github} target="_blank" rel="noopener noreferrer">
-                      <Github className="h-3.5 w-3.5" />
-                    </a>
-                  </Button>
-                </div>
+          {/* Right: Visual */}
+          <div className="hidden md:block">
+            <div className="relative max-w-sm mx-auto">
+              <div className="absolute -inset-4 bg-gradient-to-br from-purple-500/20 via-transparent to-blue-500/20 rounded-2xl" />
+              <div className="relative rounded-xl overflow-hidden border border-purple-500/20 shadow-2xl shadow-purple-500/10">
+                <img 
+                  src="/images/esp32.jpeg" 
+                  alt="ESP32-S3 Wireless Pong Project" 
+                  className="w-full h-auto object-cover"
+                />
               </div>
-            </GlowCard>
-          </TiltCard>
-
-          {/* PDF to Excel Card */}
-          <TiltCard className="col-span-1 row-span-1" tiltMaxAngle={12}>
-            <GlowCard 
-              className="h-full group card-shine p-2 md:p-3 flex flex-col justify-center"
-              glowColor="rgba(249, 115, 22, 0.3)"
-            >
-              <div className="flex flex-col">
-                <div className="flex items-center gap-1.5 md:gap-2 mb-1 md:mb-2">
-                  <div className="p-1 md:p-1.5 rounded-lg bg-gradient-to-br from-orange-500 to-red-500 group-hover:scale-110 transition-all">
-                    <BookOpen className="h-3 w-3 md:h-4 md:w-4 text-white" />
-                  </div>
-                  <h3 className="font-semibold text-[10px] md:text-sm">{projects[3].title}</h3>
-                </div>
-                <p className="text-[9px] md:text-xs text-muted-foreground mb-1 md:mb-2 line-clamp-1 md:line-clamp-2">{projects[3].description}</p>
-                <div className="flex items-center justify-between">
-                  <div className="flex gap-1">
-                    {projects[3].technologies.slice(0, 2).map((tech, i) => (
-                      <Badge key={i} variant="outline" className="text-[8px] md:text-[10px] px-1 md:px-1.5 py-0">{tech}</Badge>
-                    ))}
-                  </div>
-                  <Button variant="ghost" size="sm" className="h-5 w-5 md:h-6 md:w-6 p-0" asChild>
-                    <a href={projects[3].github} target="_blank" rel="noopener noreferrer">
-                      <Github className="h-3 w-3 md:h-3.5 md:w-3.5" />
-                    </a>
-                  </Button>
-                </div>
-              </div>
-            </GlowCard>
-          </TiltCard>
+            </div>
+          </div>
         </div>
       </div>
     </section>
+  )
+}
+
+// PyTorch Stock Forecasting Section
+export const ProjectPyTorch = () => {
+  return (
+    <section id="project-pytorch" className="h-[100dvh] md:h-screen w-full bg-background relative flex items-center overflow-hidden">
+      <div className="container mx-auto px-6 md:px-12 max-w-6xl">
+        <div className="grid md:grid-cols-2 gap-8 md:gap-16 items-center">
+          {/* Left: Visual */}
+          <div className="hidden md:block">
+            <div className="relative max-w-sm mx-auto">
+              <div className="absolute -inset-4 bg-gradient-to-br from-blue-500/20 via-transparent to-cyan-500/20 rounded-2xl" />
+              <div className="relative rounded-xl overflow-hidden border border-blue-500/20 shadow-2xl shadow-blue-500/10">
+                <img 
+                  src="/images/pystock.png" 
+                  alt="PyTorch Stock Forecasting Project" 
+                  className="w-full h-auto object-cover"
+                />
+              </div>
+            </div>
+          </div>
+
+          {/* Right: Content */}
+          <div>
+            <div className="flex items-center gap-3 mb-3">
+              <span className="text-sm font-mono text-muted-foreground tracking-wider">03</span>
+              <div className="h-px w-8 bg-blue-500/50" />
+              <span className="text-xs text-blue-400 font-medium uppercase tracking-wider">Machine Learning</span>
+            </div>
+            
+            <h2 className="text-2xl md:text-4xl font-bold mb-4 leading-tight">
+              PyTorch Stock Forecasting
+            </h2>
+            
+            <p className="text-sm md:text-base text-muted-foreground mb-5 leading-relaxed">
+              A deep learning project exploring time-series prediction for stock prices. 
+              Built as a hands-on learning experience with PyTorch, implementing LSTM networks.
+            </p>
+
+            <div className="space-y-3 mb-5">
+              <div className="flex items-start gap-2.5">
+                <BarChart3 className="h-4 w-4 text-blue-400 mt-0.5 shrink-0" />
+                <div>
+                  <p className="text-sm font-medium">LSTM Neural Networks</p>
+                  <p className="text-xs text-muted-foreground">Sequential model for temporal pattern recognition</p>
+                </div>
+              </div>
+              <div className="flex items-start gap-2.5">
+                <Database className="h-4 w-4 text-blue-400 mt-0.5 shrink-0" />
+                <div>
+                  <p className="text-sm font-medium">Live Market Data Integration</p>
+                  <p className="text-xs text-muted-foreground">Yahoo Finance API for real-time stock data</p>
+                </div>
+              </div>
+              <div className="flex items-start gap-2.5">
+                <TrendingUp className="h-4 w-4 text-blue-400 mt-0.5 shrink-0" />
+                <div>
+                  <p className="text-sm font-medium">Feature Engineering Pipeline</p>
+                  <p className="text-xs text-muted-foreground">Technical indicators and data preprocessing</p>
+                </div>
+              </div>
+            </div>
+
+            <div className="flex flex-wrap gap-1.5 mb-5">
+              {['Python', 'PyTorch', 'NumPy', 'Pandas', 'Yahoo Finance'].map((tech) => (
+                <span 
+                  key={tech} 
+                  className="px-2.5 py-0.5 text-xs bg-blue-500/10 text-blue-300 rounded-full border border-blue-500/20"
+                >
+                  {tech}
+                </span>
+              ))}
+            </div>
+
+            <a 
+              href="https://github.com/AxelSuu/Pytorch-Quant-Model"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 text-sm text-foreground hover:text-blue-400 transition-colors group"
+            >
+              <Github className="h-4 w-4" />
+              <span className="font-medium">View on GitHub</span>
+              <ExternalLink className="h-3 w-3 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all" />
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  )
+}
+
+// 2D Platformer Game Section
+export const ProjectPlatformer = () => {
+  return (
+    <section id="project-platformer" className="h-[100dvh] md:h-screen w-full bg-background relative flex items-center overflow-hidden">
+      <div className="container mx-auto px-6 md:px-12 max-w-6xl">
+        <div className="grid md:grid-cols-2 gap-8 md:gap-16 items-center">
+          {/* Left: Content */}
+          <div>
+            <div className="flex items-center gap-3 mb-3">
+              <span className="text-sm font-mono text-muted-foreground tracking-wider">04</span>
+              <div className="h-px w-8 bg-green-500/50" />
+              <span className="text-xs text-green-400 font-medium uppercase tracking-wider">Game Development</span>
+            </div>
+            
+            <h2 className="text-2xl md:text-4xl font-bold mb-4 leading-tight">
+              Skybound 2.0
+            </h2>
+            
+            <p className="text-sm md:text-base text-muted-foreground mb-5 leading-relaxed">
+              A 2D platformer game built with Python and Pygame. Features classic platforming mechanics 
+              with physics-based movement, level progression, and sprite-based graphics.
+            </p>
+
+            <div className="space-y-3 mb-5">
+              <div className="flex items-start gap-2.5">
+                <Joystick className="h-4 w-4 text-green-400 mt-0.5 shrink-0" />
+                <div>
+                  <p className="text-sm font-medium">Physics-Based Movement</p>
+                  <p className="text-xs text-muted-foreground">Gravity, momentum, and collision detection</p>
+                </div>
+              </div>
+              <div className="flex items-start gap-2.5">
+                <Gamepad2 className="h-4 w-4 text-green-400 mt-0.5 shrink-0" />
+                <div>
+                  <p className="text-sm font-medium">Level Design System</p>
+                  <p className="text-xs text-muted-foreground">Tile-based level loading with progression</p>
+                </div>
+              </div>
+              <div className="flex items-start gap-2.5">
+                <Zap className="h-4 w-4 text-green-400 mt-0.5 shrink-0" />
+                <div>
+                  <p className="text-sm font-medium">Game Loop Architecture</p>
+                  <p className="text-xs text-muted-foreground">Fixed timestep with interpolated rendering</p>
+                </div>
+              </div>
+            </div>
+
+            <div className="flex flex-wrap gap-1.5 mb-5">
+              {['Python', 'Pygame', 'Sprite Animation', 'Physics'].map((tech) => (
+                <span 
+                  key={tech} 
+                  className="px-2.5 py-0.5 text-xs bg-green-500/10 text-green-300 rounded-full border border-green-500/20"
+                >
+                  {tech}
+                </span>
+              ))}
+            </div>
+
+            <div className="flex items-center gap-6">
+              <a 
+                href="https://github.com/AxelSuu/Skybound-2.0"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 text-sm text-foreground hover:text-green-400 transition-colors group"
+              >
+                <Github className="h-4 w-4" />
+                <span className="font-medium">View on GitHub</span>
+                <ExternalLink className="h-3 w-3 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all" />
+              </a>
+              
+              <a 
+                href="https://github.com/AxelSuu"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
+              >
+                <span>More projects →</span>
+              </a>
+            </div>
+          </div>
+
+          {/* Right: Visual */}
+          <div className="hidden md:block">
+            <div className="relative max-w-sm mx-auto">
+              <div className="absolute -inset-4 bg-gradient-to-br from-green-500/20 via-transparent to-emerald-500/20 rounded-2xl" />
+              <div className="relative rounded-xl overflow-hidden border border-green-500/20 shadow-2xl shadow-green-500/10">
+                <img 
+                  src="/images/skybound.png" 
+                  alt="Skybound 2.0 Platformer Game" 
+                  className="w-full h-auto object-cover"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  )
+}
+
+// Default export for backwards compatibility
+const Projects = () => {
+  return (
+    <>
+      <ProjectESP32 />
+      <ProjectPyTorch />
+      <ProjectPlatformer />
+    </>
   )
 }
 
