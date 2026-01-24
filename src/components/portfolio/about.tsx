@@ -11,7 +11,7 @@ const About = () => {
   return (
     <section id="about" className="h-[100dvh] md:h-screen w-full bg-background relative flex items-center overflow-hidden">
       <div className="container mx-auto px-6 md:px-12 max-w-6xl">
-        <div className="grid md:grid-cols-2 gap-8 md:gap-16 items-center">
+        <div className="grid grid-cols-2 gap-8 md:gap-16 items-center">
           {/* Left: Profile + Skills */}
           <div>
             {/* Profile card */}

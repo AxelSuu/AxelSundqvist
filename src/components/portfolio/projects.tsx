@@ -5,7 +5,7 @@ export const ProjectESP32 = () => {
   return (
     <section id="project-esp32" className="h-[100dvh] md:h-screen w-full bg-background relative flex items-center overflow-hidden">
       <div className="container mx-auto px-6 md:px-12 max-w-6xl">
-        <div className="grid md:grid-cols-2 gap-8 md:gap-16 items-center">
+        <div className="grid grid-cols-2 gap-8 md:gap-16 items-center">
           {/* Left: Content */}
           <div>
             <div className="flex items-center gap-3 mb-3">
@@ -71,7 +71,7 @@ export const ProjectESP32 = () => {
           </div>
 
           {/* Right: Visual */}
-          <div className="hidden md:block">
+          <div>
             <div className="relative max-w-sm mx-auto">
               <div className="absolute -inset-4 bg-gradient-to-br from-purple-500/20 via-transparent to-blue-500/20 rounded-2xl" />
               <div className="relative rounded-xl overflow-hidden border border-purple-500/20 shadow-2xl shadow-purple-500/10">
@@ -94,9 +94,9 @@ export const ProjectPyTorch = () => {
   return (
     <section id="project-pytorch" className="h-[100dvh] md:h-screen w-full bg-background relative flex items-center overflow-hidden">
       <div className="container mx-auto px-6 md:px-12 max-w-6xl">
-        <div className="grid md:grid-cols-2 gap-8 md:gap-16 items-center">
+        <div className="grid grid-cols-2 gap-8 md:gap-16 items-center">
           {/* Left: Visual */}
-          <div className="hidden md:block">
+          <div>
             <div className="relative max-w-sm mx-auto">
               <div className="absolute -inset-4 bg-gradient-to-br from-blue-500/20 via-transparent to-cyan-500/20 rounded-2xl" />
               <div className="relative rounded-xl overflow-hidden border border-blue-500/20 shadow-2xl shadow-blue-500/10">
@@ -183,7 +183,7 @@ export const ProjectPlatformer = () => {
   return (
     <section id="project-platformer" className="h-[100dvh] md:h-screen w-full bg-background relative flex items-center overflow-hidden">
       <div className="container mx-auto px-6 md:px-12 max-w-6xl">
-        <div className="grid md:grid-cols-2 gap-8 md:gap-16 items-center">
+        <div className="grid grid-cols-2 gap-8 md:gap-16 items-center">
           {/* Left: Content */}
           <div>
             <div className="flex items-center gap-3 mb-3">
@@ -260,7 +260,7 @@ export const ProjectPlatformer = () => {
           </div>
 
           {/* Right: Visual */}
-          <div className="hidden md:block">
+          <div>
             <div className="relative max-w-sm mx-auto">
               <div className="absolute -inset-4 bg-gradient-to-br from-green-500/20 via-transparent to-emerald-500/20 rounded-2xl" />
               <div className="relative rounded-xl overflow-hidden border border-green-500/20 shadow-2xl shadow-green-500/10">
