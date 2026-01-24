@@ -19,36 +19,36 @@ export const ProjectESP32 = () => {
             </h2>
             
             <p className="text-sm md:text-base text-muted-foreground mb-5 leading-relaxed">
-              A fully functional wireless Pong game built from scratch using ESP32-S3 microcontrollers. 
-              Two devices communicate over Wi-Fi in real-time, each driving its own OLED display.
+              An embedded wireless Pong game on an ESP32-S3 using C++ with an SPI-connected 128×96 OLED display. 
+              The ESP32 runs a Wi-Fi access point hosting both an HTTP server for browser-based controls and a WebSocket server for real-time input.
             </p>
 
             <div className="space-y-3 mb-5">
               <div className="flex items-start gap-2.5">
                 <Wifi className="h-4 w-4 text-purple-400 mt-0.5 shrink-0" />
                 <div>
-                  <p className="text-sm font-medium">Real-time Wi-Fi Communication</p>
-                  <p className="text-xs text-muted-foreground">Custom protocol for low-latency game state sync</p>
+                  <p className="text-sm font-medium">Wi-Fi Access Point & WebSocket</p>
+                  <p className="text-xs text-muted-foreground">HTTP server for controls, WebSocket for real-time input</p>
                 </div>
               </div>
               <div className="flex items-start gap-2.5">
                 <Monitor className="h-4 w-4 text-purple-400 mt-0.5 shrink-0" />
                 <div>
-                  <p className="text-sm font-medium">SPI OLED Display Driver</p>
-                  <p className="text-xs text-muted-foreground">Efficient frame buffer for smooth rendering</p>
+                  <p className="text-sm font-medium">SPI OLED Display (128×96)</p>
+                  <p className="text-xs text-muted-foreground">Direct SPI communication for smooth rendering</p>
                 </div>
               </div>
               <div className="flex items-start gap-2.5">
                 <Cpu className="h-4 w-4 text-purple-400 mt-0.5 shrink-0" />
                 <div>
-                  <p className="text-sm font-medium">Bare-metal C++ Implementation</p>
-                  <p className="text-xs text-muted-foreground">Direct hardware control for precise timing</p>
+                  <p className="text-sm font-medium">AI Opponent</p>
+                  <p className="text-xs text-muted-foreground">Simulated reaction delays and errors for realistic gameplay</p>
                 </div>
               </div>
             </div>
 
             <div className="flex flex-wrap gap-1.5 mb-5">
-              {['C++', 'ESP32-S3', 'FreeRTOS', 'SPI', 'Wi-Fi'].map((tech) => (
+              {['C++', 'ESP32-S3', 'SPI', 'WebSocket', 'HTTP Server'].map((tech) => (
                 <span 
                   key={tech} 
                   className="px-2.5 py-0.5 text-xs bg-purple-500/10 text-purple-300 rounded-full border border-purple-500/20"
@@ -122,8 +122,8 @@ export const ProjectPyTorch = () => {
             </h2>
             
             <p className="text-sm md:text-base text-muted-foreground mb-5 leading-relaxed">
-              A deep learning project exploring time-series prediction for stock prices. 
-              Built as a hands-on learning experience with PyTorch, implementing LSTM networks.
+              A pattern learning project exploring time series prediction for stock prices. 
+              Built as a learning experience with PyTorch and implementing neural networks.
             </p>
 
             <div className="space-y-3 mb-5">
@@ -131,21 +131,21 @@ export const ProjectPyTorch = () => {
                 <BarChart3 className="h-4 w-4 text-blue-400 mt-0.5 shrink-0" />
                 <div>
                   <p className="text-sm font-medium">LSTM Neural Networks</p>
-                  <p className="text-xs text-muted-foreground">Sequential model for temporal pattern recognition</p>
+                  <p className="text-xs text-muted-foreground">Model for long short term pattern recognition</p>
                 </div>
               </div>
               <div className="flex items-start gap-2.5">
                 <Database className="h-4 w-4 text-blue-400 mt-0.5 shrink-0" />
                 <div>
                   <p className="text-sm font-medium">Live Market Data Integration</p>
-                  <p className="text-xs text-muted-foreground">Yahoo Finance API for real-time stock data</p>
+                  <p className="text-xs text-muted-foreground">Using Yahoo Finance for real-time stock data</p>
                 </div>
               </div>
               <div className="flex items-start gap-2.5">
                 <TrendingUp className="h-4 w-4 text-blue-400 mt-0.5 shrink-0" />
                 <div>
-                  <p className="text-sm font-medium">Feature Engineering Pipeline</p>
-                  <p className="text-xs text-muted-foreground">Technical indicators and data preprocessing</p>
+                  <p className="text-sm font-medium">Easy API to call</p>
+                  <p className="text-xs text-muted-foreground">Model exposes easy to use frontend interface</p>
                 </div>
               </div>
             </div>
@@ -198,29 +198,29 @@ export const ProjectPlatformer = () => {
             
             <p className="text-sm md:text-base text-muted-foreground mb-5 leading-relaxed">
               A 2D platformer game built with Python and Pygame. Features classic platforming mechanics 
-              with physics-based movement, level progression, and sprite-based graphics.
+              with procedural level generation, data storage, achievements and animations.
             </p>
 
             <div className="space-y-3 mb-5">
               <div className="flex items-start gap-2.5">
                 <Joystick className="h-4 w-4 text-green-400 mt-0.5 shrink-0" />
                 <div>
-                  <p className="text-sm font-medium">Physics-Based Movement</p>
-                  <p className="text-xs text-muted-foreground">Gravity, momentum, and collision detection</p>
+                  <p className="text-sm font-medium">Beautiful art and animations</p>
+                  <p className="text-xs text-muted-foreground">Lot of animations, art, characters</p>
                 </div>
               </div>
               <div className="flex items-start gap-2.5">
                 <Gamepad2 className="h-4 w-4 text-green-400 mt-0.5 shrink-0" />
                 <div>
-                  <p className="text-sm font-medium">Level Design System</p>
-                  <p className="text-xs text-muted-foreground">Tile-based level loading with progression</p>
+                  <p className="text-sm font-medium">Procedural level generation</p>
+                  <p className="text-xs text-muted-foreground">Automatically generating progressive levels</p>
                 </div>
               </div>
               <div className="flex items-start gap-2.5">
                 <Zap className="h-4 w-4 text-green-400 mt-0.5 shrink-0" />
                 <div>
-                  <p className="text-sm font-medium">Game Loop Architecture</p>
-                  <p className="text-xs text-muted-foreground">Fixed timestep with interpolated rendering</p>
+                  <p className="text-sm font-medium">State management Architecture</p>
+                  <p className="text-xs text-muted-foreground">Architecrute built upon object oriented thinking</p>
                 </div>
               </div>
             </div>

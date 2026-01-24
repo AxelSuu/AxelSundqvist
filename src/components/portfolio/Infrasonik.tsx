@@ -27,8 +27,8 @@ const Infrasonik = () => {
             
             <p className="text-sm md:text-base text-muted-foreground mb-5 leading-relaxed">
               Worked as a laboratory assistant in Research & Development at Infrasonik, 
-              contributing to innovative infrasound technology projects and gaining hands-on 
-              experience in prototyping and technical documentation.
+              contributed to innovative infrasound technology projects and gained 
+              experience in teamwork, quick prototyping and technical documentation.
             </p>
 
             <div className="space-y-3 mb-5">
