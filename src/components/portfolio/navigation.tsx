@@ -8,7 +8,7 @@ const Navigation = () => {
   const [activeSection, setActiveSection] = useState('home')
   const { theme, setTheme } = useTheme()
 
-  const sectionNames = ['home', 'projects', 'about', 'contact']
+  const sectionNames = ['home', 'infrasonik', 'project-esp32', 'project-pytorch', 'project-platformer', 'about']
 
   useEffect(() => {
     // Listen for section changes from PerspectiveScroll
@@ -42,10 +42,18 @@ const Navigation = () => {
 
   const navItems = [
     { name: 'Home', href: '#home', index: 0 },
-    { name: 'Projects', href: '#projects', index: 1 },
-    { name: 'About', href: '#about', index: 2 },
-    { name: 'Contact', href: '#contact', index: 3 },
+    { name: 'Infrasonik', href: '#infrasonik', index: 1 },
+    { name: 'About', href: '#about', index: 5 },
   ]
+
+  const isActiveSection = (href: string) => {
+    const sectionId = href.slice(1)
+    // For Projects, check if any project section is active
+    if (sectionId === 'project-esp32') {
+      return activeSection === 'project-esp32' || activeSection === 'project-pytorch' || activeSection === 'project-platformer'
+    }
+    return activeSection === sectionId
+  }
 
   const toggleTheme = () => {
     setTheme(theme === 'dark' ? 'light' : 'dark')
@@ -89,7 +97,7 @@ const Navigation = () => {
                 key={item.name}
                 onClick={() => scrollToSection(item.href, item.index)}
                 className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 relative group ${
-                  activeSection === item.href.slice(1) 
+                  isActiveSection(item.href)
                     ? 'text-primary-foreground bg-primary shadow-lg shadow-primary/25' 
                     : 'text-muted-foreground hover:text-foreground hover:bg-muted/50'
                 }`}
@@ -97,7 +105,7 @@ const Navigation = () => {
                 {item.name}
                 {/* Hover glow effect */}
                 <span className={`absolute inset-0 rounded-full bg-primary/20 scale-0 group-hover:scale-100 transition-transform duration-300 -z-10 ${
-                  activeSection === item.href.slice(1) ? 'hidden' : ''
+                  isActiveSection(item.href) ? 'hidden' : ''
                 }`} />
               </button>
             ))}
@@ -138,7 +146,7 @@ const Navigation = () => {
                   key={item.name}
                   onClick={() => scrollToSection(item.href, item.index)}
                   className={`block w-full text-left px-4 py-3 text-foreground transition-all duration-300 rounded-xl ${
-                    activeSection === item.href.slice(1) 
+                    isActiveSection(item.href)
                       ? 'text-primary bg-primary/10 font-semibold' 
                       : 'hover:text-primary hover:bg-muted/50'
                   }`}
