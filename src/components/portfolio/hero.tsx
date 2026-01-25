@@ -5,7 +5,7 @@ import { MagneticButton } from '@/components/ui/magnetic-button'
 const Hero = () => {
   const [displayedText, setDisplayedText] = useState('')
   const [isLoaded, setIsLoaded] = useState(false)
-  const fullName = 'Axel Sundqvist'
+  const fullName = 'AXEL SUNDQVIST'
 
   // Typing animation
   useEffect(() => {
@@ -56,9 +56,17 @@ const Hero = () => {
               }`}
             >
               <span className="text-foreground">
-                {displayedText}
+                {/* Split text to highlight QVIST */}
+                {displayedText.length <= 9 ? (
+                  <span style={{ color: '#002060' }}>{displayedText}</span>
+                ) : (
+                  <>
+                    <span style={{ color: '#002060' }}>{displayedText.slice(0, 9)}</span>
+                    <span className="text-white px-1 rounded-sm" style={{ backgroundColor: '#002060' }}>{displayedText.slice(9)}</span>
+                  </>
+                )}
               </span>
-              <span className="animate-pulse text-purple-500">|</span>
+              <span className="#002060">|</span>
             </h1>
             
             {/* Subtitle */}
