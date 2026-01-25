@@ -2,7 +2,7 @@ import { Waves, FileText, FlaskConical, Building2, Calendar } from 'lucide-react
 
 const Infrasonik = () => {
   return (
-    <section id="infrasonik" className="min-h-[100dvh] md:h-screen w-full bg-background relative flex items-center overflow-hidden py-12 md:py-0">
+    <section id="infrasonik" className="min-h-[100dvh] md:h-screen w-full bg-background relative flex items-center overflow-hidden pt-16 pb-8 md:py-0">
       <div className="container mx-auto px-6 md:px-12 max-w-6xl">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-16 items-center">
           {/* Left: Content */}
@@ -69,7 +69,7 @@ const Infrasonik = () => {
 
           {/* Right: Visual */}
           <div className="order-1 md:order-2">
-            <div className="relative max-w-[200px] md:max-w-sm mx-auto">
+            <div className="relative max-w-[140px] md:max-w-sm mx-auto">
               <div className="absolute -inset-4 bg-gradient-to-br from-cyan-500/20 via-transparent to-blue-500/20 rounded-2xl" />
               <div className="relative rounded-xl overflow-hidden border border-cyan-500/20 shadow-2xl shadow-cyan-500/10">
                 <img 
