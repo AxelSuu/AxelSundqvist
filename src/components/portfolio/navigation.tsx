@@ -81,10 +81,10 @@ const Navigation = () => {
         : 'bg-transparent'
     }`}> 
       <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between h-16">
+        <div className="flex items-center justify-between h-12 md:h-16">
           {/* Logo */}
           <div 
-            className="text-2xl font-bold cursor-pointer group relative"
+            className="text-xl md:text-2xl font-bold cursor-pointer group relative"
             onClick={() => scrollToSection('#home', 0)}
           >
             <span style={{ color: '#002060' }}>AS</span>
@@ -96,7 +96,7 @@ const Navigation = () => {
               <button
                 key={item.name}
                 onClick={() => scrollToSection(item.href, item.index)}
-                className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 relative group ${
+                className={`px-3 py-1.5 md:px-4 md:py-2 rounded-full text-xs md:text-sm font-medium transition-all duration-300 relative group ${
                   isActiveSection(item.href)
                     ? 'text-primary-foreground bg-primary shadow-lg shadow-primary/25' 
                     : 'text-muted-foreground hover:text-foreground hover:bg-muted/50'
@@ -115,13 +115,13 @@ const Navigation = () => {
           <div className="flex items-center space-x-2">
             <button
               onClick={toggleTheme}
-              className="p-2.5 rounded-full bg-muted/50 backdrop-blur-sm hover:bg-muted transition-all duration-300 hover:scale-110 hover:rotate-12 border border-border/30"
+              className="p-2 md:p-2.5 rounded-full bg-muted/50 backdrop-blur-sm hover:bg-muted transition-all duration-300 hover:scale-110 hover:rotate-12 border border-border/30"
               aria-label="Toggle theme"
             >
               {theme === 'dark' ? (
-                <Sun className="h-5 w-5 text-yellow-500" />
+                <Sun className="h-4 w-4 md:h-5 md:w-5 text-yellow-500" />
               ) : (
-                <Moon className="h-5 w-5 text-blue-500" />
+                <Moon className="h-4 w-4 md:h-5 md:w-5 text-blue-500" />
               )}
             </button>
             
