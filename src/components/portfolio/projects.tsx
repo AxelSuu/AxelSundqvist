@@ -206,21 +206,21 @@ export const ProjectPlatformer = () => {
                 <Joystick className="h-4 w-4 text-green-400 mt-0.5 shrink-0" />
                 <div>
                   <p className="text-sm font-medium">Beautiful art and animations</p>
-                  <p className="text-xs text-muted-foreground">Lot of animations, art, characters</p>
+                  <p className="text-xs text-muted-foreground hidden md:block">Lot of animations, art, characters</p>
                 </div>
               </div>
               <div className="flex items-start gap-2.5">
                 <Gamepad2 className="h-4 w-4 text-green-400 mt-0.5 shrink-0" />
                 <div>
                   <p className="text-sm font-medium">Procedural level generation</p>
-                  <p className="text-xs text-muted-foreground">Automatically generating progressive levels</p>
+                  <p className="text-xs text-muted-foreground hidden md:block">Automatically generating progressive levels</p>
                 </div>
               </div>
               <div className="flex items-start gap-2.5">
                 <Zap className="h-4 w-4 text-green-400 mt-0.5 shrink-0" />
                 <div>
                   <p className="text-sm font-medium">State management Architecture</p>
-                  <p className="text-xs text-muted-foreground">Architecrute built upon object oriented thinking</p>
+                  <p className="text-xs text-muted-foreground hidden md:block">Architecrute built upon object oriented thinking</p>
                 </div>
               </div>
             </div>
@@ -261,7 +261,7 @@ export const ProjectPlatformer = () => {
 
           {/* Right: Visual */}
           <div className="order-1 md:order-2">
-            <div className="relative max-w-[200px] md:max-w-sm mx-auto">
+            <div className="relative max-w-[160px] md:max-w-sm mx-auto">
               <div className="absolute -inset-4 bg-gradient-to-br from-green-500/20 via-transparent to-emerald-500/20 rounded-2xl" />
               <div className="relative rounded-xl overflow-hidden border border-green-500/20 shadow-2xl shadow-green-500/10">
                 <img 
