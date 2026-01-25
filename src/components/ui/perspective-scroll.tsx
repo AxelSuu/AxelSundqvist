@@ -19,6 +19,8 @@ export function PerspectiveScroll({ children, className }: PerspectiveScrollProp
     if (!container) return
 
     let touchStartY = 0
+    let touchStartTime = 0
+    let isTouchActive = false
     let lastScrollTime = 0
     const scrollCooldown = 800 // ms between scroll events
 
@@ -43,26 +45,52 @@ export function PerspectiveScroll({ children, className }: PerspectiveScrollProp
 
     const handleTouchStart = (e: TouchEvent) => {
       touchStartY = e.touches[0].clientY
+      touchStartTime = Date.now()
+      isTouchActive = true
+    }
+
+    const handleTouchMove = (e: TouchEvent) => {
+      // Prevent default scrolling behavior during touch
+      if (isTouchActive) {
+        e.preventDefault()
+      }
     }
 
     const handleTouchEnd = (e: TouchEvent) => {
+      if (!isTouchActive) return
+      isTouchActive = false
+      
       const now = Date.now()
       if (now - lastScrollTime < scrollCooldown || isAnimating) return
       
       const touchEndY = e.changedTouches[0].clientY
       const diff = touchStartY - touchEndY
+      const touchDuration = now - touchStartTime
+      
+      // Require minimum swipe distance (80px) and reasonable swipe speed (< 500ms)
+      // This prevents accidental triggers from small movements
+      const minSwipeDistance = 80
+      const maxSwipeDuration = 500
+      
+      if (Math.abs(diff) < minSwipeDistance || touchDuration > maxSwipeDuration) return
       
       lastScrollTime = now
       
-      if (diff > 50 && currentSection < totalSections - 1) {
+      if (diff > 0 && currentSection < totalSections - 1) {
+        // Swiped up (scroll down to next section)
         setIsAnimating(true)
         setCurrentSection(prev => prev + 1)
         setTimeout(() => setIsAnimating(false), scrollCooldown)
-      } else if (diff < -50 && currentSection > 0) {
+      } else if (diff < 0 && currentSection > 0) {
+        // Swiped down (scroll up to previous section)
         setIsAnimating(true)
         setCurrentSection(prev => prev - 1)
         setTimeout(() => setIsAnimating(false), scrollCooldown)
       }
+    }
+
+    const handleTouchCancel = () => {
+      isTouchActive = false
     }
 
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -86,13 +114,17 @@ export function PerspectiveScroll({ children, className }: PerspectiveScrollProp
 
     container.addEventListener('wheel', handleWheel, { passive: false })
     container.addEventListener('touchstart', handleTouchStart, { passive: true })
+    container.addEventListener('touchmove', handleTouchMove, { passive: false })
     container.addEventListener('touchend', handleTouchEnd, { passive: true })
+    container.addEventListener('touchcancel', handleTouchCancel, { passive: true })
     window.addEventListener('keydown', handleKeyDown)
 
     return () => {
       container.removeEventListener('wheel', handleWheel)
       container.removeEventListener('touchstart', handleTouchStart)
+      container.removeEventListener('touchmove', handleTouchMove)
       container.removeEventListener('touchend', handleTouchEnd)
+      container.removeEventListener('touchcancel', handleTouchCancel)
       window.removeEventListener('keydown', handleKeyDown)
     }
   }, [currentSection, totalSections, isAnimating])
