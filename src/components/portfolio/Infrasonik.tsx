@@ -2,7 +2,7 @@ import { Waves, FileText, FlaskConical, Building2, Calendar } from 'lucide-react
 
 const Infrasonik = () => {
   return (
-    <section id="infrasonik" className="min-h-[100dvh] md:h-screen w-full bg-background relative flex items-center overflow-hidden py-8 md:py-0">
+    <section id="infrasonik" className="min-h-[100dvh] md:h-screen w-full bg-background relative flex items-center overflow-hidden py-12 md:py-0">
       <div className="container mx-auto px-6 md:px-12 max-w-6xl">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-16 items-center">
           {/* Left: Content */}
