@@ -9,11 +9,11 @@ const About = () => {
   ]
 
   return (
-    <section id="about" className="h-[100dvh] md:h-screen w-full bg-background relative flex items-center overflow-hidden">
+    <section id="about" className="min-h-[100dvh] md:h-screen w-full bg-background relative flex items-center overflow-hidden py-16 md:py-0">
       <div className="container mx-auto px-6 md:px-12 max-w-6xl">
-        <div className="grid grid-cols-2 gap-8 md:gap-16 items-center">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 items-center">
           {/* Left: Profile + Skills */}
-          <div>
+          <div className="order-1">
             {/* Profile card */}
             <div className="relative mb-6">
               <div className="absolute -inset-4 bg-gradient-to-br from-blue-500/10 via-transparent to-purple-500/10 rounded-2xl" />
@@ -70,7 +70,7 @@ const About = () => {
           </div>
 
           {/* Right: Content */}
-          <div>
+          <div className="order-2">
             <div className="flex items-center gap-3 mb-3">
               <span className="text-sm font-mono text-muted-foreground tracking-wider">05</span>
               <div className="h-px w-8 bg-blue-500/50" />
