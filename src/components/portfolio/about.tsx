@@ -47,8 +47,8 @@ const About = () => {
               </div>
             </div>
 
-            {/* Skills - moved to left */}
-            <div>
+            {/* Skills - hidden on mobile */}
+            <div className="hidden md:block">
               <div className="flex items-center gap-2 mb-3">
                 <Code2 className="h-4 w-4 text-green-400" />
                 <h3 className="text-sm font-semibold">Tech Stack</h3>
@@ -105,8 +105,8 @@ const About = () => {
               </div>
             </div>
 
-            {/* Education */}
-            <div>
+            {/* Education - hidden on mobile */}
+            <div className="hidden md:block">
               <div className="flex items-center gap-2 mb-3">
                 <GraduationCap className="h-4 w-4 text-blue-400" />
                 <h3 className="text-sm font-semibold">Education</h3>
