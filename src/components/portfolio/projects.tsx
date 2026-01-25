@@ -28,21 +28,21 @@ export const ProjectESP32 = () => {
                 <Wifi className="h-4 w-4 text-purple-400 mt-0.5 shrink-0" />
                 <div>
                   <p className="text-sm font-medium">Wi-Fi Access Point & WebSocket</p>
-                  <p className="text-xs text-muted-foreground">HTTP server for controls, WebSocket for real-time input</p>
+                  <p className="text-xs text-muted-foreground hidden md:block">HTTP server for controls, WebSocket for real-time input</p>
                 </div>
               </div>
               <div className="flex items-start gap-2.5">
                 <Monitor className="h-4 w-4 text-purple-400 mt-0.5 shrink-0" />
                 <div>
                   <p className="text-sm font-medium">SPI OLED Display (128×96)</p>
-                  <p className="text-xs text-muted-foreground">Direct SPI communication for smooth rendering</p>
+                  <p className="text-xs text-muted-foreground hidden md:block">Direct SPI communication for smooth rendering</p>
                 </div>
               </div>
               <div className="flex items-start gap-2.5">
                 <Cpu className="h-4 w-4 text-purple-400 mt-0.5 shrink-0" />
                 <div>
                   <p className="text-sm font-medium">AI Opponent</p>
-                  <p className="text-xs text-muted-foreground">Simulated reaction delays and errors for realistic gameplay</p>
+                  <p className="text-xs text-muted-foreground hidden md:block">Simulated reaction delays and errors for realistic gameplay</p>
                 </div>
               </div>
             </div>
@@ -72,7 +72,7 @@ export const ProjectESP32 = () => {
 
           {/* Right: Visual */}
           <div className="order-1 md:order-2">
-            <div className="relative max-w-sm mx-auto">
+            <div className="relative max-w-[160px] md:max-w-sm mx-auto">
               <div className="absolute -inset-4 bg-gradient-to-br from-purple-500/20 via-transparent to-blue-500/20 rounded-2xl" />
               <div className="relative rounded-xl overflow-hidden border border-purple-500/20 shadow-2xl shadow-purple-500/10">
                 <img 
@@ -181,7 +181,7 @@ export const ProjectPyTorch = () => {
 // 2D Platformer Game Section
 export const ProjectPlatformer = () => {
   return (
-    <section id="project-platformer" className="min-h-[100dvh] md:h-screen w-full bg-background relative flex items-center overflow-hidden py-8 md:py-0">
+    <section id="project-platformer" className="min-h-[100dvh] md:h-screen w-full bg-background relative flex items-center overflow-hidden py-12 md:py-0">
       <div className="container mx-auto px-6 md:px-12 max-w-6xl">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-16 items-center">
           {/* Left: Content */}
