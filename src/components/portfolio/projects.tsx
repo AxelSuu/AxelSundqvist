@@ -3,11 +3,11 @@ import { Github, ExternalLink, Wifi, Cpu, Monitor, TrendingUp, BarChart3, Databa
 // ESP32-S3 Wireless Pong Section
 export const ProjectESP32 = () => {
   return (
-    <section id="project-esp32" className="h-[100dvh] md:h-screen w-full bg-background relative flex items-center overflow-hidden">
+    <section id="project-esp32" className="min-h-[100dvh] md:h-screen w-full bg-background relative flex items-center overflow-hidden py-16 md:py-0">
       <div className="container mx-auto px-6 md:px-12 max-w-6xl">
-        <div className="grid grid-cols-2 gap-8 md:gap-16 items-center">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 items-center">
           {/* Left: Content */}
-          <div>
+          <div className="order-2 md:order-1">
             <div className="flex items-center gap-3 mb-3">
               <span className="text-sm font-mono text-muted-foreground tracking-wider">02</span>
               <div className="h-px w-8 bg-purple-500/50" />
@@ -71,7 +71,7 @@ export const ProjectESP32 = () => {
           </div>
 
           {/* Right: Visual */}
-          <div>
+          <div className="order-1 md:order-2">
             <div className="relative max-w-sm mx-auto">
               <div className="absolute -inset-4 bg-gradient-to-br from-purple-500/20 via-transparent to-blue-500/20 rounded-2xl" />
               <div className="relative rounded-xl overflow-hidden border border-purple-500/20 shadow-2xl shadow-purple-500/10">
@@ -92,11 +92,11 @@ export const ProjectESP32 = () => {
 // PyTorch Stock Forecasting Section
 export const ProjectPyTorch = () => {
   return (
-    <section id="project-pytorch" className="h-[100dvh] md:h-screen w-full bg-background relative flex items-center overflow-hidden">
+    <section id="project-pytorch" className="min-h-[100dvh] md:h-screen w-full bg-background relative flex items-center overflow-hidden py-16 md:py-0">
       <div className="container mx-auto px-6 md:px-12 max-w-6xl">
-        <div className="grid grid-cols-2 gap-8 md:gap-16 items-center">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 items-center">
           {/* Left: Visual */}
-          <div>
+          <div className="order-1">
             <div className="relative max-w-sm mx-auto">
               <div className="absolute -inset-4 bg-gradient-to-br from-blue-500/20 via-transparent to-cyan-500/20 rounded-2xl" />
               <div className="relative rounded-xl overflow-hidden border border-blue-500/20 shadow-2xl shadow-blue-500/10">
@@ -110,7 +110,7 @@ export const ProjectPyTorch = () => {
           </div>
 
           {/* Right: Content */}
-          <div>
+          <div className="order-2">
             <div className="flex items-center gap-3 mb-3">
               <span className="text-sm font-mono text-muted-foreground tracking-wider">03</span>
               <div className="h-px w-8 bg-blue-500/50" />
@@ -181,11 +181,11 @@ export const ProjectPyTorch = () => {
 // 2D Platformer Game Section
 export const ProjectPlatformer = () => {
   return (
-    <section id="project-platformer" className="h-[100dvh] md:h-screen w-full bg-background relative flex items-center overflow-hidden">
+    <section id="project-platformer" className="min-h-[100dvh] md:h-screen w-full bg-background relative flex items-center overflow-hidden py-16 md:py-0">
       <div className="container mx-auto px-6 md:px-12 max-w-6xl">
-        <div className="grid grid-cols-2 gap-8 md:gap-16 items-center">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 items-center">
           {/* Left: Content */}
-          <div>
+          <div className="order-2 md:order-1">
             <div className="flex items-center gap-3 mb-3">
               <span className="text-sm font-mono text-muted-foreground tracking-wider">04</span>
               <div className="h-px w-8 bg-green-500/50" />
@@ -260,7 +260,7 @@ export const ProjectPlatformer = () => {
           </div>
 
           {/* Right: Visual */}
-          <div>
+          <div className="order-1 md:order-2">
             <div className="relative max-w-sm mx-auto">
               <div className="absolute -inset-4 bg-gradient-to-br from-green-500/20 via-transparent to-emerald-500/20 rounded-2xl" />
               <div className="relative rounded-xl overflow-hidden border border-green-500/20 shadow-2xl shadow-green-500/10">
