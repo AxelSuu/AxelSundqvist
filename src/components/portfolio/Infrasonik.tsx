@@ -69,7 +69,7 @@ const Infrasonik = () => {
 
           {/* Right: Visual */}
           <div className="order-1 md:order-2">
-            <div className="relative max-w-[140px] md:max-w-sm mx-auto">
+            <div className="relative max-w-[180px] md:max-w-sm mx-auto">
               <div className="absolute -inset-4 bg-gradient-to-br from-cyan-500/20 via-transparent to-blue-500/20 rounded-2xl" />
               <div className="relative rounded-xl overflow-hidden border border-cyan-500/20 shadow-2xl shadow-cyan-500/10">
                 <img 

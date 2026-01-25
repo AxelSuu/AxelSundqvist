@@ -72,7 +72,7 @@ export const ProjectESP32 = () => {
 
           {/* Right: Visual */}
           <div className="order-1 md:order-2">
-            <div className="relative max-w-[160px] md:max-w-sm mx-auto">
+            <div className="relative max-w-[200px] md:max-w-sm mx-auto">
               <div className="absolute -inset-4 bg-gradient-to-br from-purple-500/20 via-transparent to-blue-500/20 rounded-2xl" />
               <div className="relative rounded-xl overflow-hidden border border-purple-500/20 shadow-2xl shadow-purple-500/10">
                 <img 
@@ -97,7 +97,7 @@ export const ProjectPyTorch = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-16 items-center">
           {/* Left: Visual */}
           <div className="order-1">
-            <div className="relative max-w-[200px] md:max-w-sm mx-auto">
+            <div className="relative max-w-[220px] md:max-w-sm mx-auto">
               <div className="absolute -inset-4 bg-gradient-to-br from-blue-500/20 via-transparent to-cyan-500/20 rounded-2xl" />
               <div className="relative rounded-xl overflow-hidden border border-blue-500/20 shadow-2xl shadow-blue-500/10">
                 <img 
