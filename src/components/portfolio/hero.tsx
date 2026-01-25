@@ -84,7 +84,7 @@ const Hero = () => {
                 isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
               }`}
             >
-              <span className="text-primary font-semibold">Embedded, DSP & ML oriented</span>
+              <span className="text-primary font-semibold">Embedded, Wireless Communications & ML oriented</span>
 
               
             </div>
