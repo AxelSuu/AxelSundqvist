@@ -17,7 +17,7 @@ const Infrasonik = () => {
               Infrasonik
             </h2>
             
-            <div className="flex items-center gap-2 mb-2 md:mb-4 text-sm text-muted-foreground">
+            <div className="hidden md:flex items-center gap-2 mb-2 md:mb-4 text-sm text-muted-foreground">
               <Building2 className="h-4 w-4" />
               <span>Laboratory Assistant R&D</span>
               <span className="text-muted-foreground/50">•</span>
