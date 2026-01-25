@@ -3,27 +3,27 @@ import { Github, ExternalLink, Wifi, Cpu, Monitor, TrendingUp, BarChart3, Databa
 // ESP32-S3 Wireless Pong Section
 export const ProjectESP32 = () => {
   return (
-    <section id="project-esp32" className="min-h-[100dvh] md:h-screen w-full bg-background relative flex items-center overflow-hidden py-16 md:py-0">
+    <section id="project-esp32" className="min-h-[100dvh] md:h-screen w-full bg-background relative flex items-center overflow-hidden py-8 md:py-0">
       <div className="container mx-auto px-6 md:px-12 max-w-6xl">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 items-center">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-16 items-center">
           {/* Left: Content */}
           <div className="order-2 md:order-1">
-            <div className="flex items-center gap-3 mb-3">
+            <div className="flex items-center gap-3 mb-2 md:mb-3">
               <span className="text-sm font-mono text-muted-foreground tracking-wider">02</span>
               <div className="h-px w-8 bg-purple-500/50" />
               <span className="text-xs text-purple-400 font-medium uppercase tracking-wider">Embedded Systems</span>
             </div>
             
-            <h2 className="text-2xl md:text-4xl font-bold mb-4 leading-tight">
+            <h2 className="text-xl md:text-4xl font-bold mb-2 md:mb-4 leading-tight">
               ESP32-S3 Wireless Pong
             </h2>
             
-            <p className="text-sm md:text-base text-muted-foreground mb-5 leading-relaxed">
+            <p className="text-sm md:text-base text-muted-foreground mb-3 md:mb-5 leading-relaxed">
               An embedded wireless Pong game on an ESP32-S3 using C++ with an SPI-connected 128×96 OLED display. 
               The ESP32 runs a Wi-Fi access point hosting both an HTTP server for browser-based controls and a WebSocket server for real-time input.
             </p>
 
-            <div className="space-y-3 mb-5">
+            <div className="space-y-2 md:space-y-3 mb-3 md:mb-5">
               <div className="flex items-start gap-2.5">
                 <Wifi className="h-4 w-4 text-purple-400 mt-0.5 shrink-0" />
                 <div>
@@ -47,7 +47,7 @@ export const ProjectESP32 = () => {
               </div>
             </div>
 
-            <div className="flex flex-wrap gap-1.5 mb-5">
+            <div className="flex flex-wrap gap-1.5 mb-3 md:mb-5">
               {['C++', 'ESP32-S3', 'SPI', 'WebSocket', 'HTTP Server'].map((tech) => (
                 <span 
                   key={tech} 
@@ -92,12 +92,12 @@ export const ProjectESP32 = () => {
 // PyTorch Stock Forecasting Section
 export const ProjectPyTorch = () => {
   return (
-    <section id="project-pytorch" className="min-h-[100dvh] md:h-screen w-full bg-background relative flex items-center overflow-hidden py-16 md:py-0">
+    <section id="project-pytorch" className="min-h-[100dvh] md:h-screen w-full bg-background relative flex items-center overflow-hidden py-8 md:py-0">
       <div className="container mx-auto px-6 md:px-12 max-w-6xl">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 items-center">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-16 items-center">
           {/* Left: Visual */}
           <div className="order-1">
-            <div className="relative max-w-sm mx-auto">
+            <div className="relative max-w-[200px] md:max-w-sm mx-auto">
               <div className="absolute -inset-4 bg-gradient-to-br from-blue-500/20 via-transparent to-cyan-500/20 rounded-2xl" />
               <div className="relative rounded-xl overflow-hidden border border-blue-500/20 shadow-2xl shadow-blue-500/10">
                 <img 
@@ -111,22 +111,22 @@ export const ProjectPyTorch = () => {
 
           {/* Right: Content */}
           <div className="order-2">
-            <div className="flex items-center gap-3 mb-3">
+            <div className="flex items-center gap-3 mb-2 md:mb-3">
               <span className="text-sm font-mono text-muted-foreground tracking-wider">03</span>
               <div className="h-px w-8 bg-blue-500/50" />
               <span className="text-xs text-blue-400 font-medium uppercase tracking-wider">Machine Learning</span>
             </div>
             
-            <h2 className="text-2xl md:text-4xl font-bold mb-4 leading-tight">
+            <h2 className="text-xl md:text-4xl font-bold mb-2 md:mb-4 leading-tight">
               PyTorch Stock Forecasting
             </h2>
             
-            <p className="text-sm md:text-base text-muted-foreground mb-5 leading-relaxed">
+            <p className="text-sm md:text-base text-muted-foreground mb-3 md:mb-5 leading-relaxed">
               A pattern learning project exploring time series prediction for stock prices. 
               Built as a learning experience with PyTorch and implementing neural networks.
             </p>
 
-            <div className="space-y-3 mb-5">
+            <div className="space-y-2 md:space-y-3 mb-3 md:mb-5">
               <div className="flex items-start gap-2.5">
                 <BarChart3 className="h-4 w-4 text-blue-400 mt-0.5 shrink-0" />
                 <div>
@@ -150,7 +150,7 @@ export const ProjectPyTorch = () => {
               </div>
             </div>
 
-            <div className="flex flex-wrap gap-1.5 mb-5">
+            <div className="flex flex-wrap gap-1.5 mb-3 md:mb-5">
               {['Python', 'PyTorch', 'NumPy', 'Pandas', 'Yahoo Finance'].map((tech) => (
                 <span 
                   key={tech} 
@@ -181,27 +181,27 @@ export const ProjectPyTorch = () => {
 // 2D Platformer Game Section
 export const ProjectPlatformer = () => {
   return (
-    <section id="project-platformer" className="min-h-[100dvh] md:h-screen w-full bg-background relative flex items-center overflow-hidden py-16 md:py-0">
+    <section id="project-platformer" className="min-h-[100dvh] md:h-screen w-full bg-background relative flex items-center overflow-hidden py-8 md:py-0">
       <div className="container mx-auto px-6 md:px-12 max-w-6xl">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 items-center">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-16 items-center">
           {/* Left: Content */}
           <div className="order-2 md:order-1">
-            <div className="flex items-center gap-3 mb-3">
+            <div className="flex items-center gap-3 mb-2 md:mb-3">
               <span className="text-sm font-mono text-muted-foreground tracking-wider">04</span>
               <div className="h-px w-8 bg-green-500/50" />
               <span className="text-xs text-green-400 font-medium uppercase tracking-wider">Game Development</span>
             </div>
             
-            <h2 className="text-2xl md:text-4xl font-bold mb-4 leading-tight">
+            <h2 className="text-xl md:text-4xl font-bold mb-2 md:mb-4 leading-tight">
               Skybound 2.0
             </h2>
             
-            <p className="text-sm md:text-base text-muted-foreground mb-5 leading-relaxed">
+            <p className="text-sm md:text-base text-muted-foreground mb-3 md:mb-5 leading-relaxed">
               A 2D platformer game built with Python and Pygame. Features classic platforming mechanics 
               with procedural level generation, data storage, achievements and animations.
             </p>
 
-            <div className="space-y-3 mb-5">
+            <div className="space-y-2 md:space-y-3 mb-3 md:mb-5">
               <div className="flex items-start gap-2.5">
                 <Joystick className="h-4 w-4 text-green-400 mt-0.5 shrink-0" />
                 <div>
@@ -225,7 +225,7 @@ export const ProjectPlatformer = () => {
               </div>
             </div>
 
-            <div className="flex flex-wrap gap-1.5 mb-5">
+            <div className="flex flex-wrap gap-1.5 mb-3 md:mb-5">
               {['Python', 'Pygame', 'Sprite Animation', 'Physics'].map((tech) => (
                 <span 
                   key={tech} 
@@ -261,7 +261,7 @@ export const ProjectPlatformer = () => {
 
           {/* Right: Visual */}
           <div className="order-1 md:order-2">
-            <div className="relative max-w-sm mx-auto">
+            <div className="relative max-w-[200px] md:max-w-sm mx-auto">
               <div className="absolute -inset-4 bg-gradient-to-br from-green-500/20 via-transparent to-emerald-500/20 rounded-2xl" />
               <div className="relative rounded-xl overflow-hidden border border-green-500/20 shadow-2xl shadow-green-500/10">
                 <img 
