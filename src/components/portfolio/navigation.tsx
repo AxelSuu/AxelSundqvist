@@ -82,13 +82,12 @@ const Navigation = () => {
     }`}> 
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
-          {/* Logo with animated gradient */}
+          {/* Logo */}
           <div 
             className="text-2xl font-bold cursor-pointer group relative"
             onClick={() => scrollToSection('#home', 0)}
           >
-            <span className="animated-gradient-text group-hover:scale-110 inline-block transition-transform">AS</span>
-            <Sparkles className="absolute -top-1 -right-3 w-3 h-3 text-yellow-500 opacity-0 group-hover:opacity-100 transition-opacity" />
+            <span style={{ color: '#002060' }}>AS</span>
           </div>
 
           {/* Desktop Navigation */}
