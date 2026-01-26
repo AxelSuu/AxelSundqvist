@@ -193,7 +193,7 @@ export const ProjectPlatformer = () => {
             </div>
             
             <h2 className="text-xl md:text-4xl font-bold mb-2 md:mb-4 leading-tight">
-              Skybound 2.0
+              2D Platformer
             </h2>
             
             <p className="text-sm md:text-base text-muted-foreground mb-3 md:mb-5 leading-relaxed">
