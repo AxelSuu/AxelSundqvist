@@ -1,12 +1,10 @@
 import { useState, useEffect } from 'react'
-import { Menu, X, Sun, Moon } from 'lucide-react'
-import { useTheme } from '@/components/theme-provider'
+import { Menu, X } from 'lucide-react'
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
   const [activeSection, setActiveSection] = useState('home')
-  const { theme, setTheme } = useTheme()
 
   const sectionNames = ['home', 'infrasonik', 'project-esp32', 'project-pytorch', 'project-platformer', 'about']
 
@@ -54,10 +52,6 @@ const Navigation = () => {
       return activeSection === 'project-esp32' || activeSection === 'project-pytorch' || activeSection === 'project-platformer'
     }
     return activeSection === sectionId
-  }
-
-  const toggleTheme = () => {
-    setTheme(theme === 'dark' ? 'light' : 'dark')
   }
 
   const scrollToSection = (href: string, index?: number) => {
@@ -111,20 +105,8 @@ const Navigation = () => {
             ))}
           </div>
 
-          {/* Theme Toggle & Mobile Menu Button */}
+          {/* Mobile Menu Button */}
           <div className="flex items-center space-x-2">
-            <button
-              onClick={toggleTheme}
-              className="p-2 md:p-2.5 rounded-full bg-muted/50 backdrop-blur-sm hover:bg-muted transition-all duration-300 hover:scale-110 hover:rotate-12 border border-border/30"
-              aria-label="Toggle theme"
-            >
-              {theme === 'dark' ? (
-                <Sun className="h-4 w-4 md:h-5 md:w-5 text-yellow-500" />
-              ) : (
-                <Moon className="h-4 w-4 md:h-5 md:w-5 text-blue-500" />
-              )}
-            </button>
-            
             <button
               onClick={() => setIsOpen(!isOpen)}
               className="hidden p-2.5 rounded-full bg-muted/50 backdrop-blur-sm hover:bg-muted transition-all duration-300 border border-border/30"

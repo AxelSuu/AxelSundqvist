@@ -16,7 +16,7 @@ type ThemeProviderState = {
 }
 
 const initialState: ThemeProviderState = {
-  theme: "system",
+  theme: "light",
   setTheme: () => null,
 }
 
@@ -24,37 +24,29 @@ const ThemeProviderContext = React.createContext<ThemeProviderState>(initialStat
 
 export function ThemeProvider({
   children,
-  defaultTheme = "system",
+  defaultTheme = "light",
   storageKey = "vite-ui-theme",
   ...props
 }: ThemeProviderProps) {
-  const [theme, setTheme] = React.useState<Theme>(
-    () => (localStorage.getItem(storageKey) as Theme) || defaultTheme
-  )
+  const [theme, setThemeState] = React.useState<Theme>(defaultTheme)
 
   React.useEffect(() => {
     const root = window.document.documentElement
 
-    root.classList.remove("light", "dark")
-
-    if (theme === "system") {
-      const systemTheme = window.matchMedia("(prefers-color-scheme: dark)")
-        .matches
-        ? "dark"
-        : "light"
-
-      root.classList.add(systemTheme)
-      return
+    // Enforce light-only mode across the app.
+    root.classList.remove("dark")
+    root.classList.add("light")
+    if (theme !== "light") {
+      setThemeState("light")
     }
-
-    root.classList.add(theme)
-  }, [theme])
+    localStorage.setItem(storageKey, "light")
+  }, [theme, storageKey])
 
   const value = {
     theme,
-    setTheme: (theme: Theme) => {
-      localStorage.setItem(storageKey, theme)
-      setTheme(theme)
+    setTheme: (_theme: Theme) => {
+      localStorage.setItem(storageKey, "light")
+      setThemeState("light")
     },
   }
 
