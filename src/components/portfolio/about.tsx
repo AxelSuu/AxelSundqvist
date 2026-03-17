@@ -1,131 +1,58 @@
-import { GraduationCap, MapPin, Code2, Cpu, Brain, Calculator, User, Briefcase } from 'lucide-react'
+import { GraduationCap, Compass, Beer } from 'lucide-react'
 
 const About = () => {
-  const skills = [
-    { name: 'Python', icon: Brain },
-    { name: 'C++', icon: Code2 },
-    { name: 'ESP32', icon: Cpu },
-    { name: 'MATLAB', icon: Calculator },
-  ]
-
   return (
     <section id="about" className="min-h-[100dvh] md:h-screen w-full bg-background relative flex items-center overflow-hidden py-8 md:py-0">
       <div className="container mx-auto px-6 md:px-12 max-w-6xl">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-16 items-center">
-          {/* Left: Profile + Skills */}
-          <div className="order-1">
-            {/* Profile card */}
-            <div className="relative mb-4 md:mb-6">
-              <div className="absolute -inset-4 bg-gradient-to-br from-blue-500/10 via-transparent to-purple-500/10 rounded-2xl" />
-              
-              <div className="relative bg-background/50 backdrop-blur-sm border border-border/50 rounded-xl p-4 md:p-5">
-                <div className="flex items-center gap-4 mb-0 md:mb-4">
-                  <div className="w-12 h-12 md:w-14 md:h-14 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center shadow-lg shadow-blue-500/20 shrink-0">
-                    <User className="h-6 w-6 md:h-7 md:w-7 text-white" />
-                  </div>
-                  <div>
-                    <h3 className="text-base md:text-lg font-semibold">Axel Sundqvist</h3>
-                    <p className="text-sm text-muted-foreground">AP & EE Student</p>
-                    <div className="flex items-center gap-1.5 mt-1 text-xs text-muted-foreground">
-                      <MapPin className="h-3 w-3 text-red-500" />
-                      <span>Linköping / Stockholm</span>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Quick stats - hidden on mobile */}
-                <div className="hidden md:grid grid-cols-2 gap-2">
-                  <div className="text-center p-2.5 rounded-lg bg-muted/30 border border-border/30">
-                    <div className="text-xl font-bold text-blue-400">4</div>
-                    <div className="text-xs text-muted-foreground">Years on GitHub</div>
-                  </div>
-                  <div className="text-center p-2.5 rounded-lg bg-muted/30 border border-border/30">
-                    <div className="text-xl font-bold text-purple-400">13</div>
-                    <div className="text-xs text-muted-foreground">Projects</div>
-                  </div>
-                </div>
-              </div>
+          {/* Left: Content */}
+          <div className="order-2 md:order-1">
+            <div className="flex items-center gap-3 mb-2 md:mb-2">
+              <span className="text-sm font-mono text-amber-600 dark:text-amber-400 tracking-wider font-bold">05</span>
+              <div className="h-px w-12 bg-gradient-to-r from-amber-600/80 to-amber-600/0" />
+              <span className="text-xs text-amber-600 dark:text-amber-400 font-semibold uppercase tracking-widest">About Me</span>
             </div>
 
-            {/* Skills - hidden on mobile */}
-            <div className="hidden md:block">
-              <div className="flex items-center gap-2 mb-3">
-                <Code2 className="h-4 w-4 text-green-400" />
-                <h3 className="text-sm font-semibold">Tech Stack</h3>
-              </div>
-              <div className="grid grid-cols-2 gap-2">
-                {skills.map((skill) => (
-                  <div 
-                    key={skill.name}
-                    className="flex items-center gap-2.5 p-2 rounded-lg bg-muted/30 border border-border/30"
-                  >
-                    <skill.icon className="h-4 w-4 text-green-400 shrink-0" />
-                    <div>
-                      <p className="text-sm font-medium">{skill.name}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-
-          {/* Right: Content */}
-          <div className="order-2">
-            <div className="flex items-center gap-3 mb-2 md:mb-3">
-              <span className="text-sm font-mono text-muted-foreground tracking-wider">05</span>
-              <div className="h-px w-8 bg-blue-500/50" />
-              <span className="text-xs text-blue-400 font-medium uppercase tracking-wider">About Me</span>
-            </div>
-            
-            <h2 className="text-xl md:text-4xl font-bold mb-2 md:mb-4 leading-tight">
-              Who I Am
+            <h2 className="text-2xl md:text-4xl font-black mb-2 md:mb-3 leading-tight tracking-tight">
+              Axel Sundqvist
             </h2>
-            
-            <p className="text-sm md:text-base text-muted-foreground mb-3 md:mb-5 leading-relaxed">
-              I'm a third year student in Applied Physics & Electrical Engineering at Linköping University. 
-              I enjoy exploring mathematics in school and embedded projects in my spare time.
-              Outside of studies, I bartend at the student pub VilleValla.
+
+            <p className="text-sm md:text-base text-muted-foreground mb-3 md:mb-4 leading-relaxed max-w-xl">
+              Ericsson 2026 R&D summer intern. Third year student in Applied Physics & Electrical Engineering at LiU.
+              My main interests is communication systems, embedded systems, and systems engineering.
             </p>
 
-            {/* Interests */}
-            <div className="mb-3 md:mb-5">
-              <div className="flex items-center gap-2 mb-2 md:mb-3">
-                <Briefcase className="h-4 w-4 text-purple-400" />
-                <h3 className="text-sm font-semibold">Interests</h3>
+            <div className="space-y-2 md:space-y-2 mb-3 md:mb-4">
+              <div className="flex items-start gap-2.5">
+                <GraduationCap className="h-4 w-4 text-amber-600 dark:text-amber-400 mt-0.5 shrink-0" />
+                <div>
+                  <p className="text-sm font-bold">Education</p>
+                  <p className="text-xs text-muted-foreground leading-relaxed">B.Sc. Applied Physics & EE (2023–26), M.Sc. Communication systems (2026–28) at LiU</p>
+                </div>
               </div>
-              <div className="flex flex-wrap gap-1.5">
-                {['Signal Processing', 'Machine Learning', 'Embedded Systems', 'Wireless Communications'].map((interest) => (
-                  <span 
-                    key={interest} 
-                    className="px-2.5 py-0.5 text-xs bg-purple-500/10 text-purple-300 rounded-full border border-purple-500/20"
-                  >
-                    {interest}
-                  </span>
-                ))}
+        
+              <div className="flex items-start gap-2.5">
+                <Beer className="h-4 w-4 text-amber-600 dark:text-amber-400 mt-0.5 shrink-0" />
+                <div>
+                  <p className="text-sm font-bold">Student engagements</p>
+                  <p className="text-xs text-muted-foreground leading-relaxed">Bartending at the student pub VilleValla.</p>
+                </div>
               </div>
             </div>
 
-            {/* Education - hidden on mobile */}
-            <div className="hidden md:block">
-              <div className="flex items-center gap-2 mb-3">
-                <GraduationCap className="h-4 w-4 text-blue-400" />
-                <h3 className="text-sm font-semibold">Education</h3>
-              </div>
-              <div className="space-y-2">
-                <div className="flex items-start justify-between gap-3 p-2.5 rounded-lg bg-muted/30 border border-border/30">
-                  <div>
-                    <p className="text-sm font-medium">M.Sc. Applied Physics & EE</p>
-                    <p className="text-xs text-blue-400">Linköping University</p>
-                  </div>
-                  <span className="text-xs text-muted-foreground shrink-0">2026–28</span>
-                </div>
-                <div className="flex items-start justify-between gap-3 p-2.5 rounded-lg bg-muted/30 border border-border/30">
-                  <div>
-                    <p className="text-sm font-medium">B.Sc. Applied Physics & EE</p>
-                    <p className="text-xs text-green-400">Linköping University</p>
-                  </div>
-                  <span className="text-xs text-muted-foreground shrink-0">2023–26</span>
-                </div>
+            
+          </div>
+
+          {/* Right: Visual */}
+          <div className="order-1 md:order-2">
+            <div className="relative max-w-[280px] md:max-w-sm mx-auto">
+              <div className="absolute -inset-4 bg-gradient-to-br from-amber-500/20 via-transparent to-orange-500/20 rounded-2xl" />
+              <div className="relative rounded-xl overflow-hidden border border-amber-500/20 shadow-2xl shadow-amber-500/10">
+                <img
+                  src="/images/me.png"
+                  alt="Axel Sundqvist"
+                  className="w-full h-auto object-cover"
+                />
               </div>
             </div>
           </div>

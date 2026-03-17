@@ -76,6 +76,7 @@ const Hero = () => {
               }`}
             >
               <span className="text-primary font-semibold">Applied Physics & Electrical Engineering Student</span>
+              <span className="block text-sm md:text-base mt-1">Ericsson 2026 R&D summer intern</span>
             </h2>
 
             {/* Description */}
