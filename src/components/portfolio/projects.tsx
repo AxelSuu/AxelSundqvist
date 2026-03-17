@@ -47,17 +47,6 @@ export const ProjectESP32 = () => {
               </div>
             </div>
 
-            <div className="flex flex-wrap gap-1.5 mb-3 md:mb-4">
-              {['C++', 'ESP32-S3', 'SPI', 'WebSocket', 'HTTP Server'].map((tech) => (
-                <span 
-                  key={tech} 
-                  className="px-2.5 py-0.5 text-xs bg-purple-500/15 text-purple-700 dark:text-purple-300 rounded-full border border-purple-500/30 font-medium"
-                >
-                  {tech}
-                </span>
-              ))}
-            </div>
-
             <a 
               href="https://github.com/AxelSuu/ESP32-Wi-Fi-Pong"
               target="_blank"
@@ -150,17 +139,6 @@ export const ProjectPyTorch = () => {
               </div>
             </div>
 
-            <div className="flex flex-wrap gap-1.5 mb-3 md:mb-4">
-              {['Python', 'PyTorch', 'NumPy', 'Pandas', 'Yahoo Finance'].map((tech) => (
-                <span 
-                  key={tech} 
-                  className="px-2.5 py-0.5 text-xs bg-blue-500/15 text-blue-700 dark:text-blue-300 rounded-full border border-blue-500/30 font-medium"
-                >
-                  {tech}
-                </span>
-              ))}
-            </div>
-
             <a 
               href="https://github.com/AxelSuu/Pytorch-Quant-Model"
               target="_blank"
@@ -223,17 +201,6 @@ export const ProjectPlatformer = () => {
                   <p className="text-xs text-muted-foreground leading-relaxed hidden md:block">Architecture built upon object oriented thinking</p>
                 </div>
               </div>
-            </div>
-
-            <div className="flex flex-wrap gap-1.5 mb-3 md:mb-4">
-              {['Python', 'Pygame', 'Sprite Animation', 'Physics'].map((tech) => (
-                <span 
-                  key={tech} 
-                  className="px-2.5 py-0.5 text-xs bg-green-500/15 text-green-700 dark:text-green-300 rounded-full border border-green-500/30 font-medium"
-                >
-                  {tech}
-                </span>
-              ))}
             </div>
 
             <div className="flex items-center gap-6">

@@ -55,16 +55,7 @@ const Infrasonik = () => {
               </div>
             </div>
 
-            <div className="flex flex-wrap gap-1.5">
-              {['Prototyping', 'R&D', 'Infrasound', 'Technical Writing', 'Lab Testing'].map((skill) => (
-                <span 
-                  key={skill} 
-                  className="px-2.5 py-0.5 text-xs bg-cyan-500/15 text-cyan-700 dark:text-cyan-300 rounded-full border border-cyan-500/30 font-medium"
-                >
-                  {skill}
-                </span>
-              ))}
-            </div>
+            
           </div>
 
           {/* Right: Visual */}
