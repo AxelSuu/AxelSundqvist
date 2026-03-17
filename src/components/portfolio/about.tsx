@@ -1,4 +1,4 @@
-import { GraduationCap, Compass, Beer } from 'lucide-react'
+import { GraduationCap, Beer } from 'lucide-react'
 
 const About = () => {
   return (
