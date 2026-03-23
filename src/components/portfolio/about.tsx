@@ -49,7 +49,7 @@ const About = () => {
               <div className="absolute -inset-4 bg-gradient-to-br from-amber-500/20 via-transparent to-orange-500/20 rounded-2xl" />
               <div className="relative rounded-xl overflow-hidden border border-amber-500/20 shadow-2xl shadow-amber-500/10">
                 <img
-                  src="/images/me.png"
+                  src="/images/me2.png"
                   alt="Axel Sundqvist"
                   className="w-full h-auto object-cover"
                 />
