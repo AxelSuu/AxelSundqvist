@@ -40,7 +40,7 @@ const Hero = () => {
               {/* Image container */}
               <div className="absolute inset-[4px] rounded-full overflow-hidden border-2 border-white/20 shadow-2xl">
                 <img 
-                  src="/images/me.png" 
+                  src="/images/me2.png" 
                   alt="Axel Sundqvist" 
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                 />
