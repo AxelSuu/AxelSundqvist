@@ -7,7 +7,7 @@ export const ProjectESP32 = () => {
       <div className="container mx-auto px-6 md:px-12 max-w-6xl">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-16 items-center">
           {/* Left: Content */}
-          <div className="order-2 md:order-1">
+          <div className="order-1 md:order-1">
             <div className="flex items-center gap-3 mb-2 md:mb-2">
               <span className="text-sm font-mono text-purple-600 dark:text-purple-400 tracking-wider font-bold">02</span>
               <div className="h-px w-12 bg-gradient-to-r from-purple-600/80 to-purple-600/0" />
@@ -60,7 +60,7 @@ export const ProjectESP32 = () => {
           </div>
 
           {/* Right: Visual */}
-          <div className="order-1 md:order-2">
+          <div className="order-2 md:order-2">
             <div className="relative max-w-[280px] md:max-w-sm mx-auto">
               <div className="absolute -inset-4 bg-gradient-to-br from-purple-500/20 via-transparent to-blue-500/20 rounded-2xl" />
               <div className="relative rounded-xl overflow-hidden border border-purple-500/20 shadow-2xl shadow-purple-500/10 max-h-[320px] md:max-h-none">
@@ -85,7 +85,7 @@ export const ProjectPyTorch = () => {
       <div className="container mx-auto px-6 md:px-12 max-w-6xl">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-16 items-center">
           {/* Left: Visual */}
-          <div className="order-1">
+          <div className="order-2 md:order-1">
             <div className="relative max-w-[280px] md:max-w-sm mx-auto">
               <div className="absolute -inset-4 bg-gradient-to-br from-blue-500/20 via-transparent to-cyan-500/20 rounded-2xl" />
               <div className="relative rounded-xl overflow-hidden border border-blue-500/20 shadow-2xl shadow-blue-500/10">
@@ -99,7 +99,7 @@ export const ProjectPyTorch = () => {
           </div>
 
           {/* Right: Content */}
-          <div className="order-2">
+          <div className="order-1 md:order-2">
             <div className="flex items-center gap-3 mb-2 md:mb-2">
               <span className="text-sm font-mono text-blue-600 dark:text-blue-400 tracking-wider font-bold">03</span>
               <div className="h-px w-12 bg-gradient-to-r from-blue-600/80 to-blue-600/0" />
@@ -163,7 +163,7 @@ export const ProjectPlatformer = () => {
       <div className="container mx-auto px-6 md:px-12 max-w-6xl">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-16 items-center">
           {/* Left: Content */}
-          <div className="order-2 md:order-1">
+          <div className="order-1 md:order-1">
             <div className="flex items-center gap-3 mb-2 md:mb-2">
               <span className="text-sm font-mono text-green-600 dark:text-green-400 tracking-wider font-bold">04</span>
               <div className="h-px w-12 bg-gradient-to-r from-green-600/80 to-green-600/0" />
@@ -227,7 +227,7 @@ export const ProjectPlatformer = () => {
           </div>
 
           {/* Right: Visual */}
-          <div className="order-1 md:order-2">
+          <div className="order-2 md:order-2">
             <div className="relative max-w-[280px] md:max-w-sm mx-auto">
               <div className="absolute -inset-4 bg-gradient-to-br from-green-500/20 via-transparent to-emerald-500/20 rounded-2xl" />
               <div className="relative rounded-xl overflow-hidden border border-green-500/20 shadow-2xl shadow-green-500/10 max-h-[320px] md:max-h-none">
