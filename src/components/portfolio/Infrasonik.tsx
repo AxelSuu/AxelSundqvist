@@ -19,15 +19,15 @@ const Infrasonik = () => {
             
             <div className="hidden md:flex items-center gap-2 mb-2 md:mb-4 text-sm text-muted-foreground">
               <Building2 className="h-4 w-4" />
-              <span>Laboratory Assistant R&D</span>
+              <span>Intern</span>
               <span className="text-muted-foreground/50">•</span>
               <Calendar className="h-4 w-4" />
               <span>Dec 2022 – April 2023</span>
             </div>
             
             <p className="text-sm md:text-base text-muted-foreground mb-3 md:mb-4 leading-relaxed max-w-xl">
-              Worked as a laboratory assistant in Research & Development at Infrasonik. 
-              Collaborated with a cross-functional team to transition from technical documentation 
+              Worked as an intern at Infrasonik. 
+              Collaborated with a cross functional team to go from technical documentation and specification
               to a functional prototype, contributing to innovative infrasound technology projects.
             </p>
 
