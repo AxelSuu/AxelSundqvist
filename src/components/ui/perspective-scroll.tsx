@@ -12,7 +12,19 @@ export function PerspectiveScroll({ children, className }: PerspectiveScrollProp
   const containerRef = useRef<HTMLDivElement>(null)
   const [currentSection, setCurrentSection] = useState(0)
   const [isAnimating, setIsAnimating] = useState(false)
+  const currentSectionRef = useRef(0)
+  const isAnimatingRef = useRef(false)
+  const lastScrollTimeRef = useRef(0)
+  const animationTimeoutRef = useRef<number | null>(null)
   const totalSections = children.length
+
+  useEffect(() => {
+    currentSectionRef.current = currentSection
+  }, [currentSection])
+
+  useEffect(() => {
+    isAnimatingRef.current = isAnimating
+  }, [isAnimating])
 
   useEffect(() => {
     const container = containerRef.current
@@ -21,25 +33,38 @@ export function PerspectiveScroll({ children, className }: PerspectiveScrollProp
     let touchStartY = 0
     let touchStartTime = 0
     let isTouchActive = false
-    let lastScrollTime = 0
     const scrollCooldown = 800 // ms between scroll events
+
+    const runSectionTransition = (nextSection: number) => {
+      setIsAnimating(true)
+      isAnimatingRef.current = true
+      setCurrentSection(nextSection)
+      currentSectionRef.current = nextSection
+
+      if (animationTimeoutRef.current !== null) {
+        window.clearTimeout(animationTimeoutRef.current)
+      }
+
+      animationTimeoutRef.current = window.setTimeout(() => {
+        setIsAnimating(false)
+        isAnimatingRef.current = false
+      }, scrollCooldown)
+    }
 
     const handleWheel = (e: WheelEvent) => {
       e.preventDefault()
       
       const now = Date.now()
-      if (now - lastScrollTime < scrollCooldown || isAnimating) return
+      if (now - lastScrollTimeRef.current < scrollCooldown || isAnimatingRef.current) return
       
-      lastScrollTime = now
+      lastScrollTimeRef.current = now
       
-      if (e.deltaY > 0 && currentSection < totalSections - 1) {
-        setIsAnimating(true)
-        setCurrentSection(prev => prev + 1)
-        setTimeout(() => setIsAnimating(false), scrollCooldown)
-      } else if (e.deltaY < 0 && currentSection > 0) {
-        setIsAnimating(true)
-        setCurrentSection(prev => prev - 1)
-        setTimeout(() => setIsAnimating(false), scrollCooldown)
+      const section = currentSectionRef.current
+
+      if (e.deltaY > 0 && section < totalSections - 1) {
+        runSectionTransition(section + 1)
+      } else if (e.deltaY < 0 && section > 0) {
+        runSectionTransition(section - 1)
       }
     }
 
@@ -61,7 +86,7 @@ export function PerspectiveScroll({ children, className }: PerspectiveScrollProp
       isTouchActive = false
       
       const now = Date.now()
-      if (now - lastScrollTime < scrollCooldown || isAnimating) return
+      if (now - lastScrollTimeRef.current < scrollCooldown || isAnimatingRef.current) return
       
       const touchEndY = e.changedTouches[0].clientY
       const diff = touchStartY - touchEndY
@@ -74,18 +99,15 @@ export function PerspectiveScroll({ children, className }: PerspectiveScrollProp
       
       if (Math.abs(diff) < minSwipeDistance || touchDuration > maxSwipeDuration) return
       
-      lastScrollTime = now
+      lastScrollTimeRef.current = now
+      const section = currentSectionRef.current
       
-      if (diff > 0 && currentSection < totalSections - 1) {
+      if (diff > 0 && section < totalSections - 1) {
         // Swiped up (scroll down to next section)
-        setIsAnimating(true)
-        setCurrentSection(prev => prev + 1)
-        setTimeout(() => setIsAnimating(false), scrollCooldown)
-      } else if (diff < 0 && currentSection > 0) {
+        runSectionTransition(section + 1)
+      } else if (diff < 0 && section > 0) {
         // Swiped down (scroll up to previous section)
-        setIsAnimating(true)
-        setCurrentSection(prev => prev - 1)
-        setTimeout(() => setIsAnimating(false), scrollCooldown)
+        runSectionTransition(section - 1)
       }
     }
 
@@ -95,20 +117,18 @@ export function PerspectiveScroll({ children, className }: PerspectiveScrollProp
 
     const handleKeyDown = (e: KeyboardEvent) => {
       const now = Date.now()
-      if (now - lastScrollTime < scrollCooldown || isAnimating) return
+      if (now - lastScrollTimeRef.current < scrollCooldown || isAnimatingRef.current) return
+
+      const section = currentSectionRef.current
       
-      if ((e.key === 'ArrowDown' || e.key === 'PageDown' || e.key === ' ') && currentSection < totalSections - 1) {
+      if ((e.key === 'ArrowDown' || e.key === 'PageDown' || e.key === ' ') && section < totalSections - 1) {
         e.preventDefault()
-        lastScrollTime = now
-        setIsAnimating(true)
-        setCurrentSection(prev => prev + 1)
-        setTimeout(() => setIsAnimating(false), scrollCooldown)
-      } else if ((e.key === 'ArrowUp' || e.key === 'PageUp') && currentSection > 0) {
+        lastScrollTimeRef.current = now
+        runSectionTransition(section + 1)
+      } else if ((e.key === 'ArrowUp' || e.key === 'PageUp') && section > 0) {
         e.preventDefault()
-        lastScrollTime = now
-        setIsAnimating(true)
-        setCurrentSection(prev => prev - 1)
-        setTimeout(() => setIsAnimating(false), scrollCooldown)
+        lastScrollTimeRef.current = now
+        runSectionTransition(section - 1)
       }
     }
 
@@ -126,8 +146,12 @@ export function PerspectiveScroll({ children, className }: PerspectiveScrollProp
       container.removeEventListener('touchend', handleTouchEnd)
       container.removeEventListener('touchcancel', handleTouchCancel)
       window.removeEventListener('keydown', handleKeyDown)
+
+      if (animationTimeoutRef.current !== null) {
+        window.clearTimeout(animationTimeoutRef.current)
+      }
     }
-  }, [currentSection, totalSections, isAnimating])
+  }, [totalSections])
 
   // Expose navigation function and current section globally for nav links
   useEffect(() => {
