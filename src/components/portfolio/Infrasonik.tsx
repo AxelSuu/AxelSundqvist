@@ -6,7 +6,7 @@ const Infrasonik = () => {
       <div className="container mx-auto px-6 md:px-12 max-w-6xl">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-16 items-center">
           {/* Left: Content */}
-          <div className="order-2 md:order-1">
+          <div className="order-1 md:order-1">
             <div className="flex items-center gap-3 mb-2 md:mb-2">
               <span className="text-sm font-mono text-cyan-600 dark:text-cyan-400 tracking-wider font-bold">01</span>
               <div className="h-px w-12 bg-gradient-to-r from-cyan-600/80 to-cyan-600/0" />
@@ -59,7 +59,7 @@ const Infrasonik = () => {
           </div>
 
           {/* Right: Visual */}
-          <div className="order-1 md:order-2">
+          <div className="order-2 md:order-2">
             <div className="relative max-w-[280px] md:max-w-sm mx-auto">
               <div className="absolute -inset-4 bg-gradient-to-br from-cyan-500/20 via-transparent to-blue-500/20 rounded-2xl" />
               <div className="relative rounded-xl overflow-hidden border border-cyan-500/20 shadow-2xl shadow-cyan-500/10">
