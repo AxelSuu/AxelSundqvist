@@ -18,7 +18,7 @@ function App() {
           {/* Skip to content for accessibility */}
           <a href="#main-content" className="skip-link">Skip to main content</a>
           <Navigation />
-          <main id="main-content">
+          <main id="main-content" className="px-6 md:px-0">
             <PerspectiveScroll>
               <Hero />
               <Infrasonik />

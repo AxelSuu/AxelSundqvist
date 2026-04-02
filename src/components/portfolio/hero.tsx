@@ -29,7 +29,7 @@ const Hero = () => {
         <div className="absolute inset-0 bg-gradient-to-b from-background via-background to-muted/20" />
         
         {/* Content */}
-        <div className="container mx-auto px-3 md:px-4 text-center relative z-10">
+        <div className="container mx-auto px-0 md:px-4 text-center relative z-10">
           <div className="max-w-4xl mx-auto perspective-container">
             {/* Profile image with effects */}
             <div 

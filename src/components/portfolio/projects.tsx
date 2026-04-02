@@ -4,8 +4,8 @@ import { Github, ExternalLink, Wifi, Cpu, Monitor, TrendingUp, BarChart3, Databa
 export const ProjectESP32 = () => {
   return (
     <section id="project-esp32" className="min-h-[100dvh] md:h-screen w-full bg-background relative flex items-center overflow-hidden py-8 md:py-0">
-      <div className="container mx-auto px-6 md:px-12 max-w-6xl">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-16 items-center">
+      <div className="container mx-auto px-0 md:px-12 max-w-6xl">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-16 items-center">
           {/* Left: Content */}
           <div className="order-1 md:order-1">
             <div className="flex items-center gap-3 mb-2 md:mb-2">
@@ -13,12 +13,21 @@ export const ProjectESP32 = () => {
               <div className="h-px w-12 bg-gradient-to-r from-purple-600/80 to-purple-600/0" />
               <span className="text-xs text-purple-600 dark:text-purple-400 font-semibold uppercase tracking-widest">Embedded Systems</span>
             </div>
+
+            <div className="mb-2 flex flex-wrap gap-2">
+              <span className="inline-flex items-center rounded-full border border-border/70 bg-muted/50 px-2.5 py-1 text-[11px] font-medium text-muted-foreground">
+                Role: Developer
+              </span>
+              <span className="inline-flex items-center rounded-full border border-border/70 bg-muted/50 px-2.5 py-1 text-[11px] font-medium text-muted-foreground">
+                Date: Ongoing
+              </span>
+            </div>
             
             <h2 className="text-2xl md:text-4xl font-black mb-2 md:mb-3 leading-tight tracking-tight">
               ESP32-S3 Wireless Pong
             </h2>
             
-            <p className="text-sm md:text-base text-muted-foreground mb-3 md:mb-4 leading-relaxed max-w-xl">
+            <p className="project-description-mobile text-sm md:text-base text-muted-foreground mb-3 md:mb-4 leading-relaxed max-w-xl">
               An embedded wireless Pong game on an ESP32-S3 using C++ with an SPI-connected 128×96 OLED display. 
               Implemented WebSockets to achieve sub-10ms input latency for the browser-based controller, ensuring a responsive real-time gaming experience.
             </p>
@@ -61,8 +70,8 @@ export const ProjectESP32 = () => {
 
           {/* Right: Visual */}
           <div className="order-2 md:order-2">
-            <div className="relative max-w-[280px] md:max-w-sm mx-auto">
-              <div className="absolute -inset-4 bg-gradient-to-br from-purple-500/20 via-transparent to-blue-500/20 rounded-2xl" />
+            <div className="relative w-full max-w-none md:max-w-sm mx-1 md:mx-auto">
+              <div className="absolute -inset-2 md:-inset-4 bg-gradient-to-br from-purple-500/20 via-transparent to-blue-500/20 rounded-2xl" />
               <div className="relative rounded-xl overflow-hidden border border-purple-500/20 shadow-2xl shadow-purple-500/10 max-h-[320px] md:max-h-none">
                 <img 
                   src="/images/esp32.jpeg" 
@@ -82,12 +91,12 @@ export const ProjectESP32 = () => {
 export const ProjectPyTorch = () => {
   return (
     <section id="project-pytorch" className="min-h-[100dvh] md:h-screen w-full bg-background relative flex items-center overflow-hidden py-8 md:py-0">
-      <div className="container mx-auto px-6 md:px-12 max-w-6xl">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-16 items-center">
+      <div className="container mx-auto px-0 md:px-12 max-w-6xl">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-16 items-center">
           {/* Left: Visual */}
           <div className="order-2 md:order-1">
-            <div className="relative max-w-[280px] md:max-w-sm mx-auto">
-              <div className="absolute -inset-4 bg-gradient-to-br from-blue-500/20 via-transparent to-cyan-500/20 rounded-2xl" />
+            <div className="relative w-full max-w-none md:max-w-sm mx-1 md:mx-auto">
+              <div className="absolute -inset-2 md:-inset-4 bg-gradient-to-br from-blue-500/20 via-transparent to-cyan-500/20 rounded-2xl" />
               <div className="relative rounded-xl overflow-hidden border border-blue-500/20 shadow-2xl shadow-blue-500/10">
                 <img 
                   src="/images/pystock.png" 
@@ -105,12 +114,21 @@ export const ProjectPyTorch = () => {
               <div className="h-px w-12 bg-gradient-to-r from-blue-600/80 to-blue-600/0" />
               <span className="text-xs text-blue-600 dark:text-blue-400 font-semibold uppercase tracking-widest">Machine Learning</span>
             </div>
+
+            <div className="mb-2 flex flex-wrap gap-2">
+              <span className="inline-flex items-center rounded-full border border-border/70 bg-muted/50 px-2.5 py-1 text-[11px] font-medium text-muted-foreground">
+                Role: Developer
+              </span>
+              <span className="inline-flex items-center rounded-full border border-border/70 bg-muted/50 px-2.5 py-1 text-[11px] font-medium text-muted-foreground">
+                Date: Ongoing
+              </span>
+            </div>
             
             <h2 className="text-2xl md:text-4xl font-black mb-2 md:mb-3 leading-tight tracking-tight">
               PyTorch Stock Forecasting
             </h2>
             
-            <p className="text-sm md:text-base text-muted-foreground mb-3 md:mb-4 leading-relaxed max-w-xl">
+            <p className="project-description-mobile text-sm md:text-base text-muted-foreground mb-3 md:mb-4 leading-relaxed max-w-xl">
               A pattern learning project exploring time series prediction for stock prices. 
               Built as a learning experience with PyTorch and implementing neural networks.
             </p>
@@ -160,8 +178,8 @@ export const ProjectPyTorch = () => {
 export const ProjectPlatformer = () => {
   return (
     <section id="project-platformer" className="min-h-[100dvh] md:h-screen w-full bg-background relative flex items-center overflow-hidden py-12 md:py-0">
-      <div className="container mx-auto px-6 md:px-12 max-w-6xl">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-16 items-center">
+      <div className="container mx-auto px-0 md:px-12 max-w-6xl">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-16 items-center">
           {/* Left: Content */}
           <div className="order-1 md:order-1">
             <div className="flex items-center gap-3 mb-2 md:mb-2">
@@ -169,12 +187,21 @@ export const ProjectPlatformer = () => {
               <div className="h-px w-12 bg-gradient-to-r from-green-600/80 to-green-600/0" />
               <span className="text-xs text-green-600 dark:text-green-400 font-semibold uppercase tracking-widest">Game Development</span>
             </div>
+
+            <div className="mb-2 flex flex-wrap gap-2">
+              <span className="inline-flex items-center rounded-full border border-border/70 bg-muted/50 px-2.5 py-1 text-[11px] font-medium text-muted-foreground">
+                Role: Developer
+              </span>
+              <span className="inline-flex items-center rounded-full border border-border/70 bg-muted/50 px-2.5 py-1 text-[11px] font-medium text-muted-foreground">
+                Date: Ongoing
+              </span>
+            </div>
             
             <h2 className="text-2xl md:text-4xl font-black mb-2 md:mb-3 leading-tight tracking-tight">
               2D Platformer
             </h2>
             
-            <p className="text-sm md:text-base text-muted-foreground mb-3 md:mb-4 leading-relaxed max-w-xl">
+            <p className="project-description-mobile text-sm md:text-base text-muted-foreground mb-3 md:mb-4 leading-relaxed max-w-xl">
               A 2D platformer game built with Python and Pygame. Features classic platforming mechanics 
               with procedural level generation, data storage, achievements and animations.
             </p>
@@ -228,8 +255,8 @@ export const ProjectPlatformer = () => {
 
           {/* Right: Visual */}
           <div className="order-2 md:order-2">
-            <div className="relative max-w-[280px] md:max-w-sm mx-auto">
-              <div className="absolute -inset-4 bg-gradient-to-br from-green-500/20 via-transparent to-emerald-500/20 rounded-2xl" />
+            <div className="relative w-full max-w-none md:max-w-sm mx-1 md:mx-auto">
+              <div className="absolute -inset-2 md:-inset-4 bg-gradient-to-br from-green-500/20 via-transparent to-emerald-500/20 rounded-2xl" />
               <div className="relative rounded-xl overflow-hidden border border-green-500/20 shadow-2xl shadow-green-500/10 max-h-[320px] md:max-h-none">
                 <img 
                   src="/images/skybound.png" 

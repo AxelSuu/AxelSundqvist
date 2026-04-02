@@ -273,6 +273,21 @@
 .fade-in-up:nth-child(4) { animation-delay: 0.4s; }
 .fade-in-up:nth-child(5) { animation-delay: 0.5s; }
 
+@media (max-width: 768px) {
+  body {
+    font-size: 14px;
+    line-height: 1.45;
+  }
+
+  .project-description-mobile {
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    line-height: 1.4;
+  }
+}
+
 /* Skip link for accessibility */
 .skip-link {
   position: absolute;

@@ -1,10 +1,10 @@
-import { Waves, FileText, FlaskConical, Building2, Calendar } from 'lucide-react'
+import { Waves, FileText, FlaskConical } from 'lucide-react'
 
 const Infrasonik = () => {
   return (
     <section id="infrasonik" className="min-h-[100dvh] md:h-screen w-full bg-background relative flex items-center overflow-hidden pt-16 pb-8 md:py-0">
-      <div className="container mx-auto px-6 md:px-12 max-w-6xl">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-16 items-center">
+      <div className="container mx-auto px-0 md:px-12 max-w-6xl">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-16 items-center">
           {/* Left: Content */}
           <div className="order-1 md:order-1">
             <div className="flex items-center gap-3 mb-2 md:mb-2">
@@ -12,18 +12,19 @@ const Infrasonik = () => {
               <div className="h-px w-12 bg-gradient-to-r from-cyan-600/80 to-cyan-600/0" />
               <span className="text-xs text-cyan-600 dark:text-cyan-400 font-semibold uppercase tracking-widest">Work Experience</span>
             </div>
+
+            <div className="mb-2 flex flex-wrap gap-2">
+              <span className="inline-flex items-center rounded-full border border-border/70 bg-muted/50 px-2.5 py-1 text-[11px] font-medium text-muted-foreground">
+                Intern
+              </span>
+              <span className="inline-flex items-center rounded-full border border-border/70 bg-muted/50 px-2.5 py-1 text-[11px] font-medium text-muted-foreground">
+                Dec 2022 - Apr 2023
+              </span>
+            </div>
             
             <h2 className="text-2xl md:text-4xl font-black mb-2 md:mb-2 leading-tight tracking-tight">
               Infrasonik
             </h2>
-            
-            <div className="hidden md:flex items-center gap-2 mb-2 md:mb-4 text-sm text-muted-foreground">
-              <Building2 className="h-4 w-4" />
-              <span>Intern</span>
-              <span className="text-muted-foreground/50">•</span>
-              <Calendar className="h-4 w-4" />
-              <span>Dec 2022 – April 2023</span>
-            </div>
             
             <p className="text-sm md:text-base text-muted-foreground mb-3 md:mb-4 leading-relaxed max-w-xl">
               Worked as an intern at Infrasonik. 
@@ -60,13 +61,13 @@ const Infrasonik = () => {
 
           {/* Right: Visual */}
           <div className="order-2 md:order-2">
-            <div className="relative max-w-[280px] md:max-w-sm mx-auto">
-              <div className="absolute -inset-4 bg-gradient-to-br from-cyan-500/20 via-transparent to-blue-500/20 rounded-2xl" />
+            <div className="relative w-full max-w-none md:max-w-sm mx-1 md:mx-auto">
+              <div className="absolute -inset-2 md:-inset-4 bg-gradient-to-br from-cyan-500/20 via-transparent to-blue-500/20 rounded-2xl" />
               <div className="relative rounded-xl overflow-hidden border border-cyan-500/20 shadow-2xl shadow-cyan-500/10">
                 <img 
                   src="/images/infradryer.png" 
                   alt="Infrasonik Infrasound Dryer Prototype" 
-                  className="w-full h-auto object-cover"
+                  className="w-full max-h-[240px] md:max-h-none object-cover"
                 />
               </div>
             </div>

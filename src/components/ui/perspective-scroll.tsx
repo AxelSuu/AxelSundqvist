@@ -172,7 +172,7 @@ export function PerspectiveScroll({ children, className }: PerspectiveScrollProp
   return (
     <div 
       ref={containerRef}
-      className={cn("h-[100dvh] md:h-screen w-screen overflow-hidden perspective-[1000px]", className)}
+      className={cn("h-[100dvh] md:h-screen w-full overflow-hidden perspective-[1000px]", className)}
       style={{ perspective: '1000px' }}
     >
       <div className="relative h-full w-full" style={{ transformStyle: 'preserve-3d' }}>
@@ -223,7 +223,7 @@ export function PerspectiveScroll({ children, className }: PerspectiveScrollProp
       </div>
       
       {/* Section indicators - hidden on small mobile, visible on larger screens */}
-      <div className="fixed right-3 md:right-6 top-1/2 -translate-y-1/2 z-50 flex flex-col gap-2 md:gap-3">
+      <div className="fixed right-3 md:right-6 top-1/2 -translate-y-1/2 z-50 hidden md:flex flex-col gap-2 md:gap-3">
         {children.map((_, index) => (
           <button
             key={index}
