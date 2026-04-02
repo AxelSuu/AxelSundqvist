@@ -3,7 +3,7 @@ import { GraduationCap, Beer } from 'lucide-react'
 const About = () => {
   return (
     <section id="about" className="min-h-[100dvh] md:h-screen w-full bg-background relative flex items-center overflow-hidden py-8 md:py-0">
-      <div className="container mx-auto px-6 md:px-12 max-w-6xl">
+      <div className="container mx-auto px-0 md:px-12 max-w-6xl">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-16 items-center">
           {/* Left: Content */}
           <div className="order-2 md:order-1">
