@@ -32,7 +32,7 @@ const Infrasonik = () => {
               to a functional prototype, contributing to innovative infrasound technology projects.
             </p>
 
-            <div className="space-y-2 md:space-y-2 mb-3 md:mb-4">
+            <div className="hidden md:block space-y-2 md:space-y-2 mb-3 md:mb-4">
               <div className="flex items-start gap-2.5">
                 <Waves className="h-4 w-4 text-cyan-600 dark:text-cyan-400 mt-0.5 shrink-0" />
                 <div>
