@@ -32,7 +32,7 @@ export const ProjectESP32 = () => {
               Implemented WebSockets to achieve sub-10ms input latency for the browser-based controller, ensuring a responsive real-time gaming experience.
             </p>
 
-            <div className="space-y-2 md:space-y-2 mb-3 md:mb-4">
+            <div className="hidden md:block space-y-2 md:space-y-2 mb-3 md:mb-4">
               <div className="flex items-start gap-2.5">
                 <Wifi className="h-4 w-4 text-purple-600 dark:text-purple-400 mt-0.5 shrink-0" />
                 <div>
@@ -133,7 +133,7 @@ export const ProjectPyTorch = () => {
               Built as a learning experience with PyTorch and implementing neural networks.
             </p>
 
-            <div className="space-y-2 md:space-y-2 mb-3 md:mb-4">
+            <div className="hidden md:block space-y-2 md:space-y-2 mb-3 md:mb-4">
               <div className="flex items-start gap-2.5">
                 <BarChart3 className="h-4 w-4 text-blue-600 dark:text-blue-400 mt-0.5 shrink-0" />
                 <div>
@@ -206,7 +206,7 @@ export const ProjectPlatformer = () => {
               with procedural level generation, data storage, achievements and animations.
             </p>
 
-            <div className="space-y-2 md:space-y-2 mb-3 md:mb-4">
+            <div className="hidden md:block space-y-2 md:space-y-2 mb-3 md:mb-4">
               <div className="flex items-start gap-2.5">
                 <Joystick className="h-4 w-4 text-green-600 dark:text-green-400 mt-0.5 shrink-0" />
                 <div>
