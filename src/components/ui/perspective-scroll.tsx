@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useRef, useState, ReactNode } from 'react'
+import { useEffect, useRef, useState, ReactNode, cloneElement, isValidElement, ReactElement } from 'react'
 import { cn } from '@/lib/utils'
 
 interface PerspectiveScrollProps {
@@ -216,7 +216,9 @@ export function PerspectiveScroll({ children, className }: PerspectiveScrollProp
                 zIndex: totalSections - Math.abs(offset),
               }}
             >
-              {child}
+              {isValidElement(child)
+                ? cloneElement(child as ReactElement<{ isActive?: boolean }>, { isActive: offset === 0 })
+                : child}
             </div>
           )
         })}
@@ -235,10 +237,10 @@ export function PerspectiveScroll({ children, className }: PerspectiveScrollProp
               }
             }}
             className={cn(
-              "w-2 h-2 md:w-2.5 md:h-2.5 rounded-full transition-all duration-300 touch-manipulation",
-              index === currentSection 
-                ? "bg-primary scale-125 md:scale-150 shadow-lg shadow-primary/50" 
-                : "bg-muted-foreground/30 hover:bg-muted-foreground/60"
+              "rounded-full transition-all duration-300 touch-manipulation",
+              index === currentSection
+                ? "w-1.5 h-6 bg-primary shadow-lg shadow-primary/50"
+                : "w-2 h-2 md:w-2.5 md:h-2.5 bg-muted-foreground/30 hover:bg-muted-foreground/60"
             )}
             aria-label={`Go to section ${index + 1}`}
           />

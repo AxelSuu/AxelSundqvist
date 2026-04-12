@@ -5,6 +5,7 @@ import { MagneticButton } from '@/components/ui/magnetic-button'
 const Hero = () => {
   const [displayedText, setDisplayedText] = useState('')
   const [isLoaded, setIsLoaded] = useState(false)
+  const [typingDone, setTypingDone] = useState(false)
   const fullName = 'AXEL SUNDQVIST'
 
   // Typing animation
@@ -15,10 +16,12 @@ const Hero = () => {
         setDisplayedText(fullName.slice(0, currentIndex + 1))
         currentIndex++
         setTimeout(typeWriter, 150)
+      } else {
+        setTypingDone(true)
       }
     }
     setTimeout(typeWriter, 1000) // Start after 1 second
-    
+
     // Mark as loaded for entrance animations
     setTimeout(() => setIsLoaded(true), 200)
   }, [])
@@ -66,7 +69,14 @@ const Hero = () => {
                   </>
                 )}
               </span>
-              <span className="#002060">|</span>
+              <span
+                style={{
+                  color: '#002060',
+                  ...(typingDone && {
+                    animation: 'blink 0.6s step-end 3, cursorFade 0.3s ease 1.8s forwards',
+                  }),
+                }}
+              >|</span>
             </h1>
             
             {/* Subtitle */}
