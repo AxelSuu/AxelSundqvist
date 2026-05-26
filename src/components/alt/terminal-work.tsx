@@ -45,7 +45,7 @@ export default function TerminalWork() {
 
         <div className="alt-work-grid">
           {/* Left: terminal window with image */}
-          <div style={{ display: 'flex', flexDirection: 'column', border: '1px solid rgba(255,255,255,0.08)', overflow: 'hidden' }}>
+          <div style={{ display: 'flex', flexDirection: 'column', border: '1px solid rgba(255,255,255,0.08)', overflow: 'hidden', minWidth: 0 }}>
             <div className="alt-terminal-header">
               <div className="alt-dot" style={{ background: '#ff5f56' }} />
               <div className="alt-dot" style={{ background: '#febc2e' }} />
@@ -54,11 +54,11 @@ export default function TerminalWork() {
                 infrasonik.prototype.exe
               </span>
             </div>
-            <div className="alt-img-wrap" style={{ overflow: 'hidden' }}>
+            <div className="alt-img-wrap" style={{ overflow: 'hidden', maxHeight: 320 }}>
               <img
                 src="/images/infradryer.png"
                 alt="Infrasonik infrasound dryer prototype"
-                style={{ width: '100%', height: 320, objectFit: 'cover' }}
+                style={{ width: '100%', height: '100%', maxHeight: 320, objectFit: 'cover', objectPosition: 'center' }}
               />
             </div>
             {/* "output" bar below image */}

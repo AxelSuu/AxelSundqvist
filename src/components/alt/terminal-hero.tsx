@@ -42,27 +42,12 @@ export default function TerminalHero() {
         minHeight: '100vh',
         display: 'flex',
         flexDirection: 'column',
-        justifyContent: 'flex-end',
+        justifyContent: 'center',
         position: 'relative',
-        padding: '0 32px 52px',
+        padding: '80px 32px 52px',
         overflow: 'hidden',
       }}
     >
-      {/* Top system prompt */}
-      <div style={{
-        position: 'absolute',
-        top: 70,
-        left: 32,
-        fontSize: 10,
-        letterSpacing: '0.2em',
-        color: '#2c2c2c',
-        fontFamily: 'var(--mono)',
-        zIndex: 2,
-      }}>
-        SYSTEM:/PORTFOLIO/AXEL $&nbsp;
-        <span style={{ color: '#00e87a' }}>./display --name</span>
-      </div>
-
       {/* Decorative corner grid lines */}
       <div style={{
         position: 'absolute',
