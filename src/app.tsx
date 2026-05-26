@@ -1,38 +1,42 @@
-import { ThemeProvider } from '@/components/theme-provider'
-import { BrowserRouter as Router } from 'react-router-dom'
-import { Toaster } from '@/components/ui/toaster'
-import Navigation from '@/components/portfolio/navigation'
-import Hero from '@/components/portfolio/hero'
-import About from '@/components/portfolio/about'
-import { ProjectESP32, ProjectPyTorch, ProjectPlatformer } from '@/components/portfolio/projects'
-import Infrasonik from '@/components/portfolio/Infrasonik'
-import { PerspectiveScroll } from '@/components/ui/perspective-scroll'
+import TerminalNav from '@/components/alt/terminal-nav'
+import TerminalHero from '@/components/alt/terminal-hero'
+import TerminalWork from '@/components/alt/terminal-work'
+import TerminalProjects from '@/components/alt/terminal-projects'
+import TerminalAbout from '@/components/alt/terminal-about'
 import { Analytics } from '@vercel/analytics/react'
-import './app.css'
+import './app-alt.css'
 
 function App() {
   return (
-    <ThemeProvider defaultTheme="light" storageKey="portfolio-theme-v2">
-      <Router>
-        <div className="bg-background text-foreground">
-          {/* Skip to content for accessibility */}
-          <a href="#main-content" className="skip-link">Skip to main content</a>
-          <Navigation />
-          <main id="main-content" className="px-6 md:px-0">
-            <PerspectiveScroll>
-              <Hero />
-              <Infrasonik />
-              <ProjectESP32 />
-              <ProjectPyTorch />
-              <ProjectPlatformer />
-              <About />
-            </PerspectiveScroll>
-          </main>
-          <Toaster />
-          <Analytics />
-        </div>
-      </Router>
-    </ThemeProvider>
+    <div className="alt-root">
+      <a
+        href="#alt-home"
+        style={{
+          position: 'absolute',
+          top: -40,
+          left: 0,
+          background: '#00e87a',
+          color: '#000',
+          padding: '8px 16px',
+          zIndex: 1000,
+          fontFamily: 'var(--mono)',
+          fontSize: 12,
+          transition: 'top 0.3s',
+        }}
+        onFocus={e => (e.currentTarget.style.top = '0')}
+        onBlur={e => (e.currentTarget.style.top = '-40px')}
+      >
+        Skip to main content
+      </a>
+      <TerminalNav />
+      <main id="alt-home-main">
+        <TerminalHero />
+        <TerminalWork />
+        <TerminalProjects />
+        <TerminalAbout />
+      </main>
+      <Analytics />
+    </div>
   )
 }
 
