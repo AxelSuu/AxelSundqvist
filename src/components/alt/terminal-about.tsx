@@ -18,13 +18,13 @@ export default function TerminalAbout() {
         <div className="alt-about-grid">
           {/* Left: image + filename */}
           <div>
-            <div style={{ border: '1px solid rgba(255,255,255,0.07)', overflow: 'hidden', position: 'relative' }}>
+            <div style={{ border: '1px solid rgba(0,0,0,0.1)', overflow: 'hidden', position: 'relative' }}>
               {/* Terminal header */}
               <div className="alt-terminal-header">
                 <div className="alt-dot" style={{ background: '#ff5f56' }} />
                 <div className="alt-dot" style={{ background: '#febc2e' }} />
                 <div className="alt-dot" style={{ background: '#27c840' }} />
-                <span style={{ marginLeft: 8, fontSize: 10, color: '#2c2c2c', letterSpacing: '0.1em' }}>
+                <span style={{ marginLeft: 8, fontSize: 10, color: '#aaa', letterSpacing: '0.1em' }}>
                   axel_sundqvist.jpg
                 </span>
               </div>
@@ -46,7 +46,7 @@ export default function TerminalAbout() {
                 <div style={{
                   position: 'absolute',
                   inset: 0,
-                  background: 'linear-gradient(135deg, rgba(0,232,122,0.12), rgba(0,207,255,0.06))',
+                  background: 'linear-gradient(135deg, rgba(0,184,94,0.1), rgba(0,124,191,0.05))',
                   mixBlendMode: 'screen',
                   pointerEvents: 'none',
                 }} />
@@ -82,14 +82,14 @@ export default function TerminalAbout() {
               lineHeight: 0.92,
               letterSpacing: '-0.025em',
               marginBottom: 36,
-              color: '#f0f0f0',
+              color: '#1a1a1a',
             }}>
               AXEL<br />
-              <span style={{ color: '#00e87a' }}>SUNDQVIST</span>
+              <span style={{ color: '#00b85e' }}>SUNDQVIST</span>
             </h2>
 
             <div style={{
-              borderLeft: '2px solid rgba(0,232,122,0.25)',
+              borderLeft: '2px solid rgba(0,184,94,0.4)',
               paddingLeft: 22,
               marginBottom: 44,
             }}>
@@ -135,13 +135,13 @@ export default function TerminalAbout() {
                 }
               ].map(item => (
                 <div key={item.title} style={{ display: 'flex', gap: 14, alignItems: 'flex-start' }}>
-                  <span style={{ color: '#00e87a', marginTop: 1, flexShrink: 0 }}>{item.icon}</span>
+                  <span style={{ color: '#00b85e', marginTop: 1, flexShrink: 0 }}>{item.icon}</span>
                   <div>
-                    <div style={{ fontSize: 10, letterSpacing: '0.18em', color: '#d8d8d8', marginBottom: 5 }}>
+                    <div style={{ fontSize: 10, letterSpacing: '0.18em', color: '#1a1a1a', marginBottom: 5 }}>
                       {item.title}
                     </div>
                     {Array.isArray(item.lines) && item.lines.map(l => (
-                      <div key={l} style={{ fontSize: 12, color: '#464646', lineHeight: 1.7 }}>{l}</div>
+                      <div key={l} style={{ fontSize: 12, color: '#777', lineHeight: 1.7 }}>{l}</div>
                     ))}
                     {item.content}
                   </div>

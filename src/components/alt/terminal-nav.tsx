@@ -32,8 +32,8 @@ export default function TerminalNav() {
         right: 0,
         zIndex: 200,
         fontFamily: 'var(--mono)',
-        borderBottom: scrolled ? '1px solid rgba(255,255,255,0.07)' : '1px solid transparent',
-        background: scrolled ? 'rgba(7,7,7,0.92)' : 'transparent',
+        borderBottom: scrolled ? '1px solid rgba(0,0,0,0.09)' : '1px solid transparent',
+        background: scrolled ? 'rgba(248,248,248,0.92)' : 'transparent',
         backdropFilter: scrolled ? 'blur(16px)' : 'none',
         transition: 'background 0.35s, border-color 0.35s',
       }}
@@ -57,7 +57,7 @@ export default function TerminalNav() {
             fontFamily: 'inherit',
             fontSize: 15,
             fontWeight: 700,
-            color: '#00e87a',
+            color: '#00b85e',
             letterSpacing: '0.12em',
             padding: 0,
           }}
@@ -79,19 +79,19 @@ export default function TerminalNav() {
                 fontFamily: 'inherit',
                 fontSize: 10,
                 letterSpacing: '0.18em',
-                color: '#464646',
+                color: '#888',
                 textTransform: 'uppercase',
                 padding: '4px 0',
                 transition: 'color 0.2s',
               }}
-              onMouseEnter={e => (e.currentTarget.style.color = '#d8d8d8')}
-              onMouseLeave={e => (e.currentTarget.style.color = '#464646')}
+              onMouseEnter={e => (e.currentTarget.style.color = '#1a1a1a')}
+              onMouseLeave={e => (e.currentTarget.style.color = '#888')}
             >
             {item.label}
             </button>
           ))}
 
-          <div style={{ width: 1, height: 16, background: 'rgba(255,255,255,0.1)' }} />
+          <div style={{ width: 1, height: 16, background: 'rgba(0,0,0,0.12)' }} />
 
           {[
             { href: 'https://github.com/AxelSuu', icon: <Github size={13} />, label: 'GH' },
@@ -104,13 +104,13 @@ export default function TerminalNav() {
               target={s.href.startsWith('http') ? '_blank' : undefined}
               rel="noopener noreferrer"
               style={{
-                color: '#464646',
+                color: '#888',
                 display: 'flex',
                 alignItems: 'center',
                 transition: 'color 0.2s',
               }}
-              onMouseEnter={e => (e.currentTarget.style.color = '#00e87a')}
-              onMouseLeave={e => (e.currentTarget.style.color = '#464646')}
+              onMouseEnter={e => (e.currentTarget.style.color = '#00b85e')}
+              onMouseLeave={e => (e.currentTarget.style.color = '#888')}
             >
               {s.icon}
             </a>
@@ -122,9 +122,9 @@ export default function TerminalNav() {
           onClick={() => setOpen(o => !o)}
           style={{
             background: 'none',
-            border: '1px solid rgba(255,255,255,0.1)',
+            border: '1px solid rgba(0,0,0,0.12)',
             cursor: 'pointer',
-            color: '#d8d8d8',
+            color: '#1a1a1a',
             padding: '6px 8px',
             display: 'none',
           }}
@@ -138,8 +138,8 @@ export default function TerminalNav() {
       {/* Mobile dropdown */}
       {open && (
         <div style={{
-          background: 'rgba(7,7,7,0.97)',
-          borderTop: '1px solid rgba(255,255,255,0.07)',
+          background: 'rgba(248,248,248,0.97)',
+          borderTop: '1px solid rgba(0,0,0,0.09)',
           padding: '20px 28px 28px',
           fontFamily: 'var(--mono)',
         }}>
@@ -157,14 +157,14 @@ export default function TerminalNav() {
                 fontFamily: 'inherit',
                 fontSize: 12,
                 letterSpacing: '0.15em',
-                color: '#464646',
+                color: '#888',
                 padding: '10px 0',
                 textTransform: 'uppercase',
-                borderBottom: '1px solid rgba(255,255,255,0.05)',
+                borderBottom: '1px solid rgba(0,0,0,0.07)',
                 transition: 'color 0.2s',
               }}
-              onMouseEnter={e => (e.currentTarget.style.color = '#00e87a')}
-              onMouseLeave={e => (e.currentTarget.style.color = '#464646')}
+              onMouseEnter={e => (e.currentTarget.style.color = '#00b85e')}
+              onMouseLeave={e => (e.currentTarget.style.color = '#888')}
             >
               [{item.num}]_{item.label}
             </button>

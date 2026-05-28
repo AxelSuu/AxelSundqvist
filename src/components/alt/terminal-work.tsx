@@ -25,14 +25,14 @@ export default function TerminalWork() {
         backgroundImage: 'url(/images/infradryer.png)',
         backgroundSize: 'cover',
         backgroundPosition: 'center',
-        filter: 'grayscale(100%) brightness(0.25)',
-        opacity: 0.18,
+        filter: 'grayscale(100%) brightness(0.85)',
+        opacity: 0.12,
         zIndex: 0,
       }} />
       <div style={{
         position: 'absolute',
         inset: 0,
-        background: 'linear-gradient(to right, rgba(7,7,7,0.98) 50%, rgba(7,7,7,0.8))',
+        background: 'linear-gradient(to right, rgba(248,248,248,0.97) 50%, rgba(248,248,248,0.82))',
         zIndex: 1,
       }} />
 
@@ -40,12 +40,12 @@ export default function TerminalWork() {
 
         <div className="alt-work-grid">
           {/* Left: terminal window with image */}
-          <div style={{ display: 'flex', flexDirection: 'column', border: '1px solid rgba(255,255,255,0.08)', overflow: 'hidden', minWidth: 0 }}>
+          <div style={{ display: 'flex', flexDirection: 'column', border: '1px solid rgba(0,0,0,0.1)', overflow: 'hidden', minWidth: 0 }}>
             <div className="alt-terminal-header">
               <div className="alt-dot" style={{ background: '#ff5f56' }} />
               <div className="alt-dot" style={{ background: '#febc2e' }} />
               <div className="alt-dot" style={{ background: '#27c840' }} />
-              <span style={{ marginLeft: 8, fontSize: 10, color: '#2c2c2c', letterSpacing: '0.1em' }}>
+              <span style={{ marginLeft: 8, fontSize: 10, color: '#aaa', letterSpacing: '0.1em' }}>
                 infrasonik.exe
               </span>
             </div>
@@ -61,7 +61,7 @@ export default function TerminalWork() {
 
           {/* Right: content */}
           <div>
-            <div style={{ fontSize: 10, letterSpacing: '0.2em', color: '#00e87a', marginBottom: 20 }}>
+            <div style={{ fontSize: 10, letterSpacing: '0.2em', color: '#00b85e', marginBottom: 20 }}>
               DEC 2022 — APR 2023&nbsp;//&nbsp;INTERN
             </div>
 
@@ -71,13 +71,13 @@ export default function TerminalWork() {
               lineHeight: 0.95,
               letterSpacing: '-0.025em',
               marginBottom: 28,
-              color: '#f0f0f0',
+              color: '#1a1a1a',
             }}>
               INFRA<br />SONIK
             </h2>
 
             <div style={{
-              borderLeft: '2px solid rgba(0,232,122,0.3)',
+              borderLeft: '2px solid rgba(0,184,94,0.4)',
               paddingLeft: 20,
               marginBottom: 36,
             }}>
@@ -92,12 +92,12 @@ export default function TerminalWork() {
             <div style={{ display: 'flex', flexDirection: 'column', gap: 20, marginBottom: 36 }}>
               {HIGHLIGHTS.map(h => (
                 <div key={h.title} style={{ display: 'flex', gap: 14, alignItems: 'flex-start' }}>
-                  <span style={{ color: '#00e87a', marginTop: 1, flexShrink: 0 }}>{h.icon}</span>
+                  <span style={{ color: '#00b85e', marginTop: 1, flexShrink: 0 }}>{h.icon}</span>
                   <div>
-                    <div style={{ fontSize: 10, letterSpacing: '0.15em', color: '#d8d8d8', marginBottom: 3 }}>
+                    <div style={{ fontSize: 10, letterSpacing: '0.15em', color: '#1a1a1a', marginBottom: 3 }}>
                       {h.title}
                     </div>
-                    <div style={{ fontSize: 12, color: '#464646', lineHeight: 1.5 }}>{h.desc}</div>
+                    <div style={{ fontSize: 12, color: '#777', lineHeight: 1.5 }}>{h.desc}</div>
                   </div>
                 </div>
               ))}

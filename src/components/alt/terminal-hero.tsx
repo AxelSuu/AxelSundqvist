@@ -20,8 +20,8 @@ export default function TerminalHero() {
         right: 32,
         width: 120,
         height: 120,
-        borderTop: '1px solid rgba(255,255,255,0.05)',
-        borderRight: '1px solid rgba(255,255,255,0.05)',
+        borderTop: '1px solid rgba(0,0,0,0.09)',
+        borderRight: '1px solid rgba(0,0,0,0.09)',
         zIndex: 2,
       }} />
       <div style={{
@@ -30,8 +30,8 @@ export default function TerminalHero() {
         left: 32,
         width: 80,
         height: 80,
-        borderBottom: '1px solid rgba(255,255,255,0.05)',
-        borderLeft: '1px solid rgba(255,255,255,0.05)',
+        borderBottom: '1px solid rgba(0,0,0,0.09)',
+        borderLeft: '1px solid rgba(0,0,0,0.09)',
         zIndex: 2,
       }} />
 
@@ -50,21 +50,21 @@ export default function TerminalHero() {
             userSelect: 'none',
           }}
         >
-          <div style={{ color: '#f0f0f0' }}>AXEL</div>
-          <div style={{ color: '#00e87a' }}>SUNDQVIST</div>
+          <div style={{ color: '#1a1a1a' }}>AXEL</div>
+          <div style={{ color: '#00b85e' }}>SUNDQVIST</div>
         </div>
 
         {/* Impact intro panel */}
         <div style={{
-          border: '1px solid rgba(255,255,255,0.09)',
-          background: 'linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01))',
+          border: '1px solid rgba(0,0,0,0.1)',
+          background: 'linear-gradient(180deg, rgba(0,0,0,0.025), rgba(0,0,0,0.01))',
           padding: '22px 24px',
           maxWidth: 860,
         }}>
 
           <p style={{
             margin: 0,
-            color: '#cfcfcf',
+            color: '#333',
             fontSize: 18,
             lineHeight: 1.45,
             maxWidth: 780,
@@ -83,8 +83,8 @@ export default function TerminalHero() {
               <span
                 key={tag}
                 style={{
-                  border: '1px solid rgba(0,232,122,0.25)',
-                  color: '#8ee9b7',
+                  border: '1px solid rgba(0,184,94,0.35)',
+                  color: '#007a40',
                   fontSize: 11,
                   letterSpacing: '0.05em',
                   padding: '6px 10px',

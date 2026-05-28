@@ -9,7 +9,7 @@ const PROJECTS = [
     tags: ['5G', 'C', 'OpenAirInterface', 'Embedded Linux', 'Telecom'],
     desc: 'A fork of the OpenAirInterface 5G RAN implementation to study the ORAN architecture. ',
     github: 'https://github.com/AxelSuu/openairinterface5g',
-    accentColor: '#00e87a',
+    accentColor: '#00b85e',
   },
   {
     num: '03',
@@ -19,7 +19,7 @@ const PROJECTS = [
     tags: ['C', 'ESP-IDF', 'FreeRTOS', 'Networking', 'Wi-Fi AP', 'SPI'],
     desc: 'ESP-IDF / FreeRTOS Wireless Pong on an ESP32-S3 with 128×96 LED display and a browser-based WebSocket controller. ESP32 acts as Wi-Fi access point.',
     github: 'https://github.com/AxelSuu/ESP32-Wi-Fi-Pong',
-    accentColor: '#00cfff',
+    accentColor: '#007cbf',
   },
   {
     num: '04',
@@ -29,7 +29,7 @@ const PROJECTS = [
     tags: ['Python', 'PyTorch', 'LSTM', 'Yahoo Finance', 'ML'],
     desc: 'LSTM neural network for stock price time-series prediction. Live market data via Yahoo Finance with an easy frontend API.',
     github: 'https://github.com/AxelSuu/Pytorch-Quant-Model',
-    accentColor: '#ff2d55',
+    accentColor: '#e0002e',
   },
 ]
 
@@ -37,22 +37,22 @@ function ProjectCard({ p }: { p: typeof PROJECTS[0] }) {
   return (
     <div
       style={{
-        background: '#0d0d0d',
-        border: '1px solid rgba(255,255,255,0.07)',
+        background: '#f2f2f2',
+        border: '1px solid rgba(0,0,0,0.09)',
         display: 'flex',
         flexDirection: 'column',
         overflow: 'hidden',
         transition: 'border-color 0.3s',
       }}
-      onMouseEnter={e => (e.currentTarget.style.borderColor = p.accentColor + '55')}
-      onMouseLeave={e => (e.currentTarget.style.borderColor = 'rgba(255,255,255,0.07)')}
+      onMouseEnter={e => (e.currentTarget.style.borderColor = p.accentColor + '66')}
+      onMouseLeave={e => (e.currentTarget.style.borderColor = 'rgba(0,0,0,0.09)')}
     >
       {/* Terminal chrome */}
       <div className="alt-terminal-header">
         <div className="alt-dot" style={{ background: '#ff5f56' }} />
         <div className="alt-dot" style={{ background: '#febc2e' }} />
         <div className="alt-dot" style={{ background: '#27c840' }} />
-        <span style={{ marginLeft: 8, fontSize: 10, color: '#2c2c2c', letterSpacing: '0.1em', fontFamily: 'var(--mono)', flex: 1, overflow: 'hidden', whiteSpace: 'nowrap', textOverflow: 'ellipsis' }}>
+        <span style={{ marginLeft: 8, fontSize: 10, color: '#aaa', letterSpacing: '0.1em', fontFamily: 'var(--mono)', flex: 1, overflow: 'hidden', whiteSpace: 'nowrap', textOverflow: 'ellipsis' }}>
           {p.filename}
         </span>
       </div>
@@ -87,13 +87,13 @@ function ProjectCard({ p }: { p: typeof PROJECTS[0] }) {
           letterSpacing: '-0.01em',
           lineHeight: 1.2,
           marginBottom: 10,
-          color: '#e8e8e8',
+          color: '#1a1a1a',
           whiteSpace: 'pre-line',
         }}>
           {p.title}
         </h3>
 
-        <p style={{ fontSize: 11, color: '#464646', lineHeight: 1.65, marginBottom: 14, flex: 1 }}>
+        <p style={{ fontSize: 11, color: '#777', lineHeight: 1.65, marginBottom: 14, flex: 1 }}>
           {p.desc}
         </p>
 
@@ -121,9 +121,9 @@ function ProjectCard({ p }: { p: typeof PROJECTS[0] }) {
           target="_blank"
           rel="noopener noreferrer"
           className="alt-link"
-          style={{ color: '#2c2c2c' }}
+          style={{ color: '#aaa' }}
           onMouseEnter={e => (e.currentTarget.style.color = p.accentColor)}
-          onMouseLeave={e => (e.currentTarget.style.color = '#2c2c2c')}
+          onMouseLeave={e => (e.currentTarget.style.color = '#aaa')}
         >
           <Github size={11} />
           VIEW REPO
