@@ -139,14 +139,10 @@ export default function TerminalProjects() {
       id="alt-projects"
       style={{
         padding: '100px 32px',
-        borderTop: '1px solid rgba(255,255,255,0.07)',
         position: 'relative',
       }}
     >
       <div style={{ maxWidth: 1240, margin: '0 auto' }}>
-        <div className="alt-section-label" style={{ fontSize: 16 }}>Projects</div>
-        <div className="alt-hr" style={{ marginBottom: 52 }} />
-
         <div className="alt-projects-grid">
           {PROJECTS.map(p => <ProjectCard key={p.num} p={p} />)}
         </div>

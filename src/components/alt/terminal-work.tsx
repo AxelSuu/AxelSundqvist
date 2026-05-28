@@ -16,7 +16,6 @@ export default function TerminalWork() {
         alignItems: 'center',
         padding: '100px 32px',
         position: 'relative',
-        borderTop: '1px solid rgba(255,255,255,0.07)',
       }}
     >
       {/* Faint background image */}
@@ -38,10 +37,6 @@ export default function TerminalWork() {
       }} />
 
       <div style={{ maxWidth: 1240, width: '100%', margin: '0 auto', position: 'relative', zIndex: 2 }}>
-
-        {/* Section label */}
-        <div className="alt-section-label" style={{ fontSize: 16 }}>WORK EXPERIENCE</div>
-        <div className="alt-hr" style={{ marginBottom: 56 }} />
 
         <div className="alt-work-grid">
           {/* Left: terminal window with image */}

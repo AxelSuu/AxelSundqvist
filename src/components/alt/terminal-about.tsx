@@ -12,12 +12,9 @@ export default function TerminalAbout() {
       id="alt-about"
       style={{
         padding: '100px 32px 80px',
-        borderTop: '1px solid rgba(255,255,255,0.07)',
       }}
     >
       <div style={{ maxWidth: 1240, margin: '0 auto' }}>
-        <div className="alt-hr" style={{ marginBottom: 56 }} />
-
         <div className="alt-about-grid">
           {/* Left: image + filename */}
           <div>

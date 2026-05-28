@@ -54,9 +54,6 @@ export default function TerminalHero() {
           <div style={{ color: '#00e87a' }}>SUNDQVIST</div>
         </div>
 
-        {/* Divider */}
-        <div className="alt-hr" style={{ marginBottom: 28 }} />
-
         {/* Impact intro panel */}
         <div style={{
           border: '1px solid rgba(255,255,255,0.09)',
@@ -64,14 +61,6 @@ export default function TerminalHero() {
           padding: '22px 24px',
           maxWidth: 860,
         }}>
-          <div style={{
-            fontSize: 10,
-            letterSpacing: '0.2em',
-            color: '#2c2c2c',
-            marginBottom: 12,
-          }}>
-            PROFILE
-          </div>
 
           <p style={{
             margin: 0,
