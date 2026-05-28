@@ -1,4 +1,4 @@
-import { GraduationCap, Beer, MapPin, Github, Linkedin, Mail } from 'lucide-react'
+import { GraduationCap, Beer, MapPin, Code2, Github, Linkedin, Mail } from 'lucide-react'
 
 const SKILLS = [
   'C / C++', 'Embedded Systems', 'ESP-IDF / FreeRTOS', 'Python', 'MATLAB', 
@@ -16,7 +16,6 @@ export default function TerminalAbout() {
       }}
     >
       <div style={{ maxWidth: 1240, margin: '0 auto' }}>
-        <div className="alt-section-label">[05]_ABOUT.ME</div>
         <div className="alt-hr" style={{ marginBottom: 56 }} />
 
         <div className="alt-about-grid">
@@ -126,6 +125,17 @@ export default function TerminalAbout() {
                   title: 'LOCATION',
                   lines: ['Linköping, Sweden'],
                 },
+                {
+                  icon: <Code2 size={13} />,
+                  title: 'SKILLS STACK',
+                  content: (
+                    <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
+                      {SKILLS.map(s => (
+                        <span key={s} className="alt-tag">{s}</span>
+                      ))}
+                    </div>
+                  )
+                }
               ].map(item => (
                 <div key={item.title} style={{ display: 'flex', gap: 14, alignItems: 'flex-start' }}>
                   <span style={{ color: '#00e87a', marginTop: 1, flexShrink: 0 }}>{item.icon}</span>
@@ -133,24 +143,13 @@ export default function TerminalAbout() {
                     <div style={{ fontSize: 10, letterSpacing: '0.18em', color: '#d8d8d8', marginBottom: 5 }}>
                       {item.title}
                     </div>
-                    {item.lines.map(l => (
+                    {Array.isArray(item.lines) && item.lines.map(l => (
                       <div key={l} style={{ fontSize: 12, color: '#464646', lineHeight: 1.7 }}>{l}</div>
                     ))}
+                    {item.content}
                   </div>
                 </div>
               ))}
-            </div>
-
-            {/* Skills */}
-            <div style={{ paddingTop: 28, borderTop: '1px solid rgba(255,255,255,0.07)' }}>
-              <div style={{ fontSize: 10, letterSpacing: '0.2em', color: '#2c2c2c', marginBottom: 14 }}>
-                SKILLS_STACK
-              </div>
-              <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
-                {SKILLS.map(s => (
-                  <span key={s} className="alt-tag">{s}</span>
-                ))}
-              </div>
             </div>
           </div>
         </div>

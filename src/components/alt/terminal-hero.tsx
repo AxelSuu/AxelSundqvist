@@ -1,35 +1,4 @@
-import { useState, useEffect } from 'react'
-
-const ROLES = [
-  'Applied Physics & EE Student',
-  'Ericsson R&D Intern 2026',
-]
-
 export default function TerminalHero() {
-  const [roleIdx, setRoleIdx] = useState(0)
-  const [shown, setShown] = useState('')
-  const [erasing, setErasing] = useState(false)
-
-  useEffect(() => {
-    let t: ReturnType<typeof setTimeout>
-    const full = ROLES[roleIdx]
-    if (!erasing) {
-      if (shown.length < full.length) {
-        t = setTimeout(() => setShown(full.slice(0, shown.length + 1)), 55)
-      } else {
-        t = setTimeout(() => setErasing(true), 2400)
-      }
-    } else {
-      if (shown.length > 0) {
-        t = setTimeout(() => setShown(s => s.slice(0, -1)), 28)
-      } else {
-        setRoleIdx(i => (i + 1) % ROLES.length)
-        setErasing(false)
-      }
-    }
-    return () => clearTimeout(t)
-  }, [shown, erasing, roleIdx])
-
   return (
     <section
       id="alt-home"
@@ -88,27 +57,53 @@ export default function TerminalHero() {
         {/* Divider */}
         <div className="alt-hr" style={{ marginBottom: 28 }} />
 
-        {/* Bottom row */}
+        {/* Impact intro panel */}
         <div style={{
-          display: 'flex',
-          justifyContent: 'space-between',
-          alignItems: 'center',
-          flexWrap: 'wrap',
-          gap: 20,
+          border: '1px solid rgba(255,255,255,0.09)',
+          background: 'linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01))',
+          padding: '22px 24px',
+          maxWidth: 860,
         }}>
-          {/* Typing role */}
           <div style={{
-            fontSize: 13,
-            letterSpacing: '0.06em',
-            color: '#555',
-            fontFamily: 'var(--mono)',
-            display: 'flex',
-            alignItems: 'center',
-            gap: 6,
+            fontSize: 10,
+            letterSpacing: '0.2em',
+            color: '#2c2c2c',
+            marginBottom: 12,
           }}>
-            <span style={{ color: '#2c2c2c' }}>&gt;_&nbsp;</span>
-            <span>{shown}</span>
-            <span className="alt-cursor" />
+            PROFILE
+          </div>
+
+          <p style={{
+            margin: 0,
+            color: '#cfcfcf',
+            fontSize: 18,
+            lineHeight: 1.45,
+            maxWidth: 780,
+          }}>
+            M.Sc. in Applied Physics and Electrical Engineering student @ LiU | R&D intern & Ericsson. 
+            Communication, embedded and real time systems engineering.
+          </p>
+
+          <div style={{
+            display: 'flex',
+            flexWrap: 'wrap',
+            gap: 8,
+            marginTop: 16,
+          }}>
+            {['Telecom', 'Embedded Systems', 'Signal Processing'].map(tag => (
+              <span
+                key={tag}
+                style={{
+                  border: '1px solid rgba(0,232,122,0.25)',
+                  color: '#8ee9b7',
+                  fontSize: 11,
+                  letterSpacing: '0.05em',
+                  padding: '6px 10px',
+                }}
+              >
+                {tag}
+              </span>
+            ))}
           </div>
         </div>
       </div>

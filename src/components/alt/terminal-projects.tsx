@@ -3,16 +3,26 @@ import { Github } from 'lucide-react'
 const PROJECTS = [
   {
     num: '02',
+    filename: 'openairinterface5g.c',
+    title: 'OAI 5G RAN\nFORK',
+    image: '/images/OAI.png',
+    tags: ['5G', 'C', 'OpenAirInterface', 'Embedded Linux', 'Telecom'],
+    desc: 'A fork of the OpenAirInterface 5G RAN implementation to study the ORAN architecture. ',
+    github: 'https://github.com/AxelSuu/openairinterface5g',
+    accentColor: '#00e87a',
+  },
+  {
+    num: '03',
     filename: 'esp32_wireless_pong.c',
     title: 'ESP32-S3\nWIRELESS PONG',
     image: '/images/esp32.jpeg',
-    tags: ['C++', 'ESP-IDF', 'WebSocket', 'SPI', 'Wi-Fi AP'],
-    desc: 'Esp-idf Wireless Pong on an ESP32-S3 with 128×96 LED display and a browser-based WebSocket controller. ESP32 acts as Wi-Fi access point.',
+    tags: ['C', 'ESP-IDF', 'FreeRTOS', 'Networking', 'Wi-Fi AP', 'SPI'],
+    desc: 'ESP-IDF / FreeRTOS Wireless Pong on an ESP32-S3 with 128×96 LED display and a browser-based WebSocket controller. ESP32 acts as Wi-Fi access point.',
     github: 'https://github.com/AxelSuu/ESP32-Wi-Fi-Pong',
     accentColor: '#00cfff',
   },
   {
-    num: '03',
+    num: '04',
     filename: 'pytorch_quant_model.py',
     title: 'PYTORCH\nSTOCK MODEL',
     image: '/images/pystock.png',
@@ -20,16 +30,6 @@ const PROJECTS = [
     desc: 'LSTM neural network for stock price time-series prediction. Live market data via Yahoo Finance with an easy frontend API.',
     github: 'https://github.com/AxelSuu/Pytorch-Quant-Model',
     accentColor: '#ff2d55',
-  },
-  {
-    num: '04',
-    filename: 'openairinterface5g.c',
-    title: 'OAI 5G RAN\nFORK',
-    image: '/images/OAI.png',
-    tags: ['5G', 'C', 'OpenAirInterface', 'Embedded Linux', 'Telecom'],
-    desc: 'A fork of the OpenAirInterface 5G RAN implementation.',
-    github: 'https://github.com/AxelSuu/openairinterface5g',
-    accentColor: '#00e87a',
   },
 ]
 
@@ -126,7 +126,7 @@ function ProjectCard({ p }: { p: typeof PROJECTS[0] }) {
           onMouseLeave={e => (e.currentTarget.style.color = '#2c2c2c')}
         >
           <Github size={11} />
-          VIEW_REPO
+          VIEW REPO
         </a>
       </div>
     </div>
@@ -144,7 +144,7 @@ export default function TerminalProjects() {
       }}
     >
       <div style={{ maxWidth: 1240, margin: '0 auto' }}>
-        <div className="alt-section-label">[02:04]_SELECTED_PROJECTS</div>
+        <div className="alt-section-label" style={{ fontSize: 16 }}>Projects</div>
         <div className="alt-hr" style={{ marginBottom: 52 }} />
 
         <div className="alt-projects-grid">
@@ -158,7 +158,7 @@ export default function TerminalProjects() {
             rel="noopener noreferrer"
             className="alt-link"
           >
-            MORE_REPOS → github.com/AxelSuu
+            MORE REPOS → github.com/AxelSuu
           </a>
         </div>
       </div>

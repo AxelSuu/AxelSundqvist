@@ -40,7 +40,7 @@ export default function TerminalWork() {
       <div style={{ maxWidth: 1240, width: '100%', margin: '0 auto', position: 'relative', zIndex: 2 }}>
 
         {/* Section label */}
-        <div className="alt-section-label">[01]_WORK_EXPERIENCE</div>
+        <div className="alt-section-label" style={{ fontSize: 16 }}>WORK EXPERIENCE</div>
         <div className="alt-hr" style={{ marginBottom: 56 }} />
 
         <div className="alt-work-grid">
@@ -51,7 +51,7 @@ export default function TerminalWork() {
               <div className="alt-dot" style={{ background: '#febc2e' }} />
               <div className="alt-dot" style={{ background: '#27c840' }} />
               <span style={{ marginLeft: 8, fontSize: 10, color: '#2c2c2c', letterSpacing: '0.1em' }}>
-                infrasonik.prototype.exe
+                infrasonik.exe
               </span>
             </div>
             <div className="alt-img-wrap" style={{ overflow: 'hidden', maxHeight: 320 }}>
@@ -61,17 +61,7 @@ export default function TerminalWork() {
                 style={{ width: '100%', height: '100%', maxHeight: 320, objectFit: 'cover', objectPosition: 'center' }}
               />
             </div>
-            {/* "output" bar below image */}
-            <div style={{
-              padding: '10px 14px',
-              fontSize: 10,
-              color: '#2c2c2c',
-              letterSpacing: '0.12em',
-              borderTop: '1px solid rgba(255,255,255,0.05)',
-              background: 'rgba(255,255,255,0.02)',
-            }}>
-              &gt;_ process complete — prototype validated
-            </div>
+            
           </div>
 
           {/* Right: content */}
