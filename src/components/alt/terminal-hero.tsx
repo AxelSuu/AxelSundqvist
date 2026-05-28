@@ -80,8 +80,8 @@ export default function TerminalHero() {
             lineHeight: 1.45,
             maxWidth: 780,
           }}>
-            M.Sc. student in Applied Physics and Electrical Engineering student @ LiU | R&D intern @ Ericsson Business Area Networks. 
-            Experience in Embedded systems, Wi-Fi / Bluetooth and networking.
+            M.Sc. student in Applied Physics and Electrical Engineering student @ LiU | 
+            R&D intern @ Ericsson Business Area Networks. 
           </p>
 
           <div style={{
@@ -90,7 +90,7 @@ export default function TerminalHero() {
             gap: 8,
             marginTop: 16,
           }}>
-            {['Telecom', 'Embedded Systems', 'Signal Processing'].map(tag => (
+            {['Telecom', 'Embedded Systems', 'Wi-Fi / Bluetooth'].map(tag => (
               <span
                 key={tag}
                 style={{
