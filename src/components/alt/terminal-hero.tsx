@@ -112,7 +112,7 @@ export default function TerminalHero() {
             lineHeight: 1.45,
             maxWidth: 780,
           }}>
-            M.Sc. student in Applied Physics and Electrical Engineering @ LiU | 
+            M.Sc. student in Applied Physics and Electrical Engineering @ LiU. 
             R&D intern @ Ericsson Business Area Networks (BNEW). 
           </p>
 
@@ -122,7 +122,7 @@ export default function TerminalHero() {
             gap: 8,
             marginTop: 16,
           }}>
-            {['Telecom', 'Embedded Systems', 'Wi-Fi / Bluetooth'].map(tag => (
+            {['Telecom', 'Embedded Systems', '5G', 'Wi-Fi / Bluetooth'].map(tag => (
               <span
                 key={tag}
                 style={{

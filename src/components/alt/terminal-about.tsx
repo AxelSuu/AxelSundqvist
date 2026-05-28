@@ -120,7 +120,7 @@ export default function TerminalAbout() {
                 {
                   icon: <MapPin size={13} />,
                   title: 'LOCATION',
-                  lines: ['Linköping, Sweden'],
+                  lines: ['Linköping / Stockholm'],
                 },
                 {
                   icon: <Code2 size={13} />,
