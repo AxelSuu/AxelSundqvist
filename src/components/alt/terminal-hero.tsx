@@ -80,8 +80,8 @@ export default function TerminalHero() {
             lineHeight: 1.45,
             maxWidth: 780,
           }}>
-            M.Sc. in Applied Physics and Electrical Engineering student @ LiU | R&D intern & Ericsson. 
-            Communication, embedded and real time systems engineering.
+            M.Sc. student in Applied Physics and Electrical Engineering student @ LiU | R&D intern @ Ericsson Business Area Networks. 
+            Experience in Embedded systems, Wi-Fi / Bluetooth and networking.
           </p>
 
           <div style={{
