@@ -69,8 +69,8 @@ export default function TerminalHero() {
             lineHeight: 1.45,
             maxWidth: 780,
           }}>
-            M.Sc. student in Applied Physics and Electrical Engineering student @ LiU | 
-            R&D intern @ Ericsson Business Area Networks. 
+            M.Sc. student in Applied Physics and Electrical Engineering @ LiU | 
+            R&D intern @ Ericsson Business Area Networks (BNEW). 
           </p>
 
           <div style={{
