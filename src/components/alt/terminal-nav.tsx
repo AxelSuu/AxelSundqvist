@@ -87,7 +87,7 @@ export default function TerminalNav() {
               onMouseEnter={e => (e.currentTarget.style.color = '#d8d8d8')}
               onMouseLeave={e => (e.currentTarget.style.color = '#464646')}
             >
-              [{item.num}]_{item.label}
+            {item.label}
             </button>
           ))}
 

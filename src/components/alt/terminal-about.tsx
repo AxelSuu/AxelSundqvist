@@ -1,9 +1,9 @@
 import { GraduationCap, Beer, MapPin, Github, Linkedin, Mail } from 'lucide-react'
 
 const SKILLS = [
-  'C++', 'Python', 'Rust', 'MATLAB', 'ESP-IDF',
-  'PyTorch', 'Signal Processing', 'Embedded Systems',
-  'Wi-Fi / RF', 'Git', 'CMake',
+  'C / C++', 'Embedded Systems', 'ESP-IDF / FreeRTOS', 'Python', 'MATLAB', 
+  'PyTorch', 'Signal Processing', 'Wireless / RF',
+  'Networking', 'CMake', 'Valgrind', 'Git'
 ]
 
 export default function TerminalAbout() {
@@ -54,20 +54,6 @@ export default function TerminalAbout() {
                   mixBlendMode: 'screen',
                   pointerEvents: 'none',
                 }} />
-              </div>
-              {/* Status bar */}
-              <div style={{
-                padding: '8px 14px',
-                fontSize: 10,
-                color: '#2c2c2c',
-                letterSpacing: '0.12em',
-                borderTop: '1px solid rgba(255,255,255,0.05)',
-                background: 'rgba(255,255,255,0.02)',
-                display: 'flex',
-                justifyContent: 'space-between',
-              }}>
-                <span>STATUS: AVAILABLE</span>
-                <span style={{ color: '#00e87a' }}>●</span>
               </div>
             </div>
 
@@ -169,22 +155,7 @@ export default function TerminalAbout() {
           </div>
         </div>
 
-        {/* Footer */}
-        <div style={{
-          marginTop: 72,
-          paddingTop: 24,
-          borderTop: '1px solid rgba(255,255,255,0.07)',
-          display: 'flex',
-          justifyContent: 'space-between',
-          fontSize: 10,
-          color: '#2c2c2c',
-          letterSpacing: '0.12em',
-          flexWrap: 'wrap',
-          gap: 8,
-        }}>
-          <span>AXEL SUNDQVIST © 2026</span>
-          <span>APPLIED PHYSICS &amp; EE&nbsp;·&nbsp;LINKÖPING UNIVERSITY</span>
-        </div>
+        
       </div>
     </section>
   )

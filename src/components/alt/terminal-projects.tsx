@@ -3,11 +3,11 @@ import { Github } from 'lucide-react'
 const PROJECTS = [
   {
     num: '02',
-    filename: 'esp32_wireless_pong.cpp',
+    filename: 'esp32_wireless_pong.c',
     title: 'ESP32-S3\nWIRELESS PONG',
     image: '/images/esp32.jpeg',
     tags: ['C++', 'ESP-IDF', 'WebSocket', 'SPI', 'Wi-Fi AP'],
-    desc: 'Wireless Pong on an ESP32-S3 with 128×96 OLED display and a browser-based WebSocket controller. ESP32 acts as Wi-Fi access point.',
+    desc: 'Esp-idf Wireless Pong on an ESP32-S3 with 128×96 LED display and a browser-based WebSocket controller. ESP32 acts as Wi-Fi access point.',
     github: 'https://github.com/AxelSuu/ESP32-Wi-Fi-Pong',
     accentColor: '#00cfff',
   },
@@ -23,12 +23,12 @@ const PROJECTS = [
   },
   {
     num: '04',
-    filename: 'skybound_game.py',
-    title: 'SKYBOUND\n2D PLATFORMER',
-    image: '/images/skybound.png',
-    tags: ['Python', 'Pygame', 'Procedural Gen', 'OOP', 'State Machine'],
-    desc: 'A 2D platformer with procedural level generation, achievement system, animations, and an object-oriented state machine architecture.',
-    github: 'https://github.com/AxelSuu/Skybound-2.0',
+    filename: 'openairinterface5g.c',
+    title: 'OAI 5G RAN\nFORK',
+    image: '/images/OAI.png',
+    tags: ['5G', 'C', 'OpenAirInterface', 'Embedded Linux', 'Telecom'],
+    desc: 'A fork of the OpenAirInterface 5G RAN implementation.',
+    github: 'https://github.com/AxelSuu/openairinterface5g',
     accentColor: '#00e87a',
   },
 ]
@@ -126,7 +126,7 @@ function ProjectCard({ p }: { p: typeof PROJECTS[0] }) {
           onMouseLeave={e => (e.currentTarget.style.color = '#2c2c2c')}
         >
           <Github size={11} />
-          VIEW_REPO.git
+          VIEW_REPO
         </a>
       </div>
     </div>

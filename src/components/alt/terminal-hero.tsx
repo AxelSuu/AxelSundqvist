@@ -3,10 +3,7 @@ import { ArrowDown } from 'lucide-react'
 
 const ROLES = [
   'Applied Physics & EE Student',
-  'Embedded Systems Developer',
   'Ericsson R&D Intern 2026',
-  'Signal Processing Enthusiast',
-  'Communication Systems Nerd',
 ]
 
 export default function TerminalHero() {
@@ -114,30 +111,7 @@ export default function TerminalHero() {
             <span>{shown}</span>
             <span className="alt-cursor" />
           </div>
-
-          {/* Location + school */}
-          <div style={{ fontSize: 10, color: '#2c2c2c', letterSpacing: '0.18em', textTransform: 'uppercase' }}>
-            LiU&nbsp;·&nbsp;Linköping, Sweden
-          </div>
         </div>
-      </div>
-
-      {/* Scroll indicator */}
-      <div style={{
-        position: 'absolute',
-        bottom: 52,
-        right: 32,
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        gap: 6,
-        color: '#2c2c2c',
-        fontSize: 9,
-        letterSpacing: '0.2em',
-        zIndex: 2,
-      }}>
-        <span>SCROLL</span>
-        <ArrowDown size={11} style={{ animation: 'alt-blink 2s infinite' }} />
       </div>
     </section>
   )
