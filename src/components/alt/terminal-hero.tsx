@@ -1,3 +1,11 @@
+import { Github, Linkedin, Mail } from 'lucide-react'
+
+const SOCIALS = [
+  { href: 'https://github.com/AxelSuu', icon: <Github size={28} />, label: 'GITHUB' },
+  { href: 'https://www.linkedin.com/in/axel-sundqvist/', icon: <Linkedin size={28} />, label: 'LINKEDIN' },
+  { href: 'mailto:axesu672@student.liu.se', icon: <Mail size={28} />, label: 'MAIL' },
+]
+
 export default function TerminalHero() {
   return (
     <section
@@ -38,20 +46,55 @@ export default function TerminalHero() {
       {/* Main content */}
       <div style={{ maxWidth: 1240, width: '100%', margin: '0 auto', position: 'relative', zIndex: 2 }}>
 
-        {/* The big name */}
-        <div
-          className="alt-hero-name"
-          style={{
-            fontSize: 'clamp(72px, 13vw, 180px)',
-            fontWeight: 700,
-            lineHeight: 0.88,
-            letterSpacing: '-0.03em',
-            marginBottom: 36,
-            userSelect: 'none',
-          }}
-        >
-          <div style={{ color: '#1a1a1a' }}>AXEL</div>
-          <div style={{ color: '#00b85e' }}>SUNDQVIST</div>
+        {/* The big name + social links */}
+        <div style={{ display: 'flex', alignItems: 'stretch', marginBottom: 36 }}>
+          <div
+            className="alt-hero-name"
+            style={{
+              fontSize: 'clamp(72px, 13vw, 180px)',
+              fontWeight: 700,
+              lineHeight: 0.88,
+              letterSpacing: '-0.03em',
+              userSelect: 'none',
+              flex: 1,
+            }}
+          >
+            <div style={{ color: '#1a1a1a' }}>AXEL</div>
+            <div style={{ color: '#00b85e' }}>SUNDQVIST</div>
+          </div>
+
+          {/* Social icon buttons — scattered */}
+          <div style={{ position: 'relative', width: 220, flexShrink: 0 }}>
+            {SOCIALS.map((s, i) => {
+              const pos: React.CSSProperties[] = [
+                { top: 16,    left: 60  },
+                { top: '44%', left: 20  },
+                { bottom: 16, left: 90  },
+              ]
+              return (
+                <a
+                  key={s.label}
+                  href={s.href}
+                  target={s.href.startsWith('http') ? '_blank' : undefined}
+                  rel="noopener noreferrer"
+                  style={{
+                    position: 'absolute',
+                    ...pos[i],
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    color: '#aaa',
+                    textDecoration: 'none',
+                    transition: 'color 0.2s',
+                  }}
+                  onMouseEnter={e => { e.currentTarget.style.color = '#00b85e' }}
+                  onMouseLeave={e => { e.currentTarget.style.color = '#aaa' }}
+                >
+                  {s.icon}
+                </a>
+              )
+            })}
+          </div>
         </div>
 
         {/* Impact intro panel */}
@@ -95,6 +138,7 @@ export default function TerminalHero() {
             ))}
           </div>
         </div>
+
       </div>
     </section>
   )

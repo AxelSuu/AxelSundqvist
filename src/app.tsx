@@ -1,4 +1,3 @@
-import TerminalNav from '@/components/alt/terminal-nav'
 import TerminalHero from '@/components/alt/terminal-hero'
 import TerminalWork from '@/components/alt/terminal-work'
 import TerminalProjects from '@/components/alt/terminal-projects'
@@ -28,7 +27,6 @@ function App() {
       >
         Skip to main content
       </a>
-      <TerminalNav />
       <main id="alt-home-main">
         <TerminalHero />
         <TerminalWork />
