@@ -94,9 +94,10 @@ export default function TerminalAbout() {
               marginBottom: 44,
             }}>
               <p style={{ fontSize: 13, lineHeight: 1.85, color: '#555' }}>
-                Ericsson 2026 R&D summer intern. Third year student in Applied Physics &
-                Electrical Engineering at LiU. My main interests are communication
-                systems, embedded systems, and signal processing.
+                Ericsson 2026 R&D summer intern with a background in signal processing, 
+                embedded systems and the ESP32 / ESP-IDF platform. I’ve developed device 
+                drivers and ESP‑IDF wireless projects, prototyped algorithms with PyTorch, 
+                and worked on build systems, testing, memory management and technical documentation.
               </p>
             </div>
 

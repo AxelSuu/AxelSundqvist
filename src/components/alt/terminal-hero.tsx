@@ -108,12 +108,20 @@ export default function TerminalHero() {
           <p style={{
             margin: 0,
             color: '#333',
-            fontSize: 18,
+            fontSize: 20,
             lineHeight: 1.45,
             maxWidth: 780,
           }}>
+            R&D intern @ Ericsson Business Area Networks (BNEW). </p>
+
+            <p style={{
+              margin: '16px 0 0',
+              color: '#333',
+              fontSize: 16,
+              lineHeight: 1.45,
+              maxWidth: 780,
+            }}>
             M.Sc. student in Applied Physics and Electrical Engineering @ LiU. 
-            R&D intern @ Ericsson Business Area Networks (BNEW). 
           </p>
 
           <div style={{
@@ -122,7 +130,7 @@ export default function TerminalHero() {
             gap: 8,
             marginTop: 16,
           }}>
-            {['Telecom', 'Embedded Systems', '5G', 'Wi-Fi / Bluetooth'].map(tag => (
+            {['Telecom', 'Embedded Systems', '5G RAN', 'Wi-Fi / Bluetooth', 'ESP-IDF / FreeRTOS'].map(tag => (
               <span
                 key={tag}
                 style={{
