@@ -2,10 +2,10 @@ import { useState, useEffect } from 'react'
 import { Github, Linkedin, Mail, Menu, X } from 'lucide-react'
 
 const NAV = [
-  { id: 'alt-home', label: 'HOME', num: '00' },
-  { id: 'alt-work', label: 'WORK', num: '01' },
-  { id: 'alt-projects', label: 'PROJECTS', num: '02' },
-  { id: 'alt-about', label: 'ABOUT', num: '05' },
+  { id: 'alt-home', label: 'HOME', num: '0' },
+  { id: 'alt-work', label: 'WORK', num: '1' },
+  { id: 'alt-projects', label: 'PROJECTS', num: '2' },
+  { id: 'alt-about', label: 'ABOUT', num: '3' },
 ]
 
 export default function TerminalNav() {
@@ -166,7 +166,7 @@ export default function TerminalNav() {
               onMouseEnter={e => (e.currentTarget.style.color = '#00b85e')}
               onMouseLeave={e => (e.currentTarget.style.color = '#888')}
             >
-              [{item.num}]_{item.label}
+              {item.label}
             </button>
           ))}
         </div>
