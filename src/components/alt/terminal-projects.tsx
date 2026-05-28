@@ -14,10 +14,10 @@ const PROJECTS = [
   {
     num: '03',
     filename: 'esp32_wireless_pong.c',
-    title: 'ESP32-S3\nWIRELESS PONG',
+    title: 'ESP32-S3 Wi-Fi\nhtml websocket controller',
     image: '/images/esp32.jpeg',
     tags: ['C', 'ESP-IDF', 'FreeRTOS', 'Networking', 'Wi-Fi AP', 'SPI'],
-    desc: 'ESP-IDF / FreeRTOS Wireless Pong on an ESP32-S3 with 128×96 LED display and a browser-based WebSocket controller. ESP32 acts as Wi-Fi access point.',
+    desc: 'ESP-IDF / FreeRTOS Wi-Fi pong on an ESP32-S3 with 128×96 LED display and a browser-based WebSocket controller. ESP32 acts as Wi-Fi access point.',
     github: 'https://github.com/AxelSuu/ESP32-Wi-Fi-Pong',
     accentColor: '#007cbf',
   },

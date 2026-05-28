@@ -1,9 +1,8 @@
 import { GraduationCap, Beer, MapPin, Code2, Github, Linkedin, Mail } from 'lucide-react'
 
 const SKILLS = [
-  'C / C++', 'Embedded Systems', 'ESP-IDF / FreeRTOS', 'Python', 'MATLAB', 
-  'PyTorch', 'Signal Processing', 'Wireless / RF',
-  'Networking', 'CMake', 'Valgrind', 'Git'
+  'C', 'C++', 'ESP-IDF / FreeRTOS', 'Embedded Systems', 'Wi-Fi', 'Bluetooth', 'Networking',
+  'Python', 'MATLAB', '5G Toolkit', 'PyTorch', 'Valgrind', 'CMake'
 ]
 
 export default function TerminalAbout() {
