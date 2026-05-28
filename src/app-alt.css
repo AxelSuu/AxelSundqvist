@@ -5,7 +5,8 @@ body {
 
 .alt-root {
   --alt-bg: #f8f8f8;
-  --alt-bg2: #f0f0f0;
+  --alt-bg2: #f0ede8;
+  --alt-card: #ffffff;
   --alt-border: rgba(0, 0, 0, 0.08);
   --alt-border-hi: rgba(0, 0, 0, 0.15);
   --alt-text: #1a1a1a;

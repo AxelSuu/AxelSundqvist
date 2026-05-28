@@ -12,6 +12,7 @@ export default function TerminalAbout() {
       id="alt-about"
       style={{
         padding: '100px 32px 80px',
+        background: '#f0ede8',
       }}
     >
       <div style={{ maxWidth: 1240, margin: '0 auto' }}>

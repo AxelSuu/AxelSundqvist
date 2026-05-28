@@ -37,7 +37,7 @@ function ProjectCard({ p }: { p: typeof PROJECTS[0] }) {
   return (
     <div
       style={{
-        background: '#f2f2f2',
+        background: '#fff',
         border: '1px solid rgba(0,0,0,0.09)',
         display: 'flex',
         flexDirection: 'column',

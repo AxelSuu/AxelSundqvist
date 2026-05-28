@@ -63,8 +63,8 @@ export default function TerminalHero() {
             <div style={{ color: '#00b85e' }}>SUNDQVIST</div>
           </div>
 
-          {/* Social icon buttons — scattered */}
-          <div style={{ position: 'relative', width: 220, flexShrink: 0 }}>
+          {/* Social icon buttons — scattered (desktop only) */}
+          <div className="alt-hero-socials-desktop" style={{ position: 'relative', width: 220, flexShrink: 0 }}>
             {SOCIALS.map((s, i) => {
               const pos: React.CSSProperties[] = [
                 { top: 16,    left: 60  },
@@ -100,7 +100,7 @@ export default function TerminalHero() {
         {/* Impact intro panel */}
         <div style={{
           border: '1px solid rgba(0,0,0,0.1)',
-          background: 'linear-gradient(180deg, rgba(0,0,0,0.025), rgba(0,0,0,0.01))',
+          background: '#fff',
           padding: '22px 24px',
           maxWidth: 860,
         }}>
@@ -139,7 +139,31 @@ export default function TerminalHero() {
           </div>
         </div>
 
+        {/* Social icon row — mobile only */}
+        <div className="alt-hero-socials-mobile" style={{ display: 'none', gap: 28, marginTop: 28 }}>
+          {SOCIALS.map(s => (
+            <a
+              key={s.label}
+              href={s.href}
+              target={s.href.startsWith('http') ? '_blank' : undefined}
+              rel="noopener noreferrer"
+              style={{ color: '#aaa', textDecoration: 'none', transition: 'color 0.2s' }}
+              onMouseEnter={e => { e.currentTarget.style.color = '#00b85e' }}
+              onMouseLeave={e => { e.currentTarget.style.color = '#aaa' }}
+            >
+              {s.icon}
+            </a>
+          ))}
+        </div>
+
       </div>
+
+      <style>{`
+        @media (max-width: 768px) {
+          .alt-hero-socials-desktop { display: none !important; }
+          .alt-hero-socials-mobile { display: flex !important; }
+        }
+      `}</style>
     </section>
   )
 }

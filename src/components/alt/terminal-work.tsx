@@ -16,6 +16,7 @@ export default function TerminalWork() {
         alignItems: 'center',
         padding: '100px 32px',
         position: 'relative',
+        background: '#f0ede8',
       }}
     >
       {/* Faint background image */}
@@ -32,7 +33,7 @@ export default function TerminalWork() {
       <div style={{
         position: 'absolute',
         inset: 0,
-        background: 'linear-gradient(to right, rgba(248,248,248,0.97) 50%, rgba(248,248,248,0.82))',
+        background: 'linear-gradient(to right, rgba(240,237,232,0.97) 50%, rgba(240,237,232,0.82))',
         zIndex: 1,
       }} />
 
@@ -40,7 +41,7 @@ export default function TerminalWork() {
 
         <div className="alt-work-grid">
           {/* Left: terminal window with image */}
-          <div style={{ display: 'flex', flexDirection: 'column', border: '1px solid rgba(0,0,0,0.1)', overflow: 'hidden', minWidth: 0 }}>
+          <div style={{ display: 'flex', flexDirection: 'column', border: '1px solid rgba(0,0,0,0.1)', overflow: 'hidden', minWidth: 0, background: '#fff' }}>
             <div className="alt-terminal-header">
               <div className="alt-dot" style={{ background: '#ff5f56' }} />
               <div className="alt-dot" style={{ background: '#febc2e' }} />
