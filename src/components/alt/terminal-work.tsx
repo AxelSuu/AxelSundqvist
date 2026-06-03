@@ -46,9 +46,6 @@ export default function TerminalWork() {
               <div className="alt-dot" style={{ background: '#ff5f56' }} />
               <div className="alt-dot" style={{ background: '#febc2e' }} />
               <div className="alt-dot" style={{ background: '#27c840' }} />
-              <span style={{ marginLeft: 8, fontSize: 10, color: '#aaa', letterSpacing: '0.1em' }}>
-                infrasonik.exe
-              </span>
             </div>
             <div className="alt-img-wrap" style={{ overflow: 'hidden', maxHeight: 320 }}>
               <img
@@ -63,7 +60,7 @@ export default function TerminalWork() {
           {/* Right: content */}
           <div>
             <div style={{ fontSize: 10, letterSpacing: '0.2em', color: '#00b85e', marginBottom: 20 }}>
-              DEC 2022 — APR 2023&nbsp;//&nbsp;INTERN
+              DEC 2022 — APR 2023
             </div>
 
             <h2 style={{

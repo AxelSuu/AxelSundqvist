@@ -3,7 +3,7 @@ import { Github } from 'lucide-react'
 const PROJECTS = [
   {
     num: '02',
-    filename: 'openairinterface5g.c',
+    filename: '',
     title: 'OAI 5G RAN\nFORK',
     image: '/images/OAI.png',
     tags: ['5G', 'C', 'OpenAirInterface', 'Embedded Linux', 'Telecom'],
@@ -13,7 +13,7 @@ const PROJECTS = [
   },
   {
     num: '03',
-    filename: 'esp32_wireless_pong.c',
+    filename: '',
     title: 'ESP32-S3 Wi-Fi\nhtml websocket controller',
     image: '/images/esp32.jpeg',
     tags: ['C', 'ESP-IDF', 'FreeRTOS', 'Networking', 'Wi-Fi AP', 'SPI'],
@@ -23,7 +23,7 @@ const PROJECTS = [
   },
   {
     num: '04',
-    filename: 'pytorch_quant_model.py',
+    filename: '',
     title: 'PYTORCH\nSTOCK MODEL',
     image: '/images/pystock.png',
     tags: ['Python', 'PyTorch', 'LSTM', 'Yahoo Finance', 'ML'],

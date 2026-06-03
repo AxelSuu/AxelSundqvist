@@ -24,9 +24,6 @@ export default function TerminalAbout() {
                 <div className="alt-dot" style={{ background: '#ff5f56' }} />
                 <div className="alt-dot" style={{ background: '#febc2e' }} />
                 <div className="alt-dot" style={{ background: '#27c840' }} />
-                <span style={{ marginLeft: 8, fontSize: 10, color: '#aaa', letterSpacing: '0.1em' }}>
-                  axel_sundqvist.jpg
-                </span>
               </div>
               {/* Photo with treatment */}
               <div style={{ position: 'relative', overflow: 'hidden' }}>
