@@ -222,7 +222,6 @@ export const ENTRIES: Entry[] = [
 
 export type Chapter = {
   id: string
-  no: string
   kicker: string
   title: string
   line: string
@@ -236,23 +235,21 @@ export type Chapter = {
 export const CHAPTERS: Chapter[] = [
   {
     id: 'ericsson',
-    no: '01',
     kicker: 'Ericsson · Stockholm · 2026',
-    title: 'Where the software\nfinally touches silicon',
-    line: 'Radio units turn bits into radio and back again. I wrote drivers at that layer — kept target-agnostic, so one implementation serves several radio platforms — and the hardware tests and nightly CI that prove they still work each morning.',
+    title: 'Where the software\ntouches silicon',
+    line: 'Developed radio hardware drivers for Ericssons radios. I worked target agnostic so one implementation abstracts several platforms. Delivered nightly CI hardware tests for driver implementation verification.',
     image: '/images/ericsson-team.jpeg',
     fit: 'cover',
     facts: [
       ['Role', 'R&D Summer Intern'],
-      ['Team', 'Radio Unit software'],
+      ['Team', 'Radio Unit XCS'],
       ['Stack', 'Embedded Linux · C · Bash'],
     ],
-    tags: ['Radio hardware', 'Drivers', 'Hardware test', 'CI'],
+    tags: ['Radio hardware', 'Drivers', 'Hardware testing', 'CI'],
     href: 'https://www.linkedin.com/in/axel-sundqvist/',
   },
   {
     id: 'esp32',
-    no: '02',
     kicker: 'Own work · ESP32-S3',
     title: 'A machine with\nno wires left',
     line: 'The board raises its own Wi-Fi access point and speaks WebSocket to a browser. Tasks, queues and priorities laid out by hand on FreeRTOS, because at this size nothing decides them for you.',
@@ -268,7 +265,6 @@ export const CHAPTERS: Chapter[] = [
   },
   {
     id: 'infrasonik',
-    no: '03',
     kicker: 'Infrasonik · R&D · 2022—23',
     title: 'Drying grain\nwith sound',
     line: 'Moving moisture with low-frequency pressure waves instead of brute heat, against a target of half the drying energy. Specification through prototype, then into the lab to find out whether it was true.',
@@ -283,7 +279,6 @@ export const CHAPTERS: Chapter[] = [
   },
   {
     id: 'pyquant',
-    no: '04',
     kicker: 'Own work · PyQuant',
     title: 'Forecasts that\nadmit their doubt',
     line: 'A Temporal Fusion Transformer producing multi-horizon probabilistic forecasts — not one number, a distribution. Served over FastAPI, revalidated by CI every night with nobody watching.',
@@ -299,7 +294,6 @@ export const CHAPTERS: Chapter[] = [
   },
   {
     id: 'profile',
-    no: '05',
     kicker: 'Linköping · Stockholm',
     title: 'The one doing\nall of this',
     line: 'Fourth-year M.Sc. student in Applied Physics and Electrical Engineering, on the communication systems track. I came to it from the physics side, which is probably why I like the parts of engineering where an abstraction has to answer to a measurement.',

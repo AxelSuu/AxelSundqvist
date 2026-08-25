@@ -21,8 +21,7 @@ export default function Overture() {
         <p className="overture-sub">
           Embedded systems, radio hardware and the software that sits closest to it.
           Fourth-year M.Sc. student in Applied Physics and Electrical Engineering at
-          Linköping University — most recently writing radio unit drivers in Ericsson's
-          R&amp;D organisation.
+          Linköping University specializing in communication systems.
         </p>
 
         <p style={{ display: 'flex', gap: 26, flexWrap: 'wrap' }}>

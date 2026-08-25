@@ -13,7 +13,7 @@ export default function Chapter({ chapter }: { chapter: Ch }) {
       <div className="chapter-text">
         <div className="reveal">
           <div className="ch-kicker">
-            {chapter.no} — {chapter.kicker}
+            {chapter.kicker}
           </div>
           <h2 className="ch-title">{chapter.title}</h2>
         </div>
