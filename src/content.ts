@@ -27,6 +27,8 @@ export type Chapter = {
   line: string
   image: string
   alt: string
+  /* object-position, when centre is the wrong part of the frame to keep */
+  position?: string
   fit: 'cover' | 'contain'
   facts: [string, string][]
   tags: string[]
@@ -72,7 +74,8 @@ export const CHAPTERS: Chapter[] = [
     title: 'Drying grain\nwith sound',
     line: 'Moving moisture with low-frequency pressure waves instead of heat. I worked with a small R&D team developing and testing infrasound-based grain-drying technology.',
     image: '/images/infradryer.png',
-    alt: 'The Infrasonik infrasound grain dryer prototype',
+    alt: 'An Infrasonik project slide: infrasound drying for grain and biomass, co-funded by the European Union, with RISE, Skogforsk and KR Teknik as partners',
+    position: '20% center',
     fit: 'cover',
     facts: [
       ['Role', 'Intern'],

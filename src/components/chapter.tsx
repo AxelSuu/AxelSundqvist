@@ -8,7 +8,12 @@ export default function Chapter({ chapter }: { chapter: Ch }) {
   return (
     <section ref={ref} id={chapter.id} className="chapter">
       <div className="chapter-media" data-fit={chapter.fit}>
-        <img src={chapter.image} alt={chapter.alt} loading="lazy" />
+        <img
+          src={chapter.image}
+          alt={chapter.alt}
+          style={chapter.position ? { objectPosition: chapter.position } : undefined}
+          loading="lazy"
+        />
       </div>
 
       <div className="chapter-text">
