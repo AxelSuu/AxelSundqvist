@@ -3,6 +3,13 @@ import { PERSON } from '@/content'
 export default function Overture() {
   return (
     <header className="overture" id="top">
+      <div className="overture-media">
+        <img
+          src="/images/hero.jpeg"
+          alt="An ESP32-S3 board and a small OLED display running on a page of handwritten Fourier analysis"
+        />
+      </div>
+
       <h1 className="overture-name">
         <span>Axel</span>
         <span>Sundqvist</span>
