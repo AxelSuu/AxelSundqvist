@@ -264,46 +264,6 @@ a { color: inherit; text-decoration: none; }
 
 /* ── Responsive ─────────────────────────────────────────────────────────── */
 @media (max-width: 760px) {
-  /* A phone viewport is far taller than any of these photographs, so a
-     cover-fit background crops most of the width away. Instead the media is
-     pinned to the top of the frame at its own natural height — full width,
-     nothing cropped — and the scrim closes to solid black at its lower edge
-     so it fuses with the page beneath it. The frame stays one screen and the
-     type stays on the frame, not under a picture. */
-  .overture-media,
-  .chapter-media {
-    bottom: auto;
-    height: auto;
-  }
-
-  .overture-media img,
-  .chapter-media img,
-  .chapter-media[data-fit='contain'] img {
-    width: 100%;
-    height: auto;
-    object-fit: fill;
-    padding: 0;
-    transform: none;
-    animation: none;
-  }
-  .is-in .chapter-media img { transform: none; }
-
-  /* Opaque at the bottom so the image ends in the page background rather
-     than on a visible edge. The type no longer sits on the photograph, so
-     the grade comes up from the level desktop needs for legibility. */
-  .overture-media::after,
-  .chapter-media::after {
-    background: linear-gradient(
-      to top,
-      rgba(10, 10, 11, 1) 0%,
-      rgba(10, 10, 11, 0.72) 16%,
-      rgba(10, 10, 11, 0.22) 52%,
-      rgba(10, 10, 11, 0.46) 100%
-    );
-  }
-  .chapter-media img { filter: grayscale(88%) brightness(0.66) contrast(1.12); }
-  .overture-media img { filter: grayscale(50%) brightness(0.84) contrast(0.95); }
-
   .ch-foot { flex-direction: column; align-items: flex-start; gap: 20px; }
   .facts { gap: 18px 26px; }
 }
@@ -311,10 +271,4 @@ a { color: inherit; text-decoration: none; }
 @media (prefers-reduced-motion: reduce) {
   .reveal, .chapter-media img { opacity: 1; transform: none; transition: none; }
   .overture-media img { animation: none; transform: scale(1.02); }
-}
-
-/* Reduced motion falls back to a 2% overscan on the hero, which would
-   reintroduce exactly the side-crop the phone layout exists to remove. */
-@media (prefers-reduced-motion: reduce) and (max-width: 760px) {
-  .overture-media img { transform: none; }
 }
