@@ -1,43 +1,40 @@
-import Hero from '@/components/hero'
-import Experience from '@/components/experience'
-import Work from '@/components/work'
-import Projects from '@/components/projects'
-import About from '@/components/about'
+import Overture from '@/components/overture'
+import Chapter from '@/components/chapter'
+import Closing from '@/components/closing'
+import useCurrent from '@/hooks/use-current'
+import { CHAPTERS, PERSON } from '@/content'
 import { Analytics } from '@vercel/analytics/react'
 import './app.css'
 
-function App() {
+const IDS = CHAPTERS.map(c => c.id)
+
+export default function App() {
+  const current = useCurrent(IDS)
+  const shown = CHAPTERS.find(c => c.id === current)
+
   return (
     <div className="root">
-      <a
-        href="#home"
-        style={{
-          position: 'absolute',
-          top: -40,
-          left: 0,
-          background: '#00e87a',
-          color: '#000',
-          padding: '8px 16px',
-          zIndex: 1000,
-          fontFamily: 'var(--mono)',
-          fontSize: 12,
-          transition: 'top 0.3s',
-        }}
-        onFocus={e => (e.currentTarget.style.top = '0')}
-        onBlur={e => (e.currentTarget.style.top = '-40px')}
-      >
-        Skip to main content
+      <div className="grain" aria-hidden="true" />
+
+      <a className="hud hud--tl" href="#top">
+        {PERSON.first} {PERSON.last}
       </a>
-      <main id="home-main">
-        <Hero />
-        <Experience />
-        <Work />
-        <Projects />
-        <About />
+      <a className="hud hud--tr" href={`mailto:${PERSON.email}`}>
+        {PERSON.email}
+      </a>
+      <div className="hud hud--br" aria-hidden="true">
+        <b>{shown ? shown.no : '—'}</b> / {CHAPTERS.length.toString().padStart(2, '0')}
+      </div>
+
+      <main>
+        <Overture />
+        {CHAPTERS.map(c => (
+          <Chapter key={c.id} chapter={c} />
+        ))}
       </main>
+
+      <Closing />
       <Analytics />
     </div>
   )
 }
-
-export default App
