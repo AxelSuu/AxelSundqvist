@@ -10,6 +10,10 @@ export default function App() {
     <div className="root">
       <div className="grain" aria-hidden="true" />
 
+      <a className="skip" href="#contact">
+        Skip to contact
+      </a>
+
       <main>
         <Overture />
         {CHAPTERS.map(c => (

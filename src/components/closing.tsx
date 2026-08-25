@@ -8,6 +8,8 @@ export default function Closing() {
 
   return (
     <footer ref={ref} id="contact" className="closing">
+      <h2 className="sr-only">Contact</h2>
+
       <a className="mail reveal" href={`mailto:${PERSON.email}`}>
         {PERSON.email}
       </a>

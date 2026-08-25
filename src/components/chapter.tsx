@@ -3,11 +3,12 @@ import type { Chapter as Ch } from '@/content'
 
 export default function Chapter({ chapter }: { chapter: Ch }) {
   const ref = useReveal<HTMLElement>()
+  const isRepo = chapter.href?.includes('github')
 
   return (
     <section ref={ref} id={chapter.id} className="chapter">
       <div className="chapter-media" data-fit={chapter.fit}>
-        <img src={chapter.image} alt={chapter.title.replace('\n', ' ')} loading="lazy" />
+        <img src={chapter.image} alt={chapter.alt} loading="lazy" />
       </div>
 
       <div className="chapter-text">
@@ -37,8 +38,18 @@ export default function Chapter({ chapter }: { chapter: Ch }) {
               ))}
             </p>
             {chapter.href && (
-              <a className="go" href={chapter.href} target="_blank" rel="noopener noreferrer">
-                {chapter.href.includes('github') ? 'Source' : 'LinkedIn'} →
+              <a
+                className="go"
+                href={chapter.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={
+                  isRepo
+                    ? `Source code for ${chapter.title.replace('\n', ' ')} on GitHub, opens in a new tab`
+                    : 'Axel Sundqvist on LinkedIn, opens in a new tab'
+                }
+              >
+                {isRepo ? 'Source' : 'LinkedIn'} <span aria-hidden="true">→</span>
               </a>
             )}
           </div>

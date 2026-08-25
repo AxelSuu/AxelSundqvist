@@ -19,16 +19,27 @@ export default function Overture() {
 
       <div style={{ display: 'flex', justifyContent: 'space-between', gap: 40, flexWrap: 'wrap', alignItems: 'flex-end' }}>
         <p className="overture-sub">
-          Embedded systems, radio hardware and the software that sits closest to it.
-          Fourth-year M.Sc. student in Applied Physics and Electrical Engineering at
-          Linköping University specializing in communication systems.
+          Hardware. Software. Systems. Fourth-year M.Sc. student in communication systems at Linköping University. 
+          R&D Intern experience in radio hardware drivers at Ericsson.
         </p>
 
         <p style={{ display: 'flex', gap: 26, flexWrap: 'wrap' }}>
-          <a className="go" href={PERSON.github} target="_blank" rel="noopener noreferrer">
+          <a
+            className="go"
+            href={PERSON.github}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Axel Sundqvist on GitHub, opens in a new tab"
+          >
             GitHub
           </a>
-          <a className="go" href={PERSON.linkedin} target="_blank" rel="noopener noreferrer">
+          <a
+            className="go"
+            href={PERSON.linkedin}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Axel Sundqvist on LinkedIn, opens in a new tab"
+          >
             LinkedIn
           </a>
           <a className="go" href="#contact">
