@@ -1,17 +1,16 @@
-import TerminalNav from '@/components/alt/terminal-nav'
-import TerminalHero from '@/components/alt/terminal-hero'
-import TerminalExperience from '@/components/alt/terminal-experience'
-import TerminalWork from '@/components/alt/terminal-work'
-import TerminalProjects from '@/components/alt/terminal-projects'
-import TerminalAbout from '@/components/alt/terminal-about'
+import Hero from '@/components/hero'
+import Experience from '@/components/experience'
+import Work from '@/components/work'
+import Projects from '@/components/projects'
+import About from '@/components/about'
 import { Analytics } from '@vercel/analytics/react'
-import './app-alt.css'
+import './app.css'
 
 function App() {
   return (
-    <div className="alt-root">
+    <div className="root">
       <a
-        href="#alt-home"
+        href="#home"
         style={{
           position: 'absolute',
           top: -40,
@@ -29,13 +28,12 @@ function App() {
       >
         Skip to main content
       </a>
-      <TerminalNav />
-      <main id="alt-home-main">
-        <TerminalHero />
-        <TerminalExperience />
-        <TerminalWork />
-        <TerminalProjects />
-        <TerminalAbout />
+      <main id="home-main">
+        <Hero />
+        <Experience />
+        <Work />
+        <Projects />
+        <About />
       </main>
       <Analytics />
     </div>

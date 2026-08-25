@@ -25,10 +25,10 @@ const META = [
   },
 ]
 
-export default function TerminalAbout() {
+export default function About() {
   return (
     <section
-      id="alt-about"
+      id="about"
       style={{
         padding: '100px 32px 100px',
         background: '#f0ede8',
@@ -36,14 +36,7 @@ export default function TerminalAbout() {
     >
       <div style={{ maxWidth: 1240, margin: '0 auto' }}>
 
-        <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 48 }}>
-          <span style={{ width: 28, height: 1, background: '#00b85e' }} />
-          <span style={{ fontSize: 10, letterSpacing: '0.28em', color: '#00b85e', textTransform: 'uppercase' }}>
-            About
-          </span>
-        </div>
-
-        <div className="alt-about-grid">
+        <div className="about-grid">
           {/* Left: photo + socials */}
           <div>
             <div style={{ border: '1px solid rgba(0,0,0,0.1)', overflow: 'hidden', position: 'relative', aspectRatio: '4 / 5' }}>
@@ -62,11 +55,11 @@ export default function TerminalAbout() {
                 onMouseEnter={e => (e.currentTarget.style.filter = 'grayscale(20%) contrast(1.05)')}
                 onMouseLeave={e => (e.currentTarget.style.filter = 'grayscale(70%) contrast(1.1)')}
               />
-              {/* Green duotone overlay */}
+              {/* Blue duotone overlay */}
               <div style={{
                 position: 'absolute',
                 inset: 0,
-                background: 'linear-gradient(135deg, rgba(0,184,94,0.1), rgba(0,124,191,0.05))',
+                background: 'linear-gradient(135deg, rgba(0,124,191,0.1), rgba(0,124,191,0.05))',
                 mixBlendMode: 'screen',
                 pointerEvents: 'none',
               }} />
@@ -83,7 +76,7 @@ export default function TerminalAbout() {
                   href={s.href}
                   target={s.href.startsWith('http') ? '_blank' : undefined}
                   rel="noopener noreferrer"
-                  className="alt-link"
+                  className="link"
                 >
                   {s.icon}
                   {s.label}
@@ -102,12 +95,12 @@ export default function TerminalAbout() {
               marginBottom: 36,
               color: '#1a1a1a',
             }}>
-              AXEL<br />
-              <span style={{ color: '#00b85e' }}>SUNDQVIST</span>
+              <span style={{ color: '#1a1a1a' }}>AXEL</span><br />
+              <span style={{ color: '#007cbf' }}>SUNDQVIST</span>
             </h2>
 
             <div style={{
-              borderLeft: '2px solid rgba(0,184,94,0.4)',
+              borderLeft: '2px solid rgba(0,124,191,0.4)',
               paddingLeft: 22,
               marginBottom: 40,
             }}>
@@ -128,7 +121,7 @@ export default function TerminalAbout() {
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: 32 }}>
               {META.map(item => (
                 <div key={item.title} style={{ display: 'flex', gap: 10, alignItems: 'flex-start', minWidth: 180 }}>
-                  <span style={{ color: '#00b85e', marginTop: 1, flexShrink: 0 }}>{item.icon}</span>
+                  <span style={{ color: '#007cbf', marginTop: 1, flexShrink: 0 }}>{item.icon}</span>
                   <div>
                     <div style={{ fontSize: 10, letterSpacing: '0.16em', color: '#1a1a1a', marginBottom: 5 }}>
                       {item.title}
@@ -156,7 +149,7 @@ export default function TerminalAbout() {
                 </div>
                 <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
                   {g.items.map(s => (
-                    <span key={s} className="alt-tag">{s}</span>
+                    <span key={s} className="tag">{s}</span>
                   ))}
                 </div>
               </div>

@@ -6,42 +6,22 @@ const SOCIALS = [
   { href: 'mailto:axesu672@student.liu.se', icon: <Mail size={28} />, label: 'MAIL' },
 ]
 
-export default function TerminalHero() {
+export default function Hero() {
   return (
     <section
-      id="alt-home"
-      className="alt-grid-bg alt-scanlines"
+      id="home"
       style={{
         minHeight: '100vh',
+        boxSizing: 'border-box',
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'center',
         position: 'relative',
-        padding: '80px 32px 52px',
+        padding: '40px 32px',
+        background: '#f0ede8',
         overflow: 'hidden',
       }}
     >
-      {/* Decorative corner grid lines */}
-      <div style={{
-        position: 'absolute',
-        top: 64,
-        right: 32,
-        width: 120,
-        height: 120,
-        borderTop: '1px solid rgba(0,0,0,0.09)',
-        borderRight: '1px solid rgba(0,0,0,0.09)',
-        zIndex: 2,
-      }} />
-      <div style={{
-        position: 'absolute',
-        bottom: 100,
-        left: 32,
-        width: 80,
-        height: 80,
-        borderBottom: '1px solid rgba(0,0,0,0.09)',
-        borderLeft: '1px solid rgba(0,0,0,0.09)',
-        zIndex: 2,
-      }} />
 
       {/* Main content */}
       <div style={{ maxWidth: 1240, width: '100%', margin: '0 auto', position: 'relative', zIndex: 2 }}>
@@ -49,7 +29,7 @@ export default function TerminalHero() {
         {/* The big name + social links */}
         <div style={{ display: 'flex', alignItems: 'stretch', marginBottom: 36 }}>
           <div
-            className="alt-hero-name"
+            className="hero-name"
             style={{
               fontSize: 'clamp(72px, 13vw, 180px)',
               fontWeight: 700,
@@ -60,11 +40,11 @@ export default function TerminalHero() {
             }}
           >
             <div style={{ color: '#1a1a1a' }}>AXEL</div>
-            <div style={{ color: '#00b85e' }}>SUNDQVIST</div>
+            <div style={{ color: '#007cbf' }}>SUNDQVIST</div>
           </div>
 
           {/* Social icon buttons — scattered (desktop only) */}
-          <div className="alt-hero-socials-desktop" style={{ position: 'relative', width: 220, flexShrink: 0 }}>
+          <div className="hero-socials-desktop" style={{ position: 'relative', width: 220, flexShrink: 0 }}>
             {SOCIALS.map((s, i) => {
               const pos: React.CSSProperties[] = [
                 { top: 16,    left: 60  },
@@ -113,7 +93,7 @@ export default function TerminalHero() {
             lineHeight: 1.45,
             maxWidth: 780,
           }}>
-            M.Sc. student in Applied Physics &amp; Electrical Engineering at Linköping University.</p>
+            4th year M.Sc. student in Applied Physics &amp; Electrical Engineering / Communication Systems at Linköping University.</p>
 
             <p style={{
               margin: '16px 0 0',
@@ -122,7 +102,7 @@ export default function TerminalHero() {
               lineHeight: 1.45,
               maxWidth: 780,
             }}>
-            R&amp;D experience in embedded Linux, radio hardware drivers and wireless systems at Ericsson.
+            Ericsson R&amp;D intern experience in Radio Hardware Drivers / Embedded Systems.
           </p>
 
           <div style={{
@@ -131,12 +111,12 @@ export default function TerminalHero() {
             gap: 8,
             marginTop: 16,
           }}>
-            {['Embedded Systems', 'Wireless / Radio', 'Embedded Linux', 'ESP-IDF / FreeRTOS', 'C / C++'].map(tag => (
+            {['Embedded Systems', 'IoT', 'ESP-IDF / FreeRTOS', 'C / C++', 'Rust'].map(tag => (
               <span
                 key={tag}
                 style={{
-                  border: '1px solid rgba(0,184,94,0.35)',
-                  color: '#007a40',
+                  border: '1px solid rgba(0,124,191,0.35)',
+                  color: '#007cbf',
                   fontSize: 11,
                   letterSpacing: '0.05em',
                   padding: '6px 10px',
@@ -149,7 +129,7 @@ export default function TerminalHero() {
         </div>
 
         {/* Social icon row — mobile only */}
-        <div className="alt-hero-socials-mobile" style={{ display: 'none', gap: 28, marginTop: 28 }}>
+        <div className="hero-socials-mobile" style={{ display: 'none', gap: 28, marginTop: 28 }}>
           {SOCIALS.map(s => (
             <a
               key={s.label}
@@ -158,7 +138,7 @@ export default function TerminalHero() {
               rel="noopener noreferrer"
               aria-label={s.label}
               style={{ color: '#666', textDecoration: 'none', transition: 'color 0.2s' }}
-              onMouseEnter={e => { e.currentTarget.style.color = '#00b85e' }}
+              onMouseEnter={e => { e.currentTarget.style.color = '#007cbf' }}
               onMouseLeave={e => { e.currentTarget.style.color = '#666' }}
             >
               {s.icon}
@@ -170,8 +150,8 @@ export default function TerminalHero() {
 
       <style>{`
         @media (max-width: 768px) {
-          .alt-hero-socials-desktop { display: none !important; }
-          .alt-hero-socials-mobile { display: flex !important; }
+          .hero-socials-desktop { display: none !important; }
+          .hero-socials-mobile { display: flex !important; }
         }
       `}</style>
     </section>

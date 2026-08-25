@@ -3,23 +3,21 @@ import { Github } from 'lucide-react'
 const PROJECTS = [
   {
     num: '03',
-    filename: '',
     title: 'ESP32-S3\nWIRELESS EMBEDDED SYSTEM',
     image: '/images/esp32.jpeg',
     tags: ['C', 'ESP-IDF', 'FREERTOS', 'WI-FI', 'WEBSOCKET', 'SPI'],
     desc: 'A fully wireless embedded system built on ESP-IDF and FreeRTOS. The ESP32 acts as a Wi-Fi access point and communicates with a browser-based controller over WebSocket.',
     github: 'https://github.com/AxelSuu/ESP32-Wi-Fi-Pong',
-    accentColor: '#00b85e',
+    accentColor: '#007cbf',
   },
   {
     num: '04',
-    filename: '',
     title: 'PYQUANT',
     image: '/images/pystock.png',
     tags: ['PYTHON', 'PYTORCH', 'TIME SERIES', 'CI', 'FASTAPI'],
     desc: 'A forecasting pipeline built around a Temporal Fusion Transformer, producing multi-horizon probabilistic forecasts with automated testing and nightly CI validation.',
     github: 'https://github.com/AxelSuu/Pytorch-Quant-Model',
-    accentColor: '#00b85e',
+    accentColor: '#007cbf',
   },
 ]
 
@@ -37,36 +35,13 @@ function ProjectCard({ p }: { p: typeof PROJECTS[0] }) {
       onMouseEnter={e => (e.currentTarget.style.borderColor = p.accentColor + '66')}
       onMouseLeave={e => (e.currentTarget.style.borderColor = 'rgba(0,0,0,0.09)')}
     >
-      {/* Terminal chrome */}
-      <div className="alt-terminal-header">
-        <div className="alt-dot" style={{ background: '#ff5f56' }} />
-        <div className="alt-dot" style={{ background: '#febc2e' }} />
-        <div className="alt-dot" style={{ background: '#27c840' }} />
-        <span style={{ marginLeft: 8, fontSize: 10, color: '#aaa', letterSpacing: '0.1em', fontFamily: 'var(--mono)', flex: 1, overflow: 'hidden', whiteSpace: 'nowrap', textOverflow: 'ellipsis' }}>
-          {p.filename}
-        </span>
-      </div>
-
       {/* Image */}
-      <div className="alt-img-wrap" style={{ overflow: 'hidden', position: 'relative', aspectRatio: '16/9', flexShrink: 0 }}>
+      <div className="img-wrap" style={{ overflow: 'hidden', position: 'relative', aspectRatio: '16/9', flexShrink: 0 }}>
         <img
           src={p.image}
           alt={p.title.replace('\n', ' ')}
           style={{ width: '100%', height: '100%', objectFit: 'cover' }}
         />
-        <div style={{
-          position: 'absolute',
-          top: 10,
-          right: 10,
-          fontSize: 10,
-          color: p.accentColor,
-          letterSpacing: '0.15em',
-          background: 'rgba(0,0,0,0.75)',
-          padding: '2px 8px',
-          fontFamily: 'var(--mono)',
-        }}>
-          [{p.num}]
-        </div>
       </div>
 
       {/* Card body */}
@@ -110,7 +85,7 @@ function ProjectCard({ p }: { p: typeof PROJECTS[0] }) {
           href={p.github}
           target="_blank"
           rel="noopener noreferrer"
-          className="alt-link"
+          className="link"
           style={{ color: '#aaa' }}
           onMouseEnter={e => (e.currentTarget.style.color = p.accentColor)}
           onMouseLeave={e => (e.currentTarget.style.color = '#aaa')}
@@ -123,24 +98,17 @@ function ProjectCard({ p }: { p: typeof PROJECTS[0] }) {
   )
 }
 
-export default function TerminalProjects() {
+export default function Projects() {
   return (
     <section
-      id="alt-projects"
+      id="projects"
       style={{
         padding: '100px 32px',
         position: 'relative',
       }}
     >
       <div style={{ maxWidth: 1240, margin: '0 auto' }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 40 }}>
-          <span style={{ width: 28, height: 1, background: '#00b85e' }} />
-          <span style={{ fontSize: 10, letterSpacing: '0.28em', color: '#00b85e', textTransform: 'uppercase' }}>
-            Selected Projects
-          </span>
-        </div>
-
-        <div className="alt-projects-grid">
+        <div className="projects-grid">
           {PROJECTS.map(p => <ProjectCard key={p.num} p={p} />)}
         </div>
 
@@ -149,7 +117,7 @@ export default function TerminalProjects() {
             href="https://github.com/AxelSuu"
             target="_blank"
             rel="noopener noreferrer"
-            className="alt-link"
+            className="link"
           >
             MORE REPOS → github.com/AxelSuu
           </a>
