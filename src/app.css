@@ -265,20 +265,16 @@ a { color: inherit; text-decoration: none; }
 
 :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
 
-/* ── Scaled-desktop experiment ───────────────────────────────────────────
-   With the viewport pinned to 1280 the CSS viewport is 1280 wide but still
-   the phone's aspect ratio, so 100svh frames would crop exactly as before.
-   Giving each frame a fixed 16:9 box is what actually reproduces desktop:
-   same crop, same composition, everything scaled by viewport-width / 1280. */
-[data-scaled] .overture,
-[data-scaled] .chapter,
-[data-scaled] .closing {
-  min-height: 0;
-  height: 720px;
-}
-
 /* ── Responsive ─────────────────────────────────────────────────────────── */
 @media (max-width: 760px) {
+  /* A frame as tall as the phone crops most of each photograph away — the
+     image is scaled to fill 844px of height and loses two thirds of its
+     width doing it. A section does not have to be a whole screen here, and
+     a shorter frame is a gentler crop. Everything else holds: full-bleed
+     image, type on the image, no stacking. */
+  .overture { min-height: 84svh; }
+  .chapter { min-height: 64svh; }
+
   .ch-foot { flex-direction: column; align-items: flex-start; gap: 20px; }
   .facts { gap: 18px 26px; }
 }

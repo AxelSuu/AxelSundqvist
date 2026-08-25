@@ -3,20 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/tech.svg" />
-    <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1" />
-    <script>
-      /* EXPERIMENT — render the desktop layout at a fixed width on phones and
-         let the browser scale it down, so proportions match desktop exactly.
-         Append ?native to the URL to compare against the responsive layout. */
-      (function () {
-        var DESIGN_WIDTH = 1160
-        var small = Math.min(screen.width, screen.height) < 700
-        var touch = matchMedia('(pointer: coarse)').matches
-        if (!small || !touch || location.search.indexOf('native') > -1) return
-        document.getElementById('viewport').setAttribute('content', 'width=' + DESIGN_WIDTH)
-        document.documentElement.dataset.scaled = DESIGN_WIDTH
-      })()
-    </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Axel Sundqvist</title>
     <meta name="description" content="Axel Sundqvist — M.Sc. student in Applied Physics & Electrical Engineering at Linköping University, with R&D experience in radio hardware drivers and embedded Linux at Ericsson." />
     <meta name="theme-color" content="#0a0a0b" />
