@@ -1,4 +1,6 @@
+import TerminalNav from '@/components/alt/terminal-nav'
 import TerminalHero from '@/components/alt/terminal-hero'
+import TerminalExperience from '@/components/alt/terminal-experience'
 import TerminalWork from '@/components/alt/terminal-work'
 import TerminalProjects from '@/components/alt/terminal-projects'
 import TerminalAbout from '@/components/alt/terminal-about'
@@ -27,8 +29,10 @@ function App() {
       >
         Skip to main content
       </a>
+      <TerminalNav />
       <main id="alt-home-main">
         <TerminalHero />
+        <TerminalExperience />
         <TerminalWork />
         <TerminalProjects />
         <TerminalAbout />

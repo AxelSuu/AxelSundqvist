@@ -128,8 +128,8 @@ body {
 
 .alt-projects-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 14px;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
 }
 
 .alt-about-grid {
@@ -200,8 +200,3 @@ body {
   }
 }
 
-@media (min-width: 769px) and (max-width: 1100px) {
-  .alt-projects-grid {
-    grid-template-columns: 1fr 1fr;
-  }
-}

@@ -3,7 +3,7 @@ import { Github, Linkedin, Mail, Menu, X } from 'lucide-react'
 
 const NAV = [
   { id: 'alt-home', label: 'HOME', num: '0' },
-  { id: 'alt-work', label: 'WORK', num: '1' },
+  { id: 'alt-experience', label: 'EXPERIENCE', num: '1' },
   { id: 'alt-projects', label: 'PROJECTS', num: '2' },
   { id: 'alt-about', label: 'ABOUT', num: '3' },
 ]

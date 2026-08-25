@@ -1,9 +1,9 @@
-import { Waves, FileText, FlaskConical } from 'lucide-react'
+import { FlaskConical, FileText, Beaker } from 'lucide-react'
 
 const HIGHLIGHTS = [
-  { icon: <Waves size={13} />, title: 'PROTOTYPE DEV', desc: 'From spec to functional infrasound dryer prototype' },
-  { icon: <FileText size={13} />, title: 'TECHNICAL DOCS', desc: 'Reports and documentation for infrasound projects' },
-  { icon: <FlaskConical size={13} />, title: 'LAB TESTING', desc: '50% energy reduction validated in grain drying trials' },
+  { icon: <FlaskConical size={13} />, title: 'PROTOTYPE DEVELOPMENT', desc: 'From specification to functional prototype' },
+  { icon: <FileText size={13} />, title: 'TECHNICAL DOCUMENTATION', desc: 'Reports, documentation, and project specifications' },
+  { icon: <Beaker size={13} />, title: 'LAB TESTING', desc: 'Testing contributing to grain-drying trials' },
 ]
 
 export default function TerminalWork() {
@@ -11,33 +11,19 @@ export default function TerminalWork() {
     <section
       id="alt-work"
       style={{
-        minHeight: '100vh',
-        display: 'flex',
-        alignItems: 'center',
-        padding: '100px 32px',
+        padding: '90px 32px 100px',
         position: 'relative',
         background: '#f0ede8',
       }}
     >
-      {/* Faint background image */}
-      <div style={{
-        position: 'absolute',
-        inset: 0,
-        backgroundImage: 'url(/images/infradryer.png)',
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        filter: 'grayscale(100%) brightness(0.85)',
-        opacity: 0.12,
-        zIndex: 0,
-      }} />
-      <div style={{
-        position: 'absolute',
-        inset: 0,
-        background: 'linear-gradient(to right, rgba(240,237,232,0.97) 50%, rgba(240,237,232,0.82))',
-        zIndex: 1,
-      }} />
+      <div style={{ maxWidth: 1240, width: '100%', margin: '0 auto', position: 'relative' }}>
 
-      <div style={{ maxWidth: 1240, width: '100%', margin: '0 auto', position: 'relative', zIndex: 2 }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 40 }}>
+          <span style={{ width: 28, height: 1, background: '#007cbf' }} />
+          <span style={{ fontSize: 10, letterSpacing: '0.28em', color: '#007cbf', textTransform: 'uppercase' }}>
+            Earlier R&amp;D Experience
+          </span>
+        </div>
 
         <div className="alt-work-grid">
           {/* Left: terminal window with image */}
@@ -47,50 +33,62 @@ export default function TerminalWork() {
               <div className="alt-dot" style={{ background: '#febc2e' }} />
               <div className="alt-dot" style={{ background: '#27c840' }} />
             </div>
-            <div className="alt-img-wrap" style={{ overflow: 'hidden', maxHeight: 320 }}>
+            <div className="alt-img-wrap" style={{ overflow: 'hidden', position: 'relative', aspectRatio: '16 / 9' }}>
               <img
                 src="/images/infradryer.png"
                 alt="Infrasonik infrasound dryer prototype"
-                style={{ width: '100%', height: '100%', maxHeight: 320, objectFit: 'cover', objectPosition: 'center' }}
+                style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center' }}
               />
+              <div style={{
+                position: 'absolute',
+                top: 10,
+                right: 10,
+                fontSize: 10,
+                color: '#007cbf',
+                letterSpacing: '0.15em',
+                background: 'rgba(0,0,0,0.75)',
+                padding: '2px 8px',
+                fontFamily: 'var(--mono)',
+              }}>
+                [02]
+              </div>
             </div>
-            
           </div>
 
           {/* Right: content */}
           <div>
-            <div style={{ fontSize: 10, letterSpacing: '0.2em', color: '#00b85e', marginBottom: 20 }}>
+            <div style={{ fontSize: 10, letterSpacing: '0.2em', color: '#007cbf', marginBottom: 20 }}>
               DEC 2022 — APR 2023
             </div>
 
             <h2 style={{
-              fontSize: 'clamp(40px, 6vw, 80px)',
+              fontSize: 'clamp(32px, 4.5vw, 56px)',
               fontWeight: 700,
               lineHeight: 0.95,
-              letterSpacing: '-0.025em',
-              marginBottom: 28,
+              letterSpacing: '-0.02em',
+              marginBottom: 24,
               color: '#1a1a1a',
             }}>
-              INFRA<br />SONIK
+              INFRASONIK
             </h2>
 
             <div style={{
-              borderLeft: '2px solid rgba(0,184,94,0.4)',
+              borderLeft: '2px solid rgba(0,124,191,0.4)',
               paddingLeft: 20,
-              marginBottom: 36,
+              marginBottom: 32,
             }}>
               <p style={{ fontSize: 13, lineHeight: 1.8, color: '#555' }}>
-                Worked with a small team going from technical documentation and
-                specification to a functional prototype. Contributed to infrasound
-                research targeting a 50% reduction in grain drying energy consumption.
+                Worked with a small R&amp;D team developing and testing infrasound-based
+                grain drying technology. The work contributed to trials targeting a
+                50% reduction in energy consumption.
               </p>
             </div>
 
             {/* Highlights */}
-            <div style={{ display: 'flex', flexDirection: 'column', gap: 20, marginBottom: 36 }}>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 18, marginBottom: 32 }}>
               {HIGHLIGHTS.map(h => (
                 <div key={h.title} style={{ display: 'flex', gap: 14, alignItems: 'flex-start' }}>
-                  <span style={{ color: '#00b85e', marginTop: 1, flexShrink: 0 }}>{h.icon}</span>
+                  <span style={{ color: '#007cbf', marginTop: 1, flexShrink: 0 }}>{h.icon}</span>
                   <div>
                     <div style={{ fontSize: 10, letterSpacing: '0.15em', color: '#1a1a1a', marginBottom: 3 }}>
                       {h.title}
@@ -102,8 +100,8 @@ export default function TerminalWork() {
             </div>
 
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
-              {['INFRASOUND', 'PROTOTYPE DEV', 'LAB TESTING', 'TECHNICAL DOCS', 'R&D'].map(t => (
-                <span key={t} className="alt-tag">{t}</span>
+              {['INFRASOUND', 'PROTOTYPE DEV', 'LAB TESTING', 'R&D'].map(t => (
+                <span key={t} className="alt-tag" style={{ borderColor: 'rgba(0,124,191,0.35)', color: '#007cbf' }}>{t}</span>
               ))}
             </div>
           </div>

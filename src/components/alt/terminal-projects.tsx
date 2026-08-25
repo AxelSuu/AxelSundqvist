@@ -2,34 +2,24 @@ import { Github } from 'lucide-react'
 
 const PROJECTS = [
   {
-    num: '02',
-    filename: '',
-    title: 'OAI 5G RAN\nFORK',
-    image: '/images/OAI.png',
-    tags: ['5G', 'C', 'OpenAirInterface', 'Embedded Linux', 'Telecom'],
-    desc: 'A fork of the OpenAirInterface 5G RAN implementation to study the ORAN architecture. ',
-    github: 'https://github.com/AxelSuu/openairinterface5g',
-    accentColor: '#00b85e',
-  },
-  {
     num: '03',
     filename: '',
-    title: 'ESP32-S3 Wi-Fi\nhtml websocket controller',
+    title: 'ESP32-S3\nWIRELESS EMBEDDED SYSTEM',
     image: '/images/esp32.jpeg',
-    tags: ['C', 'ESP-IDF', 'FreeRTOS', 'Networking', 'Wi-Fi AP', 'SPI'],
-    desc: 'ESP-IDF / FreeRTOS Wi-Fi pong on an ESP32-S3 with 128×96 LED display and a browser-based WebSocket controller. ESP32 acts as Wi-Fi access point.',
+    tags: ['C', 'ESP-IDF', 'FREERTOS', 'WI-FI', 'WEBSOCKET', 'SPI'],
+    desc: 'A fully wireless embedded system built on ESP-IDF and FreeRTOS. The ESP32 acts as a Wi-Fi access point and communicates with a browser-based controller over WebSocket.',
     github: 'https://github.com/AxelSuu/ESP32-Wi-Fi-Pong',
-    accentColor: '#007cbf',
+    accentColor: '#00b85e',
   },
   {
     num: '04',
     filename: '',
-    title: 'PYTORCH\nSTOCK MODEL',
+    title: 'PYQUANT',
     image: '/images/pystock.png',
-    tags: ['Python', 'PyTorch', 'LSTM', 'Yahoo Finance', 'ML'],
-    desc: 'LSTM neural network for stock price time-series prediction. Live market data via Yahoo Finance with an easy frontend API.',
+    tags: ['PYTHON', 'PYTORCH', 'TIME SERIES', 'CI', 'FASTAPI'],
+    desc: 'A forecasting pipeline built around a Temporal Fusion Transformer, producing multi-horizon probabilistic forecasts with automated testing and nightly CI validation.',
     github: 'https://github.com/AxelSuu/Pytorch-Quant-Model',
-    accentColor: '#e0002e',
+    accentColor: '#00b85e',
   },
 ]
 
@@ -143,6 +133,13 @@ export default function TerminalProjects() {
       }}
     >
       <div style={{ maxWidth: 1240, margin: '0 auto' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 40 }}>
+          <span style={{ width: 28, height: 1, background: '#00b85e' }} />
+          <span style={{ fontSize: 10, letterSpacing: '0.28em', color: '#00b85e', textTransform: 'uppercase' }}>
+            Selected Projects
+          </span>
+        </div>
+
         <div className="alt-projects-grid">
           {PROJECTS.map(p => <ProjectCard key={p.num} p={p} />)}
         </div>

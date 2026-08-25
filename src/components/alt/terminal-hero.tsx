@@ -83,12 +83,13 @@ export default function TerminalHero() {
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
-                    color: '#aaa',
+                    color: '#666',
                     textDecoration: 'none',
                     transition: 'color 0.2s',
                   }}
+                  aria-label={s.label}
                   onMouseEnter={e => { e.currentTarget.style.color = '#00b85e' }}
-                  onMouseLeave={e => { e.currentTarget.style.color = '#aaa' }}
+                  onMouseLeave={e => { e.currentTarget.style.color = '#666' }}
                 >
                   {s.icon}
                 </a>
@@ -112,7 +113,7 @@ export default function TerminalHero() {
             lineHeight: 1.45,
             maxWidth: 780,
           }}>
-            R&D intern @ Ericsson Business Area Networks (BNEW). </p>
+            M.Sc. student in Applied Physics &amp; Electrical Engineering at Linköping University.</p>
 
             <p style={{
               margin: '16px 0 0',
@@ -121,7 +122,7 @@ export default function TerminalHero() {
               lineHeight: 1.45,
               maxWidth: 780,
             }}>
-            M.Sc. student in Applied Physics and Electrical Engineering @ LiU. 
+            R&amp;D experience in embedded Linux, radio hardware drivers and wireless systems at Ericsson.
           </p>
 
           <div style={{
@@ -130,7 +131,7 @@ export default function TerminalHero() {
             gap: 8,
             marginTop: 16,
           }}>
-            {['Telecom', 'Embedded Systems', '5G RAN', 'Wi-Fi / Bluetooth', 'ESP-IDF / FreeRTOS'].map(tag => (
+            {['Embedded Systems', 'Wireless / Radio', 'Embedded Linux', 'ESP-IDF / FreeRTOS', 'C / C++'].map(tag => (
               <span
                 key={tag}
                 style={{
@@ -155,9 +156,10 @@ export default function TerminalHero() {
               href={s.href}
               target={s.href.startsWith('http') ? '_blank' : undefined}
               rel="noopener noreferrer"
-              style={{ color: '#aaa', textDecoration: 'none', transition: 'color 0.2s' }}
+              aria-label={s.label}
+              style={{ color: '#666', textDecoration: 'none', transition: 'color 0.2s' }}
               onMouseEnter={e => { e.currentTarget.style.color = '#00b85e' }}
-              onMouseLeave={e => { e.currentTarget.style.color = '#aaa' }}
+              onMouseLeave={e => { e.currentTarget.style.color = '#666' }}
             >
               {s.icon}
             </a>
