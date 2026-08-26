@@ -1,12 +1,14 @@
+import FrameImage from '@/components/frame-image'
 import { PERSON } from '@/content'
 
 export default function Overture() {
   return (
     <header className="overture" id="top">
       <div className="overture-media">
-        <img
-          src="/images/hero.jpeg"
+        <FrameImage
+          src="/images/hero.jpg"
           alt="An ESP32-S3 board and a small OLED display running on a page of handwritten Fourier analysis"
+          priority
         />
       </div>
 

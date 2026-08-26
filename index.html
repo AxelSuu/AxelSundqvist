@@ -7,13 +7,82 @@
     <title>Axel Sundqvist</title>
     <meta name="description" content="Axel Sundqvist — M.Sc. student in Applied Physics & Electrical Engineering at Linköping University, with R&D experience in radio hardware drivers and embedded Linux at Ericsson." />
     <meta name="theme-color" content="#0a0a0b" />
-    <link rel="preload" as="image" href="/images/hero.jpeg" fetchpriority="high">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..125,200..600&display=swap" rel="stylesheet">
+    <link rel="canonical" href="https://axelsundqvist.se/" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://axelsundqvist.se/" />
+    <meta property="og:site_name" content="Axel Sundqvist" />
+    <meta property="og:locale" content="en_GB" />
+    <meta property="og:title" content="Axel Sundqvist" />
+    <meta property="og:description" content="Radio hardware drivers at Ericsson, infrasound grain drying at Infrasonik, embedded systems and forecasting models. M.Sc. Applied Physics & Electrical Engineering, Linköping University." />
+    <meta property="og:image" content="https://axelsundqvist.se/images/og.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Axel Sundqvist — an ESP32-S3 board on a page of handwritten Fourier analysis" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Axel Sundqvist" />
+    <meta name="twitter:description" content="Radio hardware drivers at Ericsson, infrasound grain drying at Infrasonik, embedded systems and forecasting models." />
+    <meta name="twitter:image" content="https://axelsundqvist.se/images/og.jpg" />
+
+    <link rel="preload" as="image" type="image/webp" fetchpriority="high"
+          href="/images/hero-1200.webp" imagesizes="max(100vw, calc(100vh * 1.5))"
+          imagesrcset="/images/hero-800.webp 800w, /images/hero-1200.webp 1200w, /images/hero-1800.webp 1800w, /images/hero-2000.webp 2000w">
+
+    <!-- Self-hosted. Google's chain is HTML -> fonts.googleapis.com ->
+         fonts.gstatic.com: two extra DNS+TLS handshakes before the first byte
+         of a typeface, on a page that is nothing but typography. Same files. -->
+    <link rel="preload" as="font" type="font/woff2" crossorigin href="/fonts/archivo-latin.woff2">
+    <style>
+      @font-face {
+        font-family: 'Archivo';
+        font-style: normal;
+        font-weight: 200 600;
+        font-stretch: 75% 125%;
+        font-display: swap;
+        src: url(/fonts/archivo-latin.woff2) format('woff2');
+        unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+      }
+      @font-face {
+        font-family: 'Archivo';
+        font-style: normal;
+        font-weight: 200 600;
+        font-stretch: 75% 125%;
+        font-display: swap;
+        src: url(/fonts/archivo-latin-ext.woff2) format('woff2');
+        unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+      }
+    </style>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Axel Sundqvist",
+      "url": "https://axelsundqvist.se/",
+      "jobTitle": "M.Sc. student, Applied Physics & Electrical Engineering",
+      "alumniOf": { "@type": "CollegeOrUniversity", "name": "Linköping University" },
+      "address": { "@type": "PostalAddress", "addressLocality": "Linköping", "addressCountry": "SE" },
+      "knowsAbout": ["Embedded systems", "Radio hardware", "Embedded Linux", "Signal processing", "Machine learning"],
+      "sameAs": [
+        "https://github.com/AxelSuu",
+        "https://www.linkedin.com/in/axel-sundqvist/"
+      ]
+    }
+    </script>
   </head>
   <body>
     <div id="root"></div>
+    <noscript>
+      <p style="color:#eeece8;background:#0a0a0b;font:300 16px/1.6 system-ui,sans-serif;padding:40px;margin:0">
+        Axel Sundqvist — M.Sc. student in Applied Physics &amp; Electrical Engineering at Linköping
+        University. R&amp;D intern at Ericsson (radio hardware drivers), previously Infrasonik
+        (infrasound grain drying).
+        <a style="color:#7f9dff" href="https://github.com/AxelSuu">GitHub</a> ·
+        <a style="color:#7f9dff" href="https://www.linkedin.com/in/axel-sundqvist/">LinkedIn</a> ·
+        <a style="color:#7f9dff" href="mailto:axesu672@student.liu.se">axesu672@student.liu.se</a>
+      </p>
+    </noscript>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

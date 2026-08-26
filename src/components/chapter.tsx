@@ -1,4 +1,5 @@
 import useReveal from '@/hooks/use-reveal'
+import FrameImage from '@/components/frame-image'
 import type { Chapter as Ch } from '@/content'
 
 export default function Chapter({ chapter }: { chapter: Ch }) {
@@ -8,11 +9,11 @@ export default function Chapter({ chapter }: { chapter: Ch }) {
   return (
     <section ref={ref} id={chapter.id} className="chapter">
       <div className="chapter-media" data-fit={chapter.fit}>
-        <img
+        <FrameImage
           src={chapter.image}
           alt={chapter.alt}
+          fit={chapter.fit}
           style={chapter.position ? { objectPosition: chapter.position } : undefined}
-          loading="lazy"
         />
       </div>
 

@@ -3,17 +3,9 @@
 export const PERSON = {
   first: 'Axel',
   last: 'Sundqvist',
-  role: 'M.Sc. Applied Physics & Electrical Engineering',
-  track: 'Communication Systems',
-  school: 'Linköping University',
-  years: '2023 — 2028',
-  based: 'Linköping / Stockholm, Sweden',
   email: 'axesu672@student.liu.se',
   github: 'https://github.com/AxelSuu',
-  githubHandle: 'github.com/AxelSuu',
   linkedin: 'https://www.linkedin.com/in/axel-sundqvist/',
-  linkedinHandle: 'linkedin.com/in/axel-sundqvist',
-  portrait: '/images/me2.png',
 }
 
 /* --------------------------------------------------------------------------
@@ -41,7 +33,7 @@ export const CHAPTERS: Chapter[] = [
     kicker: 'Ericsson Summer R&D Internship · Stockholm · 2026',
     title: 'Where the software\ntouches silicon',
     line: 'I developed radio hardware drivers for Ericsson’s radios, worked target agnostic so one implementation serves several platforms, and delivered the nightly CI hardware tests that verify them.',
-    image: '/images/ericsson-team.jpeg',
+    image: '/images/ericsson-team.jpg',
     alt: 'The Radio Unit software team at Ericsson’s Kista campus',
     fit: 'cover',
     facts: [
@@ -57,7 +49,7 @@ export const CHAPTERS: Chapter[] = [
     kicker: 'Personal embedded project · ESP32-S3',
     title: 'Wireless control\nsystem design',
     line: 'I built a wireless ESP-IDF project: the board raises its own Wi-Fi access point and communicates over WebSocket, with FreeRTOS tasks, queues and priorities.',
-    image: '/images/esp32.jpeg',
+    image: '/images/esp32.jpg',
     alt: 'An ESP32-S3 development board wired to a small OLED display, resting on a page of handwritten Fourier analysis',
     fit: 'cover',
     facts: [
@@ -73,7 +65,7 @@ export const CHAPTERS: Chapter[] = [
     kicker: 'Infrasonik Intern · Stockholm · 2022—23',
     title: 'Drying grain\nwith sound',
     line: 'Moving moisture with low-frequency pressure waves instead of heat. I worked with a small R&D team developing and testing infrasound-based grain-drying technology.',
-    image: '/images/infradryer.png',
+    image: '/images/infradryer.jpg',
     alt: 'An Infrasonik project slide: infrasound drying for grain and biomass, co-funded by the European Union, with RISE, Skogforsk and KR Teknik as partners',
     position: '20% center',
     fit: 'cover',
@@ -89,7 +81,7 @@ export const CHAPTERS: Chapter[] = [
     kicker: 'Personal ML project · PyQuant',
     title: 'Forecasting over\nmultiple horizons',
     line: 'I wrapped a Temporal Fusion Transformer in a pipeline that produces multi-horizon probabilistic forecasts, with automated nightly CI validation.',
-    image: '/images/pystock.png',
+    image: '/images/pystock.jpg',
     alt: 'A multi-horizon probabilistic forecast plotted against historical price data',
     fit: 'contain',
     facts: [
@@ -105,7 +97,7 @@ export const CHAPTERS: Chapter[] = [
     kicker: 'Linköping · Stockholm',
     title: 'Who is\nAxel Sundqvist',
     line: 'Grain dryers, radio hardware, forecasting models. I like turning difficult problems into useful systems.',
-    image: '/images/me2.png',
+    image: '/images/me2.jpg',
     alt: 'Axel Sundqvist',
     fit: 'cover',
     facts: [
