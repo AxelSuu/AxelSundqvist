@@ -9,6 +9,7 @@ export default function Overture() {
           src="/images/hero.jpg"
           alt="An ESP32-S3 board and a small OLED display running on a page of handwritten Fourier analysis"
           priority
+          mobileVh={84}
         />
       </div>
 
