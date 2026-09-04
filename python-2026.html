@@ -1,0 +1,506 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/tech.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>The State of Python, 2026 — Axel Sundqvist</title>
+    <meta name="description" content="A reference for Python project practices, libraries per domain, and system designs, written from the position of using Python to test and build systems written in other languages. Reviewed September 2026." />
+    <meta name="theme-color" content="#f7f6f3" />
+    <link rel="canonical" href="https://axelsundqvist.se/python-2026" />
+
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://axelsundqvist.se/python-2026" />
+    <meta property="og:site_name" content="Axel Sundqvist" />
+    <meta property="og:locale" content="en_GB" />
+    <meta property="og:title" content="The State of Python, 2026" />
+    <meta property="og:description" content="Practices, libraries and system designs — including Python as the test and tooling layer around C and Rust." />
+    <meta property="og:image" content="https://axelsundqvist.se/images/og.jpg" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="The State of Python, 2026" />
+    <meta name="twitter:description" content="Practices, libraries and system designs — including Python as the test and tooling layer around C and Rust." />
+    <meta name="twitter:image" content="https://axelsundqvist.se/images/og.jpg" />
+
+    <!-- Same files the film loads, so a reader arriving here first warms the
+         cache for the site rather than fetching a second typeface. -->
+    <link rel="preload" as="font" type="font/woff2" crossorigin href="/fonts/archivo-latin.woff2">
+    <style>
+      @font-face {
+        font-family: 'Archivo';
+        font-style: normal;
+        font-weight: 200 600;
+        font-stretch: 75% 125%;
+        font-display: swap;
+        src: url(/fonts/archivo-latin.woff2) format('woff2');
+        unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+      }
+      @font-face {
+        font-family: 'Archivo';
+        font-style: normal;
+        font-weight: 200 600;
+        font-stretch: 75% 125%;
+        font-display: swap;
+        src: url(/fonts/archivo-latin-ext.woff2) format('woff2');
+        unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+      }
+
+      /* ======================================================================
+         The film is dark, full-bleed and image-led. A 7,000-word reference is
+         the opposite problem, so this page shares its typeface and nothing
+         else: light ground, one measure, and tables that hold still.
+         ====================================================================== */
+      :root {
+        --paper:  #f7f6f3;
+        --ink:    #16161a;
+        --ink-64: rgba(22, 22, 26, 0.64);
+        --ink-40: rgba(22, 22, 26, 0.40);
+        --ink-12: rgba(22, 22, 26, 0.12);
+        --ink-06: rgba(22, 22, 26, 0.055);
+        --accent: #2b3ea8;
+        --sans: 'Archivo', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
+        --mono: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+        color-scheme: light;
+      }
+
+      * { box-sizing: border-box; }
+      html { background: var(--paper); scroll-behavior: smooth; }
+      body {
+        margin: 0;
+        background: var(--paper);
+        color: var(--ink);
+        font-family: var(--sans);
+        font-size: 17px;
+        line-height: 1.62;
+        font-weight: 350;
+        -webkit-font-smoothing: antialiased;
+        overflow-x: hidden;
+      }
+      @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+      a { color: var(--accent); text-decoration: none; }
+      .prose a { text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px; }
+      a:hover { opacity: 0.68; }
+
+      .skip {
+        position: absolute; left: -9999px;
+        background: var(--ink); color: var(--paper); padding: 12px 18px; z-index: 10;
+      }
+      .skip:focus { left: 16px; top: 16px; }
+
+      /* ── Masthead ────────────────────────────────────────────────────── */
+      .masthead {
+        border-bottom: 1px solid var(--ink-12);
+        padding: 26px clamp(20px, 5vw, 56px);
+        display: flex; justify-content: space-between; align-items: baseline;
+        gap: 24px; flex-wrap: wrap;
+      }
+      .back {
+        font-size: 13px; letter-spacing: 0.09em; text-transform: uppercase;
+        font-weight: 500; color: var(--ink-64);
+      }
+      .back:hover { color: var(--accent); opacity: 1; }
+      .masthead .stamp { font-size: 13px; color: var(--ink-40); letter-spacing: 0.04em; }
+
+      header.title {
+        padding: clamp(56px, 11vh, 128px) clamp(20px, 5vw, 56px) 0;
+        max-width: 1180px; margin: 0 auto;
+      }
+      h1 {
+        margin: 0;
+        font-size: clamp(38px, 6.2vw, 76px);
+        line-height: 1.02;
+        font-weight: 300;
+        letter-spacing: -0.022em;
+        max-width: 15ch;
+      }
+
+      /* ── Two columns: sticky contents, then the measure ──────────────── */
+      .wrap {
+        max-width: 1180px; margin: 0 auto;
+        padding: clamp(38px, 6vh, 68px) clamp(20px, 5vw, 56px) 0;
+        display: grid; gap: clamp(32px, 5vw, 72px);
+        grid-template-columns: minmax(0, 1fr);
+      }
+      @media (min-width: 1000px) {
+        .wrap { grid-template-columns: 208px minmax(0, 68ch); }
+        .toc { position: sticky; top: 40px; align-self: start; max-height: calc(100vh - 80px); overflow-y: auto; }
+      }
+
+      .toc { font-size: 13.5px; line-height: 1.5; }
+      .toc-head {
+        margin: 0 0 14px; font-size: 11px; letter-spacing: 0.13em;
+        text-transform: uppercase; color: var(--ink-40); font-weight: 500;
+      }
+      .toc ul { list-style: none; margin: 0 0 20px; padding: 0; }
+      .toc li { margin-bottom: 7px; }
+      .toc a { color: var(--ink-64); }
+      .toc a:hover { color: var(--accent); opacity: 1; }
+      .toc-part { margin: 0 0 9px; font-weight: 500; }
+      .toc-part a { color: var(--ink); }
+      /* On a phone the full contents list is longer than the first section, so
+         only the three part links survive. */
+      @media (max-width: 999px) {
+        .toc { border-bottom: 1px solid var(--ink-12); padding-bottom: 22px; }
+        .toc ul { display: none; }
+        .toc-part { display: inline-block; margin-right: 20px; }
+      }
+
+      /* ── Prose ───────────────────────────────────────────────────────── */
+      .prose { max-width: 68ch; padding-bottom: 8vh; }
+      .prose > p { margin: 0 0 22px; }
+      .prose > p:first-child {
+        font-size: 19px; color: var(--ink-64); margin-bottom: 34px;
+      }
+      .prose > p:first-child em { font-style: normal; }
+
+      h2.part {
+        margin: clamp(64px, 9vh, 104px) 0 8px;
+        font-size: clamp(26px, 3.4vw, 34px);
+        font-weight: 300; letter-spacing: -0.015em; line-height: 1.14;
+        padding-top: 26px; border-top: 2px solid var(--ink);
+      }
+      h3 {
+        margin: 52px 0 14px;
+        font-size: 21px; font-weight: 500; letter-spacing: -0.008em; line-height: 1.25;
+        scroll-margin-top: 24px;
+      }
+      h2.part { scroll-margin-top: 24px; }
+
+      .prose ul { margin: 0 0 22px; padding-left: 22px; }
+      .prose li { margin-bottom: 8px; }
+
+      strong { font-weight: 600; }
+      /* Bold-led paragraphs label each system design; give them a little air. */
+      .prose > p > strong:first-child { display: inline-block; margin-top: 6px; }
+
+      hr { border: 0; border-top: 1px solid var(--ink-12); margin: 46px 0; }
+
+      code {
+        font-family: var(--mono); font-size: 0.855em;
+        background: var(--ink-06); padding: 0.12em 0.36em; border-radius: 3px;
+        overflow-wrap: break-word;
+      }
+
+      /* Anything that cannot reflow scrolls inside its own box; the page body
+         never scrolls sideways. */
+      .scroll { overflow-x: auto; margin: 0 0 26px; -webkit-overflow-scrolling: touch; }
+      .scroll pre {
+        margin: 0; padding: 18px 20px;
+        background: var(--ink-06); border-radius: 4px;
+        font-size: 13.5px; line-height: 1.55;
+      }
+      .scroll pre code { background: none; padding: 0; font-size: inherit; }
+
+      table { border-collapse: collapse; width: 100%; font-size: 14.5px; line-height: 1.5; }
+      th, td { text-align: left; padding: 9px 16px 9px 0; vertical-align: top; border-bottom: 1px solid var(--ink-12); }
+      th {
+        font-size: 11px; letter-spacing: 0.11em; text-transform: uppercase;
+        font-weight: 500; color: var(--ink-40); border-bottom-color: var(--ink-40);
+        white-space: nowrap;
+      }
+      td:first-child { white-space: nowrap; padding-right: 26px; }
+      td code { background: none; padding: 0; }
+
+      footer.end {
+        border-top: 1px solid var(--ink-12);
+        margin-top: 6vh; padding: 40px clamp(20px, 5vw, 56px) 12vh;
+        max-width: 1180px; margin-left: auto; margin-right: auto;
+        display: flex; justify-content: space-between; gap: 24px; flex-wrap: wrap;
+        font-size: 14px; color: var(--ink-64);
+      }
+    </style>
+  </head>
+  <body>
+    <a class="skip" href="#content">Skip to the article</a>
+
+    <div class="masthead">
+      <a class="back" href="/">← Axel Sundqvist</a>
+      <span class="stamp">Reviewed September 2026</span>
+    </div>
+
+    <header class="title">
+      <h1>The State of Python, 2026</h1>
+    </header>
+
+    <div class="wrap">
+      <nav class="toc" aria-label="Contents"><p class="toc-head">Contents</p>
+<ul>
+<li><a href="#the-baseline">The baseline</a></li>
+</ul>
+<p class="toc-part"><a href="#part-i-practices">Part I — Practices</a></p>
+<ul>
+<li><a href="#environments-and-dependencies">Environments and dependencies</a></li>
+<li><a href="#linting-and-formatting">Linting and formatting</a></li>
+<li><a href="#python-versions">Python versions</a></li>
+<li><a href="#project-configuration-and-layout">Project configuration and layout</a></li>
+<li><a href="#type-checking">Type checking</a></li>
+<li><a href="#validation-and-data-models">Validation and data models</a></li>
+<li><a href="#errors">Errors</a></li>
+<li><a href="#logging">Logging</a></li>
+<li><a href="#concurrency">Concurrency</a></li>
+<li><a href="#testing">Testing</a></li>
+<li><a href="#command-line-interfaces-and-single-file-scripts">Command-line interfaces and single-file scripts</a></li>
+<li><a href="#documentation">Documentation</a></li>
+<li><a href="#continuous-integration">Continuous integration</a></li>
+<li><a href="#packaging-and-distribution">Packaging and distribution</a></li>
+<li><a href="#profiling-and-optimization">Profiling and optimization</a></li>
+</ul>
+<p class="toc-part"><a href="#part-ii-domains">Part II — Domains</a></p>
+<ul>
+<li><a href="#backends-databases-and-apis">Backends, databases and APIs</a></li>
+<li><a href="#data-engineering">Data engineering</a></li>
+<li><a href="#data-science">Data science</a></li>
+<li><a href="#scientific-computing-and-signal-processing">Scientific computing and signal processing</a></li>
+<li><a href="#machine-learning">Machine learning</a></li>
+<li><a href="#markets-and-financial-data">Markets and financial data</a></li>
+<li><a href="#llms-agents-and-retrieval">LLMs, agents and retrieval</a></li>
+</ul>
+<p class="toc-part"><a href="#part-iii-python-around-another-language">Part III — Python around another language</a></p>
+<ul>
+</ul>
+</nav>
+      <article class="prose" id="content">
+<p><em>Practices, libraries, and system designs. Reviewed September 2026.</em></p>
+<p>Most of my work sits next to Python rather than inside it: radio hardware drivers written in C at Ericsson, an ESP-IDF firmware project, a forecasting model whose interesting parts are in PyTorch. Python is the layer that tests those systems, builds them, and turns what they emit into something you can read. This is a reference written from that position — someone who mostly uses Python to drive something else, and who therefore cares more about a project still building in two years than about any individual library.</p>
+<p>Part I is the baseline: how to set a project up. Part II is what the ecosystem looks like per domain, with a representative system design for each. Part III is the case I know best — Python as the test and tooling layer around a codebase written in another language.</p>
+<p>Version numbers and release dates are current as of September 2026 and will age.</p>
+<h3 id="the-baseline">The baseline</h3>
+<ul><li><code>uv</code> for dependencies, interpreters, tools, scripts and builds</li><li><code>ruff</code> for lint and format, with a wider rule set than the default</li><li>Everything configured in <code>pyproject.toml</code>; dev dependencies in <code>[dependency-groups]</code></li><li><code>src/</code> layout, lockfile committed, <code>uv lock --check</code> in CI</li><li>One recent Python. 3.14 for applications; follow SPEC 0 for libraries</li><li>A type checker in CI, strict on new code: pyright, or pyrefly on large codebases</li><li>Pydantic at I/O boundaries, dataclasses or attrs internally</li><li><code>pydantic-settings</code> for configuration, validated at startup</li><li>Structured logging, configured once at the entry point, never inside libraries</li><li><code>TaskGroup</code> and <code>asyncio.timeout</code> for concurrency; async for I/O, processes for CPU</li><li>pytest with fixtures and parametrization; Hypothesis for invariants; Testcontainers instead of database mocks</li><li>Typer or Click for CLIs; <code># /// script</code> inline metadata for single-file tools</li><li>Profile before optimizing; py-spy, scalene, memray</li><li>Pin GitHub Actions to commit SHAs; publish with trusted publishing</li></ul>
+<hr>
+<h2 class="part" id="part-i-practices">Part I — Practices</h2>
+<h3 id="environments-and-dependencies">Environments and dependencies</h3>
+<p><code>uv</code> covers the roles previously split across pip, pip-tools, virtualenv, pyenv, pipx and Poetry. It resolves and installs substantially faster than pip, manages interpreter installations, and produces a cross-platform lockfile (<code>uv.lock</code>).</p>
+<div class="scroll"><table><thead><tr><th>Command</th><th>Purpose</th></tr></thead><tbody><tr><td><code>uv init</code></td><td>Create a project with <code>pyproject.toml</code> and a <code>src/</code> layout.</td></tr><tr><td><code>uv add</code> / <code>uv remove</code></td><td>Modify dependencies and update the lockfile.</td></tr><tr><td><code>uv sync --locked</code></td><td>Install exactly what the lockfile specifies; fails if it is stale.</td></tr><tr><td><code>uv run</code></td><td>Run a command in the project environment, syncing first.</td></tr><tr><td><code>uv python install 3.14</code></td><td>Install a specific interpreter version, independent of the system Python.</td></tr><tr><td><code>uv tool install</code></td><td>Install a CLI package into an isolated environment on <code>PATH</code>.</td></tr><tr><td><code>uv build</code> / <code>uv publish</code></td><td>Build wheels and source distributions, and upload them.</td></tr></tbody></table></div>
+<p>Because <code>uv</code> manages interpreters, the Python version is a project-level declaration (<code>requires-python</code>, <code>.python-version</code>) rather than a machine-level prerequisite. This matters more than it sounds: it is the difference between a repository that a colleague can build and one that requires a paragraph of setup instructions.</p>
+<p>Alternatives still in use: Poetry (mature, own resolver and lockfile format), PDM (standards-focused), Hatch (environment matrix management), and pip with <code>pip-tools</code> for projects that require pip alone.</p>
+<p>Astral, which develops <code>uv</code>, <code>ruff</code> and <code>ty</code>, agreed to be acquired by OpenAI in March 2026, subject to regulatory approval. The tools remain open source under permissive licences.</p>
+<h3 id="linting-and-formatting">Linting and formatting</h3>
+<p><code>ruff</code> provides both a linter and a formatter in a single binary, implementing rules from flake8 and its plugins, isort, pydocstyle, pyupgrade, bandit and others. The formatter is compatible with Black's style with minor documented deviations.</p>
+<div class="scroll"><pre><code class="lang-toml">[tool.ruff]
+line-length = 100
+target-version = "py314"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "N", "UP", "B", "SIM", "C4", "PTH", "RUF"]
+ignore = []
+
+[tool.ruff.lint.per-file-ignores]
+"tests/*" = ["S101"]</code></pre></div>
+<p>Common rule sets: <code>E</code>/<code>F</code> (pycodestyle, Pyflakes), <code>I</code> (import sorting), <code>UP</code> (pyupgrade), <code>B</code> (bugbear), <code>SIM</code> (simplification), <code>PTH</code> (pathlib over <code>os.path</code>), <code>S</code> (security), <code>D</code> (docstrings), <code>ANN</code> (annotation coverage).</p>
+<p>Two commands cover both roles:</p>
+<div class="scroll"><pre><code class="lang-bash">uv run ruff check --fix
+uv run ruff format</code></pre></div>
+<h3 id="python-versions">Python versions</h3>
+<p>Python 3.9 reached end of life in October 2025. Supported versions as of September 2026 are 3.10 through 3.14, with 3.15 scheduled for 1 October 2026.</p>
+<p>Version support policy differs by artifact type:</p>
+<div class="scroll"><table><thead><tr><th>Artifact</th><th>Policy</th></tr></thead><tbody><tr><td>Application or service</td><td>Pin a single version; the runtime is controlled by the deployment.</td></tr><tr><td>Library</td><td>Support the versions your consumers use. SPEC 0 recommends dropping a Python version three years after its release.</td></tr><tr><td>Single-file script</td><td>Declare <code>requires-python</code> inline; the runner provisions the interpreter.</td></tr></tbody></table></div>
+<p>Relevant changes in recent versions:</p>
+<div class="scroll"><table><thead><tr><th>Version</th><th>Change</th></tr></thead><tbody><tr><td>3.11</td><td><code>TaskGroup</code>, <code>asyncio.timeout</code>, exception groups and <code>except*</code>, <code>tomllib</code>, significant interpreter speedups.</td></tr><tr><td>3.12</td><td>New type parameter syntax (<code>def f[T]()</code>), <code>@override</code>, per-interpreter GIL groundwork.</td></tr><tr><td>3.13</td><td>Experimental free-threaded build, new REPL, JIT groundwork.</td></tr><tr><td>3.14</td><td>Free-threaded build officially supported (PEP 779); deferred evaluation of annotations (PEP 649); <code>concurrent.interpreters</code> for subinterpreters (PEP 734); colour output in <code>argparse</code> and tracebacks.</td></tr><tr><td>3.15 (Oct 2026)</td><td><code>abi3t</code>, a stable ABI for free-threaded builds (PEP 803), allowing one C extension wheel across free-threaded releases.</td></tr></tbody></table></div>
+<h3 id="project-configuration-and-layout">Project configuration and layout</h3>
+<p>All tooling configuration belongs in <code>pyproject.toml</code>. Development dependencies belong in <code>[dependency-groups]</code> (PEP 735) rather than <code>[project.optional-dependencies]</code>, which is published in wheel metadata and intended for user-facing extras.</p>
+<div class="scroll"><pre><code class="lang-toml">[project]
+name = "example"
+version = "0.1.0"
+requires-python = "&gt;=3.14"
+dependencies = ["httpx&gt;=0.28", "pydantic&gt;=2.10"]
+
+[dependency-groups]
+dev = ["ruff", "pyright"]
+test = ["pytest", "pytest-cov", "hypothesis"]
+docs = ["mkdocs-material", "mkdocstrings[python]"]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"</code></pre></div>
+<p>PEP 751 defines <code>pylock.toml</code>, a standard lockfile format that tools can read and write for interoperability. <code>uv</code> retains <code>uv.lock</code> as its native format and can export to <code>pylock.toml</code>; pip's support is experimental on both sides.</p>
+<div class="scroll"><pre><code>project/
+├── src/package_name/
+│   ├── __init__.py
+│   └── module.py
+├── tests/
+├── docs/
+├── pyproject.toml
+├── uv.lock
+└── .github/workflows/ci.yml</code></pre></div>
+<p>With a <code>src/</code> layout, the package directory is not on <code>sys.path</code> during test runs, so tests import the installed distribution. Packaging errors such as a missing subpackage or an unincluded data file surface in the test suite rather than after release.</p>
+<p>For multi-package repositories, <code>uv</code> workspaces allow several <code>pyproject.toml</code> files to share one lockfile and one resolution, with path dependencies between members.</p>
+<p>The lockfile is committed for applications and libraries alike; it pins the development environment and does not constrain consumers of a published library.</p>
+<h3 id="type-checking">Type checking</h3>
+<p>Type annotations are checked by a separate tool; the interpreter does not enforce them at runtime except where a library reads them (Pydantic, FastAPI, Typer).</p>
+<div class="scroll"><table><thead><tr><th>Checker</th><th>Notes</th></tr></thead><tbody><tr><td>mypy</td><td>Reference implementation. Largest plugin ecosystem, including Django and SQLAlchemy plugins. Slowest on large codebases.</td></tr><tr><td>pyright</td><td>Written in TypeScript. Fast, high conformance with the typing specification, powers Pylance in VS Code.</td></tr><tr><td>pyrefly</td><td>Meta's checker, stable 1.0 since May 2026. Used on Instagram, PyTorch and JAX. Strict defaults, designed for large codebases.</td></tr><tr><td>ty</td><td>Astral's checker, in beta. Provides a gradual guarantee: adding annotations to working code does not introduce new errors.</td></tr></tbody></table></div>
+<p>Useful constructs beyond basic parameter annotations:</p>
+<div class="scroll"><table><thead><tr><th>Construct</th><th>Use</th></tr></thead><tbody><tr><td><code>Literal["a", "b"]</code></td><td>Closed sets of string or integer values; enables exhaustiveness checking.</td></tr><tr><td><code>Protocol</code></td><td>Structural typing. A class satisfies the protocol by shape, with no inheritance or import from the defining module.</td></tr><tr><td><code>TypedDict</code></td><td>Fixed-key dictionaries, for JSON structures where a model class is not wanted.</td></tr><tr><td><code>Self</code>, <code>override</code></td><td>Fluent APIs and explicit overrides (3.11 and 3.12).</td></tr><tr><td><code>assert_never</code></td><td>Compile-time exhaustiveness checks in match statements and if-chains.</td></tr><tr><td><code>TypeAlias</code> / <code>type X = ...</code></td><td>Named aliases for complex annotations.</td></tr><tr><td>Generics syntax <code>def f[T](...)</code></td><td>Type parameters without <code>TypeVar</code> declarations (3.12+).</td></tr></tbody></table></div>
+<div class="scroll"><pre><code class="lang-toml">[tool.pyright]
+include = ["src", "tests"]
+typeCheckingMode = "strict"
+pythonVersion = "3.14"</code></pre></div>
+<p>Existing untyped codebases are usually migrated module by module, with strict settings applied to new code and relaxed overrides for legacy modules.</p>
+<h3 id="validation-and-data-models">Validation and data models</h3>
+<div class="scroll"><table><thead><tr><th>Library</th><th>Use</th></tr></thead><tbody><tr><td>Pydantic v2</td><td>Validation, coercion and serialization at I/O boundaries: HTTP payloads, config files, external API responses, model output.</td></tr><tr><td><code>dataclasses</code></td><td>Stdlib internal value objects. <code>slots=True</code> and <code>frozen=True</code> reduce memory use and prevent mutation.</td></tr><tr><td>attrs</td><td>Similar scope to dataclasses with more features: validators, converters, <code>__init__</code> customization.</td></tr><tr><td>pydantic-settings</td><td>Loads and validates configuration from environment variables, <code>.env</code> files and secrets directories.</td></tr><tr><td><code>msgspec</code></td><td>Alternative serialization and validation library with lower overhead, no coercion by default.</td></tr></tbody></table></div>
+<p>Validate at the process boundary and use plain objects internally:</p>
+<div class="scroll"><pre><code class="lang-python">class CreateJob(BaseModel):          # boundary
+    symbol: str
+    window: int = Field(gt=0, le=512)
+
+@dataclass(frozen=True, slots=True)  # internal
+class Job:
+    symbol: str
+    window: int</code></pre></div>
+<p>Configuration validated at startup fails immediately on a missing or malformed value rather than at first use:</p>
+<div class="scroll"><pre><code class="lang-python">class Settings(BaseSettings):
+    database_url: PostgresDsn
+    log_level: Literal["DEBUG", "INFO", "WARNING"] = "INFO"
+    model_config = SettingsConfigDict(env_file=".env")</code></pre></div>
+<h3 id="errors">Errors</h3>
+<p>Exception groups (3.11) allow multiple exceptions to be raised together and handled selectively. <code>TaskGroup</code> uses them when several concurrent tasks fail.</p>
+<div class="scroll"><pre><code class="lang-python">try:
+    async with asyncio.TaskGroup() as tg:
+        tg.create_task(fetch(a))
+        tg.create_task(fetch(b))
+except* TimeoutError as eg:
+    ...
+except* ValueError as eg:
+    ...</code></pre></div>
+<p>Conventions in common use:</p>
+<ul><li>One base exception class per package, with specific subclasses beneath it, so callers catch package-level errors rather than the errors of transitive dependencies.</li><li>Wrap third-party exceptions at the boundary where they are raised, preserving the original with <code>raise ... from err</code>.</li><li><code>contextlib.suppress(SpecificError)</code> for intentional ignores, rather than a bare <code>except: pass</code>, which also swallows <code>KeyboardInterrupt</code> and <code>SystemExit</code>.</li><li><code>add_note()</code> (3.11) to attach context to an exception without wrapping it.</li></ul>
+<h3 id="logging">Logging</h3>
+<p>The stdlib <code>logging</code> module is configured once, at the application entry point, usually with <code>dictConfig</code>. Libraries obtain a module-level logger and add a <code>NullHandler</code>, leaving configuration to the application.</p>
+<div class="scroll"><pre><code class="lang-python">logger = logging.getLogger(__name__)
+logger.addHandler(logging.NullHandler())   # library only</code></pre></div>
+<p>Structured records are emitted as fields rather than formatted strings, which makes them queryable in log aggregation systems:</p>
+<div class="scroll"><pre><code class="lang-python">log.info("rows_processed", symbol=symbol, rows=n, duration_s=elapsed)</code></pre></div>
+<div class="scroll"><table><thead><tr><th>Library</th><th>Notes</th></tr></thead><tbody><tr><td><code>logging</code></td><td>Stdlib. Handlers, filters, hierarchical loggers, <code>dictConfig</code>.</td></tr><tr><td>structlog</td><td>Structured logging with processor chains; integrates with stdlib logging.</td></tr><tr><td>Loguru</td><td>Single-object API, simple setup. Configures global state, so it is generally avoided in libraries.</td></tr><tr><td>OpenTelemetry</td><td>Traces, metrics and logs with context propagation across services; vendor-neutral exporters.</td></tr><tr><td>Logfire</td><td>Observability platform from the Pydantic team, built on OpenTelemetry.</td></tr></tbody></table></div>
+<p>For services, traces are usually more informative than logs; log records carry the trace and span IDs so the two can be correlated.</p>
+<h3 id="concurrency">Concurrency</h3>
+<div class="scroll"><table><thead><tr><th>Model</th><th>Applies to</th></tr></thead><tbody><tr><td><code>asyncio</code></td><td>I/O-bound work with many concurrent operations: HTTP clients, database drivers, message consumers.</td></tr><tr><td>Threads (GIL builds)</td><td>Blocking I/O and calls into C extensions that release the GIL.</td></tr><tr><td>Processes (<code>multiprocessing</code>, <code>ProcessPoolExecutor</code>)</td><td>CPU-bound work; separate memory spaces, data passed by pickling.</td></tr><tr><td>Subinterpreters (<code>concurrent.interpreters</code>, PEP 734, 3.14)</td><td>CPU-bound work with isolated state per interpreter and lower overhead than processes.</td></tr><tr><td>Free-threaded build (PEP 779, 3.14)</td><td>CPU-bound work in threads with shared memory. Requires extensions built for it; an incompatible extension re-enables the GIL.</td></tr></tbody></table></div>
+<p>Structured concurrency in asyncio:</p>
+<div class="scroll"><pre><code class="lang-python">async with asyncio.timeout(30):
+    async with asyncio.TaskGroup() as tg:
+        a = tg.create_task(fetch(url_a))
+        b = tg.create_task(fetch(url_b))</code></pre></div>
+<p><code>TaskGroup</code> cancels remaining tasks when one fails and does not exit until all have finished, which <code>asyncio.gather</code> does not guarantee. <code>asyncio.to_thread</code> offloads blocking calls. <code>anyio</code> provides an alternative API that runs on both asyncio and Trio, and is used by libraries that must not assume a runtime.</p>
+<p>Free-threading status: the build is officially supported from 3.14 and single-threaded overhead has fallen substantially compared with 3.13, but wheel availability across the ecosystem is still incomplete. PEP 803 in 3.15 introduces <code>abi3t</code>, a stable ABI allowing one extension wheel to serve multiple free-threaded versions.</p>
+<h3 id="testing">Testing</h3>
+<div class="scroll"><table><thead><tr><th>Library</th><th>Use</th></tr></thead><tbody><tr><td>pytest</td><td>Test framework: fixtures, parametrization, plugins, assertion rewriting.</td></tr><tr><td>pytest-cov / coverage</td><td>Coverage measurement and reporting, including branch coverage.</td></tr><tr><td>Hypothesis</td><td>Property-based testing; generates inputs and shrinks failing cases to a minimal example.</td></tr><tr><td>pytest-asyncio / anyio pytest plugin</td><td>Async test support.</td></tr><tr><td>Testcontainers</td><td>Runs real service dependencies in containers for integration tests.</td></tr><tr><td>syrupy</td><td>Snapshot testing for structured or generated output.</td></tr><tr><td>time-machine, freezegun</td><td>Deterministic control of the current time.</td></tr><tr><td>pytest-benchmark</td><td>Timing and regression detection for performance-sensitive functions.</td></tr><tr><td>respx, responses, <code>httpx.MockTransport</code></td><td>HTTP-level mocking without patching internals.</td></tr></tbody></table></div>
+<p>Common practices:</p>
+<ul><li>Parametrize instead of looping inside a test, so each case is reported individually.</li><li>Use <code>tmp_path</code> and other builtin fixtures rather than writing to fixed paths.</li><li>Property-based tests for round trips and invariants: encode/decode, serialize/parse, transform/inverse, sums that must be preserved.</li></ul>
+<div class="scroll"><pre><code class="lang-python">@given(st.lists(st.integers()))
+def test_sort_is_a_permutation(xs):
+    assert sorted(sorted(xs)) == sorted(xs)
+    assert Counter(sorted(xs)) == Counter(xs)</code></pre></div>
+<ul><li>Test against real dependencies where feasible; mocking an ORM or driver tests the mock rather than the query.</li><li>Coverage is a threshold, not an objective; branch coverage is more informative than line coverage.</li></ul>
+<h3 id="command-line-interfaces-and-single-file-scripts">Command-line interfaces and single-file scripts</h3>
+<div class="scroll"><table><thead><tr><th>Library</th><th>Notes</th></tr></thead><tbody><tr><td><code>argparse</code></td><td>Stdlib. Sufficient for a handful of flags. Colour output added in 3.14.</td></tr><tr><td>Typer</td><td>Builds on Click; derives parameters, types and help from function signatures.</td></tr><tr><td>Click</td><td>Decorator-based, mature, extensive plugin and testing support.</td></tr><tr><td>Cyclopts</td><td>Type-hint-driven alternative to Typer with different conventions for parameter binding.</td></tr><tr><td>Rich</td><td>Terminal output formatting; integrates with Typer and Click.</td></tr></tbody></table></div>
+<p>PEP 723 allows a single file to declare its interpreter requirement and dependencies inline:</p>
+<div class="scroll"><pre><code class="lang-python"># /// script
+# requires-python = "&gt;=3.13"
+# dependencies = ["httpx", "rich"]
+# ///</code></pre></div>
+<p><code>uv run script.py</code> provisions an ephemeral environment from that block. This removes the need for a separate requirements file or a pre-existing virtual environment for standalone scripts, which is the common case for repository tooling in projects whose main language is not Python.</p>
+<p>CLI applications are published as packages with a <code>[project.scripts]</code> entry point and installed with <code>uv tool install</code> or <code>pipx</code>.</p>
+<h3 id="documentation">Documentation</h3>
+<div class="scroll"><table><thead><tr><th>Tool</th><th>Notes</th></tr></thead><tbody><tr><td>MkDocs + Material</td><td>Markdown-based site generator with search, navigation and versioning.</td></tr><tr><td>mkdocstrings</td><td>Generates API reference pages from docstrings and annotations.</td></tr><tr><td>Sphinx</td><td>reStructuredText and MyST; cross-references, multiple output formats, extensive scientific ecosystem.</td></tr><tr><td>mike</td><td>Versioned documentation deployments.</td></tr><tr><td>pdoc</td><td>Minimal API documentation generator with no configuration.</td></tr></tbody></table></div>
+<p>Docstring conventions (Google, NumPy or reST) are enforced by <code>ruff</code>'s <code>D</code> rules. Where annotations already state parameter and return types, docstrings cover what annotations cannot express: units, valid ranges, exceptions raised, side effects, and caller responsibilities.</p>
+<p><code>doctest</code> keeps short examples verified; <code>pytest --doctest-modules</code> runs them as part of the suite.</p>
+<h3 id="continuous-integration">Continuous integration</h3>
+<div class="scroll"><pre><code class="lang-yaml">jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@&lt;sha&gt;
+      - uses: astral-sh/setup-uv@&lt;sha&gt;
+        with: { enable-cache: true }
+      - run: uv sync --locked
+      - run: uv run ruff check --output-format=github
+      - run: uv run ruff format --check
+      - run: uv run pyright
+      - run: uv run pytest --cov --cov-report=xml</code></pre></div>
+<p>Points that are frequently omitted:</p>
+<ul><li><code>uv sync --locked</code> fails when the lockfile does not match <code>pyproject.toml</code>, catching manual edits.</li><li>The version matrix should list exactly the versions declared in <code>requires-python</code>.</li><li><code>pre-commit</code> is used locally for formatting and quick checks; enforcement belongs in CI, since hooks can be bypassed.</li><li>Actions pinned to commit SHAs rather than tags, since tags are mutable.</li><li>PyPI trusted publishing (OIDC) removes long-lived API tokens from CI secrets.</li><li>Dependabot or Renovate for dependency and action updates.</li></ul>
+<h3 id="packaging-and-distribution">Packaging and distribution</h3>
+<div class="scroll"><table><thead><tr><th>Backend</th><th>Notes</th></tr></thead><tbody><tr><td>Hatchling</td><td>Default in <code>uv init</code>; plugin system, version from file or VCS.</td></tr><tr><td>setuptools</td><td>Widest compatibility, required for complex C extension builds.</td></tr><tr><td>maturin</td><td>Builds wheels for projects containing compiled extensions.</td></tr><tr><td>scikit-build-core</td><td>CMake-based builds for C/C++ extensions.</td></tr><tr><td>flit-core</td><td>Minimal backend for pure-Python packages.</td></tr></tbody></table></div>
+<p>Distribution formats: wheels for installation, source distributions for build-from-source. <code>cibuildwheel</code> builds and tests binary wheels across platforms and Python versions in CI. Applications are more often distributed as container images or as PEX/shiv archives than as wheels.</p>
+<p>A published library assembles these into one shape: <code>uv init --lib</code>, a <code>src/</code> layout, the Hatchling backend, and a CI matrix listing each version in <code>requires-python</code> explicitly. <code>requires-python</code> follows SPEC 0. The public API is fully annotated and ships a <code>py.typed</code> marker so consumers get type information. Documentation is built with MkDocs and mkdocstrings from the same docstrings, and versioned with mike. The lockfile pins the development environment only — dependency ranges in <code>[project.dependencies]</code> stay wide, because a library that pins its dependencies is unusable alongside anything else. Hypothesis covers the invariants of the core data structures, and <code>--doctest-modules</code> keeps README and docstring examples correct.</p>
+<h3 id="profiling-and-optimization">Profiling and optimization</h3>
+<div class="scroll"><table><thead><tr><th>Tool</th><th>Use</th></tr></thead><tbody><tr><td><code>cProfile</code> + snakeviz</td><td>Stdlib deterministic profiler with a flame graph viewer.</td></tr><tr><td>py-spy</td><td>Sampling profiler that attaches to a running process without restarting it.</td></tr><tr><td>Scalene</td><td>Separates CPU, GPU and memory, and Python time from native time.</td></tr><tr><td>memray</td><td>Allocation tracking, including native allocations, with flame graphs.</td></tr><tr><td><code>timeit</code>, pytest-benchmark</td><td>Microbenchmarks and regression thresholds.</td></tr><tr><td>Numba</td><td>JIT compilation of numeric functions that cannot be vectorized.</td></tr><tr><td>Cython</td><td>Compiles annotated Python to C extensions.</td></tr><tr><td>PyO3 + maturin, <code>cffi</code>, <code>ctypes</code></td><td>Native extension modules and bindings to existing libraries.</td></tr></tbody></table></div>
+<p>Order of work in most cases: reduce the number of operations (caching, algorithmic change, fewer queries), express bulk work as array or SQL operations, then compile the remaining hot function. Compiling first is the common mistake; it makes an unnecessary operation faster instead of removing it.</p>
+<hr>
+<h2 class="part" id="part-ii-domains">Part II — Domains</h2>
+<h3 id="backends-databases-and-apis">Backends, databases and APIs</h3>
+<div class="scroll"><table><thead><tr><th>Framework</th><th>Description</th></tr></thead><tbody><tr><td>Django 5.x</td><td>Full-stack framework. Includes ORM, migrations, admin interface, auth, forms, templating. Supports async views.</td></tr><tr><td>FastAPI</td><td>ASGI framework built on Starlette and Pydantic. Generates OpenAPI schemas from type hints.</td></tr><tr><td>Litestar</td><td>ASGI framework. Similar scope to FastAPI, different dependency-injection and layering model.</td></tr><tr><td>Flask 3</td><td>WSGI microframework. Async support is limited.</td></tr><tr><td>Django REST Framework</td><td>Serializers, viewsets and auth for Django APIs.</td></tr><tr><td>Django Ninja</td><td>FastAPI-style typed API layer for Django.</td></tr></tbody></table></div>
+<p>Servers: Uvicorn (ASGI, uvloop-based), Granian (Rust-based, ASGI/WSGI/RSGI), Hypercorn (HTTP/2 and HTTP/3), and Gunicorn as a process manager supervising Uvicorn workers.</p>
+<div class="scroll"><table><thead><tr><th>Library</th><th>Description</th></tr></thead><tbody><tr><td>SQLAlchemy 2.0</td><td>ORM and Core query builder. The 2.0 API is fully typed and supports async sessions.</td></tr><tr><td>Alembic</td><td>Migration tool for SQLAlchemy.</td></tr><tr><td>asyncpg</td><td>Async PostgreSQL driver, no DB-API layer, high throughput.</td></tr><tr><td>psycopg 3</td><td>PostgreSQL driver with sync and async support, server-side binding, <code>COPY</code> support.</td></tr><tr><td>SQLModel</td><td>Layer combining SQLAlchemy models and Pydantic models in one class.</td></tr><tr><td>aiosqlite</td><td>Async wrapper around <code>sqlite3</code>.</td></tr><tr><td>redis-py</td><td>Redis client, sync and async.</td></tr><tr><td>ConnectorX</td><td>Fast bulk loading from SQL databases into Arrow/Polars/pandas.</td></tr><tr><td>Celery</td><td>Distributed task queue, broker-backed, mature.</td></tr><tr><td>Dramatiq, RQ, arq, taskiq</td><td>Lighter task queues; arq and taskiq are asyncio-native.</td></tr><tr><td>Temporal Python SDK</td><td>Durable workflow execution with retries and state persistence.</td></tr><tr><td>Authlib</td><td>OAuth 1/2 and OpenID Connect client and server implementations.</td></tr></tbody></table></div>
+<p><strong>Multi-tenant SaaS API.</strong> <code>Client → Uvicorn/FastAPI → SQLAlchemy async session → asyncpg → PostgreSQL</code>, with Redis for caching and rate limiting and arq for background jobs.</p>
+<p>Request bodies and responses are Pydantic models, so the OpenAPI schema is generated rather than maintained. Tenant scoping is applied in a request-scoped dependency that attaches <code>tenant_id</code> to the session, rather than in each query — one place to audit instead of every endpoint. Configuration comes from <code>pydantic-settings</code>, so a missing environment variable fails at startup. Alembic migrations run as a separate step in the deploy, not on application boot, because two instances starting simultaneously will otherwise race on the same migration. Integration tests use Testcontainers to run a real PostgreSQL instance.</p>
+<p><strong>Webhook ingestion service.</strong> <code>Provider webhook → Litestar → Pydantic validation → confluent-kafka producer → consumer → psycopg3 COPY → PostgreSQL</code></p>
+<p>The HTTP layer does validation, deduplication against a Redis idempotency key, and nothing else; it returns 202 as soon as the event is durable. Providers retry aggressively on slow responses, so any work done inline becomes work done several times. Consumers batch rows and insert with <code>COPY</code> rather than per-row inserts. Multi-step processing that must survive restarts (provisioning, billing) runs as Temporal workflows instead of chained queue tasks.</p>
+<h3 id="data-engineering">Data engineering</h3>
+<p>Arrow is the common in-memory format across engines; Parquet is the common on-disk format. Most of the libraries below interoperate through both without copying.</p>
+<div class="scroll"><table><thead><tr><th>Library</th><th>Description</th></tr></thead><tbody><tr><td>PyArrow</td><td>Arrow implementation for Python; Parquet, ORC, Flight, dataset APIs.</td></tr><tr><td>Polars</td><td>DataFrame library written in Rust. Lazy and eager APIs, query optimizer, multithreaded.</td></tr><tr><td>DuckDB</td><td>In-process analytical SQL engine. Reads Parquet, CSV and Arrow directly, supports larger-than-memory queries.</td></tr><tr><td>pandas 3.0</td><td>Released 21 January 2026. Copy-on-write is now default; string columns use a dedicated dtype backed by PyArrow when installed.</td></tr><tr><td>Dask</td><td>Parallel and distributed execution of pandas/NumPy-shaped workloads.</td></tr><tr><td>Ray</td><td>Distributed compute framework; Ray Data for pipelines, Ray Tune/Train for ML.</td></tr><tr><td>PySpark</td><td>Python API for Apache Spark; used where a cluster already exists.</td></tr><tr><td>Narwhals</td><td>Compatibility layer allowing library code to accept pandas, Polars or PyArrow frames.</td></tr></tbody></table></div>
+<div class="scroll"><table><thead><tr><th>Orchestration</th><th>Description</th></tr></thead><tbody><tr><td>Airflow 3</td><td>DAG-based scheduler. Large operator ecosystem.</td></tr><tr><td>Dagster</td><td>Asset-oriented orchestrator with typed inputs/outputs and data lineage.</td></tr><tr><td>Prefect 3</td><td>Python-native flow orchestration, lighter deployment model.</td></tr><tr><td>dbt</td><td>SQL transformation framework with tests and lineage.</td></tr><tr><td>SQLMesh</td><td>SQL transformation tool with column-level lineage and virtual environments.</td></tr></tbody></table></div>
+<div class="scroll"><table><thead><tr><th>Storage and quality</th><th>Description</th></tr></thead><tbody><tr><td>deltalake</td><td>Rust-backed Python bindings for Delta Lake tables.</td></tr><tr><td>PyIceberg</td><td>Python implementation of the Apache Iceberg table format.</td></tr><tr><td>fsspec, s3fs, gcsfs, adlfs</td><td>Uniform filesystem interface over local disk and object stores.</td></tr><tr><td>dlt</td><td>Declarative extract-and-load library producing typed, schema-evolving pipelines.</td></tr><tr><td>confluent-kafka</td><td>Kafka client wrapping librdkafka.</td></tr><tr><td>Pandera</td><td>Schema and statistical validation for dataframes, including Polars.</td></tr><tr><td>Great Expectations</td><td>Data quality suite with expectation stores and reporting.</td></tr></tbody></table></div>
+<p><strong>Single-node analytics stack.</strong> <code>dlt (API extract) → Parquet on S3 via s3fs → DuckDB → SQLMesh models → Dagster assets</code></p>
+<p>Raw responses are written unmodified before any transformation, partitioned by ingestion date, so transformations can be replayed without re-fetching — the fetch is the part you cannot repeat, because the source has already changed. DuckDB queries the Parquet files in place; no warehouse is provisioned. Dagster models each table as an asset with declared upstream dependencies, so a schema change shows its blast radius. Pandera schemas run at the boundary between raw and modelled layers. This design handles datasets into the hundreds of gigabytes on one machine, which is more than most projects that reach for a cluster actually have.</p>
+<p><strong>Lakehouse with a table format.</strong> <code>Sources → PySpark or Polars writer → Delta Lake or Iceberg tables on object storage → query engines</code></p>
+<p>The table format supplies ACID commits, schema evolution and time travel, which plain Parquet does not. <code>deltalake</code> and <code>pyiceberg</code> allow writing and reading without a JVM for smaller jobs, with Spark used for the large ones. Airflow schedules the batch jobs. ConnectorX handles bulk extraction from operational databases into Arrow.</p>
+<h3 id="data-science">Data science</h3>
+<div class="scroll"><table><thead><tr><th>Library</th><th>Description</th></tr></thead><tbody><tr><td>NumPy 2.x</td><td>N-dimensional arrays and vectorized operations. Foundation for most of the stack.</td></tr><tr><td>SciPy</td><td>Optimization, integration, interpolation, linear algebra, statistics, signal processing.</td></tr><tr><td>pandas 3.0</td><td>Labelled tabular data. See notes above on copy-on-write and string dtype.</td></tr><tr><td>Polars</td><td>Alternative dataframe library; expression API, faster on large frames.</td></tr><tr><td>statsmodels</td><td>Statistical models, hypothesis tests, time series (ARIMA, state space).</td></tr><tr><td>scikit-learn</td><td>Classical machine learning, preprocessing, model selection, pipelines.</td></tr><tr><td>marimo</td><td>Reactive notebook stored as a plain <code>.py</code> file; runs as a script or an app.</td></tr><tr><td>Matplotlib / Seaborn</td><td>Base plotting and statistical plots over it; publication output.</td></tr><tr><td>Altair</td><td>Declarative charts based on the Vega-Lite grammar.</td></tr><tr><td>Bokeh, HoloViews / hvPlot</td><td>Interactive plotting for larger datasets and dashboards.</td></tr><tr><td>Pint</td><td>Physical units attached to arrays and scalars.</td></tr></tbody></table></div>
+<p><strong>Reproducible analysis repository.</strong> <code>uv project → marimo notebooks (.py) → Polars transforms → statsmodels → Altair charts → Parquet outputs</code></p>
+<p>Because marimo notebooks are plain Python files, they diff and merge in git and can be imported by tests or run headless in CI. Data loading is separated into an importable module so the same code runs in the notebook and in the scheduled job. Outputs are written to a versioned directory rather than being read off the screen. The lockfile pins the environment the numbers were produced in — which is the only thing that makes a published figure reproducible a year later.</p>
+<p><strong>Sensor time series exploration.</strong> <code>Zarr or Parquet store → xarray → SciPy filtering and resampling → hvPlot</code></p>
+<p>xarray keeps coordinates (time, channel, run ID) attached through the pipeline, so slicing by condition does not depend on positional indexing. Chunked reads through Zarr allow working with recordings larger than memory. Interactive plots with datashader-backed rendering handle multi-million-point traces.</p>
+<h3 id="scientific-computing-and-signal-processing">Scientific computing and signal processing</h3>
+<div class="scroll"><table><thead><tr><th>Library</th><th>Description</th></tr></thead><tbody><tr><td>NumPy, SciPy</td><td>Arrays and numerical algorithms. <code>scipy.signal</code> covers filter design, resampling, spectral estimation; <code>scipy.fft</code> covers transforms.</td></tr><tr><td>Numba</td><td>JIT compilation of NumPy-heavy Python functions via LLVM.</td></tr><tr><td>Cython</td><td>Compiles annotated Python to C extensions; used for C interop.</td></tr><tr><td>PyO3 + maturin</td><td>Rust extension modules with Python bindings and wheel building.</td></tr><tr><td>SymPy</td><td>Symbolic mathematics.</td></tr><tr><td>xarray</td><td>Labelled N-dimensional arrays with coordinates; common in geoscience and simulation.</td></tr><tr><td>h5py, netCDF4, Zarr</td><td>Array storage formats; Zarr targets chunked cloud storage.</td></tr><tr><td>scikit-rf</td><td>RF and microwave engineering: S-parameters, networks, calibration, Touchstone files.</td></tr><tr><td>python-control</td><td>Control systems: transfer functions, state space, frequency response.</td></tr><tr><td>GNU Radio</td><td>SDR framework with Python bindings and flowgraph generation.</td></tr><tr><td>SoapySDR, UHD, pyadi-iio</td><td>SDR hardware abstraction; USRP and Analog Devices device APIs.</td></tr><tr><td>pyFFTW</td><td>FFTW bindings, faster than <code>numpy.fft</code> for repeated transforms.</td></tr><tr><td>PyVISA</td><td>Instrument control over GPIB, USB, Ethernet and serial.</td></tr><tr><td>pySerial</td><td>Serial port access.</td></tr><tr><td>nidaqmx, pyusb</td><td>National Instruments DAQ hardware; raw USB device access.</td></tr><tr><td>scikit-image</td><td>Image processing algorithms for scientific data.</td></tr></tbody></table></div>
+<p><strong>Automated RF measurement rig.</strong> <code>pytest → PyVISA (signal generator, spectrum analyser) + pySerial (DUT control) → NumPy/SciPy metrics → Parquet + Matplotlib report</code></p>
+<p>Instrument drivers are wrapped behind a small interface per instrument type so the same test runs against different lab equipment. Test cases are pytest functions with parametrized frequency and power points, and limits are asserted rather than eyeballed. Every run writes raw captures alongside computed metrics (EVM, ACLR, spectral mask margin) so a failure can be re-analysed without repeating the measurement — bench time is the scarce resource, not disk. scikit-rf handles de-embedding of cable and fixture losses from measured S-parameters.</p>
+<p><strong>SDR receive chain.</strong> <code>SoapySDR or pyadi-iio capture → SciPy filter and decimate → NumPy demodulation → Numba timing recovery loop → Dear PyGui display (immediate-mode, GPU-rendered)</code></p>
+<p>Capture runs in its own thread writing IQ samples into a ring buffer; processing reads from it, so display stalls do not drop samples. Per-sample feedback loops (timing recovery, carrier tracking) cannot be vectorized and are compiled with Numba. A file-backed source implementing the same interface as the radio allows the whole chain to run against recorded IQ in tests, which is what makes the DSP testable at all.</p>
+<p><strong>Monte Carlo parameter study.</strong> <code>Parameter grid → Ray or joblib workers → NumPy simulation → xarray results → Zarr → Seaborn summary</code></p>
+<p>Each worker returns an array plus its parameter coordinates; xarray assembles them into a labelled cube indexed by the swept variables. Results are written incrementally so a long sweep can be interrupted and resumed. Seeds are derived deterministically from the parameter index so any single run can be reproduced in isolation.</p>
+<h3 id="machine-learning">Machine learning</h3>
+<div class="scroll"><table><thead><tr><th>Library</th><th>Description</th></tr></thead><tbody><tr><td>PyTorch 2.x</td><td>Dominant deep learning framework. <code>torch.compile</code> for graph capture and kernel fusion.</td></tr><tr><td>PyTorch Lightning</td><td>Training loop abstraction over PyTorch: checkpointing, distributed training, logging.</td></tr><tr><td>JAX</td><td>Composable transforms (<code>jit</code>, <code>grad</code>, <code>vmap</code>, <code>pmap</code>), XLA compilation, TPU support.</td></tr><tr><td>Flax, Optax</td><td>Neural network modules and optimizers for JAX.</td></tr><tr><td>scikit-learn</td><td>Classical models, pipelines, cross-validation, metrics.</td></tr><tr><td>XGBoost, LightGBM, CatBoost</td><td>Gradient-boosted trees. Standard choice for tabular data.</td></tr><tr><td>Hugging Face <code>transformers</code></td><td>Pretrained model implementations and training utilities.</td></tr><tr><td><code>datasets</code>, <code>accelerate</code>, <code>peft</code>, <code>trl</code></td><td>Dataset loading, distributed training, parameter-efficient fine-tuning, preference training.</td></tr><tr><td>timm</td><td>Image model architectures and pretrained weights.</td></tr><tr><td>OpenCV</td><td>Classical computer vision: filtering, features, calibration, tracking.</td></tr><tr><td>Albumentations</td><td>Image augmentation pipelines.</td></tr><tr><td>ONNX, onnxruntime</td><td>Model interchange format and cross-platform inference runtime.</td></tr><tr><td>vLLM, SGLang</td><td>High-throughput LLM inference servers with paged attention and continuous batching.</td></tr><tr><td>Optuna, Ray Tune</td><td>Hyperparameter optimization.</td></tr><tr><td>MLflow, Weights &amp; Biases</td><td>Experiment tracking, model registry, artifact storage.</td></tr><tr><td>BentoML</td><td>Model packaging and serving.</td></tr></tbody></table></div>
+<p><strong>Tabular prediction service.</strong> <code>Feature table (DuckDB/Parquet) → scikit-learn pipeline + LightGBM → Optuna tuning → MLflow registry → ONNX export → FastAPI + onnxruntime</code></p>
+<p>The full preprocessing chain lives inside the scikit-learn pipeline object, so training and serving cannot diverge on feature handling — the most common source of a model that scores well offline and badly in production. Cross-validation splits respect time ordering where the target is forward-looking. Exporting to ONNX removes the training dependencies from the serving image and gives predictable latency. Input distributions are logged at inference and compared against the training set to detect drift.</p>
+<p><strong>Vision training pipeline.</strong> <code>Object storage → PyTorch Dataset → Albumentations → timm backbone → Lightning + DDP across GPUs → W&amp;B logging → ONNX export → BentoML service</code></p>
+<p>Lightning handles distributed setup, mixed precision, gradient accumulation and checkpointing, so the model code stays close to plain PyTorch. Augmentation is applied in dataloader workers; the input pipeline is profiled separately from the model to confirm the GPU is actually the bottleneck, since an underfed GPU looks identical to a slow model from the outside. Checkpoints and the exact dataset manifest are stored together so a run can be reproduced.</p>
+<h3 id="markets-and-financial-data">Markets and financial data</h3>
+<div class="scroll"><table><thead><tr><th>Library</th><th>Description</th></tr></thead><tbody><tr><td>yfinance</td><td>Unofficial client for Yahoo Finance endpoints. No stability guarantee.</td></tr><tr><td>Alpha Vantage, Finnhub, EODHD, Tiingo</td><td>Commercial market data APIs; equities, FX, fundamentals.</td></tr><tr><td>Polygon.io, Databento</td><td>Tick and trade-level market data, including historical order book.</td></tr><tr><td>ccxt</td><td>Unified API across cryptocurrency exchanges, sync and async.</td></tr><tr><td>ib_async</td><td>Interactive Brokers TWS/Gateway API (successor to ib_insync).</td></tr><tr><td>OpenBB</td><td>Open-source aggregation layer over many data providers.</td></tr><tr><td>TA-Lib, pandas-ta</td><td>Technical indicators; C bindings and pure-Python respectively.</td></tr><tr><td>VectorBT</td><td>Vectorized backtesting and portfolio simulation on NumPy arrays.</td></tr><tr><td>NautilusTrader</td><td>Event-driven backtesting and live trading platform; Rust core.</td></tr><tr><td>backtesting.py</td><td>Event-driven backtester with a small API.</td></tr><tr><td>QuantLib-Python</td><td>Derivatives pricing, curve construction, term structures.</td></tr><tr><td>PyPortfolioOpt, Riskfolio-Lib</td><td>Portfolio optimization, risk models, efficient frontiers.</td></tr><tr><td>arch</td><td>GARCH and volatility models, bootstrap methods.</td></tr><tr><td>exchange_calendars</td><td>Trading sessions, holidays and market hours.</td></tr></tbody></table></div>
+<p><strong>Research data store.</strong> <code>Vendor APIs → raw JSON archive → normalization → Parquet partitioned by date and symbol → DuckDB</code></p>
+<p>Raw payloads are archived before normalization so the historical record survives changes to the parsing code and vendor re-statements can be detected. Corporate actions and delistings are stored as separate tables and applied at query time, which keeps a point-in-time view available and avoids a universe consisting only of current index members. <code>exchange_calendars</code> aligns bars to real sessions, including half days. Each record carries both the event timestamp and the timestamp at which the data became available; without the second one, no backtest built on the store can be trusted.</p>
+<p><strong>Backtesting stack.</strong> <code>Parquet feature store → VectorBT parameter sweep → NautilusTrader event-driven validation → arch / PyPortfolioOpt for sizing</code></p>
+<p>The vectorized pass covers wide parameter grids cheaply; the shortlist is then re-run in an event-driven engine that models order types, fills, fees and latency, since vectorized results tend to be optimistic. Signals are computed only from data whose availability timestamp precedes the decision time. Volatility estimates from <code>arch</code> feed position sizing, and results are reported with transaction costs applied.</p>
+<h3 id="llms-agents-and-retrieval">LLMs, agents and retrieval</h3>
+<div class="scroll"><table><thead><tr><th>Library</th><th>Description</th></tr></thead><tbody><tr><td>openai, anthropic, google-genai</td><td>First-party API clients.</td></tr><tr><td>LiteLLM</td><td>Unified interface and proxy across many providers.</td></tr><tr><td>Instructor, Outlines</td><td>Structured output: schema-constrained generation and validation.</td></tr><tr><td>PydanticAI</td><td>Type-safe agent framework from the Pydantic team. V2, released June 2026, is a breaking change from V1: it moves configuration onto a composable "capability" primitive and splits fast-moving pieces into a separate Harness package beside a slimmer core.</td></tr><tr><td>LangGraph</td><td>Graph-based orchestration with explicit state, checkpointing and human-in-the-loop steps.</td></tr><tr><td>OpenAI Agents SDK</td><td>Agents, handoffs, guardrails and tracing. Provider-agnostic in practice, still on 0.x.</td></tr><tr><td>Claude Agent SDK</td><td>Anthropic's agent framework, including subagent spawning.</td></tr><tr><td>LlamaIndex</td><td>Indexing, retrieval and query pipelines; Workflows 1.0 released June 2026.</td></tr><tr><td><code>mcp</code>, FastMCP</td><td>Model Context Protocol SDK and a higher-level server framework for building MCP tools.</td></tr><tr><td>pgvector</td><td>Vector column type and index for PostgreSQL.</td></tr><tr><td>Qdrant, Chroma, LanceDB</td><td>Vector stores; Rust-backed with payload filtering, embedded/client-server, and Lance-columnar respectively.</td></tr><tr><td>sentence-transformers</td><td>Embedding and reranking model inference.</td></tr><tr><td>rank_bm25</td><td>Lexical BM25 scoring, used for hybrid retrieval.</td></tr><tr><td>Langfuse, Logfire</td><td>Tracing and evaluation for LLM applications.</td></tr><tr><td>Ragas, DeepEval</td><td>Evaluation metrics for retrieval and generation quality.</td></tr></tbody></table></div>
+<p><strong>Document question answering.</strong> <code>Ingestion → structural chunking → sentence-transformers embeddings → pgvector in existing PostgreSQL → hybrid retrieval (vector + rank_bm25) → reranker → generation with citations</code></p>
+<p>Storing vectors in the operational database removes a second system and keeps chunks transactionally consistent with their source documents. Chunking follows the document's own headings and table boundaries rather than a fixed character count, which keeps tables intact. Hybrid retrieval covers cases where the query contains exact identifiers that embeddings handle poorly — part numbers and error codes are the usual example. A held-out set of question and expected-source pairs is run as pytest cases with Ragas metrics, so retrieval changes are measured rather than assessed by inspection.</p>
+<p><strong>Typed extraction service.</strong> <code>FastAPI endpoint → PydanticAI agent with an output model → LiteLLM provider routing → validated object</code></p>
+<p>The output schema is a Pydantic model, and validation failures trigger a bounded retry with the error fed back to the model. Requests carry a schema version so downstream consumers can handle changes. Prompt and model identifiers are logged with each response, because a silent provider-side model update is otherwise indistinguishable from a regression in your own code.</p>
+<hr>
+<h2 class="part" id="part-iii-python-around-another-language">Part III — Python around another language</h2>
+<p>Most of the sections above assume Python is the product. Often it is not. In a repository whose shipped artefact is C, C++ or Rust, Python is still usually present — as the test harness, the build orchestrator, the log parser, the release script. This is the position I have worked in most, and it has its own failure modes, none of which are covered by advice written for Python applications.</p>
+<p>The constraint that shapes everything: the people maintaining this code are not Python developers. They will not create a virtual environment, they will not read a <code>CONTRIBUTING.md</code> section about <code>uv sync</code>, and if the tooling breaks they will delete it and write a shell script. Anything that requires ceremony to run will stop being run.</p>
+<p>This is what makes PEP 723 inline metadata the single most useful feature here. A script that declares its own dependencies and runs under <code>uv run script.py</code> on a machine with nothing but <code>uv</code> installed has no setup step to skip. There is no shared environment to drift, no requirements file to forget, and no instruction more complicated than the command itself. Reserve the full project layout for tooling that has earned it — something with tests, several callers, and a maintainer.</p>
+<div class="scroll"><table><thead><tr><th>Use</th><th>Typical libraries</th></tr></thead><tbody><tr><td>Hardware and integration tests</td><td>pytest, pySerial, paramiko, PyVISA</td></tr><tr><td>Build and repository orchestration</td><td>Typer, <code>subprocess</code>, <code>pathlib</code>, GitPython</td></tr><tr><td>Protocol and traffic testing</td><td>scapy, Hypothesis, asyncio</td></tr><tr><td>Log and artefact analysis</td><td>Polars, DuckDB, Matplotlib</td></tr><tr><td>Release and CI automation</td><td>httpx, PyGithub, Pydantic</td></tr></tbody></table></div>
+<p><strong>Hardware and integration test harness.</strong> <code>pytest → fixtures owning the device → transport adapter (serial / SSH / TCP) → DUT → captured artefacts</code></p>
+<p>Fixtures own the device lifecycle, not the tests: a session-scoped connection, a function-scoped reset. Without the reset, one failing test leaves the board in a bad state and the next forty failures tell you nothing about the next forty tests.</p>
+<p>Give the transport adapter a second implementation backed by recorded exchanges. It is the difference between a suite that runs in CI on every commit and one that only runs when someone is sitting at the bench, and a suite in the second category stops being maintained within a quarter.</p>
+<p>Every read gets a timeout. A blocking <code>serial.read()</code> against a board that has hung will occupy a CI runner until the job limit kills it, which turns a two-second failure into a forty-minute one. Retries belong in the transport adapter rather than in test bodies — otherwise every test grows its own retry loop and they all differ.</p>
+<p>Log the raw exchange, bytes sent and bytes received, alongside the parsed result. In a boolean assert, a firmware fault and a bug in your own response parser look exactly the same, and you will spend an afternoon on the wrong one. Parametrize over frequency, voltage or temperature points rather than looping inside one test, so a failure names the operating point instead of the loop.</p>
+<p>Where hardware is genuinely intermittent, quarantine the test and record the rate. An automatic retry that hides a 5% failure also hides the day it becomes 40%.</p>
+<p><strong>Build and repository orchestration.</strong> <code>Typer CLI → services → adapters (git, process, filesystem) → CMake / Cargo / Ninja</code></p>
+<p>Keep the CLI layer thin: parse arguments, call a service, format the result. The logic underneath should be callable and testable without spawning a command line. This is the one structural decision that decides whether the tool grows tests.</p>
+<p>Call subprocesses with an explicit argument list and <code>check=True</code>, never <code>shell=True</code> with an interpolated string. Branch names contain slashes, paths contain spaces, and a version string from an untrusted source lands in a shell. Capture stdout and stderr and surface the relevant tail on failure — a compiler's actual error is three lines somewhere inside four thousand, and a tool that dumps all of them is one nobody reads.</p>
+<p>Destructive subcommands default to a dry run that prints the planned actions. The environment is a required explicit argument, not a default, because the default is what gets run against production at 18:00 on a Friday.</p>
+<p>Pin the tooling. The Python that builds the C is itself a dependency of the build, and a tool that resolves different versions on two machines produces builds that differ for reasons nobody will look for.</p>
+<hr>
+<p>The through-line across all three parts is the same: put the boundary where the data is untrusted, make the environment a property of the repository rather than the machine, and keep the thing that produced a result recoverable — the raw response, the lockfile, the availability timestamp, the bytes on the wire. Most of the specific library choices above will have moved by 2028. Those four will not.</p>
+<p><em>Reviewed September 2026. Corrections welcome.</em></p>
+      </article>
+    </div>
+
+    <footer class="end">
+      <span>Axel Sundqvist</span>
+      <span><a href="mailto:axesu672@student.liu.se">axesu672@student.liu.se</a> · <a href="https://github.com/AxelSuu">GitHub</a></span>
+    </footer>
+  </body>
+</html>
