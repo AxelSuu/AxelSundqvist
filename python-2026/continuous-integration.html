@@ -1,0 +1,315 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/tech.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Continuous integration — The State of Python, 2026</title>
+    <meta name="description" content="A working pipeline, and the six things usually left out of one." />
+    <meta name="theme-color" content="#f7f6f3" />
+    <link rel="canonical" href="https://axelsundqvist.se/python-2026/continuous-integration" />
+
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://axelsundqvist.se/python-2026/continuous-integration" />
+    <meta property="og:site_name" content="Axel Sundqvist" />
+    <meta property="og:locale" content="en_GB" />
+    <meta property="og:title" content="Continuous integration" />
+    <meta property="og:description" content="A working pipeline, and the six things usually left out of one." />
+    <meta property="og:image" content="https://axelsundqvist.se/images/og.jpg" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Continuous integration" />
+    <meta name="twitter:description" content="A working pipeline, and the six things usually left out of one." />
+    <meta name="twitter:image" content="https://axelsundqvist.se/images/og.jpg" />
+
+    <!-- Same files the film loads, so a reader arriving here first warms the
+         cache for the site rather than fetching a second typeface. -->
+    <link rel="preload" as="font" type="font/woff2" crossorigin href="/fonts/archivo-latin.woff2">
+    <style>
+      @font-face {
+        font-family: 'Archivo';
+        font-style: normal;
+        font-weight: 200 600;
+        font-stretch: 75% 125%;
+        font-display: swap;
+        src: url(/fonts/archivo-latin.woff2) format('woff2');
+        unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+      }
+      @font-face {
+        font-family: 'Archivo';
+        font-style: normal;
+        font-weight: 200 600;
+        font-stretch: 75% 125%;
+        font-display: swap;
+        src: url(/fonts/archivo-latin-ext.woff2) format('woff2');
+        unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+      }
+
+      /* ======================================================================
+         The film is dark, full-bleed and image-led. A reference is the
+         opposite problem, so these pages share its typeface and nothing else:
+         light ground, one measure, one section per page, and a contents
+         sidebar that persists across all of them.
+         ====================================================================== */
+      :root {
+        --paper:  #f7f6f3;
+        --ink:    #16161a;
+        --ink-64: rgba(22, 22, 26, 0.64);
+        --ink-40: rgba(22, 22, 26, 0.40);
+        --ink-12: rgba(22, 22, 26, 0.12);
+        --ink-06: rgba(22, 22, 26, 0.055);
+        --accent: #2b3ea8;
+        --sans: 'Archivo', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
+        --mono: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+        color-scheme: light;
+      }
+
+      * { box-sizing: border-box; }
+      html { background: var(--paper); }
+      body {
+        margin: 0;
+        background: var(--paper);
+        color: var(--ink);
+        font-family: var(--sans);
+        font-size: 17px;
+        line-height: 1.62;
+        font-weight: 350;
+        -webkit-font-smoothing: antialiased;
+        overflow-x: hidden;
+      }
+
+      a { color: var(--accent); text-decoration: none; }
+      .prose a { text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px; }
+      a:hover { opacity: 0.68; }
+
+      .skip { position: absolute; left: -9999px; background: var(--ink); color: var(--paper); padding: 12px 18px; z-index: 10; }
+      .skip:focus { left: 16px; top: 16px; }
+
+      /* ── Masthead ────────────────────────────────────────────────────── */
+      .masthead {
+        border-bottom: 1px solid var(--ink-12);
+        padding: 26px clamp(20px, 5vw, 56px);
+        display: flex; justify-content: space-between; align-items: baseline;
+        gap: 20px; flex-wrap: wrap;
+        font-size: 13px; letter-spacing: 0.09em; text-transform: uppercase; font-weight: 500;
+      }
+      .masthead a { color: var(--ink-64); }
+      .masthead a:hover { color: var(--accent); opacity: 1; }
+      .masthead .stamp { color: var(--ink-40); letter-spacing: 0.04em; text-transform: none; font-weight: 400; }
+      .masthead nav { display: flex; gap: 22px; }
+
+      header.title {
+        padding: clamp(44px, 8vh, 96px) clamp(20px, 5vw, 56px) 0;
+        max-width: 1180px; margin: 0 auto;
+      }
+      .kicker {
+        margin: 0 0 14px;
+        font-size: 12px; letter-spacing: 0.13em; text-transform: uppercase;
+        color: var(--ink-40); font-weight: 500;
+      }
+      h1 {
+        margin: 0;
+        font-size: clamp(32px, 4.6vw, 52px);
+        line-height: 1.06;
+        font-weight: 300;
+        letter-spacing: -0.02em;
+        max-width: 18ch;
+      }
+
+      /* ── Contents beside the measure; underneath it on a phone ───────── */
+      .wrap {
+        max-width: 1180px; margin: 0 auto;
+        padding: clamp(34px, 5vh, 60px) clamp(20px, 5vw, 56px) 0;
+        display: grid; gap: clamp(30px, 5vw, 72px);
+        grid-template-columns: minmax(0, 1fr);
+      }
+      .column { min-width: 0; }
+      @media (min-width: 1000px) {
+        .wrap { grid-template-columns: 216px minmax(0, 68ch); align-items: start; }
+        .toc { position: sticky; top: 34px; max-height: calc(100vh - 68px); overflow-y: auto; }
+      }
+      /* Below that the sidebar cannot be sticky, and a 24-item list above the
+         prose would bury it — so contents follows the article instead. */
+      @media (max-width: 999px) {
+        .toc { order: 2; border-top: 1px solid var(--ink-12); padding-top: 26px; }
+        .column { order: 1; }
+      }
+
+      .toc { font-size: 13.5px; line-height: 1.45; }
+      .toc-head {
+        margin: 0 0 14px; font-size: 11px; letter-spacing: 0.13em;
+        text-transform: uppercase; color: var(--ink-40); font-weight: 500;
+      }
+      .toc-head a { color: inherit; }
+      .toc-head a:hover { color: var(--accent); opacity: 1; }
+      .toc ul { list-style: none; margin: 0 0 18px; padding: 0; }
+      .toc li { margin-bottom: 7px; }
+      .toc a { color: var(--ink-64); }
+      .toc a:hover { color: var(--accent); opacity: 1; }
+      .toc li.here a { color: var(--accent); font-weight: 500; }
+      .toc-part {
+        margin: 0 0 9px; font-weight: 500; color: var(--ink);
+        font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase;
+      }
+
+      /* ── Prose ───────────────────────────────────────────────────────── */
+      .prose { max-width: 68ch; }
+      .prose > p { margin: 0 0 22px; }
+      body.index .prose > p:first-child { font-size: 19px; color: var(--ink-64); margin-bottom: 32px; }
+      body.index .prose > p:first-child em { font-style: normal; }
+
+      .prose ul { margin: 0 0 22px; padding-left: 22px; }
+      .prose li { margin-bottom: 8px; }
+      strong { font-weight: 600; }
+      /* Bold-led paragraphs label each system design; give them a little air. */
+      .prose > p > strong:first-child { display: inline-block; margin-top: 6px; }
+      hr { border: 0; border-top: 1px solid var(--ink-12); margin: 42px 0; }
+
+      code {
+        font-family: var(--mono); font-size: 0.855em;
+        background: var(--ink-06); padding: 0.12em 0.36em; border-radius: 3px;
+        overflow-wrap: break-word;
+      }
+
+      /* Anything that cannot reflow scrolls inside its own box; the page body
+         never scrolls sideways. */
+      .scroll { overflow-x: auto; margin: 0 0 26px; -webkit-overflow-scrolling: touch; }
+      .scroll pre {
+        margin: 0; padding: 18px 20px;
+        background: var(--ink-06); border-radius: 4px;
+        font-size: 13.5px; line-height: 1.55;
+      }
+      .scroll pre code { background: none; padding: 0; font-size: inherit; }
+
+      table { border-collapse: collapse; width: 100%; font-size: 14.5px; line-height: 1.5; }
+      th, td { text-align: left; padding: 9px 16px 9px 0; vertical-align: top; border-bottom: 1px solid var(--ink-12); }
+      th {
+        font-size: 11px; letter-spacing: 0.11em; text-transform: uppercase;
+        font-weight: 500; color: var(--ink-40); border-bottom-color: var(--ink-40);
+        white-space: nowrap;
+      }
+      td:first-child { white-space: nowrap; padding-right: 26px; }
+      td code { background: none; padding: 0; }
+
+      /* ── Index listing ───────────────────────────────────────────────── */
+      .index-list { margin-top: 8px; }
+      h2.part {
+        margin: 46px 0 4px;
+        font-size: 13px; letter-spacing: 0.13em; text-transform: uppercase;
+        font-weight: 500; color: var(--ink-40);
+        padding-bottom: 12px; border-bottom: 1px solid var(--ink-40);
+      }
+      .entry {
+        display: block; padding: 16px 0; border-bottom: 1px solid var(--ink-12);
+        color: var(--ink); text-decoration: none;
+      }
+      .entry:hover { opacity: 1; }
+      .entry:hover .entry-title { color: var(--accent); }
+      .entry-title { display: block; font-size: 18px; font-weight: 500; letter-spacing: -0.005em; }
+      .entry-blurb { display: block; color: var(--ink-64); font-size: 15px; line-height: 1.5; margin-top: 2px; }
+
+      /* ── Pager ───────────────────────────────────────────────────────── */
+      .pager {
+        display: flex; justify-content: space-between; gap: 20px; flex-wrap: wrap;
+        margin-top: 56px; padding-top: 26px; border-top: 1px solid var(--ink-12);
+        max-width: 68ch;
+      }
+      .pager a { display: block; max-width: 46%; font-size: 16px; font-weight: 500; color: var(--ink); }
+      .pager a:hover { color: var(--accent); opacity: 1; }
+      .pager .next { margin-left: auto; text-align: right; }
+      .pager span {
+        display: block; font-size: 11px; letter-spacing: 0.13em; text-transform: uppercase;
+        color: var(--ink-40); font-weight: 500; margin-bottom: 3px;
+      }
+
+      footer.end {
+        border-top: 1px solid var(--ink-12);
+        margin: 8vh auto 0; padding: 36px clamp(20px, 5vw, 56px) 12vh;
+        max-width: 1180px;
+        display: flex; justify-content: space-between; gap: 24px; flex-wrap: wrap;
+        font-size: 14px; color: var(--ink-64);
+      }
+    </style>
+  </head>
+  <body class="section">
+    <a class="skip" href="#content">Skip to the article</a>
+
+    <div class="masthead">
+      <nav>
+        <a href="/">← Axel Sundqvist</a>
+        <a href="/python-2026/">Contents</a>
+      </nav>
+      <span class="stamp">Reviewed September 2026</span>
+    </div>
+
+    <header class="title">
+      <p class="kicker">Part I — Practices</p>
+      <h1>Continuous integration</h1>
+    </header>
+
+    <div class="wrap">
+      <nav class="toc" aria-label="Contents"><p class="toc-head"><a href="/python-2026/">Contents</a></p>
+<ul>
+<li><a href="/python-2026/the-baseline">The baseline</a></li>
+</ul>
+<p class="toc-part">Part I — Practices</p>
+<ul>
+<li><a href="/python-2026/environments-and-dependencies">Environments and dependencies</a></li>
+<li><a href="/python-2026/linting-and-formatting">Linting and formatting</a></li>
+<li><a href="/python-2026/python-versions">Python versions</a></li>
+<li><a href="/python-2026/project-configuration-and-layout">Project configuration and layout</a></li>
+<li><a href="/python-2026/type-checking">Type checking</a></li>
+<li><a href="/python-2026/validation-and-data-models">Validation and data models</a></li>
+<li><a href="/python-2026/errors">Errors</a></li>
+<li><a href="/python-2026/logging">Logging</a></li>
+<li><a href="/python-2026/concurrency">Concurrency</a></li>
+<li><a href="/python-2026/testing">Testing</a></li>
+<li><a href="/python-2026/command-line-interfaces-and-single-file-scripts">Command-line interfaces and single-file scripts</a></li>
+<li><a href="/python-2026/documentation">Documentation</a></li>
+<li class="here"><a href="/python-2026/continuous-integration" aria-current="page">Continuous integration</a></li>
+<li><a href="/python-2026/packaging-and-distribution">Packaging and distribution</a></li>
+<li><a href="/python-2026/profiling-and-optimization">Profiling and optimization</a></li>
+</ul>
+<p class="toc-part">Part II — Domains</p>
+<ul>
+<li><a href="/python-2026/backends-databases-and-apis">Backends, databases and APIs</a></li>
+<li><a href="/python-2026/data-engineering">Data engineering</a></li>
+<li><a href="/python-2026/data-science">Data science</a></li>
+<li><a href="/python-2026/scientific-computing-and-signal-processing">Scientific computing and signal processing</a></li>
+<li><a href="/python-2026/machine-learning">Machine learning</a></li>
+<li><a href="/python-2026/markets-and-financial-data">Markets and financial data</a></li>
+<li><a href="/python-2026/llms-agents-and-retrieval">LLMs, agents and retrieval</a></li>
+</ul>
+<ul>
+<li><a href="/python-2026/part-iii-python-around-another-language">Part III — Python around another language</a></li>
+</ul>
+</nav>
+      <div class="column">
+        <article class="prose" id="content">
+<div class="scroll"><pre><code class="lang-yaml">jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@&lt;sha&gt;
+      - uses: astral-sh/setup-uv@&lt;sha&gt;
+        with: { enable-cache: true }
+      - run: uv sync --locked
+      - run: uv run ruff check --output-format=github
+      - run: uv run ruff format --check
+      - run: uv run pyright
+      - run: uv run pytest --cov --cov-report=xml</code></pre></div>
+<p>Points that are frequently omitted:</p>
+<ul><li><code>uv sync --locked</code> fails when the lockfile does not match <code>pyproject.toml</code>, catching manual edits.</li><li>The version matrix should list exactly the versions declared in <code>requires-python</code>.</li><li><code>pre-commit</code> is used locally for formatting and quick checks; enforcement belongs in CI, since hooks can be bypassed.</li><li>Actions pinned to commit SHAs rather than tags, since tags are mutable.</li><li>PyPI trusted publishing (OIDC) removes long-lived API tokens from CI secrets.</li><li>Dependabot or Renovate for dependency and action updates.</li></ul>
+        </article>
+        <nav class="pager">
+<a class="prev" href="/python-2026/documentation"><span>Previous</span>Documentation</a>
+<a class="next" href="/python-2026/packaging-and-distribution"><span>Next</span>Packaging and distribution</a>
+</nav>
+      </div>
+    </div>
+
+    <footer class="end">
+      <span>Axel Sundqvist</span>
+      <span><a href="mailto:axesu672@student.liu.se">axesu672@student.liu.se</a> · <a href="https://github.com/AxelSuu">GitHub</a></span>
+    </footer>
+  </body>
+</html>
