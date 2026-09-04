@@ -45,6 +45,9 @@ export default function Overture() {
           >
             LinkedIn
           </a>
+          <a className="go" href="/python-2026">
+            Python 2026
+          </a>
           <a className="go" href="#contact">
             Contact
           </a>
