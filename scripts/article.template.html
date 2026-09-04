@@ -4,21 +4,21 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/tech.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>{{TITLE}} — Axel Sundqvist</title>
-    <meta name="description" content="A reference for Python project practices, libraries per domain, and system designs, written from the position of using Python to test and build systems written in other languages. Reviewed September 2026." />
+    <title>{{PAGE_TITLE}}</title>
+    <meta name="description" content="{{DESCRIPTION}}" />
     <meta name="theme-color" content="#f7f6f3" />
-    <link rel="canonical" href="https://axelsundqvist.se/python-2026" />
+    <link rel="canonical" href="{{CANONICAL}}" />
 
     <meta property="og:type" content="article" />
-    <meta property="og:url" content="https://axelsundqvist.se/python-2026" />
+    <meta property="og:url" content="{{CANONICAL}}" />
     <meta property="og:site_name" content="Axel Sundqvist" />
     <meta property="og:locale" content="en_GB" />
     <meta property="og:title" content="{{TITLE}}" />
-    <meta property="og:description" content="Practices, libraries and system designs — including Python as the test and tooling layer around C and Rust." />
+    <meta property="og:description" content="{{DESCRIPTION}}" />
     <meta property="og:image" content="https://axelsundqvist.se/images/og.jpg" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="{{TITLE}}" />
-    <meta name="twitter:description" content="Practices, libraries and system designs — including Python as the test and tooling layer around C and Rust." />
+    <meta name="twitter:description" content="{{DESCRIPTION}}" />
     <meta name="twitter:image" content="https://axelsundqvist.se/images/og.jpg" />
 
     <!-- Same files the film loads, so a reader arriving here first warms the
@@ -45,9 +45,10 @@
       }
 
       /* ======================================================================
-         The film is dark, full-bleed and image-led. A 7,000-word reference is
-         the opposite problem, so this page shares its typeface and nothing
-         else: light ground, one measure, and tables that hold still.
+         The film is dark, full-bleed and image-led. A reference is the
+         opposite problem, so these pages share its typeface and nothing else:
+         light ground, one measure, one section per page, and a contents
+         sidebar that persists across all of them.
          ====================================================================== */
       :root {
         --paper:  #f7f6f3;
@@ -63,7 +64,7 @@
       }
 
       * { box-sizing: border-box; }
-      html { background: var(--paper); scroll-behavior: smooth; }
+      html { background: var(--paper); }
       body {
         margin: 0;
         background: var(--paper);
@@ -75,16 +76,12 @@
         -webkit-font-smoothing: antialiased;
         overflow-x: hidden;
       }
-      @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
 
       a { color: var(--accent); text-decoration: none; }
       .prose a { text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px; }
       a:hover { opacity: 0.68; }
 
-      .skip {
-        position: absolute; left: -9999px;
-        background: var(--ink); color: var(--paper); padding: 12px 18px; z-index: 10;
-      }
+      .skip { position: absolute; left: -9999px; background: var(--ink); color: var(--paper); padding: 12px 18px; z-index: 10; }
       .skip:focus { left: 16px; top: 16px; }
 
       /* ── Masthead ────────────────────────────────────────────────────── */
@@ -92,88 +89,80 @@
         border-bottom: 1px solid var(--ink-12);
         padding: 26px clamp(20px, 5vw, 56px);
         display: flex; justify-content: space-between; align-items: baseline;
-        gap: 24px; flex-wrap: wrap;
+        gap: 20px; flex-wrap: wrap;
+        font-size: 13px; letter-spacing: 0.09em; text-transform: uppercase; font-weight: 500;
       }
-      .back {
-        font-size: 13px; letter-spacing: 0.09em; text-transform: uppercase;
-        font-weight: 500; color: var(--ink-64);
-      }
-      .back:hover { color: var(--accent); opacity: 1; }
-      .masthead .stamp { font-size: 13px; color: var(--ink-40); letter-spacing: 0.04em; }
+      .masthead a { color: var(--ink-64); }
+      .masthead a:hover { color: var(--accent); opacity: 1; }
+      .masthead .stamp { color: var(--ink-40); letter-spacing: 0.04em; text-transform: none; font-weight: 400; }
+      .masthead nav { display: flex; gap: 22px; }
 
       header.title {
-        padding: clamp(56px, 11vh, 128px) clamp(20px, 5vw, 56px) 0;
+        padding: clamp(44px, 8vh, 96px) clamp(20px, 5vw, 56px) 0;
         max-width: 1180px; margin: 0 auto;
+      }
+      .kicker {
+        margin: 0 0 14px;
+        font-size: 12px; letter-spacing: 0.13em; text-transform: uppercase;
+        color: var(--ink-40); font-weight: 500;
       }
       h1 {
         margin: 0;
-        font-size: clamp(38px, 6.2vw, 76px);
-        line-height: 1.02;
+        font-size: clamp(32px, 4.6vw, 52px);
+        line-height: 1.06;
         font-weight: 300;
-        letter-spacing: -0.022em;
-        max-width: 15ch;
+        letter-spacing: -0.02em;
+        max-width: 18ch;
       }
 
-      /* ── Two columns: sticky contents, then the measure ──────────────── */
+      /* ── Contents beside the measure; underneath it on a phone ───────── */
       .wrap {
         max-width: 1180px; margin: 0 auto;
-        padding: clamp(38px, 6vh, 68px) clamp(20px, 5vw, 56px) 0;
-        display: grid; gap: clamp(32px, 5vw, 72px);
+        padding: clamp(34px, 5vh, 60px) clamp(20px, 5vw, 56px) 0;
+        display: grid; gap: clamp(30px, 5vw, 72px);
         grid-template-columns: minmax(0, 1fr);
       }
+      .column { min-width: 0; }
       @media (min-width: 1000px) {
-        .wrap { grid-template-columns: 208px minmax(0, 68ch); }
-        .toc { position: sticky; top: 40px; align-self: start; max-height: calc(100vh - 80px); overflow-y: auto; }
+        .wrap { grid-template-columns: 216px minmax(0, 68ch); align-items: start; }
+        .toc { position: sticky; top: 34px; max-height: calc(100vh - 68px); overflow-y: auto; }
+      }
+      /* Below that the sidebar cannot be sticky, and a 24-item list above the
+         prose would bury it — so contents follows the article instead. */
+      @media (max-width: 999px) {
+        .toc { order: 2; border-top: 1px solid var(--ink-12); padding-top: 26px; }
+        .column { order: 1; }
       }
 
-      .toc { font-size: 13.5px; line-height: 1.5; }
+      .toc { font-size: 13.5px; line-height: 1.45; }
       .toc-head {
         margin: 0 0 14px; font-size: 11px; letter-spacing: 0.13em;
         text-transform: uppercase; color: var(--ink-40); font-weight: 500;
       }
-      .toc ul { list-style: none; margin: 0 0 20px; padding: 0; }
+      .toc-head a { color: inherit; }
+      .toc-head a:hover { color: var(--accent); opacity: 1; }
+      .toc ul { list-style: none; margin: 0 0 18px; padding: 0; }
       .toc li { margin-bottom: 7px; }
       .toc a { color: var(--ink-64); }
       .toc a:hover { color: var(--accent); opacity: 1; }
-      .toc-part { margin: 0 0 9px; font-weight: 500; }
-      .toc-part a { color: var(--ink); }
-      /* On a phone the full contents list is longer than the first section, so
-         only the three part links survive. */
-      @media (max-width: 999px) {
-        .toc { border-bottom: 1px solid var(--ink-12); padding-bottom: 22px; }
-        .toc ul { display: none; }
-        .toc-part { display: inline-block; margin-right: 20px; }
+      .toc li.here a { color: var(--accent); font-weight: 500; }
+      .toc-part {
+        margin: 0 0 9px; font-weight: 500; color: var(--ink);
+        font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase;
       }
 
       /* ── Prose ───────────────────────────────────────────────────────── */
-      .prose { max-width: 68ch; padding-bottom: 8vh; }
+      .prose { max-width: 68ch; }
       .prose > p { margin: 0 0 22px; }
-      .prose > p:first-child {
-        font-size: 19px; color: var(--ink-64); margin-bottom: 34px;
-      }
-      .prose > p:first-child em { font-style: normal; }
-
-      h2.part {
-        margin: clamp(64px, 9vh, 104px) 0 8px;
-        font-size: clamp(26px, 3.4vw, 34px);
-        font-weight: 300; letter-spacing: -0.015em; line-height: 1.14;
-        padding-top: 26px; border-top: 2px solid var(--ink);
-      }
-      h3 {
-        margin: 52px 0 14px;
-        font-size: 21px; font-weight: 500; letter-spacing: -0.008em; line-height: 1.25;
-        scroll-margin-top: 24px;
-      }
-      h2.part { scroll-margin-top: 24px; }
+      body.index .prose > p:first-child { font-size: 19px; color: var(--ink-64); margin-bottom: 32px; }
+      body.index .prose > p:first-child em { font-style: normal; }
 
       .prose ul { margin: 0 0 22px; padding-left: 22px; }
       .prose li { margin-bottom: 8px; }
-
       strong { font-weight: 600; }
       /* Bold-led paragraphs label each system design; give them a little air. */
       .prose > p > strong:first-child { display: inline-block; margin-top: 6px; }
-
-      hr { border: 0; border-top: 1px solid var(--ink-12); margin: 46px 0; }
+      hr { border: 0; border-top: 1px solid var(--ink-12); margin: 42px 0; }
 
       code {
         font-family: var(--mono); font-size: 0.855em;
@@ -201,32 +190,70 @@
       td:first-child { white-space: nowrap; padding-right: 26px; }
       td code { background: none; padding: 0; }
 
+      /* ── Index listing ───────────────────────────────────────────────── */
+      .index-list { margin-top: 8px; }
+      h2.part {
+        margin: 46px 0 4px;
+        font-size: 13px; letter-spacing: 0.13em; text-transform: uppercase;
+        font-weight: 500; color: var(--ink-40);
+        padding-bottom: 12px; border-bottom: 1px solid var(--ink-40);
+      }
+      .entry {
+        display: block; padding: 16px 0; border-bottom: 1px solid var(--ink-12);
+        color: var(--ink); text-decoration: none;
+      }
+      .entry:hover { opacity: 1; }
+      .entry:hover .entry-title { color: var(--accent); }
+      .entry-title { display: block; font-size: 18px; font-weight: 500; letter-spacing: -0.005em; }
+      .entry-blurb { display: block; color: var(--ink-64); font-size: 15px; line-height: 1.5; margin-top: 2px; }
+
+      /* ── Pager ───────────────────────────────────────────────────────── */
+      .pager {
+        display: flex; justify-content: space-between; gap: 20px; flex-wrap: wrap;
+        margin-top: 56px; padding-top: 26px; border-top: 1px solid var(--ink-12);
+        max-width: 68ch;
+      }
+      .pager a { display: block; max-width: 46%; font-size: 16px; font-weight: 500; color: var(--ink); }
+      .pager a:hover { color: var(--accent); opacity: 1; }
+      .pager .next { margin-left: auto; text-align: right; }
+      .pager span {
+        display: block; font-size: 11px; letter-spacing: 0.13em; text-transform: uppercase;
+        color: var(--ink-40); font-weight: 500; margin-bottom: 3px;
+      }
+
       footer.end {
         border-top: 1px solid var(--ink-12);
-        margin-top: 6vh; padding: 40px clamp(20px, 5vw, 56px) 12vh;
-        max-width: 1180px; margin-left: auto; margin-right: auto;
+        margin: 8vh auto 0; padding: 36px clamp(20px, 5vw, 56px) 12vh;
+        max-width: 1180px;
         display: flex; justify-content: space-between; gap: 24px; flex-wrap: wrap;
         font-size: 14px; color: var(--ink-64);
       }
     </style>
   </head>
-  <body>
+  <body class="{{BODYCLASS}}">
     <a class="skip" href="#content">Skip to the article</a>
 
     <div class="masthead">
-      <a class="back" href="/">← Axel Sundqvist</a>
+      <nav>
+        <a href="/">← Axel Sundqvist</a>
+        <a href="/python-2026/">Contents</a>
+      </nav>
       <span class="stamp">Reviewed September 2026</span>
     </div>
 
     <header class="title">
-      <h1>{{TITLE}}</h1>
+      {{KICKER}}
+      <h1>{{HEADING}}</h1>
     </header>
 
     <div class="wrap">
       {{TOC}}
-      <article class="prose" id="content">
+      <div class="column">
+        <article class="prose" id="content">
 {{CONTENT}}
-      </article>
+        </article>
+        {{NAV}}
+      </div>
     </div>
 
     <footer class="end">
