@@ -8,7 +8,7 @@ part: "Domains"
 |---|---|
 | [NumPy 2.x](https://numpy.org/doc/stable/) | N-dimensional arrays and vectorized operations. Foundation for most of the stack. |
 | [SciPy](https://docs.scipy.org/doc/scipy/) | Optimization, integration, interpolation, linear algebra, statistics, signal processing. |
-| [pandas 3.0](https://pandas.pydata.org/docs/) | Labelled tabular data. See notes above on copy-on-write and string dtype. |
+| [pandas 3.0](https://pandas.pydata.org/docs/) | Labelled tabular data. Copy-on-write and the PyArrow-backed string dtype are covered under [data engineering](/python-2026/data-engineering). |
 | [Polars](https://docs.pola.rs/) | Alternative dataframe library; an expression API over a multithreaded Rust engine, with a lazy mode that plans the whole query before executing it. |
 | [statsmodels](https://www.statsmodels.org/) | Statistical models, hypothesis tests, time series (ARIMA, state space). |
 | [scikit-learn](https://scikit-learn.org/stable/) | Classical machine learning, preprocessing, model selection, pipelines. |
