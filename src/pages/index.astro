@@ -61,6 +61,13 @@ import App from '@/app'
       crossorigin
       href="/fonts/archivo-latin.woff2"
     />
+    {/* Before first paint, so the reveal animation arms without the type
+        flashing in and back out. Everything it hides stays visible if this
+        never runs — see the .js rules in app.css. */}
+    <script is:inline>
+      document.documentElement.classList.add('js')
+    </script>
+
     <style is:global>
       @font-face {
         font-family: 'Archivo';
