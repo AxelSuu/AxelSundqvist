@@ -20,6 +20,8 @@ const { blog, meta, groups } = Astro.props
   heading={meta.title}
   description={meta.description}
 >
+  {meta.intro && <p>{meta.intro}</p>}
+
   <div class="index-list">
     {
       groups.map((g) => (

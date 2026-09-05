@@ -22,6 +22,10 @@ const blogs = defineCollection({
     description: z.string(),
     /* Shown in the masthead. A dated review stamp is a promise to revisit. */
     stamp: z.string().optional(),
+    /* One paragraph above the contents, saying what the series claims to be.
+     * A curated set has to say so somewhere, or its omissions read as
+     * oversights. */
+    intro: z.string().optional(),
     /* Part names in order; numbering is applied at render. Sections without a
      * `part` lead the contents, ungrouped. */
     parts: z.array(z.string()).default([]),
