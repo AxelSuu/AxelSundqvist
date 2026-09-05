@@ -1,3 +1,15 @@
 {
-  "cleanUrls": true
+  "cleanUrls": true,
+  "redirects": [
+    {
+      "source": "/python-2026/the-baseline",
+      "destination": "/python-2026/tldr",
+      "permanent": true
+    },
+    {
+      "source": "/python-2026/part-iii-python-around-another-language",
+      "destination": "/python-2026/",
+      "permanent": false
+    }
+  ]
 }
