@@ -1,4 +1,4 @@
-import type { CSSProperties } from 'react'
+import type { CSSProperties, ImgHTMLAttributes } from 'react'
 import manifest from '@/image-manifest.json'
 
 type Entry = { w: number[]; a: number }
@@ -31,6 +31,11 @@ export default function FrameImage({
 }) {
   const entry = SOURCES[src]
   const base = src.replace(/\.jpg$/, '')
+  /* React 18's JSX types predate fetchPriority, and the camelCase spelling
+     makes it warn on every render. The DOM attribute is lowercase. */
+  const hint = (priority
+    ? { fetchpriority: 'high' }
+    : {}) as ImgHTMLAttributes<HTMLImageElement>
   const sizes =
     fit === 'contain' || !entry
       ? '100vw'
@@ -50,7 +55,7 @@ export default function FrameImage({
         alt={alt}
         style={style}
         loading={priority ? 'eager' : 'lazy'}
-        fetchPriority={priority ? 'high' : undefined}
+        {...hint}
       />
     </picture>
   )
