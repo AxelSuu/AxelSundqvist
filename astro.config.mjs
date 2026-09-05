@@ -22,4 +22,15 @@ export default defineConfig({
   // would flatten it to /python-2026.html and break the trailing-slash URL
   // the masthead and the portfolio both link to.
   trailingSlash: 'ignore',
+  vite: {
+    optimizeDeps: {
+      // These reach Vite only through the island's dynamic import, so its
+      // scan of src/pages misses them. Discovered late, it re-optimizes and
+      // answers the in-flight request with 504 Outdated Optimize Dep — which
+      // Astro's island loader reports as "Error hydrating" and never retries,
+      // leaving the reveal animation unarmed and every chapter's type at
+      // opacity 0. Pre-bundling them up front is the documented fix.
+      include: ['@vercel/analytics/react', 'react', 'react-dom', 'react-dom/client'],
+    },
+  },
 })
