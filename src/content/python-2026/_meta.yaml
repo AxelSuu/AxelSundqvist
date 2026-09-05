@@ -1,0 +1,9 @@
+title: The State of Python, 2026
+description: >-
+  A reference for Python project practices, libraries per domain, and system
+  designs, written from the position of using Python to test and build systems
+  in other languages. Reviewed September 2026.
+stamp: Reviewed September 2026
+parts:
+  - Practices
+  - Domains
