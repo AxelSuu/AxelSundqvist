@@ -11,7 +11,7 @@ Type annotations are checked by a separate tool; the interpreter does not enforc
 |---|---|
 | [mypy](https://mypy.readthedocs.io/) | Reference implementation. Its [plugin API](https://mypy.readthedocs.io/en/stable/extending_mypy.html) is what django-stubs hooks into; pyright [rejects plugins by design](https://github.com/microsoft/pyright/blob/main/docs/mypy-comparison.md#plugins). |
 | [pyright](https://microsoft.github.io/pyright/) | Written in TypeScript, distributed as an npm package with a PyPI wrapper. Implements the [typing specification](https://typing.python.org/en/latest/spec/) and powers Pylance in VS Code. |
-| [pyrefly](https://pyrefly.org/) | Meta's checker, stable 1.0 since May 2026. Used on Instagram, PyTorch and JAX. Strict defaults, designed for large codebases. |
+| [pyrefly](https://pyrefly.org/) | Meta's checker, 1.0 since May 2026. [PyTorch](https://github.com/pytorch/pytorch/blob/main/pyrefly.toml) and JAX both carry its configuration in-tree; Meta runs it on Instagram. Strict defaults, designed for large codebases. |
 | [ty](https://docs.astral.sh/ty/) | Astral's checker, in beta. Provides a gradual guarantee: adding annotations to working code does not introduce new errors. |
 
 Useful constructs beyond basic parameter annotations:

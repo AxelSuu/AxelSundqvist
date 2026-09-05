@@ -21,4 +21,4 @@ Because `uv` manages interpreters, the Python version is a project-level declara
 
 Alternatives still in use: Poetry (own resolver and `poetry.lock`, which predates the standardised format), [PDM](https://pdm-project.org/) (standards-focused), [Hatch](https://hatch.pypa.io/) (environment matrix management), and pip with `pip-tools` for projects that require pip alone.
 
-Astral, which develops `uv`, `ruff` and [`ty`](https://docs.astral.sh/ty/), agreed to be acquired by OpenAI in March 2026, subject to regulatory approval. The tools remain open source under permissive licences.
+Astral, which develops `uv`, `ruff` and [`ty`](https://docs.astral.sh/ty/), [agreed to be acquired by OpenAI](https://openai.com/index/openai-to-acquire-astral/) on 19 March 2026, subject to regulatory approval. The tools remain open source under permissive licences.

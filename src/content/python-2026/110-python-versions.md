@@ -13,11 +13,12 @@ Relevant changes in recent versions:
 | [3.12](https://docs.python.org/3/whatsnew/3.12.html) | New type parameter syntax (`def f[T]()`), `@override`, per-interpreter GIL groundwork. |
 | [3.13](https://docs.python.org/3/whatsnew/3.13.html) | Experimental free-threaded build, new REPL, JIT groundwork. |
 | [3.14](https://docs.python.org/3/whatsnew/3.14.html) | Free-threaded build officially supported ([PEP 779](https://peps.python.org/pep-0779/)); deferred evaluation of annotations ([PEP 649](https://peps.python.org/pep-0649/)); `concurrent.interpreters` for subinterpreters ([PEP 734](https://peps.python.org/pep-0734/)); colour output in `argparse` and tracebacks. |
-| [3.15](https://docs.python.org/3.15/whatsnew/3.15.html) (Oct 2026) | `abi3t`, a stable ABI for free-threaded builds ([PEP 803](https://peps.python.org/pep-0803/)), allowing one C extension wheel across free-threaded releases. |
+| [3.15](https://docs.python.org/3.15/whatsnew/3.15.html) (final expected 1 October 2026, [PEP 790](https://peps.python.org/pep-0790/)) | `abi3t`, a stable ABI for free-threaded builds ([PEP 803](https://peps.python.org/pep-0803/)), allowing one C extension wheel across free-threaded releases. |
 
 ## References
 
 * [PEP 649 – Deferred Evaluation Of Annotations Using Descriptors](https://peps.python.org/pep-0649/) — Final, 3.14.
+* [PEP 790 – Python 3.15 Release Schedule](https://peps.python.org/pep-0790/) — the dates in the last row.
 * [PEP 734 – Multiple Interpreters in the Stdlib](https://peps.python.org/pep-0734/) — Final, 3.14.
 * [PEP 779 – Criteria for supported status for free-threaded Python](https://peps.python.org/pep-0779/) — Final, 3.14.
 * [PEP 803 – "abi3t": Stable ABI for Free-Threaded Builds](https://peps.python.org/pep-0803/) — Final, 3.15.

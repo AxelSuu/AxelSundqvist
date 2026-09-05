@@ -14,7 +14,7 @@ part: "Domains"
 | [LangGraph](https://langchain-ai.github.io/langgraph/) | Graph-based orchestration with explicit state, checkpointing and human-in-the-loop steps. |
 | [OpenAI Agents SDK](https://openai.github.io/openai-agents-python/) | Agents, handoffs, guardrails and tracing. Provider-agnostic in practice, still on 0.x. |
 | [Claude Agent SDK](https://docs.claude.com/en/api/agent-sdk/overview) | Anthropic's agent framework, including subagent spawning. |
-| [LlamaIndex](https://docs.llamaindex.ai/) | Indexing, retrieval and query pipelines; Workflows 1.0 released June 2026. |
+| [LlamaIndex](https://docs.llamaindex.ai/) | Indexing, retrieval and query pipelines. Workflows is a separate package, [`llama-index-workflows`](https://pypi.org/project/llama-index-workflows/), on 2.x since August 2025. |
 | [`mcp`](https://modelcontextprotocol.io/), [FastMCP](https://gofastmcp.com/) | Model Context Protocol SDK and a higher-level server framework for building MCP tools. |
 | [pgvector](https://github.com/pgvector/pgvector) | Vector column type and index for PostgreSQL. |
 | [Qdrant](https://qdrant.tech/documentation/), [Chroma](https://docs.trychroma.com/), [LanceDB](https://lancedb.github.io/lancedb/) | Vector stores; Rust-backed with payload filtering, embedded/client-server, and Lance-columnar respectively. |
