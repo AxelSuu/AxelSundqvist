@@ -1,0 +1,38 @@
+---
+import Reference from '@/layouts/Reference.astro'
+import { listBlogs, loadBlog } from '@/lib/blog'
+
+export async function getStaticPaths() {
+  const blogs = await listBlogs()
+  return await Promise.all(
+    blogs.map(async (blog) => ({ params: { blog }, props: await loadBlog(blog) })),
+  )
+}
+
+const { blog, meta, groups } = Astro.props
+---
+
+<Reference
+  {blog}
+  {meta}
+  {groups}
+  title={meta.title}
+  heading={meta.title}
+  description={meta.description}
+>
+  <div class="index-list">
+    {
+      groups.map((g) => (
+        <>
+          {g.label && <h2 class="part">{g.label}</h2>}
+          {g.sections.map((s) => (
+            <a class="entry" href={s.href}>
+              <span class="entry-title">{s.title}</span>
+              <span class="entry-blurb">{s.blurb}</span>
+            </a>
+          ))}
+        </>
+      ))
+    }
+  </div>
+</Reference>

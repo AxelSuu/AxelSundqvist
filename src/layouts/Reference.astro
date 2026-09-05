@@ -1,0 +1,138 @@
+---
+import '@/styles/reference.css'
+import type { Group, Section } from '@/lib/blog'
+
+interface Props {
+  blog: string
+  meta: { title: string; stamp?: string; math: boolean }
+  groups: Group[]
+  /* Slug of the section being rendered; absent on a blog index. */
+  here?: string
+  title: string
+  heading: string
+  kicker?: string
+  description: string
+  prev?: Section
+  next?: Section
+}
+
+const { blog, meta, groups, here, title, heading, kicker, description, prev, next } =
+  Astro.props
+
+const home = `/${blog}/`
+/* Built from the route rather than Astro.url, which carries a trailing slash
+ * on every page under `trailingSlash: 'ignore'`. These are the URLs the site
+ * has always published. */
+const canonical = new URL(here ? `${home}${here}` : home, Astro.site).href
+const og = new URL('/images/og.jpg', Astro.site).href
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/tech.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#f7f6f3" />
+    <link rel="canonical" href={canonical} />
+
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:site_name" content="Axel Sundqvist" />
+    <meta property="og:locale" content="en_GB" />
+    <meta property="og:title" content={heading} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={og} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={heading} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={og} />
+
+    {/* Same files the film loads, so a reader arriving here first warms the
+        cache for the site rather than fetching a second typeface. */}
+    <link
+      rel="preload"
+      as="font"
+      type="font/woff2"
+      crossorigin
+      href="/fonts/archivo-latin.woff2"
+    />
+    {meta.math && <link rel="stylesheet" href="/katex/katex.min.css" />}
+  </head>
+
+  <body class={here ? 'section' : 'index'}>
+    <a class="skip" href="#content">Skip to the article</a>
+
+    <div class="masthead">
+      <nav>
+        <a href="/">← Axel Sundqvist</a>
+        <a href={home}>Contents</a>
+      </nav>
+      {meta.stamp && <span class="stamp">{meta.stamp}</span>}
+    </div>
+
+    <header class="title">
+      {kicker && <p class="kicker">{kicker}</p>}
+      <h1>{heading}</h1>
+    </header>
+
+    <div class="wrap">
+      {
+        here && (
+          <nav class="toc" aria-label="Contents">
+            <p class="toc-head"><a href={home}>Contents</a></p>
+            {groups.map((g) => (
+              <>
+                {g.label && <p class="toc-part">{g.label}</p>}
+                <ul>
+                  {g.sections.map((s) => (
+                    <li class={s.slug === here ? 'here' : undefined}>
+                      <a href={s.href} aria-current={s.slug === here ? 'page' : undefined}>
+                        {s.title}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </>
+            ))}
+          </nav>
+        )
+      }
+
+      <div class="column">
+        <article class="prose" id="content">
+          <slot />
+        </article>
+
+        {
+          (prev || next) && (
+            <nav class="pager">
+              {prev && (
+                <a class="prev" href={prev.href}>
+                  <span>Previous</span>
+                  {prev.title}
+                </a>
+              )}
+              {next && (
+                <a class="next" href={next.href}>
+                  <span>Next</span>
+                  {next.title}
+                </a>
+              )}
+            </nav>
+          )
+        }
+      </div>
+    </div>
+
+    <footer class="end">
+      <span>Axel Sundqvist</span>
+      <span>
+        <a href="mailto:axesu672@student.liu.se">axesu672@student.liu.se</a> ·
+        <a href="https://github.com/AxelSuu">GitHub</a>
+      </span>
+    </footer>
+  </body>
+</html>

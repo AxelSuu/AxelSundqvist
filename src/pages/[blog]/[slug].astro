@@ -1,0 +1,43 @@
+---
+import { render } from 'astro:content'
+import Reference from '@/layouts/Reference.astro'
+import { listBlogs, loadBlog } from '@/lib/blog'
+
+export async function getStaticPaths() {
+  const paths = []
+  for (const blog of await listBlogs()) {
+    const loaded = await loadBlog(blog)
+    for (const [i, section] of loaded.sections.entries()) {
+      paths.push({
+        params: { blog, slug: section.slug },
+        props: {
+          ...loaded,
+          section,
+          prev: loaded.sections[i - 1],
+          next: loaded.sections[i + 1],
+        },
+      })
+    }
+  }
+  return paths
+}
+
+const { blog, meta, groups, section, prev, next } = Astro.props
+const { Content } = await render(section.entry)
+const kicker = groups.find((g) => g.sections.includes(section))?.label
+---
+
+<Reference
+  {blog}
+  {meta}
+  {groups}
+  {kicker}
+  {prev}
+  {next}
+  here={section.slug}
+  title={section.title}
+  heading={section.title}
+  description={section.blurb}
+>
+  <Content />
+</Reference>

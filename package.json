@@ -4,19 +4,25 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "tsc && vite build",
-    "lint": "eslint . --report-unused-disable-directives --max-warnings 0",
-    "article": "python3 scripts/article.py",
-    "preview": "vite preview"
+    "dev": "astro dev",
+    "build": "astro check && astro build",
+    "preview": "astro preview",
+    "lint": "eslint . --report-unused-disable-directives --max-warnings 0"
   },
   "dependencies": {
+    "@astrojs/markdown-satteri": "^0.4.0",
+    "@astrojs/react": "^6.0.5",
     "@vercel/analytics": "^1.5.0",
+    "astro": "^7.3.1",
+    "katex": "^0.18.5",
     "lucide-react": "^0.263.1",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "satteri": "^0.10.5",
+    "zod": "^4.5.4"
   },
   "devDependencies": {
+    "@astrojs/check": "^0.9.10",
     "@types/react": "^18.2.15",
     "@types/react-dom": "^18.2.7",
     "@typescript-eslint/eslint-plugin": "^6.0.0",

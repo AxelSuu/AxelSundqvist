@@ -6,7 +6,7 @@ import reactHooks from 'eslint-plugin-react-hooks'
 import reactRefresh from 'eslint-plugin-react-refresh'
 
 export default [
-  { ignores: ['dist', '.claude'] },
+  { ignores: ['dist', '.claude', '.astro'] },
   js.configs.recommended,
   {
     files: ['**/*.{ts,tsx}'],
@@ -29,7 +29,7 @@ export default [
     },
   },
   {
-    files: ['*.config.ts', '*.config.js'],
+    files: ['*.config.ts', '*.config.js', '*.config.mjs'],
     languageOptions: { globals: globals.node },
   },
 ]
