@@ -12,7 +12,7 @@ part: "Domains"
 | [JAX](https://docs.jax.dev/) | Composable transforms (`jit`, `grad`, `vmap`, `pmap`), XLA compilation, TPU support. |
 | [Flax](https://flax.readthedocs.io/), [Optax](https://optax.readthedocs.io/) | Neural network modules and optimizers for JAX. |
 | [scikit-learn](https://scikit-learn.org/stable/) | Classical models, pipelines, cross-validation, metrics. |
-| [XGBoost](https://xgboost.readthedocs.io/), [LightGBM](https://lightgbm.readthedocs.io/), [CatBoost](https://catboost.ai/docs/) | Gradient-boosted trees. Standard choice for tabular data. |
+| [XGBoost](https://xgboost.readthedocs.io/), [LightGBM](https://lightgbm.readthedocs.io/), [CatBoost](https://catboost.ai/docs/en/) | Gradient-boosted trees. Standard choice for tabular data. |
 | [Hugging Face `transformers`](https://huggingface.co/docs/transformers/) | Pretrained model implementations and training utilities. |
 | [`datasets`](https://huggingface.co/docs/datasets/), [`accelerate`](https://huggingface.co/docs/accelerate/), [`peft`](https://huggingface.co/docs/peft/), [`trl`](https://huggingface.co/docs/trl/) | Dataset loading, distributed training, parameter-efficient fine-tuning, preference training. |
 | [timm](https://huggingface.co/docs/timm/) | Image model architectures and pretrained weights. |

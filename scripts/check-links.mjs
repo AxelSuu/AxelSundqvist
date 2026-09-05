@@ -18,7 +18,7 @@ const UA = 'Mozilla/5.0 (compatible; link-check/1.0; +https://axelsundqvist.se)'
 /* Hosts that answer a non-browser client with a block page or a redirect to
  * their own root. The link is fine; the check is what is being refused, so
  * these are reported and not counted as failures. */
-const REFUSES_ROBOTS = new Set(['wiki.gnuradio.org', 'finnhub.io'])
+const REFUSES_ROBOTS = new Set(['wiki.gnuradio.org', 'finnhub.io', 'openai.com'])
 
 async function markdown(dir) {
   const out = []
