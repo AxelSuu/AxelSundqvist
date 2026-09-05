@@ -4,7 +4,7 @@ blurb: "pyproject.toml, dependency groups, the src layout, and what the lockfile
 part: "Practices"
 ---
 
-All tooling configuration belongs in `pyproject.toml`. Development dependencies belong in `[dependency-groups]` (PEP 735) rather than `[project.optional-dependencies]`, which is published in wheel metadata and intended for user-facing extras.
+All tooling configuration belongs in [`pyproject.toml`](https://packaging.python.org/en/latest/specifications/pyproject-toml/). Development dependencies belong in `[dependency-groups]` ([PEP 735](https://peps.python.org/pep-0735/)) rather than `[project.optional-dependencies]`, which is published in wheel metadata and intended for user-facing extras.
 
 ```toml
 [project]
@@ -23,7 +23,7 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 ```
 
-PEP 751 defines `pylock.toml`, a standard lockfile format that tools can read and write for interoperability. `uv` retains `uv.lock` as its native format and can export to `pylock.toml`; pip's support is experimental on both sides.
+[PEP 751](https://peps.python.org/pep-0751/) defines `pylock.toml`, a standard lockfile format that tools can read and write for interoperability. [`uv`](https://docs.astral.sh/uv/) retains `uv.lock` as its native format and can [export to `pylock.toml`](https://docs.astral.sh/uv/concepts/projects/sync/#exporting-the-lockfile); [pip's support](https://pip.pypa.io/en/stable/cli/pip_lock/) is experimental on both sides.
 
 ```
 project/
@@ -37,8 +37,8 @@ project/
 └── .github/workflows/ci.yml
 ```
 
-With a `src/` layout, the package directory is not on `sys.path` during test runs, so tests import the installed distribution. Packaging errors such as a missing subpackage or an unincluded data file surface in the test suite rather than after release.
+With a [`src/` layout](https://packaging.python.org/en/latest/discussions/src-layout-vs-flat-layout/), the package directory is not on `sys.path` during test runs, so tests import the installed distribution. Packaging errors such as a missing subpackage or an unincluded data file surface in the test suite rather than after release.
 
-For multi-package repositories, `uv` workspaces allow several `pyproject.toml` files to share one lockfile and one resolution, with path dependencies between members.
+For multi-package repositories, [`uv` workspaces](https://docs.astral.sh/uv/concepts/projects/workspaces/) allow several `pyproject.toml` files to share one lockfile and one resolution, with path dependencies between members.
 
 The lockfile is committed for applications and libraries alike; it pins the development environment and does not constrain consumers of a published library.

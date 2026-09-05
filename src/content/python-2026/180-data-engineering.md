@@ -4,36 +4,36 @@ blurb: "Arrow and Parquet as the common formats, with a single-node stack and a 
 part: "Domains"
 ---
 
-Arrow is the common in-memory format across engines; Parquet is the common on-disk format. Most of the libraries below interoperate through both without copying.
+[Arrow](https://arrow.apache.org/docs/format/Columnar.html) is the common in-memory format across engines; [Parquet](https://parquet.apache.org/docs/) is the common on-disk format. Most of the libraries below interoperate through both without copying.
 
 | Library | Description |
 |---|---|
-| PyArrow | Arrow implementation for Python; Parquet, ORC, Flight, dataset APIs. |
-| Polars | DataFrame library written in Rust. Lazy and eager APIs, query optimizer, multithreaded. |
-| DuckDB | In-process analytical SQL engine. Reads Parquet, CSV and Arrow directly, supports larger-than-memory queries. |
-| pandas 3.0 | Released 21 January 2026. Copy-on-write is now default; string columns use a dedicated dtype backed by PyArrow when installed. |
-| Dask | Parallel and distributed execution of pandas/NumPy-shaped workloads. |
-| Ray | Distributed compute framework; Ray Data for pipelines, Ray Tune/Train for ML. |
-| PySpark | Python API for Apache Spark; used where a cluster already exists. |
-| Narwhals | Compatibility layer allowing library code to accept pandas, Polars or PyArrow frames. |
+| [PyArrow](https://arrow.apache.org/docs/python/) | Arrow implementation for Python; Parquet, ORC, Flight, dataset APIs. |
+| [Polars](https://docs.pola.rs/) | DataFrame library written in Rust. Lazy and eager APIs, query optimizer, multithreaded. |
+| [DuckDB](https://duckdb.org/docs/) | In-process analytical SQL engine. Reads Parquet, CSV and Arrow directly, supports larger-than-memory queries. |
+| [pandas 3.0](https://pandas.pydata.org/docs/) | Released 21 January 2026. Copy-on-write is now default; string columns use a dedicated dtype backed by PyArrow when installed. |
+| [Dask](https://docs.dask.org/) | Parallel and distributed execution of pandas/NumPy-shaped workloads. |
+| [Ray](https://docs.ray.io/) | Distributed compute framework; Ray Data for pipelines, Ray Tune/Train for ML. |
+| [PySpark](https://spark.apache.org/docs/latest/api/python/) | Python API for Apache Spark; used where a cluster already exists. |
+| [Narwhals](https://narwhals-dev.github.io/narwhals/) | Compatibility layer allowing library code to accept pandas, Polars or PyArrow frames. |
 
 | Orchestration | Description |
 |---|---|
-| Airflow 3 | DAG-based scheduler. Large operator ecosystem. |
-| Dagster | Asset-oriented orchestrator with typed inputs/outputs and data lineage. |
-| Prefect 3 | Python-native flow orchestration, lighter deployment model. |
-| dbt | SQL transformation framework with tests and lineage. |
-| SQLMesh | SQL transformation tool with column-level lineage and virtual environments. |
+| [Airflow 3](https://airflow.apache.org/docs/) | DAG-based scheduler. Large operator ecosystem. |
+| [Dagster](https://docs.dagster.io/) | Asset-oriented orchestrator with typed inputs/outputs and data lineage. |
+| [Prefect 3](https://docs.prefect.io/) | Python-native flow orchestration, lighter deployment model. |
+| [dbt](https://docs.getdbt.com/) | SQL transformation framework with tests and lineage. |
+| [SQLMesh](https://sqlmesh.readthedocs.io/) | SQL transformation tool with column-level lineage and virtual environments. |
 
 | Storage and quality | Description |
 |---|---|
-| deltalake | Rust-backed Python bindings for Delta Lake tables. |
-| PyIceberg | Python implementation of the Apache Iceberg table format. |
-| fsspec, s3fs, gcsfs, adlfs | Uniform filesystem interface over local disk and object stores. |
-| dlt | Declarative extract-and-load library producing typed, schema-evolving pipelines. |
-| confluent-kafka | Kafka client wrapping librdkafka. |
-| Pandera | Schema and statistical validation for dataframes, including Polars. |
-| Great Expectations | Data quality suite with expectation stores and reporting. |
+| [deltalake](https://delta-io.github.io/delta-rs/) | Rust-backed Python bindings for Delta Lake tables. |
+| [PyIceberg](https://py.iceberg.apache.org/) | Python implementation of the Apache Iceberg table format. |
+| [fsspec](https://filesystem-spec.readthedocs.io/), [s3fs](https://s3fs.readthedocs.io/), [gcsfs](https://gcsfs.readthedocs.io/), [adlfs](https://github.com/fsspec/adlfs) | Uniform filesystem interface over local disk and object stores. |
+| [dlt](https://dlthub.com/docs/) | Declarative extract-and-load library producing typed, schema-evolving pipelines. |
+| [confluent-kafka](https://docs.confluent.io/kafka-clients/python/current/overview.html) | Kafka client wrapping librdkafka. |
+| [Pandera](https://pandera.readthedocs.io/) | Schema and statistical validation for dataframes, including Polars. |
+| [Great Expectations](https://docs.greatexpectations.io/) | Data quality suite with expectation stores and reporting. |
 
 **Single-node analytics stack.**
 `dlt (API extract) → Parquet on S3 via s3fs → DuckDB → SQLMesh models → Dagster assets`

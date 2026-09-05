@@ -6,22 +6,22 @@ part: "Domains"
 
 | Library | Description |
 |---|---|
-| PyTorch 2.x | Dominant deep learning framework. `torch.compile` for graph capture and kernel fusion. |
-| PyTorch Lightning | Training loop abstraction over PyTorch: checkpointing, distributed training, logging. |
-| JAX | Composable transforms (`jit`, `grad`, `vmap`, `pmap`), XLA compilation, TPU support. |
-| Flax, Optax | Neural network modules and optimizers for JAX. |
-| scikit-learn | Classical models, pipelines, cross-validation, metrics. |
-| XGBoost, LightGBM, CatBoost | Gradient-boosted trees. Standard choice for tabular data. |
-| Hugging Face `transformers` | Pretrained model implementations and training utilities. |
-| `datasets`, `accelerate`, `peft`, `trl` | Dataset loading, distributed training, parameter-efficient fine-tuning, preference training. |
-| timm | Image model architectures and pretrained weights. |
-| OpenCV | Classical computer vision: filtering, features, calibration, tracking. |
-| Albumentations | Image augmentation pipelines. |
-| ONNX, onnxruntime | Model interchange format and cross-platform inference runtime. |
-| vLLM, SGLang | High-throughput LLM inference servers with paged attention and continuous batching. |
-| Optuna, Ray Tune | Hyperparameter optimization. |
-| MLflow, Weights & Biases | Experiment tracking, model registry, artifact storage. |
-| BentoML | Model packaging and serving. |
+| [PyTorch 2.x](https://pytorch.org/docs/stable/) | Dominant deep learning framework. [`torch.compile`](https://docs.pytorch.org/docs/stable/torch.compiler.html) for graph capture and kernel fusion. |
+| [PyTorch Lightning](https://lightning.ai/docs/pytorch/stable/) | Training loop abstraction over PyTorch: checkpointing, distributed training, logging. |
+| [JAX](https://docs.jax.dev/) | Composable transforms (`jit`, `grad`, `vmap`, `pmap`), XLA compilation, TPU support. |
+| [Flax](https://flax.readthedocs.io/), [Optax](https://optax.readthedocs.io/) | Neural network modules and optimizers for JAX. |
+| [scikit-learn](https://scikit-learn.org/stable/) | Classical models, pipelines, cross-validation, metrics. |
+| [XGBoost](https://xgboost.readthedocs.io/), [LightGBM](https://lightgbm.readthedocs.io/), [CatBoost](https://catboost.ai/docs/) | Gradient-boosted trees. Standard choice for tabular data. |
+| [Hugging Face `transformers`](https://huggingface.co/docs/transformers/) | Pretrained model implementations and training utilities. |
+| [`datasets`](https://huggingface.co/docs/datasets/), [`accelerate`](https://huggingface.co/docs/accelerate/), [`peft`](https://huggingface.co/docs/peft/), [`trl`](https://huggingface.co/docs/trl/) | Dataset loading, distributed training, parameter-efficient fine-tuning, preference training. |
+| [timm](https://huggingface.co/docs/timm/) | Image model architectures and pretrained weights. |
+| [OpenCV](https://docs.opencv.org/4.x/) | Classical computer vision: filtering, features, calibration, tracking. |
+| [Albumentations](https://albumentations.ai/docs/) | Image augmentation pipelines. |
+| [ONNX](https://onnx.ai/onnx/), [onnxruntime](https://onnxruntime.ai/docs/) | Model interchange format and cross-platform inference runtime. |
+| [vLLM](https://docs.vllm.ai/), [SGLang](https://docs.sglang.ai/) | High-throughput LLM inference servers with paged attention and continuous batching. |
+| [Optuna](https://optuna.readthedocs.io/), [Ray Tune](https://docs.ray.io/en/latest/tune/index.html) | Hyperparameter optimization. |
+| [MLflow](https://mlflow.org/docs/latest/), [Weights & Biases](https://docs.wandb.ai/) | Experiment tracking, model registry, artifact storage. |
+| [BentoML](https://docs.bentoml.com/) | Model packaging and serving. |
 
 **Tabular prediction service.**
 `Feature table (DuckDB/Parquet) → scikit-learn pipeline + LightGBM → Optuna tuning → MLflow registry → ONNX export → FastAPI + onnxruntime`

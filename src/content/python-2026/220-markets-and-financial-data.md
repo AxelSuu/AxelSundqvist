@@ -6,20 +6,20 @@ part: "Domains"
 
 | Library | Description |
 |---|---|
-| yfinance | Unofficial client for Yahoo Finance endpoints. No stability guarantee. |
-| Alpha Vantage, Finnhub, EODHD, Tiingo | Commercial market data APIs; equities, FX, fundamentals. |
-| Polygon.io, Databento | Tick and trade-level market data, including historical order book. |
-| ccxt | Unified API across cryptocurrency exchanges, sync and async. |
-| ib_async | Interactive Brokers TWS/Gateway API (successor to ib_insync). |
-| OpenBB | Open-source aggregation layer over many data providers. |
-| TA-Lib, pandas-ta | Technical indicators; C bindings and pure-Python respectively. |
-| VectorBT | Vectorized backtesting and portfolio simulation on NumPy arrays. |
-| NautilusTrader | Event-driven backtesting and live trading platform; Rust core. |
-| backtesting.py | Event-driven backtester with a small API. |
-| QuantLib-Python | Derivatives pricing, curve construction, term structures. |
-| PyPortfolioOpt, Riskfolio-Lib | Portfolio optimization, risk models, efficient frontiers. |
-| arch | GARCH and volatility models, bootstrap methods. |
-| exchange_calendars | Trading sessions, holidays and market hours. |
+| [yfinance](https://ranaroussi.github.io/yfinance/) | Unofficial client for Yahoo Finance endpoints. No stability guarantee. |
+| [Alpha Vantage](https://www.alphavantage.co/documentation/), [Finnhub](https://finnhub.io/docs/api), [EODHD](https://eodhd.com/financial-apis/), [Tiingo](https://www.tiingo.com/documentation/general/overview) | Commercial market data APIs; equities, FX, fundamentals. |
+| [Polygon.io](https://polygon.io/docs), [Databento](https://databento.com/docs) | Tick and trade-level market data, including historical order book. |
+| [ccxt](https://docs.ccxt.com/) | Unified API across cryptocurrency exchanges, sync and async. |
+| [ib_async](https://ib-api-reloaded.github.io/ib_async/) | Interactive Brokers TWS/Gateway API (successor to ib_insync). |
+| [OpenBB](https://docs.openbb.co/) | Open-source aggregation layer over many data providers. |
+| [TA-Lib](https://ta-lib.github.io/ta-lib-python/), [pandas-ta](https://pypi.org/project/pandas-ta/) | Technical indicators; C bindings and pure-Python respectively. |
+| [VectorBT](https://vectorbt.dev/) | Vectorized backtesting and portfolio simulation on NumPy arrays. |
+| [NautilusTrader](https://nautilustrader.io/docs/) | Event-driven backtesting and live trading platform; Rust core. |
+| [backtesting.py](https://kernc.github.io/backtesting.py/) | Event-driven backtester with a small API. |
+| [QuantLib-Python](https://quantlib-python-docs.readthedocs.io/) | Derivatives pricing, curve construction, term structures. |
+| [PyPortfolioOpt](https://pyportfolioopt.readthedocs.io/), [Riskfolio-Lib](https://riskfolio-lib.readthedocs.io/) | Portfolio optimization, risk models, efficient frontiers. |
+| [arch](https://bashtage.github.io/arch/) | GARCH and volatility models, bootstrap methods. |
+| [exchange_calendars](https://github.com/gerrymanoim/exchange_calendars) | Trading sessions, holidays and market hours. |
 
 **Research data store.**
 `Vendor APIs → raw JSON archive → normalization → Parquet partitioned by date and symbol → DuckDB`

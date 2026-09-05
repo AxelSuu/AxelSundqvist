@@ -6,13 +6,13 @@ part: "Practices"
 
 | Library | Notes |
 |---|---|
-| `argparse` | Stdlib. Sufficient for a handful of flags. Colour output added in 3.14. |
-| Typer | Builds on Click; derives parameters, types and help from function signatures. |
-| Click | Decorator-based, mature, extensive plugin and testing support. |
-| Cyclopts | Type-hint-driven alternative to Typer with different conventions for parameter binding. |
-| Rich | Terminal output formatting; integrates with Typer and Click. |
+| [`argparse`](https://docs.python.org/3/library/argparse.html) | Stdlib. Sufficient for a handful of flags. Colour output added in 3.14. |
+| [Typer](https://typer.tiangolo.com/) | Builds on Click; derives parameters, types and help from function signatures. |
+| [Click](https://click.palletsprojects.com/) | Decorator-based, mature, extensive plugin and testing support. |
+| [Cyclopts](https://cyclopts.readthedocs.io/) | Type-hint-driven alternative to Typer with different conventions for parameter binding. |
+| [Rich](https://rich.readthedocs.io/) | Terminal output formatting; integrates with Typer and Click. |
 
-PEP 723 allows a single file to declare its interpreter requirement and dependencies inline:
+[PEP 723](https://peps.python.org/pep-0723/) allows a single file to declare its interpreter requirement and dependencies inline:
 
 ```python
 # /// script
@@ -21,6 +21,6 @@ PEP 723 allows a single file to declare its interpreter requirement and dependen
 # ///
 ```
 
-`uv run script.py` provisions an ephemeral environment from that block. This removes the need for a separate requirements file or a pre-existing virtual environment for standalone scripts, which is the common case for repository tooling in projects whose main language is not Python.
+[`uv run script.py`](https://docs.astral.sh/uv/guides/scripts/) provisions an ephemeral environment from that block. This removes the need for a separate requirements file or a pre-existing virtual environment for standalone scripts, which is the common case for repository tooling in projects whose main language is not Python.
 
-CLI applications are published as packages with a `[project.scripts]` entry point and installed with `uv tool install` or `pipx`.
+CLI applications are published as packages with a [`[project.scripts]`](https://packaging.python.org/en/latest/specifications/entry-points/) entry point and installed with `uv tool install` or [`pipx`](https://pipx.pypa.io/).

@@ -4,7 +4,7 @@ blurb: "One binary for both roles, and a rule set wider than the default."
 part: "Practices"
 ---
 
-`ruff` provides both a linter and a formatter in a single binary, implementing rules from flake8 and its plugins, isort, pydocstyle, pyupgrade, bandit and others. The formatter is compatible with Black's style with minor documented deviations.
+[`ruff`](https://docs.astral.sh/ruff/) provides both a linter and a formatter in a single binary, implementing [rules](https://docs.astral.sh/ruff/rules/) from flake8 and its plugins, isort, pydocstyle, pyupgrade, bandit and others. The formatter is compatible with [Black](https://black.readthedocs.io/)'s style with [minor documented deviations](https://docs.astral.sh/ruff/formatter/#black-compatibility).
 
 ```toml
 [tool.ruff]

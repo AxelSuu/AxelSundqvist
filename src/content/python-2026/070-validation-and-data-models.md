@@ -6,11 +6,11 @@ part: "Practices"
 
 | Library | Use |
 |---|---|
-| Pydantic v2 | Validation, coercion and serialization at I/O boundaries: HTTP payloads, config files, external API responses, model output. |
-| `dataclasses` | Stdlib internal value objects. `slots=True` and `frozen=True` reduce memory use and prevent mutation. |
-| attrs | Similar scope to dataclasses with more features: validators, converters, `__init__` customization. |
-| pydantic-settings | Loads and validates configuration from environment variables, `.env` files and secrets directories. |
-| `msgspec` | Alternative serialization and validation library with lower overhead, no coercion by default. |
+| [Pydantic v2](https://docs.pydantic.dev/) | Validation, coercion and serialization at I/O boundaries: HTTP payloads, config files, external API responses, model output. |
+| [`dataclasses`](https://docs.python.org/3/library/dataclasses.html) | Stdlib internal value objects. `slots=True` and `frozen=True` reduce memory use and prevent mutation. |
+| [attrs](https://www.attrs.org/) | Similar scope to dataclasses with more features: validators, converters, `__init__` customization. |
+| [pydantic-settings](https://docs.pydantic.dev/latest/concepts/pydantic_settings/) | Loads and validates configuration from environment variables, `.env` files and secrets directories. |
+| [`msgspec`](https://msgspec.dev/) | Alternative serialization and validation library with lower overhead, no coercion by default. |
 
 Validate at the process boundary and use plain objects internally:
 
