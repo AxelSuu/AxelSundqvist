@@ -10,7 +10,8 @@
     "dev": "astro dev",
     "build": "astro check && astro build",
     "preview": "astro preview",
-    "lint": "eslint . --report-unused-disable-directives --max-warnings 0"
+    "lint": "eslint . --report-unused-disable-directives --max-warnings 0",
+    "check:links": "node scripts/check-links.mjs"
   },
   "dependencies": {
     "@astrojs/markdown-satteri": "^0.4.0",
