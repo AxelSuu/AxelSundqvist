@@ -29,3 +29,10 @@ Free-threading status: the build is officially supported from 3.14, and PEP 779 
 An extension that was not built for free-threading re-enables the GIL when it is imported. [`PYTHON_GIL=0`](https://docs.python.org/3/using/cmdline.html#envvar-PYTHON_GIL), or `-X gil=0`, overrides that and keeps the GIL off, which runs the extension under exactly the conditions it declared it could not handle. The failures are data races inside C code, so they arrive as wrong results or a crash rather than an exception.
 
 Subinterpreters carry the constraint from the other side. An extension must use multi-phase initialisation ([PEP 489](https://peps.python.org/pep-0489/)) and keep its state out of C globals to be imported into a second interpreter. NumPy implements the first and not the second, and [raises `ImportError`](https://github.com/numpy/numpy/issues/24755) in a subinterpreter, which rules out most of the compiled scientific stack. Ecosystem support is the fact that decides whether the model is usable at all, and it is currently minimal.
+
+## References
+
+* [PEP 489 – Multi-phase extension module initialization](https://peps.python.org/pep-0489/) — Final, 3.5. The requirement an extension has to meet before a second interpreter can import it.
+* [PEP 734 – Multiple Interpreters in the Stdlib](https://peps.python.org/pep-0734/) — Final, 3.14.
+* [PEP 779 – Criteria for supported status for free-threaded Python](https://peps.python.org/pep-0779/) — Final, 3.14.
+* [PEP 803 – "abi3t": Stable ABI for Free-Threaded Builds](https://peps.python.org/pep-0803/) — Final, 3.15.

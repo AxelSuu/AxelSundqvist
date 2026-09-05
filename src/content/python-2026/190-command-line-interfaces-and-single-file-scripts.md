@@ -25,3 +25,8 @@ part: "Practices"
 [`uv run script.py`](https://docs.astral.sh/uv/guides/scripts/) provisions an ephemeral environment from that block. This removes the need for a separate requirements file or a pre-existing virtual environment for standalone scripts, which is the common case for repository tooling in projects whose main language is not Python.
 
 CLI applications are published as packages with a [`[project.scripts]`](https://packaging.python.org/en/latest/specifications/entry-points/) entry point and installed with `uv tool install` or [`pipx`](https://pipx.pypa.io/).
+
+## References
+
+* [PEP 723 – Inline script metadata](https://peps.python.org/pep-0723/) — Final.
+* [The entry points specification](https://packaging.python.org/en/latest/specifications/entry-points/) — how `[project.scripts]` becomes an executable.

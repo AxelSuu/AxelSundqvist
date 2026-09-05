@@ -46,3 +46,7 @@ Capture runs in its own thread writing IQ samples into a ring buffer; processing
 Each worker returns an array plus its parameter coordinates; xarray assembles them into a labelled cube indexed by the swept variables. Results are written incrementally so a long sweep can be interrupted and resumed. Seeds are derived deterministically from the parameter index so any single run can be reproduced in isolation.
 
 Not covered here: GPU kernel authoring (CuPy raw kernels, Numba's CUDA target, Triton), cluster-scale simulation through mpi4py, and FPGA or embedded DSP toolchains, which is where a real-time receive chain ends up once it leaves a workstation.
+
+## References
+
+* [Python array API standard](https://data-apis.org/array-api/latest/) — the specification the namespace and its dtype rules come from.

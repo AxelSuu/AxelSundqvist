@@ -51,3 +51,8 @@ ignore_missing_imports = true
 pyright expresses the same shape as a directory list: `typeCheckingMode = "basic"` across the repository, `strict = ["src/newpackage"]` for the part that has been converted.
 
 Third-party packages without annotations fall into three cases: a stub package on PyPI (the `types-` distributions), a package that ships `py.typed` in a later version than the one pinned, and everything else, which gets `ignore_missing_imports` for that module or a hand-written stub under a `stubs/` directory covering only the functions actually called. [`warn_unused_ignores`](https://mypy.readthedocs.io/en/stable/config_file.html#confval-warn_unused_ignores) and `reportUnnecessaryTypeIgnoreComment` report suppressions once they stop being needed, which is what keeps a migration from settling into a permanent list of ignores.
+
+## References
+
+* [The typing specification](https://typing.python.org/en/latest/spec/) — what the checkers implement, and the conformance suite they are measured against.
+* [PEP 695 – Type Parameter Syntax](https://peps.python.org/pep-0695/) — Final, 3.12.

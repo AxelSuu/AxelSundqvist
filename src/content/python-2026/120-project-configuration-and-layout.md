@@ -43,3 +43,9 @@ With a [`src/` layout](https://packaging.python.org/en/latest/discussions/src-la
 For multi-package repositories, [`uv` workspaces](https://docs.astral.sh/uv/concepts/projects/workspaces/) allow several `pyproject.toml` files to share one lockfile and one resolution, with path dependencies between members.
 
 The lockfile is committed for applications and libraries alike; it pins the development environment and does not constrain consumers of a published library.
+
+## References
+
+* [PEP 735 – Dependency Groups in pyproject.toml](https://peps.python.org/pep-0735/) — Final.
+* [PEP 751 – A file format to record Python dependencies for installation reproducibility](https://peps.python.org/pep-0751/) — Final.
+* [The `pyproject.toml` specification](https://packaging.python.org/en/latest/specifications/pyproject-toml/) — the canonical field reference.

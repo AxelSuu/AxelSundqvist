@@ -24,3 +24,7 @@ Conventions in common use:
 * Wrap third-party exceptions at the boundary where they are raised, preserving the original with [`raise ... from err`](https://docs.python.org/3/tutorial/errors.html#exception-chaining).
 * [`contextlib.suppress(SpecificError)`](https://docs.python.org/3/library/contextlib.html#contextlib.suppress) for intentional ignores, rather than a bare `except: pass`, which also swallows `KeyboardInterrupt` and `SystemExit`.
 * [`add_note()`](https://docs.python.org/3/library/exceptions.html#BaseException.add_note) (3.11) to attach context to an exception without wrapping it.
+
+## References
+
+* [PEP 654 – Exception Groups and except*](https://peps.python.org/pep-0654/) — Final, 3.11.

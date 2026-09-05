@@ -140,6 +140,13 @@ strong { font-weight: 600; }
 /* Bold-led paragraphs label each system design; give them a little air. */
 .prose > p > strong:first-child { display: inline-block; margin-top: 6px; }
 hr { border: 0; border-top: 1px solid var(--ink-12); margin: 42px 0; }
+/* The only heading inside an article is the References block, and it is a
+   label rather than a section title. */
+.prose h2 {
+  margin: 46px 0 14px; padding-top: 26px; border-top: 1px solid var(--ink-12);
+  font-size: 11px; letter-spacing: 0.13em; text-transform: uppercase;
+  font-weight: 500; color: var(--ink-40);
+}
 
 code {
   font-family: var(--mono); font-size: 0.855em;
