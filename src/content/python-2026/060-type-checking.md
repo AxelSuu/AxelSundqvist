@@ -1,6 +1,6 @@
 ---
 title: "Type checking"
-blurb: "Four checkers compared, the annotations worth knowing, and how to migrate a codebase that has none."
+blurb: "Four checkers, the annotations worth knowing, and how an untyped codebase is migrated."
 part: "Practices"
 ---
 
@@ -8,8 +8,8 @@ Type annotations are checked by a separate tool; the interpreter does not enforc
 
 | Checker | Notes |
 |---|---|
-| [mypy](https://mypy.readthedocs.io/) | Reference implementation. Largest plugin ecosystem, including Django and SQLAlchemy plugins. Slowest on large codebases. |
-| [pyright](https://microsoft.github.io/pyright/) | Written in TypeScript. Fast, high conformance with the [typing specification](https://typing.python.org/en/latest/spec/), powers Pylance in VS Code. |
+| [mypy](https://mypy.readthedocs.io/) | Reference implementation. Its [plugin API](https://mypy.readthedocs.io/en/stable/extending_mypy.html) is what django-stubs hooks into; pyright [rejects plugins by design](https://github.com/microsoft/pyright/blob/main/docs/mypy-comparison.md#plugins). |
+| [pyright](https://microsoft.github.io/pyright/) | Written in TypeScript, distributed as an npm package with a PyPI wrapper. Implements the [typing specification](https://typing.python.org/en/latest/spec/) and powers Pylance in VS Code. |
 | [pyrefly](https://pyrefly.org/) | Meta's checker, stable 1.0 since May 2026. Used on Instagram, PyTorch and JAX. Strict defaults, designed for large codebases. |
 | [ty](https://docs.astral.sh/ty/) | Astral's checker, in beta. Provides a gradual guarantee: adding annotations to working code does not introduce new errors. |
 
@@ -32,4 +32,21 @@ typeCheckingMode = "strict"
 pythonVersion = "3.14"
 ```
 
-Existing untyped codebases are usually migrated module by module, with strict settings applied to new code and relaxed overrides for legacy modules.
+Existing untyped codebases are migrated module by module. The checker runs over the whole tree from the first commit, and the modules that do not pass are listed as overrides rather than excluded, so the exceptions stay visible and countable:
+
+```toml
+[tool.mypy]
+strict = true
+
+[[tool.mypy.overrides]]
+module = ["legacy.*"]
+disallow_untyped_defs = false
+
+[[tool.mypy.overrides]]
+module = ["vendorlib.*"]
+ignore_missing_imports = true
+```
+
+pyright expresses the same shape as a directory list: `typeCheckingMode = "basic"` across the repository, `strict = ["src/newpackage"]` for the part that has been converted.
+
+Third-party packages without annotations fall into three cases: a stub package on PyPI (the `types-` distributions), a package that ships `py.typed` in a later version than the one pinned, and everything else, which gets `ignore_missing_imports` for that module or a hand-written stub under a `stubs/` directory covering only the functions actually called. [`warn_unused_ignores`](https://mypy.readthedocs.io/en/stable/config_file.html#confval-warn_unused_ignores) and `reportUnnecessaryTypeIgnoreComment` report suppressions once they stop being needed, which is what keeps a migration from settling into a permanent list of ignores.
