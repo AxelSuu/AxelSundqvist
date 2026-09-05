@@ -1,6 +1,7 @@
 ---
 title: "Scientific computing and signal processing"
 blurb: "Instruments, SDR and RF, with a measurement rig, a receive chain and a parameter sweep."
+reviewed: 2026-09-06
 part: "Domains"
 ---
 

@@ -1,6 +1,7 @@
 ---
 title: "Markets and financial data"
 blurb: "Vendors and backtesting, and the timestamps without which no result can be trusted."
+reviewed: 2026-09-06
 part: "Domains"
 ---
 

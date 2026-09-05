@@ -1,6 +1,7 @@
 ---
 title: "Command-line interfaces and single-file scripts"
 blurb: "Typer and Click, and the inline metadata that makes a single file runnable anywhere."
+reviewed: 2026-09-06
 part: "Practices"
 ---
 

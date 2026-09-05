@@ -1,6 +1,7 @@
 ---
 title: "Logging"
 blurb: "Configured once at the entry point, structured as fields, and never from inside a library."
+reviewed: 2026-09-06
 part: "Practices"
 ---
 

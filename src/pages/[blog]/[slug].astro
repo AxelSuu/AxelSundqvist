@@ -25,6 +25,13 @@ export async function getStaticPaths() {
 const { blog, meta, groups, section, prev, next } = Astro.props
 const { Content } = await render(section.entry)
 const kicker = groups.find((g) => g.sections.includes(section))?.label
+/* A per-page date, because a series-wide one says nothing about the page in
+ * front of the reader. */
+const reviewed = section.reviewed?.toLocaleDateString('en-GB', {
+  day: 'numeric',
+  month: 'long',
+  year: 'numeric',
+})
 ---
 
 <Reference
@@ -35,6 +42,7 @@ const kicker = groups.find((g) => g.sections.includes(section))?.label
   {prev}
   {next}
   here={section.slug}
+  stamp={reviewed && `Reviewed ${reviewed}`}
   title={section.title}
   heading={section.title}
   description={section.blurb}

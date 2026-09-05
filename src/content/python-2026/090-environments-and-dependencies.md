@@ -1,6 +1,7 @@
 ---
 title: "Environments and dependencies"
 blurb: "uv in place of pip, pyenv, pipx and Poetry, and why the interpreter belongs to the repository."
+reviewed: 2026-09-06
 part: "Practices"
 ---
 

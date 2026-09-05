@@ -1,6 +1,7 @@
 ---
 title: "TLDR"
 blurb: "One screen of defaults for a new project; the only prescriptive page in the series."
+reviewed: 2026-09-06
 ---
 
 These are my defaults for a new project. The pages that follow report what the ecosystem does rather than prescribing anything.

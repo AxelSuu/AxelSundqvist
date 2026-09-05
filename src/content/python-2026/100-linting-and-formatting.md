@@ -1,6 +1,7 @@
 ---
 title: "Linting and formatting"
 blurb: "One binary for both roles, and a rule set wider than the default."
+reviewed: 2026-09-06
 part: "Practices"
 ---
 

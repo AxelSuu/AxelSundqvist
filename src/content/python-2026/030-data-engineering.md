@@ -1,6 +1,7 @@
 ---
 title: "Data engineering"
 blurb: "Arrow and Parquet as the common formats, with a single-node stack and a lakehouse."
+reviewed: 2026-09-06
 part: "Domains"
 ---
 

@@ -41,6 +41,9 @@ const sections = defineCollection({
     title: z.string(),
     /* One line. Carries the index listing and the page's meta description. */
     blurb: z.string(),
+    /* When this page was last checked against its sources. Per page rather
+     * than per series: a stamp covering pages nobody reread is a lie. */
+    reviewed: z.coerce.date().optional(),
     part: z.string().optional(),
   }),
 })

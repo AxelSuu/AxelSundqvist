@@ -1,6 +1,7 @@
 ---
 title: "Packaging and distribution"
 blurb: "Build backends, wheels, and the full shape of a published library."
+reviewed: 2026-09-06
 part: "Practices"
 ---
 

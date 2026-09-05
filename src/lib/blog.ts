@@ -8,6 +8,7 @@ export type Section = {
   title: string
   blurb: string
   part?: string
+  reviewed?: Date
 }
 
 /* A run of consecutive sections sharing a `part`, in document order. */

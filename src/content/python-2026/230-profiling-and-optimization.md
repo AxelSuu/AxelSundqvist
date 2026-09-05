@@ -1,6 +1,7 @@
 ---
 title: "Profiling and optimization"
 blurb: "The tools, and the order of work that makes them unnecessary."
+reviewed: 2026-09-06
 part: "Practices"
 ---
 

@@ -1,6 +1,7 @@
 ---
 title: "Type checking"
 blurb: "Four checkers, the annotations worth knowing, and how an untyped codebase is migrated."
+reviewed: 2026-09-06
 part: "Practices"
 ---
 

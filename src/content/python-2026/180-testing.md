@@ -1,6 +1,7 @@
 ---
 title: "Testing"
 blurb: "Fixtures, parametrization, property-based tests, and why mocking a driver tests the mock."
+reviewed: 2026-09-06
 part: "Practices"
 ---
 

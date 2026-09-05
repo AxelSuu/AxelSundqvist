@@ -8,6 +8,8 @@ interface Props {
   groups: Group[]
   /* Slug of the section being rendered; absent on a blog index. */
   here?: string
+  /* Overrides the series stamp, so a section can date its own review. */
+  stamp?: string
   title: string
   heading: string
   kicker?: string
@@ -16,7 +18,7 @@ interface Props {
   next?: Section
 }
 
-const { blog, meta, groups, here, title, heading, kicker, description, prev, next } =
+const { blog, meta, groups, here, stamp, title, heading, kicker, description, prev, next } =
   Astro.props
 
 const home = `/${blog}/`
@@ -70,7 +72,7 @@ const og = new URL('/images/og.jpg', Astro.site).href
         <a href="/">← Axel Sundqvist</a>
         <a href={home}>Contents</a>
       </nav>
-      {meta.stamp && <span class="stamp">{meta.stamp}</span>}
+      {(stamp ?? meta.stamp) && <span class="stamp">{stamp ?? meta.stamp}</span>}
     </div>
 
     <header class="title">

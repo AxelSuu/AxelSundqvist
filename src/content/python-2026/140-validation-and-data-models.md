@@ -1,6 +1,7 @@
 ---
 title: "Validation and data models"
 blurb: "Pydantic at the boundary, plain objects inside, and configuration that fails at startup."
+reviewed: 2026-09-06
 part: "Practices"
 ---
 

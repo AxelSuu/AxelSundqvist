@@ -1,6 +1,7 @@
 ---
 title: "Python versions"
 blurb: "What each release from 3.11 to 3.15 added, one line apiece."
+reviewed: 2026-09-06
 part: "Practices"
 ---
 

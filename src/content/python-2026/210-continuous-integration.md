@@ -1,6 +1,7 @@
 ---
 title: "Continuous integration"
 blurb: "A working pipeline, and the six things usually left out of one."
+reviewed: 2026-09-06
 part: "Practices"
 ---
 
