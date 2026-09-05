@@ -4,8 +4,8 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/tech.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Python versions — The State of Python, 2026</title>
-    <meta name="description" content="What is supported, what each recent release added, and how the policy differs for applications and libraries." />
+    <title>Python versions</title>
+    <meta name="description" content="Info about different Python versions." />
     <meta name="theme-color" content="#f7f6f3" />
     <link rel="canonical" href="https://axelsundqvist.se/python-2026/python-versions" />
 
@@ -14,11 +14,11 @@
     <meta property="og:site_name" content="Axel Sundqvist" />
     <meta property="og:locale" content="en_GB" />
     <meta property="og:title" content="Python versions" />
-    <meta property="og:description" content="What is supported, what each recent release added, and how the policy differs for applications and libraries." />
+    <meta property="og:description" content="Info about different Python versions." />
     <meta property="og:image" content="https://axelsundqvist.se/images/og.jpg" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Python versions" />
-    <meta name="twitter:description" content="What is supported, what each recent release added, and how the policy differs for applications and libraries." />
+    <meta name="twitter:description" content="Info about different Python versions." />
     <meta name="twitter:image" content="https://axelsundqvist.se/images/og.jpg" />
 
     <!-- Same files the film loads, so a reader arriving here first warms the
@@ -242,16 +242,16 @@
     </div>
 
     <header class="title">
-      <p class="kicker">Part I — Practices</p>
+      <p class="kicker">Part I: Practices</p>
       <h1>Python versions</h1>
     </header>
 
     <div class="wrap">
       <nav class="toc" aria-label="Contents"><p class="toc-head"><a href="/python-2026/">Contents</a></p>
 <ul>
-<li><a href="/python-2026/the-baseline">The baseline</a></li>
+<li><a href="/python-2026/tldr">TLDR</a></li>
 </ul>
-<p class="toc-part">Part I — Practices</p>
+<p class="toc-part">Part I: Practices</p>
 <ul>
 <li><a href="/python-2026/environments-and-dependencies">Environments and dependencies</a></li>
 <li><a href="/python-2026/linting-and-formatting">Linting and formatting</a></li>
@@ -269,7 +269,7 @@
 <li><a href="/python-2026/packaging-and-distribution">Packaging and distribution</a></li>
 <li><a href="/python-2026/profiling-and-optimization">Profiling and optimization</a></li>
 </ul>
-<p class="toc-part">Part II — Domains</p>
+<p class="toc-part">Part II: Domains</p>
 <ul>
 <li><a href="/python-2026/backends-databases-and-apis">Backends, databases and APIs</a></li>
 <li><a href="/python-2026/data-engineering">Data engineering</a></li>
@@ -279,17 +279,17 @@
 <li><a href="/python-2026/markets-and-financial-data">Markets and financial data</a></li>
 <li><a href="/python-2026/llms-agents-and-retrieval">LLMs, agents and retrieval</a></li>
 </ul>
-<ul>
-<li><a href="/python-2026/part-iii-python-around-another-language">Part III — Python around another language</a></li>
-</ul>
 </nav>
       <div class="column">
         <article class="prose" id="content">
-<p>Python 3.9 reached end of life in October 2025. Supported versions as of September 2026 are 3.10 through 3.14, with 3.15 scheduled for 1 October 2026.</p>
-<p>Version support policy differs by artifact type:</p>
-<div class="scroll"><table><thead><tr><th>Artifact</th><th>Policy</th></tr></thead><tbody><tr><td>Application or service</td><td>Pin a single version; the runtime is controlled by the deployment.</td></tr><tr><td>Library</td><td>Support the versions your consumers use. SPEC 0 recommends dropping a Python version three years after its release.</td></tr><tr><td>Single-file script</td><td>Declare <code>requires-python</code> inline; the runner provisions the interpreter.</td></tr></tbody></table></div>
 <p>Relevant changes in recent versions:</p>
-<div class="scroll"><table><thead><tr><th>Version</th><th>Change</th></tr></thead><tbody><tr><td>3.11</td><td><code>TaskGroup</code>, <code>asyncio.timeout</code>, exception groups and <code>except*</code>, <code>tomllib</code>, significant interpreter speedups.</td></tr><tr><td>3.12</td><td>New type parameter syntax (<code>def f[T]()</code>), <code>@override</code>, per-interpreter GIL groundwork.</td></tr><tr><td>3.13</td><td>Experimental free-threaded build, new REPL, JIT groundwork.</td></tr><tr><td>3.14</td><td>Free-threaded build officially supported (PEP 779); deferred evaluation of annotations (PEP 649); <code>concurrent.interpreters</code> for subinterpreters (PEP 734); colour output in <code>argparse</code> and tracebacks.</td></tr><tr><td>3.15 (Oct 2026)</td><td><code>abi3t</code>, a stable ABI for free-threaded builds (PEP 803), allowing one C extension wheel across free-threaded releases.</td></tr></tbody></table></div>
+<div class="scroll"><table><thead><tr><th>Version</th><th>Change</th></tr>
+</thead><tbody><tr><td>3.11</td><td><code>TaskGroup</code>, <code>asyncio.timeout</code>, exception groups and <code>except*</code>, <code>tomllib</code>, significant interpreter speedups.</td>
+</tr><tr><td>3.12</td><td>New type parameter syntax (<code>def f[T]()</code>), <code>@override</code>, per-interpreter GIL groundwork.</td>
+</tr><tr><td>3.13</td><td>Experimental free-threaded build, new REPL, JIT groundwork.</td></tr><tr><td>3.14</td>
+  <td>Free-threaded build officially supported (PEP 779); deferred evaluation of annotations (PEP 649); <code>concurrent.interpreters</code> for subinterpreters (PEP 734); colour output in <code>argparse</code> and tracebacks.</td></tr><tr><td>3.15 (Oct 2026)</td>
+    <td><code>abi3t</code>, a stable ABI for free-threaded builds (PEP 803), allowing one C extension wheel across free-threaded releases.</td>
+  </tr></tbody></table></div>
         </article>
         <nav class="pager">
 <a class="prev" href="/python-2026/linting-and-formatting"><span>Previous</span>Linting and formatting</a>
