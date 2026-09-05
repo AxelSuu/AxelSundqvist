@@ -8,7 +8,7 @@ part: "Practices"
 |---|---|
 | [`argparse`](https://docs.python.org/3/library/argparse.html) | Stdlib. Sufficient for a handful of flags. Colour output added in 3.14. |
 | [Typer](https://typer.tiangolo.com/) | Builds on Click; derives parameters, types and help from function signatures. |
-| [Click](https://click.palletsprojects.com/) | Decorator-based, mature, extensive plugin and testing support. |
+| [Click](https://click.palletsprojects.com/) | Decorator-based. Ships [`CliRunner`](https://click.palletsprojects.com/en/stable/testing/) for invoking commands in-process from tests. |
 | [Cyclopts](https://cyclopts.readthedocs.io/) | Type-hint-driven alternative to Typer with different conventions for parameter binding. |
 | [Rich](https://rich.readthedocs.io/) | Terminal output formatting; integrates with Typer and Click. |
 

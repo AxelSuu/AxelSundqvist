@@ -4,7 +4,7 @@ blurb: "uv in place of pip, pyenv, pipx and Poetry, and why the interpreter belo
 part: "Practices"
 ---
 
-[`uv`](https://docs.astral.sh/uv/) covers the roles previously split across [pip](https://pip.pypa.io/), [pip-tools](https://pip-tools.readthedocs.io/), [virtualenv](https://virtualenv.pypa.io/), [pyenv](https://github.com/pyenv/pyenv), [pipx](https://pipx.pypa.io/) and [Poetry](https://python-poetry.org/docs/). It resolves and installs substantially faster than pip, manages interpreter installations, and produces a cross-platform lockfile ([`uv.lock`](https://docs.astral.sh/uv/concepts/projects/layout/#the-lockfile)).
+[`uv`](https://docs.astral.sh/uv/) covers the roles previously split across [pip](https://pip.pypa.io/), [pip-tools](https://pip-tools.readthedocs.io/), [virtualenv](https://virtualenv.pypa.io/), [pyenv](https://github.com/pyenv/pyenv), [pipx](https://pipx.pypa.io/) and [Poetry](https://python-poetry.org/docs/). It resolves and installs from a [global cache](https://docs.astral.sh/uv/concepts/cache/) shared across projects, linking packages into each environment rather than copying them, manages interpreter installations, and produces a cross-platform lockfile ([`uv.lock`](https://docs.astral.sh/uv/concepts/projects/layout/#the-lockfile)).
 
 | Command | Purpose |
 |---|---|
@@ -18,6 +18,6 @@ part: "Practices"
 
 Because `uv` manages interpreters, the Python version is a project-level declaration ([`requires-python`](https://packaging.python.org/en/latest/specifications/pyproject-toml/#requires-python), `.python-version`) rather than a machine-level prerequisite. This matters more than it sounds: it is the difference between a repository that a colleague can build and one that requires a paragraph of setup instructions.
 
-Alternatives still in use: Poetry (mature, own resolver and lockfile format), [PDM](https://pdm-project.org/) (standards-focused), [Hatch](https://hatch.pypa.io/) (environment matrix management), and pip with `pip-tools` for projects that require pip alone.
+Alternatives still in use: Poetry (own resolver and `poetry.lock`, which predates the standardised format), [PDM](https://pdm-project.org/) (standards-focused), [Hatch](https://hatch.pypa.io/) (environment matrix management), and pip with `pip-tools` for projects that require pip alone.
 
 Astral, which develops `uv`, `ruff` and [`ty`](https://docs.astral.sh/ty/), agreed to be acquired by OpenAI in March 2026, subject to regulatory approval. The tools remain open source under permissive licences.

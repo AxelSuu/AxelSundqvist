@@ -7,7 +7,7 @@ part: "Practices"
 | Backend | Notes |
 |---|---|
 | [Hatchling](https://hatch.pypa.io/latest/config/build/) | Default in `uv init`; plugin system, version from file or VCS. |
-| [setuptools](https://setuptools.pypa.io/) | Widest compatibility, required for complex C extension builds. |
+| [setuptools](https://setuptools.pypa.io/) | The backend most existing projects already declare; required where the build has to run arbitrary Python, as complex C extension builds do. |
 | [maturin](https://www.maturin.rs/) | Builds wheels for projects containing compiled extensions. |
 | [scikit-build-core](https://scikit-build-core.readthedocs.io/) | CMake-based builds for C/C++ extensions. |
 | [flit-core](https://flit.pypa.io/) | Minimal backend for pure-Python packages. |

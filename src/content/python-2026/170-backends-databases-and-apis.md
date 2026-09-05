@@ -19,14 +19,14 @@ Servers: [Uvicorn](https://uvicorn.dev/) (ASGI, uvloop-based), [Granian](https:/
 |---|---|
 | [SQLAlchemy 2.0](https://docs.sqlalchemy.org/) | ORM and Core query builder. The 2.0 API is fully typed and supports async sessions. |
 | [Alembic](https://alembic.sqlalchemy.org/) | Migration tool for SQLAlchemy. |
-| [asyncpg](https://magicstack.github.io/asyncpg/current/) | Async PostgreSQL driver, no DB-API layer, high throughput. |
+| [asyncpg](https://magicstack.github.io/asyncpg/current/) | Async PostgreSQL driver. Implements the PostgreSQL binary protocol directly rather than through DB-API. |
 | [psycopg 3](https://www.psycopg.org/psycopg3/docs/) | PostgreSQL driver with sync and async support, server-side binding, `COPY` support. |
 | [SQLModel](https://sqlmodel.tiangolo.com/) | Layer combining SQLAlchemy models and Pydantic models in one class. |
 | [aiosqlite](https://aiosqlite.omnilib.dev/) | Async wrapper around `sqlite3`. |
 | [redis-py](https://redis.readthedocs.io/) | Redis client, sync and async. |
-| [ConnectorX](https://sfu-db.github.io/connector-x/) | Fast bulk loading from SQL databases into Arrow/Polars/pandas. |
-| [Celery](https://docs.celeryq.dev/) | Distributed task queue, broker-backed, mature. |
-| [Dramatiq](https://dramatiq.io/), [RQ](https://python-rq.org/), [arq](https://arq-docs.helpmanual.io/), [taskiq](https://taskiq-python.github.io/) | Lighter task queues; arq and taskiq are asyncio-native. |
+| [ConnectorX](https://sfu-db.github.io/connector-x/) | Bulk loading from SQL databases into Arrow, Polars and pandas; partitions a query and fetches the parts in parallel. |
+| [Celery](https://docs.celeryq.dev/) | Distributed task queue over RabbitMQ or Redis, with scheduling, retries and result backends. |
+| [Dramatiq](https://dramatiq.io/), [RQ](https://python-rq.org/), [arq](https://arq-docs.helpmanual.io/), [taskiq](https://taskiq-python.github.io/) | Task queues with a smaller surface than Celery; arq and taskiq are asyncio-native. |
 | [Temporal Python SDK](https://docs.temporal.io/develop/python/) | Durable workflow execution with retries and state persistence. |
 | [Authlib](https://docs.authlib.org/) | OAuth 1/2 and OpenID Connect client and server implementations. |
 

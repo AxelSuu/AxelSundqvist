@@ -6,7 +6,7 @@ part: "Domains"
 
 | Library | Description |
 |---|---|
-| [PyTorch 2.x](https://pytorch.org/docs/stable/) | Dominant deep learning framework. [`torch.compile`](https://docs.pytorch.org/docs/stable/torch.compiler.html) for graph capture and kernel fusion. |
+| [PyTorch 2.x](https://pytorch.org/docs/stable/) | The backend `transformers`, timm and vLLM are written against. [`torch.compile`](https://docs.pytorch.org/docs/stable/torch.compiler.html) for graph capture and kernel fusion. |
 | [PyTorch Lightning](https://lightning.ai/docs/pytorch/stable/) | Training loop abstraction over PyTorch: checkpointing, distributed training, logging. |
 | [JAX](https://docs.jax.dev/) | Composable transforms (`jit`, `grad`, `vmap`, `pmap`), XLA compilation, TPU support. |
 | [Flax](https://flax.readthedocs.io/), [Optax](https://optax.readthedocs.io/) | Neural network modules and optimizers for JAX. |
@@ -18,7 +18,7 @@ part: "Domains"
 | [OpenCV](https://docs.opencv.org/4.x/) | Classical computer vision: filtering, features, calibration, tracking. |
 | [Albumentations](https://albumentations.ai/docs/) | Image augmentation pipelines. |
 | [ONNX](https://onnx.ai/onnx/), [onnxruntime](https://onnxruntime.ai/docs/) | Model interchange format and cross-platform inference runtime. |
-| [vLLM](https://docs.vllm.ai/), [SGLang](https://docs.sglang.ai/) | High-throughput LLM inference servers with paged attention and continuous batching. |
+| [vLLM](https://docs.vllm.ai/), [SGLang](https://docs.sglang.ai/) | LLM inference servers; paged attention and continuous batching keep a GPU busy across concurrent requests. |
 | [Optuna](https://optuna.readthedocs.io/), [Ray Tune](https://docs.ray.io/en/latest/tune/index.html) | Hyperparameter optimization. |
 | [MLflow](https://mlflow.org/docs/latest/), [Weights & Biases](https://docs.wandb.ai/) | Experiment tracking, model registry, artifact storage. |
 | [BentoML](https://docs.bentoml.com/) | Model packaging and serving. |

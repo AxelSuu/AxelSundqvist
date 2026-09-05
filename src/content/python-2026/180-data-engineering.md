@@ -21,7 +21,7 @@ part: "Domains"
 |---|---|
 | [Airflow 3](https://airflow.apache.org/docs/) | DAG-based scheduler. Large operator ecosystem. |
 | [Dagster](https://docs.dagster.io/) | Asset-oriented orchestrator with typed inputs/outputs and data lineage. |
-| [Prefect 3](https://docs.prefect.io/) | Python-native flow orchestration, lighter deployment model. |
+| [Prefect 3](https://docs.prefect.io/) | Python-native flow orchestration; flows and tasks are decorated functions, and a flow runs without a scheduler in front of it. |
 | [dbt](https://docs.getdbt.com/) | SQL transformation framework with tests and lineage. |
 | [SQLMesh](https://sqlmesh.readthedocs.io/) | SQL transformation tool with column-level lineage and virtual environments. |
 
