@@ -1,7 +1,9 @@
 ---
 title: "TLDR"
-blurb: "Short summary of practices."
+blurb: "One screen of defaults for a new project; the only prescriptive page in the series."
 ---
+
+These are my defaults for a new project. The pages that follow report what the ecosystem does rather than prescribing anything.
 
 * **Toolchain:** Use [`uv`](https://docs.astral.sh/uv/) for dependencies, interpreters, tools, scripts, and builds.
 * **Formatting & Linting:** Use [`ruff`](https://docs.astral.sh/ruff/) for both linting and formatting.
