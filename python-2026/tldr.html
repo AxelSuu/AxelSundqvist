@@ -282,7 +282,55 @@
 </nav>
       <div class="column">
         <article class="prose" id="content">
-<ul><li><code>uv</code> for dependencies, interpreters, tools, scripts and builds</li><li><code>ruff</code> for lint and format, with a wider rule set than the default</li><li>Everything configured in <code>pyproject.toml</code>; dev dependencies in <code>[dependency-groups]</code></li><li><code>src/</code> layout, lockfile committed, <code>uv lock --check</code> in CI</li><li>One recent Python. 3.14 for applications; follow SPEC 0 for libraries</li><li>A type checker in CI, strict on new code: pyright, or pyrefly on large codebases</li><li>Pydantic at I/O boundaries, dataclasses or attrs internally</li><li><code>pydantic-settings</code> for configuration, validated at startup</li><li>Structured logging, configured once at the entry point, never inside libraries</li><li><code>TaskGroup</code> and <code>asyncio.timeout</code> for concurrency; async for I/O, processes for CPU</li><li>pytest with fixtures and parametrization; Hypothesis for invariants; Testcontainers instead of database mocks</li><li>Typer or Click for CLIs; <code># /// script</code> inline metadata for single-file tools</li><li>Profile before optimizing; py-spy, scalene, memray</li><li>Pin GitHub Actions to commit SHAs; publish with trusted publishing</li></ul>
+<ul class="sota-python-checklist">
+  <li><strong>Toolchain:</strong> Use <code>uv</code> for dependencies, interpreters, tools, scripts, and builds.</li>
+  <li><strong>Formatting &amp; Linting:</strong> Use <code>ruff</code> for both linting and formatting.</li>
+  <li><strong>Data Modeling:</strong> Use <code>Pydantic</code> at I/O boundaries; native <code>dataclasses</code> or <code>attrs</code> internally.</li>
+  <li><strong>Configuration:</strong> Use <code>pydantic-settings</code> for configuration, validated strictly at startup.</li>
+  <li><strong>Project Metadata:</strong> Everything configured in <code>pyproject.toml</code>; dev dependencies managed via standard <code>[dependency-groups]</code>.</li>
+  <li><strong>Project Structure:</strong> Use <code>src/</code> layout, commit your lockfile, and enforce <code>uv lock --check</code> in CI.</li>
+  <li><strong>Type Checking:</strong> Run a type checker in CI, strict on new code (<code>pyright</code>, or <code>pyrefly</code> on large codebases).</li>
+  <li><strong>Logging:</strong> Structured logging configured once at the application entry point—never inside reusable libraries.</li>
+  <li><strong>Concurrency:</strong> Use <code>TaskGroup</code> and <code>asyncio.timeout</code> for async I/O; processes for CPU-bound tasks.</li>
+  <li><strong>Testing:</strong> Use <code>pytest</code> with fixtures and parametrization; <code>Hypothesis</code> for property-based invariants; <code>Testcontainers</code> instead of database mocks.</li>
+  <li><strong>CLIs &amp; Tooling:</strong> Use <code>Typer</code> or <code>Cyclopts</code> for production CLIs; <code># /// script</code> inline metadata for single-file tools.</li>
+  <li><strong>Performance:</strong> Profile before optimizing using <code>py-spy</code>, <code>scalene</code>, or <code>memray</code>.</li>
+  <li><strong>Security &amp; CI/CD:</strong> Pin GitHub Actions to commit SHAs; publish packages to PyPI via Trusted Publishers (OIDC).</li>
+</ul>
+/*
+.sota-python-checklist {
+  list-style: none;
+  padding-left: 0;
+  margin: 1.5rem 0;
+  font-family: system-ui, -apple-system, sans-serif;
+  line-height: 1.6;
+}
+
+.sota-python-checklist li {
+  position: relative;
+  padding-left: 1.5rem;
+  margin-bottom: 0.75rem;
+  color: #24292f;
+}
+
+.sota-python-checklist li::before {
+  content: "•";
+  position: absolute;
+  left: 0.25rem;
+  color: #0969da;
+  font-weight: bold;
+}
+
+.sota-python-checklist code {
+  background-color: #f6f8fa;
+  border: 1px solid #d0d7de;
+  border-radius: 4px;
+  padding: 0.15em 0.4em;
+  font-family: ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, monospace;
+  font-size: 0.875em;
+  color: #0550ae;
+}
+*/
         </article>
         <nav class="pager">
 <a class="next" href="/python-2026/environments-and-dependencies"><span>Next</span>Environments and dependencies</a>
