@@ -1,6 +1,6 @@
 ---
 title: "Errors"
-blurb: "Exception groups, and the conventions that keep a package’s errors its own."
+blurb: "Exception groups and package-level error conventions."
 reviewed: 2026-09-06
 part: "Practices"
 ---

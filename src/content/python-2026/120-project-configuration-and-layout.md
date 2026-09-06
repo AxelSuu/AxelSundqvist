@@ -1,6 +1,6 @@
 ---
 title: "Project configuration and layout"
-blurb: "pyproject.toml, dependency groups, the src layout, and what the lockfile is for."
+blurb: "Project metadata, dependency groups, src layout, and lockfiles."
 reviewed: 2026-09-06
 part: "Practices"
 ---

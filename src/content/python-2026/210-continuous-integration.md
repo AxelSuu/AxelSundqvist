@@ -1,6 +1,6 @@
 ---
 title: "Continuous integration"
-blurb: "A working pipeline, and the six things usually left out of one."
+blurb: "A CI pipeline and six checks to include."
 reviewed: 2026-09-06
 part: "Practices"
 ---

@@ -5,9 +5,9 @@ description: >-
   test and build systems in other languages. Reviewed September 2026.
 stamp: Reviewed September 2026
 intro: >-
-  Part I is a selection rather than a survey: domains chosen by interest, with
-  the stacks and project shapes each one uses. Part II reports what mainstream
-  Python practice has converged on, and does not argue for it.
+  This is an opinionated reference to Python in 2026 with 
+  examples of good choices and standards. The article starts with
+  some state of the art domains.
 parts:
   - Domains
   - Practices

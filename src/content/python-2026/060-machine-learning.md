@@ -1,6 +1,6 @@
 ---
 title: "Machine learning"
-blurb: "Training and serving, with a tabular prediction service and a vision pipeline."
+blurb: "Training and serving, with tabular and vision examples."
 reviewed: 2026-09-06
 part: "Domains"
 ---

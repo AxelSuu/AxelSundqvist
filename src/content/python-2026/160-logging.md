@@ -1,6 +1,6 @@
 ---
 title: "Logging"
-blurb: "Configured once at the entry point, structured as fields, and never from inside a library."
+blurb: "Application-level configuration, structured fields, and library logging boundaries."
 reviewed: 2026-09-06
 part: "Practices"
 ---

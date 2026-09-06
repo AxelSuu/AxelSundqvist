@@ -74,6 +74,8 @@ header.title {
   padding: clamp(44px, 8vh, 96px) clamp(20px, 5vw, 56px) 0;
   max-width: 1180px; margin: 0 auto;
 }
+body.index header.title { text-align: center; }
+body.index header.title h1 { margin-inline: auto; }
 .kicker {
   margin: 0 0 14px;
   font-size: 12px; letter-spacing: 0.13em; text-transform: uppercase;

@@ -1,6 +1,6 @@
 ---
 title: "Concurrency"
-blurb: "Five models and what each is actually for, plus where free-threading stands."
+blurb: "Concurrency models, their use cases, and free-threading status."
 reviewed: 2026-09-06
 part: "Practices"
 ---

@@ -1,6 +1,6 @@
 ---
 title: "Documentation"
-blurb: "Generators, and the part of an interface that annotations cannot state."
+blurb: "Documentation generators and what annotations leave unspecified."
 reviewed: 2026-09-06
 part: "Practices"
 ---

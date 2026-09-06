@@ -1,6 +1,6 @@
 ---
 title: "LLMs, agents and retrieval"
-blurb: "Provider SDKs, agent frameworks and vector stores, with document QA and typed extraction."
+blurb: "Provider clients, agent workflows, retrieval, and structured extraction."
 reviewed: 2026-09-06
 part: "Domains"
 ---

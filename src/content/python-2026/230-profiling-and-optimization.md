@@ -1,6 +1,6 @@
 ---
 title: "Profiling and optimization"
-blurb: "The tools, and the order of work that makes them unnecessary."
+blurb: "Profiling tools and an order for optimizing Python code."
 reviewed: 2026-09-06
 part: "Practices"
 ---

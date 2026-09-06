@@ -1,6 +1,6 @@
 ---
 title: "Data science"
-blurb: "The array and dataframe stack, with a reproducible analysis repository and sensor time series."
+blurb: "Arrays, dataframes, reproducible analysis, and sensor time series."
 reviewed: 2026-09-06
 part: "Domains"
 ---

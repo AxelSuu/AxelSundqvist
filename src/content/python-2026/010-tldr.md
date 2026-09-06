@@ -1,10 +1,10 @@
 ---
 title: "TLDR"
-blurb: "One screen of defaults for a new project; the only prescriptive page in the series."
+blurb: "A concise set of defaults for new Python projects."
 reviewed: 2026-09-06
 ---
 
-These are my defaults for a new project. The pages that follow report what the ecosystem does rather than prescribing anything.
+These are my defaults for a new project.
 
 * **Toolchain:** Use [`uv`](https://docs.astral.sh/uv/) for dependencies, interpreters, tools, scripts, and builds.
 * **Formatting & Linting:** Use [`ruff`](https://docs.astral.sh/ruff/) for both linting and formatting.

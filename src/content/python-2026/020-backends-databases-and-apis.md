@@ -1,6 +1,6 @@
 ---
 title: "Backends, databases and APIs"
-blurb: "Frameworks, drivers and queues, with a multi-tenant API and a webhook ingester."
+blurb: "Frameworks, data access, queues, and two example service designs."
 reviewed: 2026-09-06
 part: "Domains"
 ---

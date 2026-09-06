@@ -1,6 +1,6 @@
 ---
 title: "Changelog"
-blurb: "What changed at each review, and when."
+blurb: "The changes recorded in each review, with dates."
 reviewed: 2026-09-06
 part: "Maintenance"
 ---
