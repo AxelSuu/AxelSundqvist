@@ -1,5 +1,6 @@
 import { defineConfig } from 'astro/config'
 import react from '@astrojs/react'
+import sitemap from '@astrojs/sitemap'
 import { satteri } from '@astrojs/markdown-satteri'
 import { katexPlugin } from './src/lib/katex-plugin.ts'
 import { scrollPlugin } from './src/lib/scroll-plugin.ts'
@@ -7,7 +8,20 @@ import { scrollPlugin } from './src/lib/scroll-plugin.ts'
 // https://astro.build/config
 export default defineConfig({
   site: 'https://axelsundqvist.se',
-  integrations: [react()],
+  integrations: [
+    react(),
+    sitemap({
+      // Match the canonical URLs Reference.astro publishes: a section has no
+      // trailing slash, the site root and a blog index do.
+      serialize(item) {
+        const url = new URL(item.url)
+        if (url.pathname.split('/').filter(Boolean).length > 1) {
+          url.pathname = url.pathname.replace(/\/$/, '')
+        }
+        return { ...item, url: url.href }
+      },
+    }),
+  ],
   markdown: {
     processor: satteri({
       features: { math: true },
