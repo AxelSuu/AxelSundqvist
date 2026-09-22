@@ -1,6 +1,6 @@
 ---
 title: "Packaging and distribution"
-blurb: "Build backends, distributions, and a published library layout."
+blurb: "Build backends, distributions, an application image, and a published library layout."
 reviewed: 2026-09-06
 part: "Practices"
 ---
@@ -14,6 +14,29 @@ part: "Practices"
 | [flit-core](https://flit.pypa.io/) | Minimal backend for pure-Python packages. |
 
 Distribution formats: [wheels](https://packaging.python.org/en/latest/specifications/binary-distribution-format/) for installation, [source distributions](https://packaging.python.org/en/latest/specifications/source-distribution-format/) for build-from-source. [`cibuildwheel`](https://cibuildwheel.pypa.io/) builds and tests binary wheels across platforms and Python versions in CI. Applications are more often distributed as container images or as [PEX](https://docs.pex-tool.org/)/[shiv](https://shiv.readthedocs.io/) archives than as wheels.
+
+An application's image installs from the lockfile in two steps, dependencies first, so a change to the source rebuilds only the last layer:
+
+```dockerfile
+FROM python:3.14-slim AS build
+COPY --from=ghcr.io/astral-sh/uv:<version> /uv /bin/
+ENV UV_COMPILE_BYTECODE=1 UV_LINK_MODE=copy UV_NO_DEV=1 UV_PYTHON_DOWNLOADS=0
+WORKDIR /app
+RUN --mount=type=cache,target=/root/.cache/uv \
+    --mount=type=bind,source=uv.lock,target=uv.lock \
+    --mount=type=bind,source=pyproject.toml,target=pyproject.toml \
+    uv sync --locked --no-install-project --no-editable
+COPY . .
+RUN --mount=type=cache,target=/root/.cache/uv \
+    uv sync --locked --no-editable
+
+FROM python:3.14-slim
+COPY --from=build /app/.venv /app/.venv
+ENV PATH="/app/.venv/bin:$PATH"
+CMD ["example"]
+```
+
+The final stage carries the virtual environment and nothing else: no uv, no cache, no source. That works because `--no-editable` installs the project into the environment instead of linking back to `/app`, and `UV_PYTHON_DOWNLOADS=0` keeps uv on the image's own interpreter, which the final stage has at the same path. A `.dockerignore` listing `.venv` keeps a local environment out of `COPY . .`, and the uv tag is pinned like any other dependency. [uv's Docker guide](https://docs.astral.sh/uv/guides/integration/docker/) covers the variations.
 
 A published library assembles these into one shape: `uv init --lib`, a `src/` layout, the Hatchling backend, and a CI matrix listing each version in `requires-python` explicitly. `requires-python` follows [SPEC 0](https://scientific-python.org/specs/spec-0000/). The public API is fully annotated and ships a [`py.typed`](https://typing.python.org/en/latest/spec/distributing.html#packaging-typed-libraries) marker so consumers get type information. Documentation is built with MkDocs and mkdocstrings from the same docstrings, and versioned with mike. The lockfile pins the development environment only; dependency ranges in `[project.dependencies]` stay wide, because a library that pins its dependencies is unusable alongside anything else. Hypothesis covers the invariants of the core data structures, and `--doctest-modules` keeps README and docstring examples correct.
 
