@@ -46,6 +46,6 @@ The lockfile is committed for applications and libraries alike; it pins the deve
 
 ## References
 
-* [PEP 735 – Dependency Groups in pyproject.toml](https://peps.python.org/pep-0735/) — Final.
-* [PEP 751 – A file format to record Python dependencies for installation reproducibility](https://peps.python.org/pep-0751/) — Final.
-* [The `pyproject.toml` specification](https://packaging.python.org/en/latest/specifications/pyproject-toml/) — the canonical field reference.
+* [PEP 735: Dependency Groups in pyproject.toml](https://peps.python.org/pep-0735/). Final.
+* [PEP 751: A file format to record Python dependencies for installation reproducibility](https://peps.python.org/pep-0751/). Final.
+* [The `pyproject.toml` specification](https://packaging.python.org/en/latest/specifications/pyproject-toml/). The canonical field reference.

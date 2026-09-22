@@ -42,7 +42,7 @@ part: "Domains"
 
 `dlt (API extract) → Parquet on S3 via s3fs → DuckDB → SQLMesh models → Dagster assets`
 
-Raw responses are written unmodified before any transformation, partitioned by ingestion date, so transformations can be replayed without re-fetching — the fetch is the part you cannot repeat, because the source has already changed. DuckDB queries the Parquet files in place; no warehouse is provisioned. Dagster models each table as an asset with declared upstream dependencies, so a schema change shows its blast radius. Pandera schemas run at the boundary between raw and modelled layers. This design handles datasets into the hundreds of gigabytes on one machine, which is more than most projects that reach for a cluster actually have.
+Raw responses are written unmodified before any transformation, partitioned by ingestion date, so transformations can be replayed without re-fetching. The fetch is the one step that cannot be repeated, because the source has since changed. DuckDB queries the Parquet files in place; no warehouse is provisioned. Dagster models each table as an asset with declared upstream dependencies, so a schema change shows its blast radius. Pandera schemas run at the boundary between raw and modelled layers. This design handles datasets into the hundreds of gigabytes on one machine, which is more than most projects that reach for a cluster actually have.
 
 ### Lakehouse with a table format
 

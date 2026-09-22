@@ -38,7 +38,7 @@ Not covered here: GPU kernel authoring (CuPy raw kernels, Numba's CUDA target, T
 
 `pytest → PyVISA (signal generator, spectrum analyser) + pySerial (DUT control) → NumPy/SciPy metrics → Parquet + Matplotlib report`
 
-Instrument drivers are wrapped behind a small interface per instrument type so the same test runs against different lab equipment. Test cases are pytest functions with parametrized frequency and power points, and limits are asserted rather than eyeballed. Every run writes raw captures alongside computed metrics (EVM, ACLR, spectral mask margin) so a failure can be re-analysed without repeating the measurement — bench time is the scarce resource, not disk. scikit-rf handles de-embedding of cable and fixture losses from measured S-parameters.
+Instrument drivers are wrapped behind a small interface per instrument type so the same test runs against different lab equipment. Test cases are pytest functions with parametrized frequency and power points, and limits are asserted rather than eyeballed. Every run writes raw captures alongside computed metrics (EVM, ACLR, spectral mask margin) so a failure can be re-analysed without repeating the measurement: bench time is the scarce resource, not disk. scikit-rf handles de-embedding of cable and fixture losses from measured S-parameters.
 
 ### SDR receive chain
 
@@ -54,4 +54,4 @@ Each worker returns an array plus its parameter coordinates; xarray assembles th
 
 ## References
 
-* [Python array API standard](https://data-apis.org/array-api/latest/) — the specification the namespace and its dtype rules come from.
+* [Python array API standard](https://data-apis.org/array-api/latest/). The specification the namespace and its dtype rules come from.

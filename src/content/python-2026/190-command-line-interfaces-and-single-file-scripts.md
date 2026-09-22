@@ -28,5 +28,5 @@ CLI applications are published as packages with a [`[project.scripts]`](https://
 
 ## References
 
-* [PEP 723 – Inline script metadata](https://peps.python.org/pep-0723/) — Final.
-* [The entry points specification](https://packaging.python.org/en/latest/specifications/entry-points/) — how `[project.scripts]` becomes an executable.
+* [PEP 723: Inline script metadata](https://peps.python.org/pep-0723/). Final.
+* [The entry points specification](https://packaging.python.org/en/latest/specifications/entry-points/). How `[project.scripts]` becomes an executable.

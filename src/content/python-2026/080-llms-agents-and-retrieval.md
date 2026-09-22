@@ -29,7 +29,7 @@ part: "Domains"
 
 `Ingestion → structural chunking → sentence-transformers embeddings → pgvector in existing PostgreSQL → hybrid retrieval (vector + rank_bm25) → reranker → generation with citations`
 
-Storing vectors in the operational database removes a second system and keeps chunks transactionally consistent with their source documents. Chunking follows the document's own headings and table boundaries rather than a fixed character count, which keeps tables intact. Hybrid retrieval covers cases where the query contains exact identifiers that embeddings handle poorly — part numbers and error codes are the usual example. A held-out set of question and expected-source pairs is run as pytest cases with Ragas metrics, so retrieval changes are measured rather than assessed by inspection.
+Storing vectors in the operational database removes a second system and keeps chunks transactionally consistent with their source documents. Chunking follows the document's own headings and table boundaries rather than a fixed character count, which keeps tables intact. Hybrid retrieval covers cases where the query contains exact identifiers that embeddings handle poorly, such as part numbers and error codes. A held-out set of question and expected-source pairs is run as pytest cases with Ragas metrics, so retrieval changes are measured rather than assessed by inspection.
 
 ### Typed extraction service
 

@@ -27,4 +27,4 @@ Conventions in common use:
 
 ## References
 
-* [PEP 654 – Exception Groups and except*](https://peps.python.org/pep-0654/) — Final, 3.11.
+* [PEP 654: Exception Groups and except*](https://peps.python.org/pep-0654/). Final, 3.11.

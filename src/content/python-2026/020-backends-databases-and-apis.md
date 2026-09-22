@@ -39,7 +39,7 @@ Clients: [httpx](https://www.python-httpx.org/) (one API for sync and async, opt
 
 `Client → Uvicorn/FastAPI → SQLAlchemy async session → asyncpg → PostgreSQL`
 
-Redis handles caching and rate limiting, and arq runs background jobs. Request bodies and responses are Pydantic models, so the OpenAPI schema is generated rather than maintained. Tenant scoping is applied in a request-scoped dependency that attaches `tenant_id` to the session, rather than in each query — one place to audit instead of every endpoint. Configuration comes from `pydantic-settings`, so a missing environment variable fails at startup. Alembic migrations run as a separate step in the deploy, not on application boot, because two instances starting simultaneously will otherwise race on the same migration. Integration tests use Testcontainers to run a real PostgreSQL instance.
+Redis handles caching and rate limiting, and arq runs background jobs. Request bodies and responses are Pydantic models, so the OpenAPI schema is generated rather than maintained. Tenant scoping is applied in a request-scoped dependency that attaches `tenant_id` to the session, rather than in each query, which leaves one place to audit instead of every endpoint. Configuration comes from `pydantic-settings`, so a missing environment variable fails at startup. Alembic migrations run as a separate step in the deploy, not on application boot, because two instances starting simultaneously will otherwise race on the same migration. Integration tests use Testcontainers to run a real PostgreSQL instance.
 
 ### Webhook ingestion service
 

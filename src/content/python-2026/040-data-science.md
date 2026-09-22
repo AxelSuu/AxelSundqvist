@@ -25,7 +25,7 @@ part: "Domains"
 
 `uv project → marimo notebooks (.py) → Polars transforms → statsmodels → Altair charts → Parquet outputs`
 
-Because marimo notebooks are plain Python files, they diff and merge in git and can be imported by tests or run headless in CI. Data loading is separated into an importable module so the same code runs in the notebook and in the scheduled job. Outputs are written to a versioned directory rather than being read off the screen. The lockfile pins the environment the numbers were produced in — which is the only thing that makes a published figure reproducible a year later.
+Because marimo notebooks are plain Python files, they diff and merge in git and can be imported by tests or run headless in CI. Data loading is separated into an importable module so the same code runs in the notebook and in the scheduled job. Outputs are written to a versioned directory rather than being read off the screen. The lockfile pins the environment the numbers were produced in, which is what makes a published figure reproducible a year later.
 
 ### Sensor time series exploration
 

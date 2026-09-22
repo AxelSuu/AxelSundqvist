@@ -30,7 +30,7 @@ part: "Domains"
 
 `Feature table (DuckDB/Parquet) → scikit-learn pipeline + LightGBM → Optuna tuning → MLflow registry → ONNX export → FastAPI + onnxruntime`
 
-The full preprocessing chain lives inside the scikit-learn pipeline object, so training and serving cannot diverge on feature handling — the most common source of a model that scores well offline and badly in production. Cross-validation splits respect time ordering where the target is forward-looking. Exporting to ONNX removes the training dependencies from the serving image and gives predictable latency. Input distributions are logged at inference and compared against the training set to detect drift.
+The full preprocessing chain lives inside the scikit-learn pipeline object, so training and serving cannot diverge on feature handling, a common reason a model scores well offline and badly in production. Cross-validation splits respect time ordering where the target is forward-looking. Exporting to ONNX removes the training dependencies from the serving image and gives predictable latency. Input distributions are logged at inference and compared against the training set to detect drift.
 
 ### Vision training pipeline
 

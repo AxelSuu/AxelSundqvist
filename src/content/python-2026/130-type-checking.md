@@ -54,5 +54,5 @@ Third-party packages without annotations fall into three cases: a stub package o
 
 ## References
 
-* [The typing specification](https://typing.python.org/en/latest/spec/) — what the checkers implement, and the conformance suite they are measured against.
-* [PEP 695 – Type Parameter Syntax](https://peps.python.org/pep-0695/) — Final, 3.12.
+* [The typing specification](https://typing.python.org/en/latest/spec/). What the checkers implement, and the conformance suite they are measured against.
+* [PEP 695: Type Parameter Syntax](https://peps.python.org/pep-0695/). Final, 3.12.

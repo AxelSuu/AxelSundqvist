@@ -32,7 +32,7 @@ Subinterpreters carry the constraint from the other side. An extension must use 
 
 ## References
 
-* [PEP 489 – Multi-phase extension module initialization](https://peps.python.org/pep-0489/) — Final, 3.5. The requirement an extension has to meet before a second interpreter can import it.
-* [PEP 734 – Multiple Interpreters in the Stdlib](https://peps.python.org/pep-0734/) — Final, 3.14.
-* [PEP 779 – Criteria for supported status for free-threaded Python](https://peps.python.org/pep-0779/) — Final, 3.14.
-* [PEP 803 – "abi3t": Stable ABI for Free-Threaded Builds](https://peps.python.org/pep-0803/) — Final, 3.15.
+* [PEP 489: Multi-phase extension module initialization](https://peps.python.org/pep-0489/). Final, 3.5. The requirement an extension has to meet before a second interpreter can import it.
+* [PEP 734: Multiple Interpreters in the Stdlib](https://peps.python.org/pep-0734/). Final, 3.14.
+* [PEP 779: Criteria for supported status for free-threaded Python](https://peps.python.org/pep-0779/). Final, 3.14.
+* [PEP 803: "abi3t": Stable ABI for Free-Threaded Builds](https://peps.python.org/pep-0803/). Final, 3.15.
