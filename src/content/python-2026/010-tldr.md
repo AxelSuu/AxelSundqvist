@@ -1,6 +1,6 @@
 ---
 title: "TLDR"
-blurb: "A concise set of defaults for new Python projects."
+blurb: "Quick reference for state-of-the-art defaults in Python projects."
 reviewed: 2026-09-06
 ---
 
