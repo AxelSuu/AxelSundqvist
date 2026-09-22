@@ -2,6 +2,7 @@ import { defineConfig } from 'astro/config'
 import react from '@astrojs/react'
 import sitemap from '@astrojs/sitemap'
 import { satteri } from '@astrojs/markdown-satteri'
+import { flowPlugin } from './src/lib/flow-plugin.ts'
 import { katexPlugin } from './src/lib/katex-plugin.ts'
 import { scrollPlugin } from './src/lib/scroll-plugin.ts'
 
@@ -25,7 +26,7 @@ export default defineConfig({
   markdown: {
     processor: satteri({
       features: { math: true },
-      mdastPlugins: [katexPlugin],
+      mdastPlugins: [katexPlugin, flowPlugin],
       hastPlugins: [scrollPlugin],
     }),
     // A light theme so code sits on the paper ground like the rest of the
