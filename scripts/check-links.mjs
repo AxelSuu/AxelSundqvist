@@ -4,14 +4,16 @@
  *     node scripts/check-links.mjs
  *
  * A dated reference that links to a moved page is worse than one that links
- * nowhere, so this runs in CI. HEAD first, GET on anything that answers 405
- * or 403: a few documentation hosts refuse HEAD or refuse a bare client.
+ * nowhere, so this runs in CI. HEAD first, GET on anything that answers 403,
+ * 404 or 405: a few documentation hosts refuse HEAD or refuse a bare client.
  */
 import { readdir, readFile } from 'node:fs/promises'
 import { join } from 'node:path'
+import { fileURLToPath } from 'node:url'
 
-const ROOT = new URL('../src/content/', import.meta.url).pathname
-const LINK = /\]\((https?:\/\/[^)\s]+)\)/g
+const ROOT = fileURLToPath(new URL('../src/content/', import.meta.url))
+/* One level of balanced parentheses, for URLs like .../wiki/Foo_(bar). */
+const LINK = /\]\((https?:\/\/(?:[^()\s]|\([^()\s]*\))+)\)/g
 const CONCURRENCY = 8
 const TIMEOUT_MS = 20_000
 const UA = 'Mozilla/5.0 (compatible; link-check/1.0; +https://axelsundqvist.se)'
