@@ -1,6 +1,6 @@
 ---
 title: "Backends, databases and APIs"
-blurb: "Frameworks, data access, queues, and two example service designs."
+blurb: "Frameworks, HTTP servers and clients, data access, queues, and two example service designs."
 reviewed: 2026-09-06
 part: "Domains"
 ---
@@ -15,6 +15,8 @@ part: "Domains"
 | [Django Ninja](https://django-ninja.dev/) | FastAPI-style typed API layer for Django. |
 
 Servers: [Uvicorn](https://uvicorn.dev/) (ASGI, uvloop-based), [Granian](https://github.com/emmett-framework/granian) (Rust-based, ASGI/WSGI/RSGI), [Hypercorn](https://hypercorn.readthedocs.io/) (HTTP/2 and HTTP/3), and [Gunicorn](https://docs.gunicorn.org/) as a process manager supervising Uvicorn workers.
+
+Clients: [httpx](https://www.python-httpx.org/) (one API for sync and async, optional HTTP/2, transports that tests can swap; still 0.x, with no release since 0.28.1 in December 2024), [aiohttp](https://docs.aiohttp.org/) (asyncio client and server, WebSockets), and [Requests](https://requests.readthedocs.io/) (synchronous, over urllib3).
 
 | Library | Description |
 |---|---|
