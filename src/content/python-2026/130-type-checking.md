@@ -22,8 +22,8 @@ Useful constructs beyond basic parameter annotations:
 | [`Protocol`](https://docs.python.org/3/library/typing.html#typing.Protocol) | Structural typing. A class satisfies the protocol by shape, with no inheritance or import from the defining module. |
 | [`TypedDict`](https://docs.python.org/3/library/typing.html#typing.TypedDict) | Fixed-key dictionaries, for JSON structures where a model class is not wanted. |
 | [`Self`](https://docs.python.org/3/library/typing.html#typing.Self), [`override`](https://docs.python.org/3/library/typing.html#typing.override) | Fluent APIs and explicit overrides (3.11 and 3.12). |
-| [`assert_never`](https://docs.python.org/3/library/typing.html#typing.assert_never) | Compile-time exhaustiveness checks in match statements and if-chains. |
-| [`TypeAlias` / `type X = ...`](https://docs.python.org/3/reference/simple_stmts.html#type) | Named aliases for complex annotations. |
+| [`assert_never`](https://docs.python.org/3/library/typing.html#typing.assert_never) | Exhaustiveness checks in match statements and if-chains, reported by the type checker. |
+| [`type X = ...`](https://docs.python.org/3/reference/simple_stmts.html#type) | Named aliases for complex annotations (3.12+). Supersedes `TypeAlias`, deprecated since 3.12. |
 | [Generics syntax `def f[T](...)`](https://peps.python.org/pep-0695/) | Type parameters without `TypeVar` declarations (3.12+). |
 
 ```toml
