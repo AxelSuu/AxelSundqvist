@@ -157,6 +157,17 @@ th {
 td:first-child { white-space: nowrap; padding-right: 26px; }
 td code { background: none; padding: 0; }
 
+/* On a phone the unwrapped name column leaves the description a sliver, so
+   each row stacks instead: name, then the rest at full width. */
+@media (max-width: 600px) {
+  table, tbody, tr, td { display: block; }
+  thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+  tr { padding: 12px 0; border-bottom: 1px solid var(--ink-12); }
+  tr:first-child { border-top: 1px solid var(--ink-40); }
+  td { padding: 0; border: 0; }
+  td:first-child { white-space: normal; padding: 0 0 3px; font-weight: 500; }
+}
+
 /* ── Index listing ───────────────────────────────────────────────── */
 /* The listing sits inside .prose, so these outrank its link underline and
    its h2 rule. */
