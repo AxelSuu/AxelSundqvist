@@ -69,7 +69,7 @@ const og = new URL('/images/og.jpg', Astro.site).href
     <a class="skip" href="#content">Skip to the article</a>
 
     <div class="masthead">
-      <nav>
+      <nav aria-label="Site">
         <a href="/">← Axel Sundqvist</a>
         <a href={home}>Contents</a>
       </nav>
@@ -111,7 +111,7 @@ const og = new URL('/images/og.jpg', Astro.site).href
 
         {
           (prev || next) && (
-            <nav class="pager">
+            <nav class="pager" aria-label="Previous and next">
               {prev && (
                 <a class="prev" href={prev.href}>
                   <span>Previous</span>
