@@ -1,5 +1,6 @@
 #!/usr/bin/env node
-/* Check every external link in src/content/.
+/* Check every link in src/content/: links between pages against the pages the
+ * section files publish, external links over the network.
  *
  *     node scripts/check-links.mjs
  *
@@ -14,6 +15,8 @@ import { fileURLToPath } from 'node:url'
 const ROOT = fileURLToPath(new URL('../src/content/', import.meta.url))
 /* One level of balanced parentheses, for URLs like .../wiki/Foo_(bar). */
 const LINK = /\]\((https?:\/\/(?:[^()\s]|\([^()\s]*\))+)\)/g
+/* A site-relative link, less any #fragment. */
+const PAGE = /\]\((\/[^)\s#]*)(?:#[^)\s]*)?\)/g
 const CONCURRENCY = 8
 const TIMEOUT_MS = 20_000
 const UA = 'Mozilla/5.0 (compatible; link-check/1.0; +https://axelsundqvist.se)'
@@ -32,10 +35,32 @@ async function markdown(dir) {
   return out
 }
 
-async function collect() {
+/* The paths the router builds from file names: /<blog> and /<blog>/<slug>. */
+function published(files) {
+  const paths = new Set(['/'])
+  for (const file of files) {
+    const [blog, name] = file.slice(ROOT.length).split('/')
+    paths.add(`/${blog}`)
+    const slug = /^\d+-(.+)\.md$/.exec(name)?.[1]
+    if (slug) paths.add(`/${blog}/${slug}`)
+  }
+  return paths
+}
+
+function unpublished(texts) {
+  const paths = published([...texts.keys()])
+  const broken = []
+  for (const [file, text] of texts) {
+    for (const [, path] of text.matchAll(PAGE)) {
+      if (!paths.has(path.replace(/(.)\/$/, '$1'))) broken.push(`404\t${path}\t${file.slice(ROOT.length)}`)
+    }
+  }
+  return broken
+}
+
+async function collect(texts) {
   const links = new Map() /* url -> [file, ...] */
-  for (const file of await markdown(ROOT)) {
-    const text = await readFile(file, 'utf8')
+  for (const [file, text] of texts) {
     for (const [, url] of text.matchAll(LINK)) {
       const seen = links.get(url)
       if (seen) seen.push(file)
@@ -63,7 +88,12 @@ async function check(url) {
   }
 }
 
-const links = await collect()
+const texts = new Map()
+for (const file of await markdown(ROOT)) texts.set(file, await readFile(file, 'utf8'))
+const broken = unpublished(texts)
+for (const line of broken) console.log(line)
+
+const links = await collect(texts)
 const urls = [...links.keys()]
 const results = []
 let next = 0
@@ -80,4 +110,5 @@ for (const { url, code, skipped } of report.sort((a, b) => a.url.localeCompare(b
 }
 const bad = results.filter((r) => !r.ok)
 console.log(`${results.length} links, ${bad.length} failing, ${results.filter((r) => r.skipped).length} not checked`)
-process.exit(bad.length ? 1 : 0)
+console.log(`${broken.length} links between pages to a page that does not exist`)
+process.exit(bad.length || broken.length ? 1 : 0)

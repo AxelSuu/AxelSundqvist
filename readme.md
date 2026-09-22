@@ -9,7 +9,7 @@ Markdown at build time.
 npm run dev          # localhost:4321
 npm run build        # astro check && astro build -> dist/
 npm run lint
-npm run check:links  # every external link in src/content/
+npm run check:links  # every link in src/content/, internal and external
 ```
 
 ## Layout
