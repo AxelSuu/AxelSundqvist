@@ -1,15 +1,12 @@
-title: The State of Python, 2026
+title: The State of the art of Python, 2026
 description: >-
   A curated set of the domains Python is used to build in, and a reference to
   current mainstream practice, written from the position of using Python to
   test and build systems in other languages. Reviewed September 2026.
 stamp: Reviewed September 2026
 intro: >-
-  An opinionated reference to Python as it is used in 2026. Part I is a
-  selection of domains, each with its main libraries and worked system
-  designs. Part II is the practice under any project, from choosing a version
-  to publishing a release. Every page carries the date it was last checked
-  against its sources, and the changelog records what each check changed.
+  An opinionated reference to the state of the art of Python 2026, including
+  language features and the ecosystem with examples.
 parts:
   - Domains
   - Practices
