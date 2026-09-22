@@ -1,35 +1,27 @@
 import js from '@eslint/js'
 import globals from 'globals'
-import tsPlugin from '@typescript-eslint/eslint-plugin'
-import tsParser from '@typescript-eslint/parser'
+import tseslint from 'typescript-eslint'
 import reactHooks from 'eslint-plugin-react-hooks'
 import reactRefresh from 'eslint-plugin-react-refresh'
+import { defineConfig } from 'eslint/config'
 
-export default [
+export default defineConfig(
   { ignores: ['dist', '.claude', '.astro'] },
   js.configs.recommended,
   {
     files: ['**/*.{ts,tsx}'],
+    extends: [tseslint.configs.recommended, reactHooks.configs.flat.recommended],
     languageOptions: {
       ecmaVersion: 2020,
       globals: globals.browser,
-      parser: tsParser,
     },
-    plugins: {
-      '@typescript-eslint': tsPlugin,
-      'react-hooks': reactHooks,
-      'react-refresh': reactRefresh,
-    },
+    plugins: { 'react-refresh': reactRefresh },
     rules: {
-      ...tsPlugin.configs.recommended.rules,
-      ...reactHooks.configs.recommended.rules,
       'react-refresh/only-export-components': ['warn', { allowConstantExport: true }],
-      'no-unused-vars': 'off',
-      '@typescript-eslint/no-unused-vars': 'error',
     },
   },
   {
     files: ['*.config.ts', '*.config.js', '*.config.mjs', 'scripts/**/*.mjs'],
     languageOptions: { globals: globals.node },
   },
-]
+)
