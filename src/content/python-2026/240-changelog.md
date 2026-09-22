@@ -7,6 +7,20 @@ part: "Maintenance"
 
 A page carries the date it was last checked against its sources. That date means nothing without a record of what the check found, so every correction is logged here rather than made silently.
 
+## 22 September 2026
+
+* Corrected: the logging page called structlog's API on a stdlib logger, which raises `TypeError` once INFO is enabled. The example now creates a structlog logger, and a library's `NullHandler` goes on its top-level logger only.
+* Corrected: the Ruff configuration ignored `S101` in tests without selecting the `S` rules, so the ignore did nothing. It now selects them, and leaves `target-version` to `requires-python`.
+* Corrected: the Hypothesis example was named for one property and asserted another. It now asserts the two that define a sort: a permutation of the input, in order.
+* Corrected: `TypeAlias` has been deprecated since 3.12; the type-checking table now names the `type` statement.
+* Python versions: added support status and end-of-life dates from the devguide, which version a new project starts on, and the 3.12 to 3.15 changes that were missing. Every PEP cited was checked as Final, with its target version, against the PEP index. The page is re-dated.
+* Profiling: added 3.15's `profiling.sampling`, and `cProfile` becoming `profiling.tracing` under PEP 799.
+* Backends: added HTTP clients. httpx has not released since 0.28.1 in December 2024.
+* Continuous integration: the example now limits the token to `contents: read` and does not persist checkout credentials, and zizmor is listed for auditing workflows. The matrix advice now separates applications from libraries, and `setup-uv` caches by default, so the example no longer asks it to.
+* Packaging: added a two-stage application image, checked against uv's Docker guide.
+* Softened two claims that had no source: a leaked preprocessing step is "a common" cause of offline-online skew rather than "the most common", and a lockfile is what makes a figure reproducible rather than "the only thing".
+* Python versions now opens Part II, followed by environments and project layout. No slug changed, so no URL moved. Each example design has its own heading, and so a link.
+
 ## 6 September 2026
 
 * Every tool and PEP in the series now links to its documentation, and a link checker runs over the set. Four canonical URLs had moved: Uvicorn to `uvicorn.dev`, Starlette to `starlette.dev`, msgspec to `msgspec.dev`, and pandas-ta, whose GitHub repository no longer exists, now points at PyPI.
