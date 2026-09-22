@@ -5,18 +5,22 @@ reviewed: 2026-09-06
 part: "Practices"
 ---
 
-The stdlib [`logging`](https://docs.python.org/3/library/logging.html) module is configured once, at the application entry point, usually with [`dictConfig`](https://docs.python.org/3/library/logging.config.html#logging.config.dictConfig). Libraries obtain a module-level logger and add a `NullHandler`, leaving configuration to the application.
+The stdlib [`logging`](https://docs.python.org/3/library/logging.html) module is configured once, at the application entry point, usually with [`dictConfig`](https://docs.python.org/3/library/logging.config.html#logging.config.dictConfig). Every module takes a logger named after itself; a library adds a [`NullHandler`](https://docs.python.org/3/howto/logging.html#configuring-logging-for-a-library) once, to its top-level logger, and leaves the rest of the configuration to the application.
 
 ```python
-logger = logging.getLogger(__name__)
-logger.addHandler(logging.NullHandler())   # library only
+logger = logging.getLogger(__name__)                           # every module
+
+logging.getLogger(__name__).addHandler(logging.NullHandler())  # library __init__.py only
 ```
 
-Structured records are emitted as fields rather than formatted strings, which makes them queryable in log aggregation systems:
+Structured records are emitted as fields rather than formatted strings, which makes them queryable in log aggregation systems. With structlog:
 
 ```python
+log = structlog.get_logger()
 log.info("rows_processed", symbol=symbol, rows=n, duration_s=elapsed)
 ```
+
+The stdlib takes the same fields through `extra={...}`, and only a formatter that serialises them, such as a JSON one, puts them in the output.
 
 | Library | Notes |
 |---|---|

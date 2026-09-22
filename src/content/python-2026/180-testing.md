@@ -22,13 +22,20 @@ Common practices:
 * Parametrize instead of looping inside a test, so each case is reported individually.
 * Use `tmp_path` and other [builtin fixtures](https://docs.pytest.org/en/stable/reference/fixtures.html) rather than writing to fixed paths.
 * Property-based tests for round trips and invariants: encode/decode, serialize/parse, transform/inverse, sums that must be preserved.
-
-```python
-@given(st.lists(st.integers()))
-def test_sort_is_a_permutation(xs):
-    assert sorted(sorted(xs)) == sorted(xs)
-    assert Counter(sorted(xs)) == Counter(xs)
-```
-
 * Test against real dependencies where feasible; mocking an ORM or driver tests the mock rather than the query.
 * Coverage is a threshold, not an objective; branch coverage is more informative than line coverage.
+
+A property test states what holds for every input instead of listing cases. For a sort, that is the definition itself: the output is a permutation of the input, and it is in order.
+
+```python
+from collections import Counter
+from itertools import pairwise
+
+from hypothesis import given, strategies as st
+
+@given(st.lists(st.integers()))
+def test_sort(xs):
+    out = sorted(xs)
+    assert Counter(out) == Counter(xs)
+    assert all(a <= b for a, b in pairwise(out))
+```

@@ -10,15 +10,15 @@ part: "Practices"
 ```toml
 [tool.ruff]
 line-length = 100
-target-version = "py314"
 
 [tool.ruff.lint]
-select = ["E", "F", "I", "N", "UP", "B", "SIM", "C4", "PTH", "RUF"]
-ignore = []
+select = ["E", "F", "I", "N", "UP", "B", "SIM", "C4", "PTH", "S", "RUF"]
 
 [tool.ruff.lint.per-file-ignores]
-"tests/*" = ["S101"]
+"tests/**/*.py" = ["S101"]   # assert is how pytest tests
 ```
+
+`target-version` is left out: Ruff infers it from `requires-python`, so the minimum version is declared once.
 
 Common rule sets: `E`/`F` (pycodestyle, Pyflakes), `I` (import sorting), `UP` (pyupgrade), `B` (bugbear), `SIM` (simplification), `PTH` (pathlib over `os.path`), `S` (security), `D` (docstrings), `ANN` (annotation coverage).
 
