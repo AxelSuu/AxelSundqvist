@@ -5,9 +5,11 @@ description: >-
   test and build systems in other languages. Reviewed September 2026.
 stamp: Reviewed September 2026
 intro: >-
-  This is an opinionated reference to Python in 2026 with
-  examples of good choices and standards. The article starts with
-  some state-of-the-art domains.
+  An opinionated reference to Python as it is used in 2026. Part I is a
+  selection of domains, each with its main libraries and worked system
+  designs. Part II is the practice under any project, from choosing a version
+  to publishing a release. Every page carries the date it was last checked
+  against its sources, and the changelog records what each check changed.
 parts:
   - Domains
   - Practices
