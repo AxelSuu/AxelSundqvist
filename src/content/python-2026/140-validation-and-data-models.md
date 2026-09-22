@@ -16,6 +16,10 @@ part: "Practices"
 Validate at the process boundary and use plain objects internally:
 
 ```python
+from dataclasses import dataclass
+
+from pydantic import BaseModel, Field
+
 class CreateJob(BaseModel):          # boundary
     symbol: str
     window: int = Field(gt=0, le=512)
@@ -24,11 +28,22 @@ class CreateJob(BaseModel):          # boundary
 class Job:
     symbol: str
     window: int
+
+def accept(body: bytes) -> Job:
+    req = CreateJob.model_validate_json(body)  # ValidationError here, at the edge
+    return Job(req.symbol, req.window)
 ```
+
+Past `accept`, nothing needs to re-check the window or pay for Pydantic's machinery.
 
 Configuration validated at startup fails immediately on a missing or malformed value rather than at first use:
 
 ```python
+from typing import Literal
+
+from pydantic import PostgresDsn
+from pydantic_settings import BaseSettings, SettingsConfigDict
+
 class Settings(BaseSettings):
     database_url: PostgresDsn
     log_level: Literal["DEBUG", "INFO", "WARNING"] = "INFO"
