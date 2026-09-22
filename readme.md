@@ -70,7 +70,11 @@ GitHub-flavoured Markdown, plus:
 * **Syntax highlighting** — Shiki, from the language on the fence. No setup per
   language.
 * **Tables and code** get wrapped in a scroll box automatically, so the page
-  body never scrolls sideways on a phone.
+  body never scrolls sideways on a phone. Below 600px a table's rows stack.
+* **Data flows**: a paragraph that is only inline code with arrows,
+  `` `Client → API → PostgreSQL` ``, renders as a list of stages.
+* **Headings**: `##` is a small label that divides the page (Example designs,
+  References); `###` names one item under it.
 
 ## Images
 
