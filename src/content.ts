@@ -62,7 +62,7 @@ export const CHAPTERS: Chapter[] = [
   },
   {
     id: 'infrasonik',
-    kicker: 'Infrasonik Intern · Stockholm · 2022—23',
+    kicker: 'Infrasonik Intern · Stockholm · 2022-23',
     title: 'Drying grain\nwith sound',
     line: 'Moving moisture with low-frequency pressure waves instead of heat. I worked with a small R&D team developing and testing infrasound-based grain-drying technology.',
     image: '/images/infradryer.jpg',
