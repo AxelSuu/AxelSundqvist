@@ -22,12 +22,16 @@ part: "Domains"
 | [arch](https://bashtage.github.io/arch/) | GARCH and volatility models, bootstrap methods. |
 | [exchange_calendars](https://github.com/gerrymanoim/exchange_calendars) | Trading sessions, holidays and market hours. |
 
-**Research data store.**
+## Example designs
+
+### Research data store
+
 `Vendor APIs → raw JSON archive → normalization → Parquet partitioned by date and symbol → DuckDB`
 
 Raw payloads are archived before normalization so the historical record survives changes to the parsing code and vendor re-statements can be detected. Corporate actions and delistings are stored as separate tables and applied at query time, which keeps a point-in-time view available and avoids a universe consisting only of current index members. `exchange_calendars` aligns bars to real sessions, including half days. Each record carries both the event timestamp and the timestamp at which the data became available; without the second one, no backtest built on the store can be trusted.
 
-**Backtesting stack.**
+### Backtesting stack
+
 `Parquet feature store → VectorBT parameter sweep → NautilusTrader event-driven validation → arch / PyPortfolioOpt for sizing`
 
 The vectorized pass covers wide parameter grids cheaply; the shortlist is then re-run in an event-driven engine that models order types, fills, fees and latency, since vectorized results tend to be optimistic. Signals are computed only from data whose availability timestamp precedes the decision time. Volatility estimates from `arch` feed position sizing, and results are reported with transaction costs applied.

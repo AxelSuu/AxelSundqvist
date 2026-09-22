@@ -7,7 +7,7 @@ part: "Maintenance"
 
 A page carries the date it was last checked against its sources. That date means nothing without a record of what the check found, so every correction is logged here rather than made silently.
 
-**6 September 2026**
+## 6 September 2026
 
 * Every tool and PEP in the series now links to its documentation, and a link checker runs over the set. Four canonical URLs had moved: Uvicorn to `uvicorn.dev`, Starlette to `starlette.dev`, msgspec to `msgspec.dev`, and pandas-ta, whose GitHub repository no longer exists, now points at PyPI.
 * Domains became Part I and practices Part II. Every slug is unchanged, so no URL moved.

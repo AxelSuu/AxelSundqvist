@@ -36,12 +36,16 @@ part: "Domains"
 | [Pandera](https://pandera.readthedocs.io/) | Schema and statistical validation for dataframes, including Polars. |
 | [Great Expectations](https://docs.greatexpectations.io/) | Data quality suite with expectation stores and reporting. |
 
-**Single-node analytics stack.**
+## Example designs
+
+### Single-node analytics stack
+
 `dlt (API extract) → Parquet on S3 via s3fs → DuckDB → SQLMesh models → Dagster assets`
 
 Raw responses are written unmodified before any transformation, partitioned by ingestion date, so transformations can be replayed without re-fetching — the fetch is the part you cannot repeat, because the source has already changed. DuckDB queries the Parquet files in place; no warehouse is provisioned. Dagster models each table as an asset with declared upstream dependencies, so a schema change shows its blast radius. Pandera schemas run at the boundary between raw and modelled layers. This design handles datasets into the hundreds of gigabytes on one machine, which is more than most projects that reach for a cluster actually have.
 
-**Lakehouse with a table format.**
+### Lakehouse with a table format
+
 `Sources → PySpark or Polars writer → Delta Lake or Iceberg tables on object storage → query engines`
 
 The table format supplies ACID commits, schema evolution and time travel, which plain Parquet does not. `deltalake` and `pyiceberg` allow writing and reading without a JVM for smaller jobs, with Spark used for the large ones. Airflow schedules the batch jobs. ConnectorX handles bulk extraction from operational databases into Arrow.

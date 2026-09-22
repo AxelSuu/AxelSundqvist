@@ -31,12 +31,16 @@ Servers: [Uvicorn](https://uvicorn.dev/) (ASGI, uvloop-based), [Granian](https:/
 | [Temporal Python SDK](https://docs.temporal.io/develop/python/) | Durable workflow execution with retries and state persistence. |
 | [Authlib](https://docs.authlib.org/) | OAuth 1/2 and OpenID Connect client and server implementations. |
 
-**Multi-tenant SaaS API.**
-`Client → Uvicorn/FastAPI → SQLAlchemy async session → asyncpg → PostgreSQL`, with Redis for caching and rate limiting and arq for background jobs.
+## Example designs
 
-Request bodies and responses are Pydantic models, so the OpenAPI schema is generated rather than maintained. Tenant scoping is applied in a request-scoped dependency that attaches `tenant_id` to the session, rather than in each query — one place to audit instead of every endpoint. Configuration comes from `pydantic-settings`, so a missing environment variable fails at startup. Alembic migrations run as a separate step in the deploy, not on application boot, because two instances starting simultaneously will otherwise race on the same migration. Integration tests use Testcontainers to run a real PostgreSQL instance.
+### Multi-tenant SaaS API
 
-**Webhook ingestion service.**
+`Client → Uvicorn/FastAPI → SQLAlchemy async session → asyncpg → PostgreSQL`
+
+Redis handles caching and rate limiting, and arq runs background jobs. Request bodies and responses are Pydantic models, so the OpenAPI schema is generated rather than maintained. Tenant scoping is applied in a request-scoped dependency that attaches `tenant_id` to the session, rather than in each query — one place to audit instead of every endpoint. Configuration comes from `pydantic-settings`, so a missing environment variable fails at startup. Alembic migrations run as a separate step in the deploy, not on application boot, because two instances starting simultaneously will otherwise race on the same migration. Integration tests use Testcontainers to run a real PostgreSQL instance.
+
+### Webhook ingestion service
+
 `Provider webhook → Litestar → Pydantic validation → confluent-kafka producer → consumer → psycopg3 COPY → PostgreSQL`
 
 The HTTP layer does validation, deduplication against a Redis idempotency key, and nothing else; it returns 202 as soon as the event is durable. Providers retry aggressively on slow responses, so any work done inline becomes work done several times. Consumers batch rows and insert with `COPY` rather than per-row inserts. Multi-step processing that must survive restarts (provisioning, billing) runs as Temporal workflows instead of chained queue tasks.

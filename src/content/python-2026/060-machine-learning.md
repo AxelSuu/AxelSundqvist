@@ -24,12 +24,16 @@ part: "Domains"
 | [MLflow](https://mlflow.org/docs/latest/), [Weights & Biases](https://docs.wandb.ai/) | Experiment tracking, model registry, artifact storage. |
 | [BentoML](https://docs.bentoml.com/) | Model packaging and serving. |
 
-**Tabular prediction service.**
+## Example designs
+
+### Tabular prediction service
+
 `Feature table (DuckDB/Parquet) → scikit-learn pipeline + LightGBM → Optuna tuning → MLflow registry → ONNX export → FastAPI + onnxruntime`
 
 The full preprocessing chain lives inside the scikit-learn pipeline object, so training and serving cannot diverge on feature handling — the most common source of a model that scores well offline and badly in production. Cross-validation splits respect time ordering where the target is forward-looking. Exporting to ONNX removes the training dependencies from the serving image and gives predictable latency. Input distributions are logged at inference and compared against the training set to detect drift.
 
-**Vision training pipeline.**
+### Vision training pipeline
+
 `Object storage → PyTorch Dataset → Albumentations → timm backbone → Lightning + DDP across GPUs → W&B logging → ONNX export → BentoML service`
 
 Lightning handles distributed setup, mixed precision, gradient accumulation and checkpointing, so the model code stays close to plain PyTorch. Augmentation is applied in dataloader workers; the input pipeline is profiled separately from the model to confirm the GPU is actually the bottleneck, since an underfed GPU looks identical to a slow model from the outside. Checkpoints and the exact dataset manifest are stored together so a run can be reproduced.

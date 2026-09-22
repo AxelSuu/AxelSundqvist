@@ -19,12 +19,16 @@ part: "Domains"
 | [Bokeh](https://docs.bokeh.org/), [HoloViews](https://holoviews.org/) / [hvPlot](https://hvplot.holoviz.org/) | Interactive plotting for larger datasets and dashboards. |
 | [Pint](https://pint.readthedocs.io/) | Physical units attached to arrays and scalars. |
 
-**Reproducible analysis repository.**
+## Example designs
+
+### Reproducible analysis repository
+
 `uv project → marimo notebooks (.py) → Polars transforms → statsmodels → Altair charts → Parquet outputs`
 
 Because marimo notebooks are plain Python files, they diff and merge in git and can be imported by tests or run headless in CI. Data loading is separated into an importable module so the same code runs in the notebook and in the scheduled job. Outputs are written to a versioned directory rather than being read off the screen. The lockfile pins the environment the numbers were produced in — which is the only thing that makes a published figure reproducible a year later.
 
-**Sensor time series exploration.**
+### Sensor time series exploration
+
 `Zarr or Parquet store → xarray → SciPy filtering and resampling → hvPlot`
 
 [xarray](https://docs.xarray.dev/) keeps coordinates (time, channel, run ID) attached through the pipeline, so slicing by condition does not depend on positional indexing. Chunked reads through [Zarr](https://zarr.readthedocs.io/) allow working with recordings larger than memory. Interactive plots with [datashader](https://datashader.org/)-backed rendering handle multi-million-point traces.

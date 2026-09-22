@@ -23,12 +23,16 @@ part: "Domains"
 | [Langfuse](https://langfuse.com/docs), [Logfire](https://logfire.pydantic.dev/docs/) | Tracing and evaluation for LLM applications. |
 | [Ragas](https://docs.ragas.io/), [DeepEval](https://deepeval.com/docs/getting-started) | Evaluation metrics for retrieval and generation quality. |
 
-**Document question answering.**
+## Example designs
+
+### Document question answering
+
 `Ingestion → structural chunking → sentence-transformers embeddings → pgvector in existing PostgreSQL → hybrid retrieval (vector + rank_bm25) → reranker → generation with citations`
 
 Storing vectors in the operational database removes a second system and keeps chunks transactionally consistent with their source documents. Chunking follows the document's own headings and table boundaries rather than a fixed character count, which keeps tables intact. Hybrid retrieval covers cases where the query contains exact identifiers that embeddings handle poorly — part numbers and error codes are the usual example. A held-out set of question and expected-source pairs is run as pytest cases with Ragas metrics, so retrieval changes are measured rather than assessed by inspection.
 
-**Typed extraction service.**
+### Typed extraction service
+
 `FastAPI endpoint → PydanticAI agent with an output model → LiteLLM provider routing → validated object`
 
 The output schema is a Pydantic model, and validation failures trigger a bounded retry with the error fed back to the model. Requests carry a schema version so downstream consumers can handle changes. Prompt and model identifiers are logged with each response, because a silent provider-side model update is otherwise indistinguishable from a regression in your own code.

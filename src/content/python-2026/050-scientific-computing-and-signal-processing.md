@@ -30,22 +30,27 @@ part: "Domains"
 
 The array API standard specifies a single namespace, so a function can call `array_namespace(x)` and work against whatever library produced `x` instead of importing NumPy. NumPy's main namespace has implemented it since 2.0. SciPy dispatches on it in a growing set of submodules behind the `SCIPY_ARRAY_API=1` environment variable, which also turns on stricter input checking that rejects masked arrays, `np.matrix` and object dtypes; scikit-learn has the same opt-in under `array_api_dispatch`. For a filter chain, that is one implementation covering NumPy arrays on a laptop and CuPy or PyTorch arrays on a GPU, rather than two. What it costs is everything outside the specification: NumPy functions it omits, in-place tricks, and the dtype promotion NumPy allows and the standard does not.
 
-**Automated RF measurement rig.**
+Not covered here: GPU kernel authoring (CuPy raw kernels, Numba's CUDA target, Triton), cluster-scale simulation through mpi4py, and FPGA or embedded DSP toolchains, which is where a real-time SDR receive chain ends up once it leaves a workstation.
+
+## Example designs
+
+### Automated RF measurement rig
+
 `pytest → PyVISA (signal generator, spectrum analyser) + pySerial (DUT control) → NumPy/SciPy metrics → Parquet + Matplotlib report`
 
 Instrument drivers are wrapped behind a small interface per instrument type so the same test runs against different lab equipment. Test cases are pytest functions with parametrized frequency and power points, and limits are asserted rather than eyeballed. Every run writes raw captures alongside computed metrics (EVM, ACLR, spectral mask margin) so a failure can be re-analysed without repeating the measurement — bench time is the scarce resource, not disk. scikit-rf handles de-embedding of cable and fixture losses from measured S-parameters.
 
-**SDR receive chain.**
-`SoapySDR or pyadi-iio capture → SciPy filter and decimate → NumPy demodulation → Numba timing recovery loop → Dear PyGui display (immediate-mode, GPU-rendered)`
+### SDR receive chain
+
+`SoapySDR or pyadi-iio capture → SciPy filter and decimate → NumPy demodulation → Numba timing recovery loop → Dear PyGui display`
 
 Capture runs in its own thread writing IQ samples into a ring buffer; processing reads from it, so display stalls do not drop samples. Per-sample feedback loops (timing recovery, carrier tracking) cannot be vectorized and are compiled with Numba. A file-backed source implementing the same interface as the radio allows the whole chain to run against recorded IQ in tests, which is what makes the DSP testable at all.
 
-**Monte Carlo parameter study.**
+### Monte Carlo parameter study
+
 `Parameter grid → Ray or joblib workers → NumPy simulation → xarray results → Zarr → Seaborn summary`
 
 Each worker returns an array plus its parameter coordinates; xarray assembles them into a labelled cube indexed by the swept variables. Results are written incrementally so a long sweep can be interrupted and resumed. Seeds are derived deterministically from the parameter index so any single run can be reproduced in isolation.
-
-Not covered here: GPU kernel authoring (CuPy raw kernels, Numba's CUDA target, Triton), cluster-scale simulation through mpi4py, and FPGA or embedded DSP toolchains, which is where a real-time receive chain ends up once it leaves a workstation.
 
 ## References
 
