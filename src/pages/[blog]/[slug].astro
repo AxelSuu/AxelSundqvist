@@ -43,7 +43,7 @@ const reviewed = section.reviewed?.toLocaleDateString('en-GB', {
   {next}
   here={section.slug}
   stamp={reviewed && `Reviewed ${reviewed}`}
-  title={section.title}
+  title={`${section.title} · ${meta.title}`}
   heading={section.title}
   description={section.blurb}
 >
