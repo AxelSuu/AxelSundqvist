@@ -8,6 +8,7 @@ part: "Practices"
 | Tool | Use |
 |---|---|
 | [`cProfile`](https://docs.python.org/3/library/profile.html) + [snakeviz](https://jiffyclub.github.io/snakeviz/) | Stdlib deterministic profiler with a flame graph viewer. |
+| [`profiling.sampling`](https://docs.python.org/3.15/library/profiling.sampling.html) (3.15) | Stdlib sampling profiler. `python -m profiling.sampling attach <pid>` samples a running process without modifying or restarting it, given ptrace or the platform's equivalent permission. In 3.15 `cProfile` becomes `profiling.tracing`, with the old name kept as an alias ([PEP 799](https://peps.python.org/pep-0799/)). |
 | [py-spy](https://github.com/benfred/py-spy) | Sampling profiler that attaches to a running process without restarting it. |
 | [Scalene](https://github.com/plasma-umass/scalene) | Separates CPU, GPU and memory, and Python time from native time. |
 | [memray](https://bloomberg.github.io/memray/) | Allocation tracking, including native allocations, with flame graphs. |
@@ -17,3 +18,7 @@ part: "Practices"
 | [PyO3](https://pyo3.rs/) + [maturin](https://www.maturin.rs/), [`cffi`](https://cffi.readthedocs.io/), [`ctypes`](https://docs.python.org/3/library/ctypes.html) | Native extension modules and bindings to existing libraries. |
 
 Order of work in most cases: reduce the number of operations (caching, algorithmic change, fewer queries), express bulk work as array or SQL operations, then compile the remaining hot function. Compiling first is the common mistake; it makes an unnecessary operation faster instead of removing it.
+
+## References
+
+* [PEP 799: A dedicated profiling package for organizing Python profiling tools](https://peps.python.org/pep-0799/). Final, 3.15.
