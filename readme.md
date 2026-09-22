@@ -76,7 +76,7 @@ GitHub-flavoured Markdown, plus:
 
 `scripts/images.py` builds the responsive WebP sizes in `public/images/` from
 the originals in `assets-src/`, and writes `src/image-manifest.json`.
-`public/og.html` is the social card source; the regeneration command is in a
+`assets-src/og.html` is the social card source; the regeneration command is in a
 comment at the top of it.
 
 ## Reviewing a dated blog

@@ -1,11 +1,13 @@
 <!doctype html>
-<!-- Social card source. Served by the dev server, not part of the build.
-     Regenerate: chrome-headless-shell --headless --window-size=1200,630 \
-       --screenshot=og.png http://localhost:4321/og.html  →  public/images/og.jpg -->
+<!-- Social card source. Outside public/ so it never ships.
+     Regenerate, from the repository root:
+       python3 -m http.server 8000 &
+       chrome-headless-shell --headless --window-size=1200,630 \
+         --screenshot=og.png http://localhost:8000/assets-src/og.html  →  public/images/og.jpg -->
 <html lang="en"><head><meta charset="utf-8">
 <style>
   @font-face { font-family:'Archivo'; font-weight:200 600; font-stretch:75% 125%;
-    src:url(/fonts/archivo-latin.woff2) format('woff2'); }
+    src:url(/public/fonts/archivo-latin.woff2) format('woff2'); }
   * { margin:0; box-sizing:border-box; }
   body { width:1200px; height:630px; overflow:hidden; background:#0a0a0b;
          font-family:'Archivo',sans-serif; color:#eeece8; position:relative; }
@@ -25,7 +27,7 @@
        color:#7f9dff; margin-bottom:18px; }
 </style></head>
 <body>
-  <img src="/images/hero-1200.webp" alt="">
+  <img src="/public/images/hero-1200.webp" alt="">
   <div class="scrim"></div>
   <div class="pad">
     <div class="k">Linköping · Stockholm</div>
